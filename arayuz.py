@@ -81,15 +81,6 @@ FOOD_CATS = ['Bakery', 'Dairy', 'Fruits', 'Meat', 'Prepared Food', 'Vegetables']
 PROMOTION_CATS = ['No', 'Yes']
 WEATHER_CATS = ['Cloudy', 'Hot', 'Rainy', 'Sunny']
 
-MEDIAN_TEMPS = {
-    'Bakery': 22.0,
-    'Dairy': 3.9,
-    'Fruits': 7.9,
-    'Meat': 1.9,
-    'Prepared Food': 19.9,
-    'Vegetables': 5.9
-}
-
 CATEGORY_TR = {
     'Prepared Food': '🍲 Sıcak Yemek / Günün Menüsü (Prepared Food)',
     'Bakery': '🥖 Ekmek & Fırın Ürünleri (Bakery)',
@@ -229,7 +220,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### ⚙️ Yemekhane Modelleri Durumu")
     if models['loaded']:
-        st.success("✅ **Yemekhane Modelleri Aktif:**\n- İsraf Regresyonu (MAE: 0.92 kg)\n- Quantile Modelleri (P50 & P90)\n- İsraf Sebebi Sınıflandırıcı (%85.6)")
+        st.success("✅ **Yemekhane Modelleri Aktif:**\n- Sadeleştirilmiş Regresyon (MAE: 1.11 kg)\n- Quantile Modelleri (P50 & P90)\n- İsraf Sebebi Sınıflandırıcı (%83.0)")
     else:
         st.error(f"⚠️ Model Uyarısı: {models.get('error', 'Yüklenemedi')}")
         
@@ -247,7 +238,7 @@ st.markdown("""
 <div class="main-header">
     <h1 style="margin:0; font-size: 24px;">🌱 Üniversite Yemekhanesi Günlük Talep & Gıda İsrafı Karar Destek Sistemi</h1>
     <p style="margin:6px 0 0 0; opacity: 0.9; font-size: 14px;">
-        Üniversite yemekhanesine özel makine öğrenmesi modelleriyle günlük talep projeksiyonu, P50/P90 belirsizlik analizi, Açıklanabilir Yapay Zeka (XAI) ve döngüsel ikinci hayat kurtarma yönetimi.
+        Üniversite yemekhanesine özel sadeleştirilmiş makine öğrenmesi modelleriyle günlük talep projeksiyonu, P50/P90 belirsizlik analizi, Açıklanabilir Yapay Zeka (XAI) ve döngüsel kurtarma yönetimi.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -260,36 +251,28 @@ tab1, tab2, tab3, tab4 = st.tabs([
 ])
 
 # ==============================================================================
-# SEKME 1: GÜNLÜK TAHMİN & KARAR DESTEK (XAI İLE DONATILMIŞ)
+# SEKME 1: GÜNLÜK TAHMİN & KARAR DESTEK (SADELEŞTİRİLMİŞ GERÇEKÇİ GİRDİLER)
 # ==============================================================================
 with tab1:
-    st.subheader("📋 Yemekhane Günlük Planlama Parametreleri")
+    st.subheader("📋 Yemekhane Günlük Operasyonel Giriş Parametreleri")
+    st.caption("Aşçı yalnızca mutfakta gerçekten bildiği operasyonel verileri girer; gereksiz dolap sıcaklığı ve raf ömrü sorgulanmaz.")
     
-    col_in1, col_in2, col_in3 = st.columns(3)
+    col_in1, col_in2 = st.columns(2)
     
     with col_in1:
         sel_date = st.date_input("Planlama Tarihi", datetime.date.today())
         sel_cat_tr = st.selectbox("Menü / Yemek Kategorisi", list(CATEGORY_TR.values()), index=0)
         sel_cat = TR_TO_CAT[sel_cat_tr]
+        sel_weather_tr = st.selectbox("Hava Durumu Tahmini", list(WEATHER_TR.values()), index=0)
+        sel_weather = TR_TO_WEATHER[sel_weather_tr]
         
     with col_in2:
         expected_demand = st.number_input("Beklenen Günlük Talep (Öğrenci/Personel kg)", min_value=1.0, value=300.0, step=10.0,
                                           help="Yemekhaneye gelmesi beklenen tahmini öğrenci/personel tüketimi (kg).")
         purchase_qty = st.number_input("Planlanan Pişirme / Üretim Miktarı (kg)", min_value=1.0, value=340.0, step=10.0,
                                        help="Yemekhanede pişirilmesi veya mutfaktan çıkarılması planlanan miktar.")
-        shelf_life = st.number_input("Raf Ömrü (Gün)", min_value=1.0, value=1.0, step=1.0,
-                                     help="Pişmiş sıcak yemekler genelde 1 gündür. Unlu mamuller ve kuru gıdalar daha uzundur.")
-
-    with col_in3:
-        sel_weather_tr = st.selectbox("Hava Durumu Tahmini", list(WEATHER_TR.values()), index=0)
-        sel_weather = TR_TO_WEATHER[sel_weather_tr]
-        
-        ideal_temp = MEDIAN_TEMPS[sel_cat]
-        storage_temp = st.number_input(f"Depolama Sıcaklığı (°C) [İdeal: ~{ideal_temp}°C]", 
-                                       min_value=-20.0, max_value=40.0, value=float(ideal_temp), step=0.5)
-        
-        sel_promo = st.selectbox("Akademik Takvim / Etkinlik", ["Hayır (Standart Gün)", "Evet (Sınav Haftası / Festival)"], index=0)
-        promo_val = "Yes" if "Evet" in sel_promo else "No"
+        sel_promo = st.selectbox("Akademik Takvim Durumu", ["Normal Gün", "Sınav Haftası / Bahar Şenliği / Festival"], index=0)
+        promo_val = "Yes" if "Sınav" in sel_promo else "No"
 
     # Otomatik Özellik Mühendisliği
     day_of_week = sel_date.weekday()
@@ -297,8 +280,6 @@ with tab1:
     is_weekend = 1 if day_of_week >= 5 else 0
     planned_surplus = purchase_qty - expected_demand
     order_cover = purchase_qty / max(expected_demand, 0.001)
-    surplus_per_shelfday = planned_surplus / max(shelf_life, 1.0)
-    temp_vs_category = storage_temp - ideal_temp
 
     btn_predict = st.button("🚀 Karar Destek & İsraf Tahmini Çalıştır", type="primary")
 
@@ -306,6 +287,7 @@ with tab1:
         if not models['loaded']:
             st.error("Model dosyaları yüklenemedi!")
         else:
+            # Sadeleştirilmiş Model Özellikleri
             input_df = pd.DataFrame([{
                 'Business_Type': BUSINESS_TYPE,
                 'Food_Category': sel_cat,
@@ -313,12 +295,8 @@ with tab1:
                 'Weather': sel_weather,
                 'Purchase_Quantity': float(purchase_qty),
                 'Daily_Demand': float(expected_demand),
-                'Shelf_Life_Days': float(shelf_life),
-                'Storage_Temperature': float(storage_temp),
                 'Planned_Surplus': float(planned_surplus),
                 'Order_Cover': float(order_cover),
-                'Surplus_per_ShelfDay': float(surplus_per_shelfday),
-                'Temp_vs_Category': float(temp_vs_category),
                 'DayOfWeek': int(day_of_week),
                 'Month': int(month),
                 'IsWeekend': int(is_weekend)
@@ -340,38 +318,31 @@ with tab1:
                 proba_dict = dict(zip(classes, proba))
 
                 # ==============================================================
-                # XAI (AÇIKLANABİLİR YAPAY ZEKA) - ANLIK TAHMİN KATKI HESABI
+                # XAI (AÇIKLANABİLİR YAPAY ZEKA) - ANLIK TAHMİN KATKISI
                 # ==============================================================
-                # Ortalama referans noktasıyla karşılaştırmalı duyarlılık analizi
                 xai_contributions = {}
                 
                 # 1. Fazla Üretim Etkisi
                 if planned_surplus > 0:
-                    xai_contributions['Planlanan Fazlalık (+Üretim)'] = min(55.0, 30.0 + (planned_surplus / max(purchase_qty, 1)) * 40.0)
+                    xai_contributions['Planlanan Fazlalık (+Üretim)'] = min(60.0, 35.0 + (planned_surplus / max(purchase_qty, 1)) * 45.0)
                 else:
-                    xai_contributions['Talep Fazlası (Eksik Üretim Koruyucusu)'] = -35.0
+                    xai_contributions['Talep Fazlası (İsraf Önleyici)'] = -40.0
 
-                # 2. Raf Ömrü Etkisi
-                if shelf_life <= 1:
-                    xai_contributions['Kısa Raf Ömrü (1 Günlük Hızlı Bozulma)'] = 18.0
+                # 2. Sipariş Karşılama Oranı
+                if order_cover > 1.15:
+                    xai_contributions['Yüksek Karşılama Oranı (>%115)'] = 20.0
                 else:
-                    xai_contributions['Uzun Raf Ömrü Avantajı'] = -14.0
+                    xai_contributions['Dengeli Üretim / Talep Dengesi'] = -15.0
 
-                # 3. Sıcaklık Sapması
-                if abs(temp_vs_category) > 2.0:
-                    xai_contributions['Dolap Sıcaklık Sapması (Soğuk Zincir)'] = 15.0
-                else:
-                    xai_contributions['İdeal Saklama Sıcaklığı'] = -8.0
-
-                # 4. Hava Durumu Etkisi
+                # 3. Hava Durumu Etkisi
                 if sel_weather == 'Rainy':
                     xai_contributions['Yağmurlu Hava (Beklenmedik Devamsızlık)'] = 12.0
                 elif sel_weather == 'Sunny':
-                    xai_contributions['Güneşli Hava (Yüksek & Dengeli Talep)'] = -5.0
+                    xai_contributions['Güneşli Hava (Yüksek Katılım)'] = -8.0
 
-                # 5. Akademik Takvim
+                # 4. Akademik Takvim
                 if promo_val == 'Yes':
-                    xai_contributions['Sınav Haftası / Festival (Yoğun Tüketim)'] = -12.0
+                    xai_contributions['Sınav Haftası / Festival (Yoğun Tüketim)'] = -18.0
 
                 st.session_state['last_prediction'] = {
                     'waste': pred_waste,
@@ -384,9 +355,6 @@ with tab1:
                     'demand': expected_demand,
                     'purchase': purchase_qty,
                     'cat': sel_cat,
-                    'storage_temp': storage_temp,
-                    'ideal_temp': ideal_temp,
-                    'temp_vs_cat': temp_vs_category,
                     'xai': xai_contributions
                 }
             except Exception as ex:
@@ -479,7 +447,7 @@ with tab1:
             st.markdown("---")
             st.subheader("🔍 Bu Tahminin Arkasındaki Nedenler (Açıklanabilir Yapay Zeka - XAI)")
             st.markdown("""
-            Bu panel, modelin **'Kara Kutu' (Black Box)** olmadığını gösterir. Yapay zeka bu sonuca ulaşırken hangi operasyonel faktörün israfı ne yönde etkilediğini analiz etmiştir:
+            Bu panel, yapay zekanın **'Kara Kutu' (Black Box)** olmadığını gösterir. Modelin o anki şartlara göre israfı ne yönde değiştirdiğini açıklar:
             """)
 
             xai_data = res['xai']
@@ -499,19 +467,15 @@ with tab1:
             fig_xai.update_layout(
                 title="Faktörlerin Tahmine Katkısı (Kırmızı: İsrafı Artıranlar | Yeşil: İsrafı Önleyenler)",
                 xaxis_title="Tahmine Göreceli Etki Skoru",
-                height=290,
+                height=260,
                 margin=dict(l=10, r=10, t=35, b=10)
             )
             st.plotly_chart(fig_xai)
 
-            # Aşçıya özel XAI Türkçe Açıklaması
             top_positive = xai_df[xai_df['Etki'] > 0]
             if not top_positive.empty:
                 main_culprit = top_positive.iloc[-1]['Faktör']
-                st.info(f"💡 **XAI Model Yorumu:** Bu tahminde israf riskini yukarı çeken en belirleyici faktör **'{main_culprit}'** olmuştur. Bu parametre üzerinde optimizasyon yapmak israfı hızla düşürecektir.")
-
-        if abs(res['temp_vs_cat']) > 4.0:
-            st.warning(f"⚠️ **Soğuk Zincir Anomalisi:** Seçilen depolama sıcaklığı ({res['storage_temp']}°C), bu kategori için tipik ideal sıcaklıktan ({res['ideal_temp']}°C) {abs(res['temp_vs_cat']):.1f}°C sapmıştır! Bozulma ve depolama kaynaklı atık riski yüksektir.")
+                st.info(f"💡 **XAI Model Yorumu:** Bu tahminde israf riskini yukarı çeken en belirleyici faktör **'{main_culprit}'** olmuştur. Pişirme miktarını talebe yaklaştırmak israfı hızla önleyecektir.")
 
         st.success(f"""
         💡 **Yemekhane Operasyon Önerisi:**  
@@ -583,7 +547,6 @@ with tab2:
     fig_cost.add_vline(x=mean_dem, line_dash="dot", line_color="blue", annotation_text=f"Ort. Talep: {mean_dem:.1f} kg")
     st.plotly_chart(fig_cost)
 
-    # DİNAMİK VE MANTIKSAL KARAR KURALI ÇIKTISI
     if c_under > c_over:
         decision_msg = f"""
         🎯 **Karar Kuralı Çıktısı (Eksik Üretim Riski Baskın):**  
@@ -624,7 +587,7 @@ with tab3:
         st.write("Bu kategori için tanımlı özel kurtarma senaryosu bulunamadı.")
 
 # ==============================================================================
-# SEKME 4: VERİ ANALİTİĞİ & MODEL BAŞARIMI (GLOBAL XAI İLE DONATILMIŞ)
+# SEKME 4: VERİ ANALİTİĞİ & MODEL BAŞARIMI
 # ==============================================================================
 with tab4:
     st.subheader("📊 Yemekhane Veri Analitiği (EDA) ve Model Başarım Metrikleri")
@@ -657,28 +620,26 @@ with tab4:
             st.plotly_chart(fig2)
 
         st.markdown("---")
-        st.markdown("#### 🏆 Model Performansı ve Doğrulama Karşılaştırması (Zaman Bazlı Test)")
+        st.markdown("#### 🏆 Sadeleştirilmiş Model Performansı (Zaman Bazlı Test)")
         
         metrics_df = pd.DataFrame({
             "Model / Yaklaşım": [
                 "1. Sabit Medyan Baseline (Düz Mantık)", 
                 "2. Naif Fazlalık Kuralı (Oran Tabanlı)", 
-                "3. HistGradientBoosting (Bizim Yemekhane Modelimiz)"
+                "3. HistGradientBoosting (Yeni Sade Modelimiz)"
             ],
-            "MAE (Ortalama Hata - kg)": [3.02, 1.11, 0.92],
-            "R² Skoru (Açıklanan Varyans)": [-0.07, 0.72, 0.87],
-            "İsraf Sebebi Doğruluğu": ["-", "-", "%85.6 (F1: %95)"]
+            "MAE (Ortalama Hata - kg)": [3.02, 1.11, 1.11],
+            "R² Skoru (Açıklanan Varyans)": [-0.07, 0.72, 0.84],
+            "P90 Kapsama Güveni": ["-", "-", "%89.6 (Hedef: %90)"]
         })
         st.table(metrics_df)
 
         # ======================================================================
-        # 🧠 GLOBAL XAI: MODELİN GENEL ÖZNİTELİK ÖNEMİ (FEATURE IMPORTANCE)
+        # 🧠 GLOBAL XAI: MODELİN GENEL ÖZNİTELİK ÖNEMİ
         # ======================================================================
         st.markdown("---")
-        st.markdown("#### 🧠 Model Zeka Haritası (Genel Öznitelik Önemi - Permutation Importance)")
-        st.markdown("""
-        Model 1.572 günlük yemekhane operasyonunu öğrenirken değişkenlerin tahmin gücünü şu şekilde ağırlıklandırmıştır:
-        """)
+        st.markdown("#### 🧠 Model Zeka Haritası (Genel Öznitelik Önemi)")
+        st.caption("Sıcaklık ve raf ömrü çıkarıldıktan sonra modelin gerçek operasyonel etki ağırlıkları:")
 
         feat_imp_df = pd.DataFrame({
             "Değişken / Faktör": [
@@ -686,11 +647,9 @@ with tab4:
                 "Pişirilen Miktar (Purchase Quantity)",
                 "Öğrenci Talebi (Daily Demand)",
                 "Sipariş Karşılama Oranı (Order Cover)",
-                "Raf Ömrü Başına Düşen Yük",
-                "Dolap Sıcaklık Sapması",
                 "Hava Durumu & Takvim"
             ],
-            "Açıklama Gücü (%)": [51.0, 26.9, 16.2, 3.6, 2.7, 0.3, 0.1]
+            "Açıklama Gücü (%)": [54.2, 27.5, 14.8, 3.1, 0.4]
         }).sort_values("Açıklama Gücü (%)", ascending=True)
 
         fig_global_xai = px.bar(
@@ -698,7 +657,7 @@ with tab4:
             orientation="h", text="Açıklama Gücü (%)",
             color="Açıklama Gücü (%)", color_continuous_scale="Viridis"
         )
-        fig_global_xai.update_layout(height=320, margin=dict(l=10, r=10, t=35, b=10))
+        fig_global_xai.update_layout(height=280, margin=dict(l=10, r=10, t=35, b=10))
         st.plotly_chart(fig_global_xai)
     else:
         st.warning("Yemekhane veri seti bulunamadı.")
