@@ -108,10 +108,20 @@ REASON_TR = {
 }
 
 # ==============================================================================
-# 3. YEMEKHANE MODELLERİNİ VE VERİ SETİNİ YÜKLEME
+# 3. YEMEKHANE MODELLERİNİ VE VERİ SETİNİ YÜKLEME (OTOMATİK CACHE GÜNCELLEYİCİ)
 # ==============================================================================
+def get_models_mtime():
+    """Modellerin dosya değiştirilme zamanını hesaplar (Cache yenileme için)"""
+    files = ['food_waste_regressor_model.pkl', 'food_waste_classifier_model.pkl', 'quantile_models.pkl']
+    mtimes = []
+    for f in files:
+        p = os.path.join(BASE_DIR, f)
+        if os.path.exists(p):
+            mtimes.append(os.path.getmtime(p))
+    return tuple(mtimes)
+
 @st.cache_resource
-def load_models():
+def load_models(_mtime_hash):
     models = {'loaded': False}
     try:
         reg_path = os.path.join(BASE_DIR, 'food_waste_regressor_model.pkl')
@@ -122,6 +132,11 @@ def load_models():
             models['regressor'] = joblib.load(reg_path)
             models['classifier'] = joblib.load(clf_path)
             models['quantiles'] = joblib.load(q_path)
+            
+            # Eski model kalıntısı kontrolü: Eğer modelde hala 'Storage_Temperature' varsa cache temizle
+            if 'Storage_Temperature' in getattr(models['regressor'], 'feature_names_in_', []):
+                st.cache_resource.clear()
+            
             models['loaded'] = True
         else:
             models['error'] = "Model dosyaları (.pkl) bulunamadı!"
@@ -141,7 +156,13 @@ def load_dataset():
             return None
     return None
 
-models = load_models()
+models = load_models(get_models_mtime())
+
+# Güvenlik Kontrolü: Eğer bellekte eski model kaldıysa anında zorla yeniden yükle
+if models.get('loaded') and 'Storage_Temperature' in getattr(models['regressor'], 'feature_names_in_', []):
+    st.cache_resource.clear()
+    models = load_models(get_models_mtime())
+
 dataset_df = load_dataset()
 
 # ==============================================================================
@@ -231,6 +252,10 @@ with st.sidebar:
     c_under = st.number_input("Eksik Üretim Maliyeti (₺/kg)", min_value=1.0, value=75.0, step=1.0, 
                               help="Yemek erken bittiğinde oluşan öğrenci mağduriyeti ve acil ikame gıda temini maliyeti.")
 
+    if st.button("🔄 Modelleri Yeniden Yükle"):
+        st.cache_resource.clear()
+        st.rerun()
+
 # ==============================================================================
 # 6. ANA BAŞLIK VE SEKME DÜZENİ (4 SEKME)
 # ==============================================================================
@@ -287,7 +312,7 @@ with tab1:
         if not models['loaded']:
             st.error("Model dosyaları yüklenemedi!")
         else:
-            # Sadeleştirilmiş Model Özellikleri
+            # Sadeleştirilmiş Model Özellikleri (Tam 11 Kolon)
             input_df = pd.DataFrame([{
                 'Business_Type': BUSINESS_TYPE,
                 'Food_Category': sel_cat,
@@ -317,30 +342,23 @@ with tab1:
                 pred_reason = classes[np.argmax(proba)]
                 proba_dict = dict(zip(classes, proba))
 
-                # ==============================================================
-                # XAI (AÇIKLANABİLİR YAPAY ZEKA) - ANLIK TAHMİN KATKISI
-                # ==============================================================
+                # XAI (Açıklanabilir Yapay Zeka)
                 xai_contributions = {}
-                
-                # 1. Fazla Üretim Etkisi
                 if planned_surplus > 0:
                     xai_contributions['Planlanan Fazlalık (+Üretim)'] = min(60.0, 35.0 + (planned_surplus / max(purchase_qty, 1)) * 45.0)
                 else:
                     xai_contributions['Talep Fazlası (İsraf Önleyici)'] = -40.0
 
-                # 2. Sipariş Karşılama Oranı
                 if order_cover > 1.15:
                     xai_contributions['Yüksek Karşılama Oranı (>%115)'] = 20.0
                 else:
                     xai_contributions['Dengeli Üretim / Talep Dengesi'] = -15.0
 
-                # 3. Hava Durumu Etkisi
                 if sel_weather == 'Rainy':
                     xai_contributions['Yağmurlu Hava (Beklenmedik Devamsızlık)'] = 12.0
                 elif sel_weather == 'Sunny':
                     xai_contributions['Güneşli Hava (Yüksek Katılım)'] = -8.0
 
-                # 4. Akademik Takvim
                 if promo_val == 'Yes':
                     xai_contributions['Sınav Haftası / Festival (Yoğun Tüketim)'] = -18.0
 
