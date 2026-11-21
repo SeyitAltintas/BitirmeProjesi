@@ -1,0 +1,1573 @@
+Inventory_ID,Date,Business_Type,Food_Category,Purchase_Quantity,Units_Sold,Remaining_Stock,Shelf_Life_Days,Storage_Temperature,Daily_Demand,Promotion,Weather,Waste_Quantity,Waste_Reason,Donation_Made,Waste_Level
+INV000002,2025-01-01,Cafeteria,Bakery,75,53,22,3.0,22.8,53.0,No,Cloudy,6,Low Demand,No,Medium
+INV000004,2025-01-01,Cafeteria,Dairy,58,58,0,7.0,3.5,83.0,Yes,Cloudy,0,No Waste,No,Low
+INV000009,2025-01-01,Cafeteria,Prepared Food,71,54,17,2.0,16.0,54.0,No,Sunny,4,Expired,No,Medium
+INV000013,2025-01-01,Cafeteria,Vegetables,102,82,20,3.0,2.8,82.0,Yes,Sunny,4,Expired,No,Medium
+INV000016,2025-01-01,Cafeteria,Meat,74,49,25,5.0,3.9,49.0,No,Cloudy,8,Overproduction,No,High
+INV000025,2025-01-02,Cafeteria,Vegetables,186,60,126,7.0,8.2,60.0,No,Sunny,40,Overproduction,No,High
+INV000026,2025-01-02,Cafeteria,Prepared Food,99,99,0,2.0,17.7,100.0,Yes,Sunny,0,No Waste,No,Low
+INV000035,2025-01-02,Cafeteria,Bakery,58,58,0,2.0,23.0,76.0,No,Sunny,0,No Waste,No,Low
+INV000036,2025-01-02,Cafeteria,Prepared Food,72,55,17,2.0,15.2,55.0,No,Cloudy,5,Low Demand,No,Medium
+INV000038,2025-01-02,Cafeteria,Dairy,56,56,0,3.0,1.8,57.0,No,Cloudy,0,No Waste,No,Low
+INV000041,2025-01-02,Cafeteria,Fruits,64,54,10,7.0,6.0,54.0,No,Cloudy,1,Low Demand,No,Low
+INV000051,2025-01-03,Cafeteria,Bakery,75,55,20,6.0,19.6,55.0,Yes,Cloudy,3,Low Demand,No,Medium
+INV000054,2025-01-03,Cafeteria,Prepared Food,63,63,0,2.0,25.9,65.0,No,Hot,0,No Waste,No,Low
+INV000066,2025-01-03,Cafeteria,Bakery,60,60,0,,25.3,71.0,No,Cloudy,0,No Waste,No,Low
+INV000067,2025-01-03,Cafeteria,Vegetables,63,63,0,7.0,5.7,76.0,No,Sunny,0,No Waste,No,Low
+INV000077,2025-01-04,Cafeteria,Dairy,93,93,0,4.0,1.3,94.0,Yes,Cloudy,0,No Waste,No,Low
+INV000087,2025-01-05,Cafeteria,Prepared Food,78,63,15,2.0,24.3,63.0,No,Hot,4,Low Demand,No,Medium
+INV000088,2025-01-05,Cafeteria,Fruits,56,56,0,5.0,8.6,60.0,No,Sunny,0,No Waste,No,Low
+INV000089,2025-01-05,Cafeteria,Bakery,59,59,0,4.0,24.3,67.0,No,Hot,0,No Waste,No,Low
+INV000093,2025-01-05,Cafeteria,Prepared Food,62,60,2,1.0,17.6,60.0,No,Hot,1,Expired,No,Medium
+INV000094,2025-01-05,Cafeteria,Vegetables,79,55,24,8.0,4.2,,No,Hot,2,Low Demand,No,Medium
+INV000104,2025-01-05,Cafeteria,Dairy,47,47,0,6.0,3.6,,No,Sunny,0,No Waste,No,Low
+INV000109,2025-01-06,Cafeteria,Prepared Food,64,48,16,2.0,16.8,48.0,No,Rainy,4,Low Demand,No,Medium
+INV000111,2025-01-06,Cafeteria,Bakery,75,57,18,5.0,13.8,,No,Hot,3,Low Demand,No,Medium
+INV000121,2025-01-06,Cafeteria,Vegetables,67,66,1,9.0,10.5,66.0,No,Sunny,0,No Waste,No,Low
+INV000122,2025-01-06,Cafeteria,Vegetables,67,65,2,9.0,6.7,65.0,Yes,Rainy,0,No Waste,No,Low
+INV000123,2025-01-06,Cafeteria,Prepared Food,80,41,39,1.0,23.8,41.0,No,Cloudy,20,Overproduction,Yes,High
+INV000135,2025-01-07,Cafeteria,Prepared Food,60,45,15,2.0,15.5,45.0,No,Rainy,4,Low Demand,No,Medium
+INV000139,2025-01-07,Cafeteria,Dairy,76,76,0,12.0,5.7,90.0,Yes,Sunny,0,No Waste,,Low
+INV000146,2025-01-07,Cafeteria,Bakery,75,55,20,4.0,23.3,55.0,No,Cloudy,5,Low Demand,Yes,Medium
+INV000153,2025-01-08,Cafeteria,Prepared Food,50,50,0,1.0,20.4,61.0,No,Cloudy,0,No Waste,No,Low
+INV000156,2025-01-08,Cafeteria,Vegetables,52,50,2,1.0,7.2,50.0,No,Sunny,1,Expired,No,Low
+INV000163,2025-01-08,Cafeteria,Dairy,103,48,55,8.0,3.1,48.0,Yes,Rainy,13,Overproduction,Yes,Medium
+INV000169,2025-01-08,Cafeteria,Fruits,68,47,21,8.0,10.0,47.0,No,Rainy,3,Low Demand,No,Medium
+INV000173,2025-01-08,Cafeteria,Dairy,94,78,16,14.0,0.6,78.0,No,Sunny,2,Low Demand,No,Medium
+INV000184,2025-01-09,Cafeteria,Prepared Food,49,44,5,1.0,33.6,44.0,No,Rainy,3,Storage Issue,No,Medium
+INV000185,2025-01-09,Cafeteria,Fruits,65,65,0,5.0,14.9,66.0,Yes,Sunny,0,No Waste,No,Low
+INV000187,2025-01-09,Cafeteria,Prepared Food,51,34,17,2.0,17.0,34.0,No,Rainy,5,Low Demand,No,High
+INV000190,2025-01-09,Cafeteria,Prepared Food,102,76,26,1.0,21.7,76.0,Yes,Cloudy,8,Expired,No,Medium
+INV000192,2025-01-09,Cafeteria,Meat,165,42,123,3.0,1.7,42.0,No,Cloudy,52,Overproduction,Yes,High
+INV000194,2025-01-09,Cafeteria,Fruits,76,47,29,4.0,13.6,47.0,No,Cloudy,8,Overproduction,No,High
+INV000208,2025-01-10,Cafeteria,Meat,53,53,0,1.0,2.9,61.0,No,Hot,0,No Waste,No,Low
+INV000212,2025-01-10,Cafeteria,Dairy,67,67,0,6.0,5.1,89.0,Yes,Sunny,0,No Waste,No,Low
+INV000213,2025-01-10,Cafeteria,Prepared Food,65,50,15,2.0,16.3,50.0,No,Sunny,5,Low Demand,No,Medium
+INV000214,2025-01-10,Cafeteria,Prepared Food,70,70,0,1.0,33.5,72.0,No,Hot,0,No Waste,No,Low
+INV000222,2025-01-11,Cafeteria,Prepared Food,55,41,14,1.0,27.6,41.0,No,Rainy,7,Storage Issue,Yes,High
+INV000223,2025-01-11,Cafeteria,Meat,52,52,0,2.0,1.7,71.0,No,Sunny,0,No Waste,No,Low
+INV000228,2025-01-11,Cafeteria,Bakery,63,53,10,4.0,15.4,53.0,No,Hot,2,Low Demand,No,Medium
+INV000231,2025-01-11,Cafeteria,Bakery,70,52,18,3.0,24.2,52.0,No,Cloudy,5,Low Demand,Yes,Medium
+INV000235,2025-01-11,Cafeteria,Vegetables,55,45,10,5.0,5.8,45.0,No,Rainy,2,Low Demand,No,Medium
+INV000239,2025-01-12,Cafeteria,Bakery,56,53,3,3.0,26.9,53.0,No,Cloudy,1,Low Demand,No,Low
+INV000240,2025-01-12,Cafeteria,Meat,84,79,5,8.0,1.7,79.0,Yes,Sunny,0,No Waste,No,Low
+INV000252,2025-01-12,Cafeteria,Vegetables,57,46,11,5.0,,46.0,No,Cloudy,1,Low Demand,No,Low
+INV000254,2025-01-12,Cafeteria,Fruits,75,46,29,5.0,9.8,46.0,No,Cloudy,7,Low Demand,Yes,High
+INV000257,2025-01-12,Cafeteria,Meat,55,55,0,6.0,5.2,72.0,No,Hot,0,No Waste,No,Low
+INV000260,2025-01-12,Cafeteria,Vegetables,61,38,23,8.0,8.9,38.0,No,Rainy,6,Overproduction,No,High
+INV000269,2025-01-13,Cafeteria,Bakery,60,36,24,5.0,23.5,36.0,No,Cloudy,7,Low Demand,No,High
+INV000272,2025-01-13,Cafeteria,Prepared Food,70,53,17,1.0,16.5,53.0,No,Rainy,7,Expired,No,High
+INV000278,2025-01-13,Cafeteria,Dairy,66,66,0,10.0,5.8,84.0,No,Sunny,0,No Waste,No,Low
+INV000282,2025-01-13,Cafeteria,Meat,54,49,5,2.0,2.8,49.0,Yes,Rainy,1,Low Demand,No,Low
+INV000285,2025-01-13,Cafeteria,Prepared Food,74,74,0,2.0,15.4,108.0,Yes,Hot,0,No Waste,No,Low
+INV000293,2025-01-13,Cafeteria,Dairy,69,69,0,8.0,2.5,76.0,No,Sunny,0,No Waste,No,Low
+INV000300,2025-01-14,Cafeteria,Bakery,74,74,0,1.0,20.5,76.0,Yes,Sunny,0,No Waste,No,Low
+INV000311,2025-01-14,Cafeteria,Bakery,62,62,0,1.0,18.4,90.0,Yes,Hot,0,No Waste,No,Low
+INV000320,2025-01-15,Cafeteria,Dairy,58,58,0,9.0,3.1,78.0,No,Sunny,0,No Waste,No,Low
+INV000322,2025-01-15,Cafeteria,Fruits,81,81,0,5.0,7.8,87.0,Yes,Sunny,0,No Waste,No,Low
+INV000323,2025-01-15,Cafeteria,Prepared Food,57,57,0,2.0,21.5,69.0,No,Cloudy,0,No Waste,No,Low
+INV000324,2025-01-15,Cafeteria,Vegetables,59,59,0,5.0,12.1,64.0,No,,0,No Waste,No,Low
+INV000328,2025-01-15,Cafeteria,Bakery,62,38,24,4.0,18.5,38.0,No,Rainy,4,Low Demand,No,Medium
+INV000330,2025-01-15,Cafeteria,Prepared Food,65,59,6,3.0,24.7,59.0,No,Sunny,2,Low Demand,No,Medium
+INV000342,2025-01-15,Cafeteria,Prepared Food,68,46,22,1.0,26.7,46.0,No,Rainy,9,Storage Issue,,High
+INV000352,2025-01-16,Cafeteria,Bakery,72,53,19,4.0,16.8,53.0,No,Sunny,4,Low Demand,No,Medium
+INV000354,2025-01-16,Cafeteria,Fruits,84,70,14,5.0,,70.0,Yes,Cloudy,2,Low Demand,No,Medium
+INV000355,2025-01-16,Cafeteria,Fruits,62,62,0,7.0,8.9,77.0,No,Cloudy,0,No Waste,No,Low
+INV000357,2025-01-16,Cafeteria,Dairy,80,80,0,8.0,3.6,90.0,Yes,Sunny,0,No Waste,No,Low
+INV000362,2025-01-16,Cafeteria,Vegetables,54,54,0,4.0,6.7,70.0,No,Hot,0,No Waste,No,Low
+INV000364,2025-01-16,Cafeteria,Fruits,89,54,35,5.0,,54.0,Yes,Rainy,7,Low Demand,No,Medium
+INV000365,2025-01-16,Cafeteria,Bakery,51,51,0,4.0,18.2,68.0,No,,0,No Waste,No,Low
+INV000367,2025-01-17,Cafeteria,Fruits,68,68,0,5.0,2.0,89.0,No,Sunny,0,No Waste,No,Low
+INV000371,2025-01-17,Cafeteria,Prepared Food,71,46,25,1.0,28.0,46.0,No,Rainy,12,Expired,No,High
+INV000373,2025-01-17,Cafeteria,Meat,70,45,25,3.0,5.5,45.0,No,Cloudy,6,Low Demand,No,Medium
+INV000381,2025-01-17,Cafeteria,Meat,76,54,22,3.0,1.3,54.0,No,Cloudy,6,Low Demand,No,Medium
+INV000388,2025-01-17,Cafeteria,Prepared Food,66,66,0,2.0,27.0,78.0,No,Hot,0,No Waste,No,Medium
+INV000391,2025-01-18,Cafeteria,Dairy,66,51,15,5.0,2.1,51.0,No,Cloudy,3,Low Demand,No,Medium
+INV000393,2025-01-18,Cafeteria,Fruits,54,54,0,5.0,2.2,78.0,No,Cloudy,0,No Waste,No,Low
+INV000394,2025-01-18,Cafeteria,Prepared Food,67,56,11,2.0,19.5,56.0,No,Rainy,2,Low Demand,No,Medium
+INV000405,2025-01-18,Cafeteria,Dairy,56,56,0,5.0,3.2,59.0,No,Cloudy,0,No Waste,No,Low
+INV000412,2025-01-18,Cafeteria,Dairy,51,51,0,9.0,2.2,59.0,No,Sunny,0,No Waste,No,Low
+INV000420,2025-01-19,Cafeteria,Fruits,75,57,18,5.0,8.3,57.0,No,Sunny,3,Low Demand,No,Medium
+INV000424,2025-01-19,Cafeteria,Fruits,100,58,42,6.0,9.4,58.0,No,Cloudy,8,Overproduction,No,Medium
+INV000428,2025-01-19,Cafeteria,Fruits,76,76,0,6.0,7.4,91.0,Yes,Hot,0,No Waste,No,Low
+INV000445,2025-01-20,Cafeteria,Prepared Food,42,42,0,1.0,17.6,64.0,No,Cloudy,0,No Waste,No,Low
+INV000447,2025-01-20,Cafeteria,Vegetables,57,57,0,4.0,6.7,96.0,Yes,Hot,0,No Waste,No,Low
+INV000459,2025-01-21,Cafeteria,Bakery,48,48,0,1.0,22.7,69.0,No,Cloudy,0,No Waste,No,Low
+INV000470,2025-01-22,Cafeteria,Fruits,81,71,10,6.0,4.5,71.0,Yes,Cloudy,1,Low Demand,No,High
+INV000471,2025-01-22,Cafeteria,Dairy,75,58,17,6.0,5.7,58.0,Yes,Rainy,3,Low Demand,No,Medium
+INV000476,2025-01-22,Cafeteria,Fruits,64,64,0,5.0,4.3,87.0,No,Sunny,0,No Waste,No,Low
+INV000484,2025-01-23,Cafeteria,Prepared Food,85,66,19,1.0,16.8,66.0,No,Hot,8,Expired,No,High
+INV000489,2025-01-23,Cafeteria,Meat,74,70,4,2.0,-0.7,70.0,No,Hot,1,Low Demand,No,Low
+INV000491,2025-01-23,Cafeteria,Fruits,47,47,0,4.0,7.9,57.0,No,Cloudy,0,No Waste,No,Low
+INV000492,2025-01-23,Cafeteria,Prepared Food,84,56,28,1.0,14.8,56.0,No,Cloudy,9,Expired,No,High
+INV000493,2025-01-23,Cafeteria,Bakery,66,63,3,5.0,19.1,63.0,No,Cloudy,0,No Waste,No,Low
+INV000495,2025-01-23,Cafeteria,Vegetables,61,51,10,7.0,6.7,51.0,No,Hot,1,Low Demand,No,Low
+INV000501,2025-01-23,Cafeteria,Vegetables,73,73,0,5.0,5.5,,Yes,Sunny,0,No Waste,No,Low
+INV000506,2025-01-24,Cafeteria,Fruits,64,55,9,4.0,8.1,55.0,No,Sunny,2,Low Demand,No,Medium
+INV000508,2025-01-24,Cafeteria,Meat,49,49,0,6.0,2.1,49.0,No,Cloudy,0,No Waste,No,Low
+INV000509,2025-01-24,Cafeteria,Prepared Food,80,74,6,1.0,18.6,74.0,No,Sunny,2,Expired,No,Medium
+INV000512,2025-01-24,Cafeteria,Meat,85,74,11,6.0,2.7,74.0,No,Sunny,1,Low Demand,No,Low
+INV000513,2025-01-24,Cafeteria,Fruits,50,50,0,4.0,5.6,75.0,No,Cloudy,0,No Waste,No,Low
+INV000516,2025-01-24,Cafeteria,Prepared Food,62,62,0,1.0,19.8,87.0,No,Sunny,0,No Waste,No,Low
+INV000532,2025-01-25,Cafeteria,Prepared Food,71,62,9,3.0,16.8,62.0,No,,1,Low Demand,No,Low
+INV000536,2025-01-25,Cafeteria,Dairy,59,54,5,6.0,3.5,54.0,No,Sunny,0,No Waste,No,Low
+INV000551,2025-01-26,Cafeteria,Prepared Food,66,54,12,3.0,28.5,54.0,No,Cloudy,3,Storage Issue,No,Medium
+INV000553,2025-01-26,Cafeteria,Fruits,42,42,0,7.0,,91.0,No,Hot,0,No Waste,No,Low
+INV000562,2025-01-26,Cafeteria,Meat,66,66,0,1.0,0.4,92.0,Yes,Hot,0,No Waste,No,Low
+INV000575,2025-01-27,Cafeteria,Bakery,58,58,0,2.0,17.6,63.0,No,Sunny,0,No Waste,No,Low
+INV000577,2025-01-27,Cafeteria,Bakery,192,63,129,1.0,16.5,63.0,No,Hot,54,Overproduction,Yes,High
+INV000580,2025-01-27,Cafeteria,Meat,66,66,0,3.0,0.8,77.0,No,Cloudy,0,No Waste,No,Low
+INV000587,2025-01-27,Cafeteria,Prepared Food,74,56,18,1.0,20.3,56.0,No,Sunny,6,Expired,No,Medium
+INV000589,2025-01-27,Cafeteria,Fruits,57,57,0,4.0,7.8,70.0,No,Sunny,0,No Waste,No,Low
+INV000607,2025-01-28,Cafeteria,Prepared Food,72,72,0,1.0,9.0,111.0,Yes,Hot,0,No Waste,No,Low
+INV000609,2025-01-28,Cafeteria,Prepared Food,53,53,0,1.0,9.0,68.0,No,Sunny,0,No Waste,No,Low
+INV000610,2025-01-28,Cafeteria,Prepared Food,53,53,0,1.0,21.9,71.0,No,Sunny,0,No Waste,No,Low
+INV000614,2025-01-28,Cafeteria,Dairy,75,66,9,2.0,2.8,66.0,No,Hot,2,Low Demand,No,Medium
+INV000617,2025-01-28,Cafeteria,Bakery,84,51,33,3.0,20.9,51.0,No,Sunny,9,Overproduction,No,High
+INV000624,2025-01-28,Cafeteria,Dairy,78,46,32,11.0,4.4,46.0,No,Rainy,5,Overproduction,No,Medium
+INV000627,2025-01-28,Cafeteria,Bakery,68,48,20,3.0,14.7,48.0,No,Rainy,4,Low Demand,No,Medium
+INV000632,2025-01-29,Cafeteria,Bakery,74,39,35,3.0,18.1,39.0,No,Rainy,11,Overproduction,No,High
+INV000654,2025-01-30,Cafeteria,Meat,91,48,43,5.0,-1.1,48.0,Yes,Rainy,9,Overproduction,No,High
+INV000666,2025-01-30,Cafeteria,Prepared Food,88,65,23,1.0,21.7,65.0,No,Cloudy,9,Expired,No,High
+INV000670,2025-01-31,Cafeteria,Dairy,44,44,0,10.0,3.3,51.0,Yes,Rainy,0,No Waste,No,Low
+INV000675,2025-01-31,Cafeteria,Dairy,86,82,4,5.0,1.6,82.0,Yes,Cloudy,0,No Waste,No,Low
+INV000683,2025-01-31,Cafeteria,Bakery,50,50,0,2.0,23.8,76.0,No,Hot,0,No Waste,,Low
+INV000690,2025-01-31,Cafeteria,Dairy,44,44,0,7.0,4.6,50.0,No,Rainy,0,No Waste,No,Low
+INV000698,2025-02-01,Cafeteria,Meat,65,59,6,7.0,-0.5,59.0,No,Sunny,0,No Waste,No,Low
+INV000701,2025-02-01,Cafeteria,Fruits,57,53,4,7.0,3.0,53.0,No,Sunny,1,Low Demand,Yes,Low
+INV000703,2025-02-01,Cafeteria,Meat,55,55,0,4.0,4.1,76.0,No,Sunny,0,No Waste,No,Low
+INV000704,2025-02-01,Cafeteria,Vegetables,68,68,0,5.0,3.7,99.0,Yes,Sunny,0,No Waste,No,Low
+INV000726,2025-02-02,Cafeteria,Bakery,53,53,0,1.0,18.6,89.0,No,Sunny,0,No Waste,No,Low
+INV000728,2025-02-02,Cafeteria,Meat,59,59,0,4.0,1.6,63.0,No,Cloudy,0,No Waste,No,Low
+INV000731,2025-02-03,Cafeteria,Meat,73,73,0,2.0,-0.1,86.0,No,Hot,0,No Waste,No,Low
+INV000734,2025-02-03,Cafeteria,Dairy,62,44,18,5.0,-1.0,44.0,No,Rainy,4,Low Demand,No,Medium
+INV000735,2025-02-03,Cafeteria,Bakery,93,93,0,3.0,18.6,110.0,Yes,Sunny,0,No Waste,No,Low
+INV000736,2025-02-03,Cafeteria,Prepared Food,63,57,6,1.0,18.5,,Yes,Rainy,2,Expired,No,Medium
+INV000741,2025-02-03,Cafeteria,Prepared Food,58,54,4,2.0,16.4,54.0,No,Sunny,1,Low Demand,No,Low
+INV000743,2025-02-03,Cafeteria,Bakery,79,40,39,3.0,20.6,40.0,No,Rainy,11,Overproduction,No,High
+INV000744,2025-02-03,Cafeteria,Meat,59,59,0,4.0,-0.5,72.0,No,Sunny,0,No Waste,No,Low
+INV000745,2025-02-03,Cafeteria,Vegetables,80,80,0,2.0,7.9,85.0,No,Sunny,0,No Waste,No,Low
+INV000749,2025-02-03,Cafeteria,Bakery,94,48,46,4.0,25.5,48.0,No,Cloudy,12,Overproduction,Yes,High
+INV000753,2025-02-03,Cafeteria,Vegetables,63,63,0,10.0,8.9,71.0,No,Sunny,0,No Waste,No,Low
+INV000754,2025-02-04,Cafeteria,Bakery,51,51,0,4.0,26.5,121.0,Yes,Hot,0,No Waste,No,Low
+INV000755,2025-02-04,Cafeteria,Meat,70,59,11,3.0,3.5,59.0,No,Cloudy,2,Low Demand,No,Medium
+INV000770,2025-02-04,Cafeteria,Dairy,60,55,5,3.0,6.3,55.0,No,Cloudy,1,Low Demand,No,Low
+INV000776,2025-02-05,Cafeteria,Fruits,53,53,0,4.0,7.1,57.0,No,Cloudy,0,No Waste,No,Low
+INV000781,2025-02-05,Cafeteria,Vegetables,64,60,4,8.0,0.0,60.0,No,Sunny,0,No Waste,No,Low
+INV000786,2025-02-05,Cafeteria,Fruits,63,51,12,6.0,6.3,51.0,No,Cloudy,1,Low Demand,No,Low
+INV000788,2025-02-05,Cafeteria,Dairy,57,57,0,13.0,4.1,57.0,No,Cloudy,0,No Waste,No,Low
+INV000790,2025-02-05,Cafeteria,Fruits,58,48,10,4.0,6.3,48.0,No,Hot,1,Low Demand,No,Low
+INV000799,2025-02-06,Cafeteria,Vegetables,75,52,23,6.0,8.7,,No,Cloudy,6,Low Demand,Yes,Medium
+INV000804,2025-02-06,Cafeteria,Prepared Food,56,56,0,1.0,25.0,71.0,No,Sunny,0,No Waste,No,Low
+INV000807,2025-02-06,Cafeteria,Bakery,67,67,0,4.0,24.1,80.0,No,Hot,0,No Waste,No,Low
+INV000808,2025-02-06,Cafeteria,Prepared Food,53,53,0,2.0,26.2,58.0,No,Sunny,0,No Waste,No,Low
+INV000816,2025-02-06,Cafeteria,Dairy,77,49,28,6.0,3.0,49.0,No,Sunny,4,Low Demand,No,Low
+INV000817,2025-02-06,Cafeteria,Dairy,87,58,29,9.0,6.7,58.0,Yes,Rainy,3,Low Demand,No,Medium
+INV000818,2025-02-06,Cafeteria,Fruits,54,54,0,2.0,6.1,64.0,No,Hot,0,No Waste,No,Low
+INV000820,2025-02-06,Cafeteria,Fruits,77,55,22,4.0,8.0,55.0,No,Cloudy,4,Low Demand,No,Medium
+INV000821,2025-02-06,Cafeteria,Bakery,89,75,14,2.0,22.5,75.0,Yes,Sunny,3,Expired,No,Medium
+INV000828,2025-02-07,Cafeteria,Vegetables,63,43,20,5.0,5.5,,No,Rainy,4,Low Demand,Yes,Medium
+INV000844,2025-02-07,Cafeteria,Fruits,60,45,15,6.0,2.4,45.0,No,Rainy,2,Low Demand,No,Medium
+INV000845,2025-02-07,Cafeteria,Prepared Food,85,48,37,2.0,13.0,48.0,No,Rainy,13,Overproduction,No,High
+INV000849,2025-02-08,Cafeteria,Dairy,55,55,0,11.0,1.7,60.0,No,Hot,0,No Waste,No,Low
+INV000864,2025-02-08,Cafeteria,Fruits,91,79,12,3.0,11.9,79.0,Yes,Hot,3,Low Demand,No,Medium
+INV000868,2025-02-09,Cafeteria,Dairy,63,63,0,10.0,0.6,76.0,No,Hot,0,No Waste,,Low
+INV000875,2025-02-09,Cafeteria,Vegetables,58,48,10,6.0,5.6,48.0,No,Rainy,2,Low Demand,No,Medium
+INV000878,2025-02-09,Cafeteria,Bakery,79,46,33,4.0,30.6,46.0,No,Rainy,12,Storage Issue,Yes,High
+INV000888,2025-02-09,Cafeteria,Dairy,72,72,0,7.0,2.8,84.0,Yes,Cloudy,0,No Waste,No,Low
+INV000893,2025-02-09,Cafeteria,Meat,75,40,35,5.0,-0.5,40.0,No,Rainy,9,Overproduction,Yes,High
+INV000901,2025-02-10,Cafeteria,Fruits,78,48,30,9.0,8.7,48.0,Yes,Rainy,6,Low Demand,No,Medium
+INV000912,2025-02-10,Cafeteria,Prepared Food,63,39,24,1.0,19.8,39.0,No,Rainy,9,Low Demand,No,High
+INV000915,2025-02-10,Cafeteria,Prepared Food,58,56,2,1.0,9.2,56.0,No,Cloudy,1,Expired,No,Low
+INV000916,2025-02-10,Cafeteria,Bakery,79,79,0,2.0,22.8,85.0,No,Hot,0,No Waste,No,High
+INV000919,2025-02-11,Cafeteria,Prepared Food,65,49,16,1.0,17.7,49.0,No,Rainy,5,Expired,No,Medium
+INV000920,2025-02-11,Cafeteria,Bakery,69,44,25,4.0,20.1,44.0,No,Cloudy,5,Overproduction,No,Medium
+INV000922,2025-02-11,Cafeteria,Meat,61,32,29,,5.8,32.0,No,,12,Overproduction,No,High
+INV000926,2025-02-11,Cafeteria,Dairy,59,59,0,10.0,3.8,64.0,No,,0,No Waste,No,Low
+INV000946,2025-02-12,Cafeteria,Vegetables,94,75,19,4.0,10.5,75.0,No,Cloudy,4,Storage Issue,Yes,Medium
+INV000948,2025-02-12,Cafeteria,Meat,66,66,0,5.0,0.7,77.0,No,Sunny,0,No Waste,No,Low
+INV000960,2025-02-12,Cafeteria,Fruits,57,26,31,5.0,12.3,26.0,No,Rainy,11,Low Demand,Yes,High
+INV000964,2025-02-12,Cafeteria,Fruits,54,54,0,5.0,7.7,55.0,No,Sunny,0,No Waste,No,Low
+INV000969,2025-02-13,Cafeteria,Dairy,64,64,0,3.0,6.0,77.0,No,Sunny,0,No Waste,No,Low
+INV000974,2025-02-13,Cafeteria,Dairy,67,65,2,7.0,6.4,65.0,No,Hot,0,No Waste,No,Low
+INV000982,2025-02-13,Cafeteria,Meat,70,48,22,4.0,1.5,48.0,No,Cloudy,4,Low Demand,No,Medium
+INV000991,2025-02-14,Cafeteria,Vegetables,63,59,4,3.0,2.0,59.0,No,Cloudy,0,No Waste,No,Low
+INV000993,2025-02-14,Cafeteria,Vegetables,54,54,0,6.0,4.0,72.0,No,Hot,0,No Waste,No,Low
+INV000994,2025-02-14,Cafeteria,Prepared Food,64,64,0,2.0,23.0,84.0,No,,0,No Waste,No,Low
+INV000999,2025-02-14,Cafeteria,Vegetables,57,57,0,7.0,12.5,59.0,No,Cloudy,0,No Waste,No,Low
+INV001002,2025-02-14,Cafeteria,Fruits,62,59,3,4.0,3.6,59.0,No,Cloudy,1,Low Demand,No,Low
+INV001005,2025-02-14,Cafeteria,Bakery,83,32,51,3.0,17.6,32.0,No,Rainy,16,Overproduction,Yes,Low
+INV001008,2025-02-14,Cafeteria,Vegetables,78,36,42,5.0,5.2,36.0,No,Rainy,12,Overproduction,Yes,High
+INV001015,2025-02-15,Cafeteria,Dairy,78,40,38,6.0,7.6,40.0,No,Rainy,11,Overproduction,Yes,High
+INV001017,2025-02-15,Cafeteria,Vegetables,74,74,0,6.0,4.0,74.0,No,Sunny,0,No Waste,No,Low
+INV001018,2025-02-15,Cafeteria,Meat,65,56,9,3.0,1.1,56.0,No,Hot,2,Low Demand,No,Medium
+INV001024,2025-02-15,Cafeteria,Prepared Food,42,42,0,1.0,21.4,61.0,No,Hot,0,No Waste,,Low
+INV001026,2025-02-15,Cafeteria,Vegetables,59,59,0,7.0,5.0,67.0,No,Cloudy,0,No Waste,No,High
+INV001033,2025-02-15,Cafeteria,Prepared Food,76,42,34,2.0,17.4,42.0,No,Rainy,12,Overproduction,No,High
+INV001035,2025-02-15,Cafeteria,Fruits,63,51,12,7.0,9.2,51.0,No,Hot,2,Low Demand,Yes,Medium
+INV001040,2025-02-16,Cafeteria,Meat,63,48,15,3.0,-1.7,48.0,No,Cloudy,3,Low Demand,Yes,Medium
+INV001045,2025-02-16,Cafeteria,Dairy,78,37,41,5.0,0.1,37.0,No,Rainy,10,Overproduction,No,High
+INV001054,2025-02-16,Cafeteria,Vegetables,51,51,0,7.0,7.7,63.0,No,Sunny,0,No Waste,No,Low
+INV001055,2025-02-16,Cafeteria,Vegetables,65,65,0,5.0,11.7,67.0,No,Sunny,0,No Waste,No,Low
+INV001074,2025-02-17,Cafeteria,Prepared Food,62,55,7,1.0,20.3,55.0,No,Cloudy,2,Expired,No,Medium
+INV001075,2025-02-17,Cafeteria,Prepared Food,67,63,4,2.0,,,No,Sunny,1,Expired,No,Low
+INV001080,2025-02-17,Cafeteria,Prepared Food,66,66,0,1.0,,85.0,Yes,Cloudy,0,No Waste,No,Low
+INV001081,2025-02-17,Cafeteria,Fruits,63,57,6,6.0,6.3,57.0,No,,0,No Waste,No,Low
+INV001087,2025-02-17,Cafeteria,Prepared Food,53,53,0,2.0,24.1,68.0,No,Sunny,0,No Waste,No,Low
+INV001095,2025-02-17,Cafeteria,Fruits,75,66,9,6.0,10.8,66.0,No,Hot,1,Low Demand,No,Low
+INV001098,2025-02-17,Cafeteria,Dairy,57,57,0,5.0,2.0,69.0,No,Cloudy,0,No Waste,No,Low
+INV001099,2025-02-17,Cafeteria,Prepared Food,79,79,0,3.0,23.5,119.0,Yes,Hot,0,No Waste,No,Low
+INV001100,2025-02-17,Cafeteria,Dairy,71,63,8,11.0,5.3,63.0,No,Hot,1,Low Demand,,Low
+INV001102,2025-02-17,Cafeteria,Dairy,67,67,0,9.0,5.8,101.0,No,Hot,0,No Waste,No,Low
+INV001108,2025-02-18,Cafeteria,Dairy,80,61,19,4.0,3.7,61.0,No,Sunny,2,Low Demand,Yes,Medium
+INV001110,2025-02-18,Cafeteria,Dairy,45,45,0,2.0,7.3,78.0,Yes,Sunny,0,No Waste,No,Low
+INV001117,2025-02-18,Cafeteria,Bakery,57,57,0,2.0,18.0,62.0,No,Sunny,0,No Waste,No,Low
+INV001118,2025-02-18,Cafeteria,Vegetables,78,78,0,5.0,5.4,78.0,Yes,Cloudy,0,No Waste,No,Low
+INV001119,2025-02-18,Cafeteria,Dairy,43,42,1,11.0,3.3,42.0,No,Rainy,0,No Waste,No,Low
+INV001120,2025-02-18,Cafeteria,Fruits,71,54,17,7.0,5.2,54.0,No,Cloudy,2,Low Demand,No,Medium
+INV001124,2025-02-19,Cafeteria,Vegetables,67,48,19,5.0,8.7,48.0,No,Rainy,3,Low Demand,Yes,Medium
+INV001133,2025-02-19,Cafeteria,Fruits,57,57,0,6.0,11.1,66.0,No,Hot,0,No Waste,No,Low
+INV001134,2025-02-19,Cafeteria,Dairy,53,53,0,12.0,1.0,66.0,No,Sunny,0,No Waste,No,Low
+INV001136,2025-02-19,Cafeteria,Meat,87,87,0,1.0,1.9,89.0,Yes,,0,No Waste,No,Low
+INV001146,2025-02-20,Cafeteria,Prepared Food,45,39,6,1.0,21.9,39.0,No,Rainy,2,Expired,No,Medium
+INV001149,2025-02-20,Cafeteria,Fruits,69,69,0,3.0,6.2,96.0,Yes,Hot,0,No Waste,No,Low
+INV001164,2025-02-21,Cafeteria,Meat,58,42,16,4.0,0.4,42.0,No,Rainy,3,Low Demand,No,Medium
+INV001167,2025-02-21,Cafeteria,Bakery,71,52,19,5.0,16.3,52.0,No,Cloudy,3,Low Demand,No,Medium
+INV001175,2025-02-21,Cafeteria,Prepared Food,51,44,7,2.0,20.5,44.0,No,Rainy,2,Low Demand,No,Medium
+INV001179,2025-02-21,Cafeteria,Vegetables,67,45,22,6.0,1.5,45.0,No,Rainy,5,Overproduction,No,Medium
+INV001181,2025-02-21,Cafeteria,Meat,50,50,0,5.0,1.4,57.0,No,Cloudy,0,No Waste,No,Low
+INV001183,2025-02-21,Cafeteria,Dairy,76,76,0,5.0,6.1,97.0,No,Sunny,0,No Waste,No,Low
+INV001184,2025-02-21,Cafeteria,Meat,75,75,0,4.0,0.1,85.0,Yes,Cloudy,0,No Waste,No,Low
+INV001185,2025-02-21,Cafeteria,Bakery,66,57,9,4.0,26.8,57.0,No,Cloudy,2,Low Demand,No,Medium
+INV001186,2025-02-22,Cafeteria,Vegetables,63,63,0,5.0,7.8,63.0,No,Sunny,0,No Waste,No,Low
+INV001193,2025-02-22,Cafeteria,Meat,72,72,0,1.0,2.5,97.0,Yes,Sunny,0,No Waste,No,Low
+INV001203,2025-02-22,Cafeteria,Vegetables,53,53,0,6.0,7.9,66.0,No,Cloudy,0,No Waste,No,Low
+INV001204,2025-02-22,Cafeteria,Prepared Food,63,63,0,2.0,23.8,82.0,No,Sunny,0,No Waste,No,Low
+INV001207,2025-02-23,Cafeteria,Meat,91,64,27,3.0,0.1,64.0,No,Hot,6,Overproduction,Yes,Medium
+INV001211,2025-02-23,Cafeteria,Prepared Food,69,64,5,1.0,22.7,64.0,No,Sunny,2,Expired,No,Medium
+INV001212,2025-02-23,Cafeteria,Meat,76,38,38,7.0,-1.8,38.0,No,Rainy,8,Overproduction,Yes,High
+INV001214,2025-02-23,Cafeteria,Dairy,58,48,10,6.0,2.9,48.0,No,Cloudy,2,Low Demand,No,Medium
+INV001218,2025-02-23,Cafeteria,Vegetables,70,44,26,6.0,8.4,44.0,No,,6,Low Demand,No,Medium
+INV001229,2025-02-23,Cafeteria,Vegetables,70,41,29,4.0,3.8,41.0,No,Rainy,6,Low Demand,No,Medium
+INV001231,2025-02-23,Cafeteria,Bakery,65,65,0,6.0,23.0,65.0,No,Sunny,0,No Waste,No,Low
+INV001233,2025-02-23,Cafeteria,Prepared Food,60,60,0,1.0,20.7,60.0,No,Sunny,0,No Waste,No,Low
+INV001247,2025-02-24,Cafeteria,Dairy,61,61,0,8.0,4.4,64.0,No,Cloudy,0,No Waste,No,Low
+INV001253,2025-02-24,Cafeteria,Fruits,61,43,18,5.0,,43.0,No,Rainy,5,Low Demand,No,High
+INV001254,2025-02-24,Cafeteria,Prepared Food,81,57,24,2.0,16.3,57.0,No,Cloudy,5,Expired,No,Medium
+INV001261,2025-02-25,Cafeteria,Dairy,78,49,29,7.0,3.1,49.0,Yes,Rainy,6,Overproduction,No,Medium
+INV001262,2025-02-25,Cafeteria,Prepared Food,56,56,0,1.0,19.1,58.0,No,Cloudy,0,No Waste,No,Low
+INV001263,2025-02-25,Cafeteria,Fruits,88,66,22,6.0,7.0,66.0,No,Hot,4,Overproduction,No,Medium
+INV001267,2025-02-25,Cafeteria,Fruits,73,31,42,3.0,9.6,31.0,No,Rainy,14,Overproduction,,High
+INV001277,2025-02-25,Cafeteria,Prepared Food,69,63,6,1.0,19.1,63.0,No,Sunny,1,Expired,No,Medium
+INV001278,2025-02-25,Cafeteria,Dairy,90,63,27,6.0,1.8,63.0,No,Sunny,2,Low Demand,No,Medium
+INV001279,2025-02-26,Cafeteria,Vegetables,63,43,20,6.0,7.6,43.0,No,Rainy,3,Low Demand,No,Medium
+INV001281,2025-02-26,Cafeteria,Vegetables,61,50,11,5.0,2.9,50.0,No,Cloudy,2,Low Demand,No,Medium
+INV001292,2025-02-26,Cafeteria,Prepared Food,55,55,0,2.0,27.9,77.0,No,Sunny,0,No Waste,,Low
+INV001296,2025-02-26,Cafeteria,Dairy,59,47,12,11.0,1.6,47.0,No,Cloudy,1,Low Demand,No,Low
+INV001298,2025-02-26,Cafeteria,Prepared Food,79,58,21,1.0,18.1,58.0,No,Cloudy,7,Expired,No,High
+INV001310,2025-02-27,Cafeteria,Vegetables,70,68,2,9.0,4.1,68.0,No,Hot,0,No Waste,No,Low
+INV001312,2025-02-27,Cafeteria,Vegetables,79,61,18,8.0,3.1,61.0,No,Sunny,3,Low Demand,No,Medium
+INV001317,2025-02-27,Cafeteria,Fruits,49,49,0,,1.9,57.0,No,Sunny,0,No Waste,No,Low
+INV001335,2025-02-28,Cafeteria,Bakery,50,50,0,3.0,20.1,94.0,No,Sunny,0,No Waste,No,Low
+INV001337,2025-02-28,Cafeteria,Fruits,61,61,0,4.0,3.3,61.0,No,Sunny,0,No Waste,No,Low
+INV001339,2025-02-28,Cafeteria,Fruits,62,43,19,7.0,10.2,43.0,No,Cloudy,2,Low Demand,No,Medium
+INV001341,2025-02-28,Cafeteria,Meat,58,39,19,5.0,4.5,39.0,No,Rainy,4,Low Demand,No,Medium
+INV001343,2025-02-28,Cafeteria,Vegetables,38,38,0,11.0,2.5,61.0,No,Sunny,0,No Waste,No,Low
+INV001345,2025-02-28,Cafeteria,Dairy,71,43,28,5.0,-2.8,43.0,No,Rainy,5,Overproduction,No,Medium
+INV001355,2025-02-28,Cafeteria,Meat,57,57,0,4.0,2.9,57.0,No,Sunny,0,No Waste,No,Low
+INV001360,2025-03-01,Cafeteria,Prepared Food,45,40,5,1.0,24.9,40.0,No,Rainy,2,Low Demand,No,Low
+INV001370,2025-03-01,Cafeteria,Meat,82,64,18,1.0,6.1,64.0,Yes,Cloudy,8,Expired,No,High
+INV001374,2025-03-01,Cafeteria,Meat,82,67,15,5.0,2.0,67.0,No,Sunny,1,Low Demand,No,Low
+INV001379,2025-03-02,Cafeteria,Vegetables,85,58,27,2.0,7.3,58.0,No,Rainy,8,Low Demand,No,High
+INV001382,2025-03-02,Cafeteria,Vegetables,63,63,0,4.0,6.3,73.0,No,Sunny,0,No Waste,No,Low
+INV001394,2025-03-02,Cafeteria,Meat,65,65,0,1.0,-1.2,68.0,No,Cloudy,0,No Waste,No,Low
+INV001405,2025-03-03,Cafeteria,Meat,72,65,7,7.0,4.7,65.0,No,Cloudy,1,Low Demand,No,Low
+INV001407,2025-03-03,Cafeteria,Vegetables,62,46,16,5.0,6.0,46.0,No,Rainy,2,Low Demand,,High
+INV001410,2025-03-03,Cafeteria,Vegetables,60,59,1,6.0,3.0,59.0,No,,0,No Waste,No,Low
+INV001411,2025-03-03,Cafeteria,Fruits,54,54,0,5.0,7.3,59.0,No,Rainy,0,No Waste,No,Low
+INV001413,2025-03-03,Cafeteria,Fruits,99,58,41,5.0,8.1,58.0,Yes,Cloudy,13,Overproduction,Yes,High
+INV001414,2025-03-03,Cafeteria,Vegetables,64,49,15,7.0,4.7,49.0,No,Rainy,3,Low Demand,Yes,Medium
+INV001418,2025-03-03,Cafeteria,Bakery,58,58,0,3.0,18.9,90.0,Yes,Cloudy,0,No Waste,No,Low
+INV001420,2025-03-03,Cafeteria,Bakery,49,42,7,3.0,19.4,42.0,No,Rainy,1,Low Demand,No,Low
+INV001424,2025-03-03,Cafeteria,Prepared Food,88,56,32,2.0,25.8,56.0,Yes,Rainy,12,Overproduction,Yes,High
+INV001430,2025-03-04,Cafeteria,Dairy,77,77,0,,7.6,87.0,Yes,Hot,0,No Waste,No,Low
+INV001432,2025-03-04,Cafeteria,Dairy,55,39,16,7.0,1.8,39.0,No,Rainy,2,Low Demand,No,Medium
+INV001438,2025-03-04,Cafeteria,Bakery,61,61,0,2.0,20.3,68.0,No,Sunny,0,No Waste,,Low
+INV001455,2025-03-05,Cafeteria,Dairy,64,60,4,7.0,2.3,60.0,No,Sunny,0,No Waste,No,Low
+INV001460,2025-03-05,Cafeteria,Vegetables,109,47,62,1.0,9.9,47.0,No,Rainy,30,Overproduction,Yes,High
+INV001465,2025-03-06,Cafeteria,Prepared Food,72,72,0,1.0,21.5,109.0,Yes,Hot,0,No Waste,No,Low
+INV001468,2025-03-06,Cafeteria,Meat,51,39,12,3.0,4.8,39.0,No,Rainy,3,Low Demand,Yes,Medium
+INV001469,2025-03-06,Cafeteria,Meat,76,61,15,3.0,0.8,61.0,No,Sunny,4,Low Demand,Yes,Medium
+INV001500,2025-03-08,Cafeteria,Vegetables,56,56,0,6.0,1.5,75.0,Yes,Sunny,0,No Waste,No,Low
+INV001504,2025-03-08,Cafeteria,Prepared Food,69,61,8,2.0,17.9,61.0,No,Cloudy,2,Low Demand,No,Medium
+INV001515,2025-03-08,Cafeteria,Prepared Food,70,58,12,1.0,21.2,58.0,No,Sunny,4,Expired,No,Medium
+INV001519,2025-03-08,Cafeteria,Dairy,63,63,0,2.0,4.8,65.0,No,Hot,0,No Waste,No,Low
+INV001525,2025-03-08,Cafeteria,Fruits,94,85,9,5.0,7.9,85.0,No,Cloudy,1,Low Demand,Yes,Low
+INV001533,2025-03-09,Cafeteria,Dairy,67,65,2,6.0,2.6,65.0,No,Sunny,0,No Waste,No,Low
+INV001540,2025-03-09,Cafeteria,Bakery,59,56,3,4.0,23.5,56.0,No,Hot,0,No Waste,No,Low
+INV001544,2025-03-09,Cafeteria,Fruits,63,63,0,6.0,5.8,67.0,No,Sunny,0,No Waste,No,Low
+INV001548,2025-03-09,Cafeteria,Vegetables,70,61,9,7.0,0.6,61.0,Yes,Rainy,1,Low Demand,No,Low
+INV001549,2025-03-10,Cafeteria,Meat,54,51,3,1.0,-1.9,51.0,No,Hot,1,Expired,No,Low
+INV001555,2025-03-10,Cafeteria,Prepared Food,66,66,0,1.0,14.8,74.0,No,Hot,0,No Waste,No,Low
+INV001560,2025-03-10,Cafeteria,Dairy,63,63,0,9.0,1.5,83.0,Yes,,0,No Waste,No,Low
+INV001564,2025-03-10,Cafeteria,Bakery,85,60,25,4.0,,60.0,No,Sunny,6,Expired,No,Medium
+INV001575,2025-03-11,Cafeteria,Fruits,89,68,21,4.0,11.2,68.0,No,Hot,6,Storage Issue,No,Medium
+INV001578,2025-03-11,Cafeteria,Vegetables,75,75,0,6.0,3.2,98.0,No,Hot,0,No Waste,No,Low
+INV001579,2025-03-11,Cafeteria,Meat,70,44,26,2.0,2.7,44.0,No,Rainy,6,Low Demand,No,Medium
+INV001582,2025-03-11,Cafeteria,Fruits,53,53,0,7.0,,109.0,Yes,Sunny,0,No Waste,,Low
+INV001595,2025-03-12,Cafeteria,Meat,68,68,0,4.0,5.8,90.0,Yes,Hot,0,No Waste,No,Low
+INV001617,2025-03-13,Cafeteria,Prepared Food,67,39,28,2.0,13.1,39.0,No,Cloudy,11,Low Demand,Yes,High
+INV001618,2025-03-13,Cafeteria,Fruits,62,62,0,1.0,7.3,75.0,No,Hot,0,No Waste,No,Low
+INV001619,2025-03-13,Cafeteria,Fruits,85,63,22,7.0,7.0,63.0,No,Sunny,5,Low Demand,Yes,Medium
+INV001637,2025-03-14,Cafeteria,Prepared Food,56,56,0,2.0,24.4,63.0,No,Hot,0,No Waste,No,Low
+INV001639,2025-03-14,Cafeteria,Vegetables,52,52,0,1.0,3.7,63.0,No,Sunny,0,No Waste,No,Low
+INV001640,2025-03-14,Cafeteria,Meat,86,61,25,2.0,2.0,61.0,No,Hot,7,Expired,No,Medium
+INV001642,2025-03-15,Cafeteria,Fruits,90,48,42,4.0,8.7,48.0,Yes,Rainy,11,Overproduction,Yes,High
+INV001644,2025-03-15,Cafeteria,Fruits,72,72,0,2.0,9.6,107.0,Yes,Sunny,0,No Waste,No,Low
+INV001651,2025-03-15,Cafeteria,Meat,71,59,12,3.0,0.1,59.0,Yes,Cloudy,1,Low Demand,No,Low
+INV001655,2025-03-15,Cafeteria,Vegetables,93,44,49,7.0,8.4,44.0,No,Cloudy,14,Overproduction,No,Low
+INV001658,2025-03-15,Cafeteria,Dairy,56,56,0,6.0,4.3,72.0,No,Sunny,0,No Waste,No,Low
+INV001659,2025-03-15,Cafeteria,Meat,61,43,18,8.0,-0.1,43.0,No,Rainy,4,Low Demand,No,Medium
+INV001667,2025-03-16,Cafeteria,Fruits,58,38,20,4.0,10.7,38.0,No,Rainy,5,Low Demand,No,Medium
+INV001668,2025-03-16,Cafeteria,Vegetables,68,40,28,6.0,8.3,40.0,No,Rainy,6,Overproduction,Yes,High
+INV001669,2025-03-16,Cafeteria,Fruits,60,60,0,5.0,11.5,61.0,No,Cloudy,0,No Waste,No,Low
+INV001674,2025-03-16,Cafeteria,Meat,99,66,33,1.0,1.3,66.0,No,Hot,13,Expired,No,High
+INV001676,2025-03-16,Cafeteria,Prepared Food,55,55,0,1.0,25.3,61.0,No,Hot,0,No Waste,No,Low
+INV001695,2025-03-17,Cafeteria,Meat,41,41,0,4.0,5.8,55.0,No,Cloudy,0,No Waste,No,Low
+INV001709,2025-03-18,Cafeteria,Meat,72,72,0,7.0,1.1,86.0,Yes,Cloudy,0,No Waste,No,Low
+INV001715,2025-03-18,Cafeteria,Vegetables,71,51,20,6.0,4.2,51.0,No,Cloudy,3,Low Demand,No,Medium
+INV001719,2025-03-18,Cafeteria,Fruits,47,45,2,8.0,,45.0,No,Rainy,0,No Waste,No,Low
+INV001722,2025-03-18,Cafeteria,Meat,65,43,22,4.0,3.5,43.0,No,Rainy,5,Overproduction,No,Medium
+INV001724,2025-03-19,Cafeteria,Dairy,70,63,7,10.0,3.2,63.0,No,Sunny,0,No Waste,No,Low
+INV001730,2025-03-19,Cafeteria,Dairy,55,55,0,8.0,5.2,63.0,Yes,Rainy,0,No Waste,No,Low
+INV001731,2025-03-19,Cafeteria,Bakery,81,68,13,4.0,22.8,68.0,No,Hot,2,Low Demand,No,High
+INV001734,2025-03-19,Cafeteria,Fruits,81,81,0,6.0,11.5,81.0,Yes,Cloudy,0,No Waste,No,Low
+INV001738,2025-03-19,Cafeteria,Fruits,66,56,10,6.0,14.8,56.0,No,Cloudy,3,Storage Issue,Yes,Medium
+INV001746,2025-03-20,Cafeteria,Vegetables,66,66,0,9.0,12.6,66.0,No,Sunny,0,No Waste,No,Low
+INV001749,2025-03-20,Cafeteria,Fruits,68,55,13,7.0,9.9,55.0,No,Cloudy,1,Low Demand,No,Low
+INV001756,2025-03-20,Cafeteria,Fruits,75,67,8,3.0,6.4,67.0,No,Sunny,1,Expired,No,Low
+INV001760,2025-03-20,Cafeteria,Vegetables,76,64,12,4.0,9.4,64.0,No,Sunny,2,Low Demand,No,Medium
+INV001767,2025-03-20,Cafeteria,Dairy,52,52,0,8.0,-0.8,58.0,No,Hot,0,No Waste,No,Low
+INV001771,2025-03-21,Cafeteria,Fruits,63,59,4,9.0,9.5,59.0,No,Sunny,1,Low Demand,No,Low
+INV001775,2025-03-21,Cafeteria,Fruits,64,48,16,8.0,10.8,48.0,No,Cloudy,3,Low Demand,No,Medium
+INV001781,2025-03-21,Cafeteria,Meat,94,66,28,4.0,-1.2,66.0,Yes,Sunny,6,Low Demand,No,Medium
+INV001786,2025-03-21,Cafeteria,Vegetables,66,66,0,3.0,4.3,77.0,No,Sunny,0,No Waste,No,Low
+INV001787,2025-03-21,Cafeteria,Fruits,68,53,15,6.0,11.9,53.0,No,Hot,4,Low Demand,No,Medium
+INV001790,2025-03-21,Cafeteria,Fruits,195,58,137,4.0,2.4,58.0,No,Cloudy,52,Overproduction,Yes,High
+INV001792,2025-03-21,Cafeteria,Fruits,44,34,10,,8.0,34.0,No,Rainy,2,Low Demand,No,Medium
+INV001795,2025-03-21,Cafeteria,Meat,75,75,0,1.0,1.9,102.0,Yes,Cloudy,0,No Waste,No,Low
+INV001800,2025-03-21,Cafeteria,Fruits,53,53,0,5.0,9.9,54.0,No,Cloudy,0,No Waste,No,Low
+INV001802,2025-03-22,Cafeteria,Meat,84,47,37,3.0,2.5,47.0,No,Cloudy,8,Overproduction,Yes,High
+INV001820,2025-03-22,Cafeteria,Dairy,65,57,8,9.0,4.5,57.0,No,Cloudy,1,Low Demand,Yes,Low
+INV001823,2025-03-23,Cafeteria,Bakery,92,78,14,5.0,20.1,,Yes,Sunny,0,No Waste,No,Low
+INV001824,2025-03-23,Cafeteria,Prepared Food,54,54,0,2.0,21.4,86.0,Yes,Sunny,0,No Waste,No,High
+INV001832,2025-03-23,Cafeteria,Vegetables,84,63,21,9.0,1.7,63.0,No,Sunny,2,Low Demand,No,Medium
+INV001839,2025-03-23,Cafeteria,Vegetables,82,82,0,,4.5,90.0,Yes,Sunny,0,No Waste,No,Low
+INV001842,2025-03-23,Cafeteria,Vegetables,52,52,0,8.0,4.0,110.0,Yes,Hot,0,No Waste,No,Low
+INV001843,2025-03-24,Cafeteria,Meat,99,97,2,1.0,3.5,,Yes,Hot,1,Expired,No,Low
+INV001844,2025-03-24,Cafeteria,Bakery,52,52,0,3.0,25.4,58.0,No,Hot,0,No Waste,No,Low
+INV001849,2025-03-24,Cafeteria,Dairy,76,68,8,7.0,4.2,68.0,No,Sunny,1,Low Demand,No,Low
+INV001872,2025-03-25,Cafeteria,Dairy,70,40,30,12.0,5.8,40.0,No,Rainy,5,Overproduction,No,Medium
+INV001881,2025-03-25,Cafeteria,Vegetables,55,55,0,5.0,2.6,75.0,No,Sunny,0,No Waste,No,Low
+INV001889,2025-03-26,Cafeteria,Fruits,58,53,5,5.0,8.9,53.0,Yes,Rainy,1,Low Demand,No,Low
+INV001893,2025-03-26,Cafeteria,Bakery,86,52,34,3.0,22.3,52.0,No,Hot,7,Overproduction,No,Medium
+INV001896,2025-03-26,Cafeteria,Fruits,71,71,0,7.0,6.4,120.0,Yes,Sunny,0,No Waste,No,Low
+INV001900,2025-03-26,Cafeteria,Dairy,91,65,26,6.0,,65.0,No,Cloudy,4,Overproduction,No,Medium
+INV001906,2025-03-27,Cafeteria,Meat,59,59,0,5.0,3.5,60.0,No,Cloudy,0,No Waste,No,Low
+INV001914,2025-03-27,Cafeteria,Meat,69,69,0,6.0,4.9,81.0,Yes,Hot,0,No Waste,No,Low
+INV001916,2025-03-27,Cafeteria,Meat,93,82,11,9.0,0.4,82.0,Yes,Sunny,1,Low Demand,No,Low
+INV001919,2025-03-27,Cafeteria,Meat,53,37,16,7.0,1.8,37.0,No,Rainy,3,Low Demand,Yes,Medium
+INV001956,2025-03-28,Cafeteria,Prepared Food,66,53,13,1.0,19.9,53.0,No,Hot,6,Expired,No,High
+INV001959,2025-03-29,Cafeteria,Meat,71,50,21,3.0,2.9,50.0,No,Hot,4,Low Demand,No,Medium
+INV001962,2025-03-29,Cafeteria,Bakery,53,53,0,4.0,17.3,66.0,No,Cloudy,0,No Waste,No,Low
+INV001967,2025-03-29,Cafeteria,Meat,52,43,9,3.0,1.0,43.0,No,Rainy,2,Low Demand,No,Medium
+INV001972,2025-03-29,Cafeteria,Prepared Food,80,63,17,2.0,18.1,63.0,No,Sunny,3,Low Demand,No,Medium
+INV001975,2025-03-29,Cafeteria,Bakery,72,65,7,4.0,15.1,65.0,No,Sunny,1,Low Demand,No,Low
+INV001977,2025-03-29,Cafeteria,Dairy,58,58,0,9.0,3.4,87.0,Yes,Sunny,0,No Waste,No,Low
+INV001984,2025-03-30,Cafeteria,Meat,72,49,23,6.0,,49.0,No,Cloudy,5,Low Demand,No,Medium
+INV001988,2025-03-30,Cafeteria,Vegetables,69,62,7,4.0,9.0,62.0,No,Cloudy,1,Low Demand,No,Low
+INV001992,2025-03-30,Cafeteria,Vegetables,82,53,29,6.0,3.1,53.0,No,Hot,5,Low Demand,No,Medium
+INV001994,2025-03-30,Cafeteria,Bakery,68,68,0,2.0,20.4,71.0,No,Hot,0,No Waste,No,Medium
+INV001995,2025-03-30,Cafeteria,Fruits,63,63,0,7.0,10.4,73.0,No,Sunny,0,No Waste,No,Low
+INV001996,2025-03-30,Cafeteria,Prepared Food,70,49,21,1.0,17.4,49.0,No,Sunny,9,Expired,No,High
+INV001997,2025-03-30,Cafeteria,Fruits,62,56,6,7.0,6.8,56.0,No,Cloudy,1,Low Demand,No,Low
+INV001999,2025-03-31,Cafeteria,Vegetables,61,61,0,8.0,6.1,61.0,No,Cloudy,0,No Waste,No,Medium
+INV002003,2025-03-31,Cafeteria,Fruits,41,41,0,9.0,9.3,66.0,No,Hot,0,No Waste,No,Low
+INV002004,2025-03-31,Cafeteria,Vegetables,76,46,30,3.0,5.7,46.0,No,Cloudy,8,Overproduction,Yes,High
+INV002008,2025-03-31,Cafeteria,Bakery,96,62,34,2.0,18.8,62.0,Yes,Rainy,9,Low Demand,No,High
+INV002010,2025-03-31,Cafeteria,Fruits,64,64,0,5.0,8.4,75.0,No,Sunny,0,No Waste,No,Low
+INV002012,2025-03-31,Cafeteria,Vegetables,51,51,0,6.0,8.2,55.0,No,Hot,0,No Waste,No,Low
+INV002013,2025-03-31,Cafeteria,Meat,61,47,14,8.0,0.1,47.0,No,Rainy,2,Low Demand,No,Medium
+INV002019,2025-03-31,Cafeteria,Vegetables,56,42,14,8.0,4.6,42.0,No,Rainy,1,Low Demand,Yes,Low
+INV002024,2025-04-01,Cafeteria,Fruits,80,68,12,5.0,6.6,68.0,No,Sunny,1,Low Demand,No,Low
+INV002048,2025-04-02,Cafeteria,Vegetables,71,64,7,5.0,7.8,64.0,No,Sunny,1,Low Demand,No,Low
+INV002049,2025-04-02,Cafeteria,Meat,88,52,36,3.0,2.9,52.0,Yes,Rainy,8,Overproduction,No,High
+INV002060,2025-04-02,Cafeteria,Bakery,67,64,3,4.0,28.2,64.0,No,Cloudy,1,Storage Issue,No,Low
+INV002062,2025-04-02,Cafeteria,Bakery,95,82,13,2.0,18.9,82.0,Yes,Cloudy,3,Expired,No,Medium
+INV002065,2025-04-02,Cafeteria,Bakery,85,85,0,3.0,19.9,92.0,Yes,Cloudy,0,No Waste,No,Low
+INV002069,2025-04-02,Cafeteria,Fruits,93,88,5,5.0,12.4,88.0,Yes,Sunny,1,Storage Issue,No,Low
+INV002075,2025-04-03,Cafeteria,Dairy,80,73,7,8.0,4.1,73.0,Yes,Cloudy,1,Low Demand,No,Low
+INV002078,2025-04-03,Cafeteria,Prepared Food,85,62,23,2.0,4.8,62.0,No,Sunny,6,Expired,No,Medium
+INV002083,2025-04-03,Cafeteria,Fruits,75,61,14,3.0,10.9,61.0,No,Hot,3,Low Demand,No,Medium
+INV002085,2025-04-03,Cafeteria,Bakery,57,57,0,2.0,22.5,86.0,No,Hot,0,No Waste,No,Low
+INV002087,2025-04-03,Cafeteria,Dairy,64,58,6,7.0,4.1,58.0,No,Hot,1,Low Demand,No,Low
+INV002090,2025-04-03,Cafeteria,Prepared Food,104,51,53,1.0,11.1,51.0,No,Cloudy,25,Overproduction,Yes,High
+INV002091,2025-04-03,Cafeteria,Dairy,86,52,34,7.0,4.6,52.0,No,Sunny,6,Overproduction,No,Medium
+INV002093,2025-04-04,Cafeteria,Meat,87,70,17,3.0,1.3,70.0,Yes,Cloudy,4,Low Demand,No,Medium
+INV002101,2025-04-04,Cafeteria,Dairy,83,67,16,10.0,3.8,67.0,No,Hot,1,Low Demand,No,Low
+INV002104,2025-04-04,Cafeteria,Dairy,76,60,16,3.0,5.0,60.0,No,Cloudy,4,Low Demand,,Medium
+INV002107,2025-04-04,Cafeteria,Fruits,60,60,0,5.0,3.1,63.0,No,Sunny,0,No Waste,No,High
+INV002108,2025-04-04,Cafeteria,Fruits,51,51,0,7.0,13.3,93.0,Yes,Hot,0,No Waste,No,Low
+INV002115,2025-04-05,Cafeteria,Fruits,93,86,7,4.0,4.9,86.0,Yes,Cloudy,1,Low Demand,,Low
+INV002116,2025-04-05,Cafeteria,Bakery,58,34,24,4.0,12.9,34.0,No,Rainy,5,Low Demand,No,Medium
+INV002122,2025-04-05,Cafeteria,Bakery,64,50,14,3.0,22.5,50.0,No,Rainy,3,Low Demand,Yes,Medium
+INV002134,2025-04-06,Cafeteria,Meat,52,52,0,3.0,1.1,75.0,No,Sunny,0,No Waste,No,Low
+INV002135,2025-04-06,Cafeteria,Meat,59,59,0,2.0,0.3,91.0,Yes,Hot,0,No Waste,No,Low
+INV002136,2025-04-06,Cafeteria,Prepared Food,71,54,17,1.0,12.2,54.0,Yes,Rainy,7,Expired,,High
+INV002137,2025-04-06,Cafeteria,Dairy,69,66,3,13.0,-0.9,66.0,No,Sunny,0,No Waste,No,Low
+INV002149,2025-04-07,Cafeteria,Dairy,66,53,13,6.0,1.1,53.0,No,Sunny,1,Low Demand,No,Low
+INV002152,2025-04-07,Cafeteria,Prepared Food,63,63,0,1.0,17.0,63.0,No,Sunny,0,No Waste,No,Low
+INV002159,2025-04-07,Cafeteria,Prepared Food,76,71,5,1.0,24.7,71.0,No,Sunny,2,Expired,No,Medium
+INV002168,2025-04-08,Cafeteria,Vegetables,199,65,134,7.0,9.7,65.0,No,Sunny,44,Overproduction,Yes,High
+INV002176,2025-04-08,Cafeteria,Fruits,70,69,1,6.0,6.9,69.0,No,Sunny,0,No Waste,No,Low
+INV002186,2025-04-08,Cafeteria,Bakery,75,59,16,2.0,21.8,59.0,No,Hot,4,Low Demand,No,Medium
+INV002197,2025-04-09,Cafeteria,Meat,51,51,0,6.0,2.1,55.0,No,Cloudy,0,No Waste,No,Low
+INV002199,2025-04-09,Cafeteria,Bakery,58,58,0,3.0,24.8,59.0,No,Hot,0,No Waste,No,Low
+INV002200,2025-04-09,Cafeteria,Prepared Food,86,74,12,1.0,17.4,74.0,Yes,Cloudy,4,Expired,No,Medium
+INV002201,2025-04-09,Cafeteria,Prepared Food,56,56,0,2.0,16.9,60.0,No,Hot,0,No Waste,No,Low
+INV002207,2025-04-10,Cafeteria,Prepared Food,62,36,26,,19.3,36.0,No,Rainy,10,Low Demand,No,High
+INV002212,2025-04-10,Cafeteria,Bakery,75,71,4,4.0,21.3,71.0,No,Hot,0,No Waste,No,Low
+INV002227,2025-04-10,Cafeteria,Vegetables,57,54,3,4.0,4.4,54.0,No,Sunny,1,Low Demand,No,Low
+INV002232,2025-04-11,Cafeteria,Prepared Food,54,54,0,3.0,24.8,71.0,No,Cloudy,0,No Waste,No,Low
+INV002237,2025-04-11,Cafeteria,Prepared Food,77,77,0,2.0,15.6,89.0,Yes,,0,No Waste,No,Low
+INV002239,2025-04-11,Cafeteria,Bakery,67,58,9,3.0,21.8,58.0,Yes,Rainy,2,Low Demand,No,Medium
+INV002243,2025-04-11,Cafeteria,Fruits,71,69,2,5.0,10.6,69.0,No,Sunny,0,No Waste,No,Low
+INV002251,2025-04-11,Cafeteria,Dairy,75,72,3,4.0,2.9,72.0,No,Sunny,0,No Waste,No,Low
+INV002255,2025-04-12,Cafeteria,Dairy,60,55,5,13.0,,55.0,No,Sunny,1,Low Demand,No,Low
+INV002257,2025-04-12,Cafeteria,Prepared Food,56,54,2,2.0,20.9,54.0,Yes,Rainy,0,No Waste,No,Low
+INV002284,2025-04-12,Cafeteria,Vegetables,62,61,1,4.0,8.7,61.0,No,Sunny,0,No Waste,No,Low
+INV002287,2025-04-13,Cafeteria,Bakery,75,71,4,6.0,23.7,71.0,Yes,Rainy,0,No Waste,No,Low
+INV002289,2025-04-13,Cafeteria,Bakery,72,72,0,3.0,28.3,78.0,No,Hot,0,No Waste,No,Low
+INV002292,2025-04-13,Cafeteria,Vegetables,62,55,7,8.0,5.3,55.0,No,,1,Low Demand,No,Low
+INV002293,2025-04-13,Cafeteria,Vegetables,66,34,32,8.0,4.2,34.0,No,Rainy,8,Overproduction,No,High
+INV002301,2025-04-13,Cafeteria,Dairy,49,47,2,3.0,,47.0,No,Cloudy,0,No Waste,No,Low
+INV002311,2025-04-14,Cafeteria,Dairy,68,68,0,8.0,1.8,69.0,No,Hot,0,No Waste,No,Low
+INV002322,2025-04-14,Cafeteria,Fruits,81,56,25,5.0,8.8,56.0,Yes,Rainy,4,Low Demand,No,Medium
+INV002324,2025-04-15,Cafeteria,Meat,74,51,23,4.0,-0.6,51.0,No,Cloudy,5,Low Demand,No,Medium
+INV002328,2025-04-15,Cafeteria,Bakery,73,73,0,2.0,29.1,75.0,No,Sunny,0,No Waste,No,Low
+INV002332,2025-04-15,Cafeteria,Meat,56,55,1,5.0,4.9,55.0,No,Sunny,0,No Waste,No,Low
+INV002334,2025-04-15,Cafeteria,Fruits,61,32,29,8.0,5.6,32.0,No,Rainy,6,Low Demand,Yes,High
+INV002335,2025-04-15,Cafeteria,Dairy,79,48,31,9.0,0.6,48.0,No,Sunny,3,Overproduction,No,Medium
+INV002337,2025-04-15,Cafeteria,Meat,75,39,36,3.0,3.9,39.0,No,Rainy,11,Overproduction,Yes,High
+INV002340,2025-04-15,Cafeteria,Vegetables,60,60,0,3.0,5.1,64.0,No,Sunny,0,No Waste,No,Low
+INV002341,2025-04-15,Cafeteria,Fruits,54,54,0,5.0,9.2,63.0,No,Cloudy,0,No Waste,No,Low
+INV002344,2025-04-16,Cafeteria,Dairy,70,58,12,5.0,4.9,58.0,No,Hot,2,Low Demand,Yes,Medium
+INV002353,2025-04-16,Cafeteria,Vegetables,68,43,25,7.0,6.4,43.0,No,Hot,6,Low Demand,No,High
+INV002354,2025-04-16,Cafeteria,Meat,69,69,0,1.0,0.5,73.0,No,Sunny,0,No Waste,No,Low
+INV002355,2025-04-16,Cafeteria,Prepared Food,55,55,0,1.0,20.9,59.0,No,Sunny,0,No Waste,No,Low
+INV002358,2025-04-16,Cafeteria,Dairy,116,96,20,4.0,3.5,96.0,Yes,,4,Expired,No,Medium
+INV002361,2025-04-17,Cafeteria,Prepared Food,77,77,0,2.0,28.5,91.0,Yes,Sunny,0,No Waste,No,Low
+INV002362,2025-04-17,Cafeteria,Prepared Food,51,40,11,1.0,13.4,40.0,No,Rainy,4,Low Demand,No,Medium
+INV002363,2025-04-17,Cafeteria,Vegetables,74,59,15,6.0,10.6,59.0,No,Sunny,3,Storage Issue,No,Medium
+INV002377,2025-04-17,Cafeteria,Vegetables,80,67,13,4.0,3.7,67.0,No,,2,Low Demand,No,Medium
+INV002380,2025-04-17,Cafeteria,Bakery,64,59,5,2.0,20.9,59.0,No,Sunny,1,Low Demand,No,Low
+INV002386,2025-04-17,Cafeteria,Fruits,77,60,17,3.0,7.1,60.0,No,Sunny,2,Low Demand,No,Medium
+INV002395,2025-04-18,Cafeteria,Dairy,81,67,14,3.0,5.9,67.0,No,Cloudy,3,Low Demand,Yes,Medium
+INV002411,2025-04-18,Cafeteria,Prepared Food,66,54,12,2.0,24.0,54.0,No,Rainy,3,Low Demand,No,Medium
+INV002412,2025-04-18,Cafeteria,Fruits,91,33,58,5.0,3.4,33.0,No,Rainy,17,Overproduction,Yes,High
+INV002416,2025-04-19,Cafeteria,Dairy,76,60,16,6.0,7.5,60.0,No,Cloudy,3,Low Demand,No,Medium
+INV002420,2025-04-19,Cafeteria,Vegetables,61,61,0,2.0,5.0,63.0,No,Sunny,0,No Waste,No,Low
+INV002422,2025-04-19,Cafeteria,Vegetables,74,74,0,3.0,0.2,87.0,Yes,Sunny,0,No Waste,No,Low
+INV002429,2025-04-19,Cafeteria,Prepared Food,54,43,11,1.0,18.2,43.0,No,Rainy,3,Expired,No,Medium
+INV002430,2025-04-19,Cafeteria,Fruits,94,80,14,,2.2,80.0,Yes,,2,Low Demand,No,Medium
+INV002431,2025-04-19,Cafeteria,Fruits,58,58,0,3.0,6.7,73.0,No,Sunny,0,No Waste,No,Low
+INV002438,2025-04-20,Cafeteria,Vegetables,76,42,34,6.0,11.7,42.0,No,Rainy,10,Overproduction,No,High
+INV002445,2025-04-20,Cafeteria,Vegetables,66,64,2,2.0,7.4,64.0,No,Cloudy,0,No Waste,No,Low
+INV002448,2025-04-20,Cafeteria,Prepared Food,68,33,35,3.0,25.4,33.0,No,Rainy,13,Overproduction,Yes,High
+INV002455,2025-04-20,Cafeteria,Vegetables,68,68,0,5.0,7.2,76.0,Yes,Sunny,0,No Waste,No,Low
+INV002457,2025-04-20,Cafeteria,Meat,85,63,22,3.0,6.8,63.0,No,Sunny,6,Storage Issue,Yes,Medium
+INV002459,2025-04-20,Cafeteria,Bakery,66,57,9,2.0,16.3,57.0,No,Hot,2,Low Demand,No,Medium
+INV002462,2025-04-21,Cafeteria,Prepared Food,73,73,0,,17.4,99.0,Yes,Hot,0,No Waste,No,Low
+INV002463,2025-04-21,Cafeteria,Bakery,62,62,0,1.0,28.3,90.0,Yes,Hot,0,No Waste,No,Low
+INV002474,2025-04-21,Cafeteria,Vegetables,59,59,0,,5.1,61.0,No,Hot,0,No Waste,No,Low
+INV002480,2025-04-21,Cafeteria,Meat,60,49,11,3.0,2.1,49.0,No,Rainy,2,Low Demand,No,Medium
+INV002485,2025-04-22,Cafeteria,Bakery,59,39,20,4.0,22.2,39.0,No,Rainy,4,Low Demand,No,Medium
+INV002493,2025-04-22,Cafeteria,Prepared Food,66,66,0,,13.1,80.0,No,Hot,0,No Waste,No,Low
+INV002496,2025-04-22,Cafeteria,Bakery,101,55,46,2.0,24.4,55.0,No,Cloudy,16,Overproduction,Yes,High
+INV002502,2025-04-22,Cafeteria,Fruits,65,42,23,8.0,8.2,42.0,No,Rainy,3,Low Demand,Yes,Medium
+INV002503,2025-04-22,Cafeteria,Dairy,70,68,2,9.0,6.9,68.0,No,Hot,0,No Waste,No,Low
+INV002506,2025-04-23,Cafeteria,Vegetables,94,74,20,,5.2,74.0,Yes,Hot,2,Overproduction,No,Medium
+INV002507,2025-04-23,Cafeteria,Prepared Food,60,60,0,2.0,20.1,99.0,Yes,Sunny,0,No Waste,No,Low
+INV002513,2025-04-23,Cafeteria,Fruits,72,64,8,6.0,4.4,64.0,No,Cloudy,1,Low Demand,No,Low
+INV002518,2025-04-23,Cafeteria,Vegetables,61,61,0,6.0,11.8,70.0,Yes,Cloudy,0,No Waste,No,Low
+INV002524,2025-04-23,Cafeteria,Dairy,53,53,0,6.0,4.5,71.0,No,Hot,0,No Waste,No,Low
+INV002541,2025-04-24,Cafeteria,Fruits,68,51,17,4.0,9.0,51.0,No,Cloudy,3,Low Demand,No,Medium
+INV002546,2025-04-24,Cafeteria,Bakery,60,60,0,2.0,23.9,68.0,No,Sunny,0,No Waste,No,Low
+INV002552,2025-04-24,Cafeteria,Meat,63,50,13,3.0,2.6,50.0,Yes,Rainy,2,Low Demand,No,Medium
+INV002554,2025-04-24,Cafeteria,Fruits,66,41,25,3.0,7.8,41.0,No,,7,Low Demand,Yes,High
+INV002562,2025-04-25,Cafeteria,Dairy,70,55,15,5.0,3.4,55.0,Yes,Cloudy,3,Low Demand,No,Medium
+INV002563,2025-04-25,Cafeteria,Fruits,73,51,22,7.0,9.8,51.0,No,Rainy,4,Low Demand,No,Medium
+INV002565,2025-04-25,Cafeteria,Fruits,70,45,25,7.0,13.5,45.0,No,,8,Low Demand,No,High
+INV002575,2025-04-26,Cafeteria,Bakery,77,49,28,3.0,20.0,49.0,No,Cloudy,7,Overproduction,No,High
+INV002584,2025-04-26,Cafeteria,Bakery,47,47,0,4.0,28.0,74.0,No,Hot,0,No Waste,No,Low
+INV002589,2025-04-26,Cafeteria,Bakery,80,53,27,2.0,24.7,53.0,No,Cloudy,10,Expired,No,High
+INV002590,2025-04-26,Cafeteria,Vegetables,50,50,0,8.0,6.7,52.0,No,Sunny,0,No Waste,No,Low
+INV002596,2025-04-27,Cafeteria,Prepared Food,79,62,17,2.0,23.0,62.0,Yes,Cloudy,5,Low Demand,No,Medium
+INV002599,2025-04-27,Cafeteria,Bakery,83,83,0,3.0,26.9,84.0,No,Sunny,0,No Waste,No,Low
+INV002612,2025-04-28,Cafeteria,Meat,64,62,2,7.0,-0.1,,No,Cloudy,0,No Waste,No,Low
+INV002614,2025-04-28,Cafeteria,Vegetables,72,71,1,,,71.0,No,Hot,0,No Waste,No,Low
+INV002616,2025-04-28,Cafeteria,Fruits,79,70,9,6.0,7.4,70.0,No,Sunny,2,Low Demand,No,Medium
+INV002619,2025-04-28,Cafeteria,Prepared Food,45,45,0,1.0,22.0,63.0,No,Sunny,0,No Waste,No,Low
+INV002630,2025-04-29,Cafeteria,Dairy,57,57,0,12.0,4.1,68.0,No,Hot,0,No Waste,No,Low
+INV002635,2025-04-29,Cafeteria,Fruits,71,60,11,5.0,13.2,60.0,No,Cloudy,2,Low Demand,No,Medium
+INV002640,2025-04-29,Cafeteria,Bakery,80,80,0,3.0,21.5,122.0,Yes,Cloudy,0,No Waste,No,Low
+INV002644,2025-04-29,Cafeteria,Dairy,47,47,0,10.0,2.5,56.0,No,Sunny,0,No Waste,No,Low
+INV002645,2025-04-29,Cafeteria,Vegetables,66,60,6,6.0,6.1,60.0,No,Sunny,0,No Waste,No,Low
+INV002654,2025-04-30,Cafeteria,Prepared Food,90,76,14,,16.8,76.0,No,Hot,5,Expired,No,Medium
+INV002655,2025-04-30,Cafeteria,Vegetables,88,44,44,3.0,6.1,44.0,Yes,Rainy,13,Overproduction,Yes,High
+INV002665,2025-04-30,Cafeteria,Meat,62,62,0,4.0,3.3,62.0,No,Sunny,0,No Waste,,Low
+INV002674,2025-04-30,Cafeteria,Meat,84,54,30,5.0,3.6,54.0,No,Sunny,6,Low Demand,No,Medium
+INV002677,2025-04-30,Cafeteria,Dairy,201,82,119,4.0,3.2,82.0,Yes,Cloudy,33,Overproduction,No,High
+INV002682,2025-04-30,Cafeteria,Prepared Food,91,77,14,1.0,24.5,77.0,Yes,Hot,5,Expired,,Medium
+INV002688,2025-05-01,Cafeteria,Bakery,68,52,16,5.0,27.6,52.0,Yes,Rainy,4,Storage Issue,No,Medium
+INV002689,2025-05-01,Cafeteria,Vegetables,78,56,22,5.0,1.0,56.0,No,Cloudy,4,Low Demand,No,Medium
+INV002690,2025-05-01,Cafeteria,Meat,45,45,0,1.0,1.7,54.0,No,Cloudy,0,No Waste,,Low
+INV002693,2025-05-01,Cafeteria,Bakery,63,63,0,2.0,18.8,68.0,No,Sunny,0,No Waste,No,Low
+INV002697,2025-05-01,Cafeteria,Meat,68,33,35,4.0,3.5,33.0,No,Rainy,10,Overproduction,No,High
+INV002702,2025-05-01,Cafeteria,Vegetables,55,55,0,6.0,5.1,57.0,No,Hot,0,No Waste,No,Low
+INV002705,2025-05-01,Cafeteria,Prepared Food,82,61,21,1.0,29.0,61.0,Yes,Rainy,10,Storage Issue,No,High
+INV002708,2025-05-01,Cafeteria,Fruits,83,60,23,6.0,9.5,60.0,No,Hot,4,Low Demand,No,Medium
+INV002711,2025-05-02,Cafeteria,Bakery,89,70,19,1.0,25.5,70.0,Yes,Cloudy,9,Expired,No,High
+INV002717,2025-05-02,Cafeteria,Prepared Food,64,38,26,1.0,19.8,38.0,No,Rainy,10,Expired,No,High
+INV002719,2025-05-02,Cafeteria,Vegetables,70,70,0,2.0,8.4,79.0,Yes,,0,No Waste,No,Low
+INV002729,2025-05-03,Cafeteria,Fruits,72,52,20,3.0,9.1,52.0,No,Sunny,5,Low Demand,No,Medium
+INV002730,2025-05-03,Cafeteria,Dairy,59,54,5,10.0,1.9,54.0,No,Rainy,0,No Waste,No,Low
+INV002736,2025-05-03,Cafeteria,Prepared Food,63,63,0,2.0,26.6,70.0,No,Sunny,0,No Waste,No,Low
+INV002757,2025-05-04,Cafeteria,Dairy,58,58,0,10.0,5.5,59.0,No,Sunny,0,No Waste,No,Low
+INV002761,2025-05-04,Cafeteria,Fruits,59,59,0,4.0,,93.0,No,Hot,0,No Waste,No,Medium
+INV002763,2025-05-04,Cafeteria,Dairy,70,70,0,7.0,7.1,90.0,Yes,Hot,0,No Waste,No,Low
+INV002764,2025-05-04,Cafeteria,Meat,48,48,0,5.0,2.2,68.0,No,Sunny,0,No Waste,No,Low
+INV002771,2025-05-05,Cafeteria,Meat,63,63,0,3.0,1.7,76.0,No,Sunny,0,No Waste,No,Low
+INV002775,2025-05-05,Cafeteria,Prepared Food,63,33,30,2.0,15.2,33.0,No,Rainy,9,Low Demand,No,High
+INV002801,2025-05-06,Cafeteria,Vegetables,46,46,0,8.0,1.9,58.0,No,Sunny,0,No Waste,No,Low
+INV002810,2025-05-07,Cafeteria,Dairy,82,45,37,14.0,3.7,45.0,No,Cloudy,5,Overproduction,No,Medium
+INV002816,2025-05-07,Cafeteria,Bakery,67,37,30,4.0,19.7,37.0,No,Rainy,7,Low Demand,No,High
+INV002819,2025-05-07,Cafeteria,Fruits,71,35,36,5.0,7.7,35.0,No,Rainy,7,Overproduction,Yes,High
+INV002825,2025-05-07,Cafeteria,Vegetables,63,38,25,8.0,1.5,38.0,No,Rainy,5,Low Demand,No,Medium
+INV002826,2025-05-07,Cafeteria,Bakery,67,67,0,5.0,18.6,78.0,No,Hot,0,No Waste,No,Low
+INV002831,2025-05-08,Cafeteria,Fruits,204,49,155,8.0,6.3,49.0,No,Rainy,47,Overproduction,Yes,High
+INV002832,2025-05-08,Cafeteria,Dairy,61,61,0,10.0,3.8,78.0,Yes,Sunny,0,No Waste,No,Low
+INV002834,2025-05-08,Cafeteria,Vegetables,85,48,37,4.0,7.8,48.0,No,Rainy,8,Overproduction,,High
+INV002842,2025-05-08,Cafeteria,Fruits,54,54,0,4.0,4.5,74.0,No,Hot,0,No Waste,No,Low
+INV002846,2025-05-08,Cafeteria,Fruits,67,66,1,4.0,6.1,66.0,No,Hot,0,No Waste,No,Low
+INV002855,2025-05-08,Cafeteria,Meat,67,62,5,1.0,0.9,62.0,No,Hot,2,Expired,No,Medium
+INV002867,2025-05-09,Cafeteria,Meat,61,38,23,3.0,5.4,38.0,No,Rainy,7,Low Demand,Yes,High
+INV002871,2025-05-09,Cafeteria,Meat,65,61,4,5.0,3.8,61.0,No,Cloudy,1,Low Demand,No,Low
+INV002874,2025-05-09,Cafeteria,Bakery,88,58,30,3.0,21.6,58.0,No,Sunny,6,Overproduction,No,Medium
+INV002875,2025-05-09,Cafeteria,Meat,49,37,12,7.0,0.9,37.0,No,Rainy,1,Low Demand,No,Low
+INV002889,2025-05-09,Cafeteria,Vegetables,51,51,0,6.0,3.0,73.0,No,Sunny,0,No Waste,No,Low
+INV002890,2025-05-09,Cafeteria,Fruits,81,61,20,5.0,7.8,61.0,No,Cloudy,4,Low Demand,No,Medium
+INV002893,2025-05-10,Cafeteria,Meat,89,88,1,2.0,0.7,88.0,Yes,Hot,0,No Waste,No,Low
+INV002895,2025-05-10,Cafeteria,Meat,72,51,21,1.0,-0.7,51.0,No,Hot,7,Expired,No,High
+INV002896,2025-05-10,Cafeteria,Vegetables,242,65,177,6.0,9.6,65.0,No,Sunny,75,Overproduction,Yes,High
+INV002897,2025-05-10,Cafeteria,Bakery,91,76,15,3.0,26.1,76.0,Yes,Hot,3,Storage Issue,No,Medium
+INV002901,2025-05-10,Cafeteria,Meat,66,60,6,6.0,6.1,,No,Cloudy,1,Low Demand,No,Low
+INV002902,2025-05-10,Cafeteria,Meat,71,71,0,2.0,-0.1,80.0,No,Sunny,0,No Waste,No,Low
+INV002925,2025-05-11,Cafeteria,Prepared Food,86,66,20,1.0,28.4,66.0,No,Hot,9,Storage Issue,Yes,High
+INV002935,2025-05-12,Cafeteria,Meat,54,54,0,6.0,0.7,65.0,No,Cloudy,0,No Waste,No,Low
+INV002950,2025-05-12,Cafeteria,Meat,78,47,31,2.0,-1.6,47.0,No,Rainy,9,Low Demand,No,High
+INV002953,2025-05-13,Cafeteria,Bakery,73,61,12,3.0,26.2,61.0,No,Hot,3,Low Demand,No,Medium
+INV002959,2025-05-13,Cafeteria,Dairy,60,60,0,10.0,2.7,60.0,No,Cloudy,0,No Waste,No,Low
+INV002971,2025-05-14,Cafeteria,Prepared Food,71,65,6,1.0,19.7,65.0,No,Cloudy,2,Expired,No,Medium
+INV002979,2025-05-14,Cafeteria,Bakery,56,56,0,3.0,,60.0,No,Cloudy,0,No Waste,No,Low
+INV002980,2025-05-14,Cafeteria,Meat,76,68,8,6.0,0.4,68.0,No,Sunny,1,Low Demand,No,Low
+INV002984,2025-05-14,Cafeteria,Bakery,47,47,0,3.0,24.2,65.0,No,Sunny,0,No Waste,No,Low
+INV002989,2025-05-15,Cafeteria,Fruits,59,59,0,4.0,,64.0,No,Sunny,0,No Waste,No,Low
+INV002990,2025-05-15,Cafeteria,Fruits,85,75,10,5.0,8.2,75.0,Yes,Cloudy,2,Low Demand,No,Medium
+INV003000,2025-05-15,Cafeteria,Prepared Food,62,62,0,3.0,22.7,65.0,Yes,Sunny,0,No Waste,No,Low
+INV003006,2025-05-15,Cafeteria,Bakery,67,53,14,4.0,26.8,53.0,No,Cloudy,4,Low Demand,No,Medium
+INV003009,2025-05-16,Cafeteria,Bakery,54,54,0,4.0,15.3,54.0,Yes,Rainy,0,No Waste,No,Low
+INV003018,2025-05-16,Cafeteria,Meat,76,51,25,7.0,1.3,51.0,No,Sunny,4,Low Demand,No,Medium
+INV003020,2025-05-16,Cafeteria,Vegetables,77,77,0,7.0,5.2,94.0,Yes,Sunny,0,No Waste,No,Low
+INV003028,2025-05-16,Cafeteria,Prepared Food,252,61,191,1.0,17.7,,No,Hot,101,Overproduction,Yes,High
+INV003030,2025-05-17,Cafeteria,Meat,76,62,14,2.0,-0.3,62.0,No,Sunny,2,Expired,No,Medium
+INV003035,2025-05-17,Cafeteria,Vegetables,65,65,0,5.0,4.8,72.0,No,Hot,0,No Waste,No,Low
+INV003036,2025-05-17,Cafeteria,Fruits,66,66,0,3.0,10.1,76.0,No,Sunny,0,No Waste,No,Low
+INV003037,2025-05-17,Cafeteria,Fruits,64,47,17,8.0,8.8,47.0,No,Cloudy,3,Low Demand,No,Medium
+INV003056,2025-05-18,Cafeteria,Bakery,63,63,0,4.0,20.8,76.0,Yes,Hot,0,No Waste,No,Low
+INV003061,2025-05-18,Cafeteria,Bakery,68,48,20,3.0,25.4,48.0,No,Rainy,6,Low Demand,Yes,Low
+INV003064,2025-05-18,Cafeteria,Fruits,69,69,0,4.0,9.9,86.0,No,Hot,0,No Waste,No,Low
+INV003067,2025-05-18,Cafeteria,Fruits,72,57,15,6.0,2.9,57.0,No,Hot,2,Low Demand,No,Medium
+INV003073,2025-05-18,Cafeteria,Vegetables,65,65,0,7.0,5.6,68.0,Yes,Rainy,0,No Waste,No,Low
+INV003074,2025-05-18,Cafeteria,Fruits,75,56,19,4.0,11.6,56.0,No,Rainy,4,Low Demand,,Medium
+INV003079,2025-05-19,Cafeteria,Meat,59,59,0,3.0,2.8,60.0,No,Sunny,0,No Waste,No,Low
+INV003094,2025-05-20,Cafeteria,Meat,67,67,0,1.0,-0.6,69.0,No,Sunny,0,No Waste,No,Low
+INV003095,2025-05-20,Cafeteria,Prepared Food,61,61,0,2.0,20.8,70.0,No,Hot,0,No Waste,No,Low
+INV003106,2025-05-20,Cafeteria,Prepared Food,85,53,32,1.0,18.1,53.0,No,Cloudy,14,Overproduction,No,High
+INV003107,2025-05-20,Cafeteria,Fruits,59,52,7,6.0,4.8,52.0,No,Cloudy,1,Low Demand,Yes,Low
+INV003109,2025-05-20,Cafeteria,Fruits,57,57,0,8.0,12.1,59.0,No,Hot,0,No Waste,No,Low
+INV003115,2025-05-21,Cafeteria,Dairy,70,54,16,,1.5,54.0,No,Cloudy,2,Low Demand,No,Medium
+INV003116,2025-05-21,Cafeteria,Bakery,100,81,19,3.0,,81.0,Yes,Hot,4,Storage Issue,Yes,Medium
+INV003119,2025-05-21,Cafeteria,Bakery,68,62,6,3.0,26.7,62.0,No,Cloudy,1,Low Demand,No,Low
+INV003122,2025-05-21,Cafeteria,Vegetables,89,89,0,7.0,6.2,92.0,Yes,Sunny,0,No Waste,No,Low
+INV003131,2025-05-21,Cafeteria,Dairy,63,63,0,9.0,2.1,65.0,No,Hot,0,No Waste,No,Low
+INV003132,2025-05-21,Cafeteria,Fruits,59,59,0,6.0,9.1,59.0,No,Sunny,0,No Waste,No,Low
+INV003139,2025-05-22,Cafeteria,Prepared Food,39,39,0,1.0,15.9,80.0,No,Sunny,0,No Waste,No,Low
+INV003140,2025-05-22,Cafeteria,Bakery,60,57,3,3.0,22.8,57.0,No,,0,No Waste,No,Low
+INV003142,2025-05-22,Cafeteria,Prepared Food,79,43,36,1.0,16.7,43.0,No,Sunny,12,Expired,No,High
+INV003151,2025-05-22,Cafeteria,Meat,49,49,0,8.0,-1.4,58.0,No,Cloudy,0,No Waste,No,Low
+INV003169,2025-05-23,Cafeteria,Meat,70,70,0,5.0,-0.2,74.0,No,Hot,0,No Waste,No,Low
+INV003171,2025-05-23,Cafeteria,Meat,55,36,19,2.0,0.2,36.0,No,Rainy,7,Low Demand,,High
+INV003181,2025-05-23,Cafeteria,Meat,55,55,0,1.0,1.5,58.0,No,Sunny,0,No Waste,No,Low
+INV003182,2025-05-23,Cafeteria,Meat,66,55,11,5.0,0.3,55.0,No,Sunny,1,Low Demand,No,Low
+INV003192,2025-05-24,Cafeteria,Dairy,72,42,30,7.0,5.2,42.0,No,Rainy,9,Overproduction,No,High
+INV003193,2025-05-24,Cafeteria,Prepared Food,76,76,0,1.0,25.7,86.0,Yes,Sunny,0,No Waste,No,Low
+INV003196,2025-05-24,Cafeteria,Bakery,73,36,37,2.0,25.4,36.0,No,Rainy,12,Overproduction,Yes,High
+INV003198,2025-05-24,Cafeteria,Bakery,62,62,0,2.0,21.6,63.0,No,Cloudy,0,No Waste,No,Low
+INV003205,2025-05-24,Cafeteria,Dairy,68,56,12,11.0,2.9,56.0,No,Cloudy,1,Low Demand,No,Low
+INV003216,2025-05-25,Cafeteria,Prepared Food,74,50,24,2.0,23.5,50.0,No,Hot,8,Low Demand,No,High
+INV003219,2025-05-25,Cafeteria,Meat,46,46,0,6.0,0.6,47.0,No,Rainy,0,No Waste,No,Low
+INV003225,2025-05-25,Cafeteria,Bakery,53,35,18,4.0,23.7,35.0,No,Rainy,5,Low Demand,No,High
+INV003229,2025-05-25,Cafeteria,Dairy,79,79,0,,4.6,79.0,Yes,Sunny,0,No Waste,No,Low
+INV003232,2025-05-25,Cafeteria,Prepared Food,70,70,0,2.0,20.6,83.0,Yes,Sunny,0,No Waste,No,Low
+INV003235,2025-05-25,Cafeteria,Vegetables,54,39,15,4.0,,39.0,No,Rainy,2,Low Demand,No,Medium
+INV003239,2025-05-26,Cafeteria,Meat,57,43,14,4.0,-0.8,43.0,No,Rainy,2,Low Demand,No,Medium
+INV003252,2025-05-26,Cafeteria,Bakery,77,32,45,4.0,18.5,32.0,No,Rainy,11,Overproduction,No,High
+INV003254,2025-05-26,Cafeteria,Meat,83,71,12,5.0,5.6,,Yes,Cloudy,3,Low Demand,,Medium
+INV003256,2025-05-26,Cafeteria,Vegetables,45,45,0,7.0,7.8,66.0,No,Sunny,0,No Waste,No,Low
+INV003271,2025-05-27,Cafeteria,Dairy,89,48,41,9.0,3.6,48.0,Yes,Rainy,8,Overproduction,No,High
+INV003273,2025-05-27,Cafeteria,Bakery,80,80,0,,24.7,111.0,Yes,Sunny,0,No Waste,No,Low
+INV003275,2025-05-27,Cafeteria,Bakery,59,48,11,2.0,22.9,48.0,No,Cloudy,2,Low Demand,No,Medium
+INV003279,2025-05-27,Cafeteria,Prepared Food,81,73,8,2.0,20.2,73.0,No,Sunny,2,Expired,No,Medium
+INV003282,2025-05-28,Cafeteria,Fruits,84,74,10,4.0,8.6,74.0,Yes,Rainy,2,Low Demand,No,Medium
+INV003290,2025-05-28,Cafeteria,Vegetables,61,48,13,5.0,3.8,48.0,No,Cloudy,2,Low Demand,,Medium
+INV003292,2025-05-28,Cafeteria,Fruits,89,38,51,4.0,11.3,38.0,No,Rainy,18,Overproduction,Yes,High
+INV003297,2025-05-28,Cafeteria,Prepared Food,70,70,0,1.0,18.9,81.0,No,Hot,0,No Waste,No,Medium
+INV003300,2025-05-28,Cafeteria,Bakery,55,55,0,2.0,20.4,65.0,No,Cloudy,0,No Waste,No,Low
+INV003304,2025-05-29,Cafeteria,Dairy,49,49,0,6.0,1.4,57.0,No,Rainy,0,No Waste,No,Low
+INV003308,2025-05-29,Cafeteria,Bakery,78,78,0,1.0,25.2,100.0,Yes,Sunny,0,No Waste,No,Low
+INV003311,2025-05-29,Cafeteria,Prepared Food,59,52,7,1.0,19.5,52.0,No,Sunny,2,Expired,No,Medium
+INV003313,2025-05-29,Cafeteria,Meat,74,57,17,4.0,-3.5,57.0,No,Hot,1,Low Demand,No,Low
+INV003316,2025-05-29,Cafeteria,Dairy,80,80,0,4.0,4.8,86.0,Yes,Cloudy,0,No Waste,No,Low
+INV003323,2025-05-29,Cafeteria,Meat,81,54,27,5.0,3.4,54.0,No,Cloudy,5,Overproduction,No,Medium
+INV003324,2025-05-30,Cafeteria,Vegetables,79,56,23,7.0,6.8,56.0,No,Cloudy,2,Low Demand,No,Medium
+INV003329,2025-05-30,Cafeteria,Bakery,83,75,8,2.0,17.3,75.0,Yes,Cloudy,2,Expired,No,Medium
+INV003331,2025-05-30,Cafeteria,Vegetables,54,54,0,9.0,6.8,75.0,No,Hot,0,No Waste,No,Low
+INV003335,2025-05-30,Cafeteria,Vegetables,49,49,0,8.0,5.7,58.0,No,Cloudy,0,No Waste,No,Low
+INV003337,2025-05-30,Cafeteria,Meat,59,57,2,2.0,6.0,57.0,No,Sunny,0,No Waste,No,Low
+INV003344,2025-05-31,Cafeteria,Prepared Food,80,54,26,1.0,26.0,54.0,No,Sunny,13,Expired,No,High
+INV003349,2025-05-31,Cafeteria,Meat,62,56,6,5.0,-1.4,56.0,No,,1,Low Demand,,Low
+INV003353,2025-05-31,Cafeteria,Prepared Food,84,82,2,2.0,18.6,82.0,Yes,,0,No Waste,No,Low
+INV003357,2025-05-31,Cafeteria,Fruits,66,64,2,5.0,7.2,64.0,No,Hot,0,No Waste,No,Low
+INV003368,2025-05-31,Cafeteria,Meat,74,62,12,3.0,-0.7,62.0,No,Sunny,3,Low Demand,No,Medium
+INV003370,2025-05-31,Cafeteria,Meat,82,43,39,7.0,4.2,43.0,Yes,Rainy,11,Overproduction,No,High
+INV003371,2025-05-31,Cafeteria,Meat,56,52,4,5.0,3.4,52.0,No,Rainy,0,No Waste,No,Low
+INV003375,2025-06-01,Cafeteria,Dairy,74,54,20,10.0,-0.2,54.0,No,Sunny,3,Low Demand,Yes,Medium
+INV003377,2025-06-01,Cafeteria,Meat,70,43,27,1.0,2.6,43.0,No,Rainy,10,Expired,No,High
+INV003379,2025-06-01,Cafeteria,Meat,57,57,0,1.0,1.7,59.0,No,Hot,0,No Waste,No,Low
+INV003385,2025-06-01,Cafeteria,Bakery,74,74,0,2.0,26.9,82.0,No,Sunny,0,No Waste,No,High
+INV003387,2025-06-01,Cafeteria,Fruits,42,42,0,5.0,6.7,49.0,No,Cloudy,0,No Waste,No,Low
+INV003388,2025-06-01,Cafeteria,Meat,62,61,1,2.0,2.7,61.0,No,Sunny,0,No Waste,No,Low
+INV003393,2025-06-02,Cafeteria,Vegetables,53,44,9,3.0,12.0,44.0,No,Rainy,2,Low Demand,No,High
+INV003395,2025-06-02,Cafeteria,Vegetables,59,59,0,6.0,5.2,75.0,Yes,Cloudy,0,No Waste,No,Low
+INV003396,2025-06-02,Cafeteria,Fruits,62,62,0,6.0,13.9,64.0,No,Hot,0,No Waste,No,High
+INV003399,2025-06-02,Cafeteria,Vegetables,66,66,0,8.0,7.5,66.0,No,Cloudy,0,No Waste,No,Low
+INV003400,2025-06-02,Cafeteria,Fruits,56,48,8,,4.6,48.0,No,Hot,1,Low Demand,No,Low
+INV003403,2025-06-02,Cafeteria,Fruits,54,54,0,7.0,3.5,68.0,No,Sunny,0,No Waste,No,Low
+INV003414,2025-06-02,Cafeteria,Dairy,61,61,0,8.0,6.9,64.0,Yes,Rainy,0,No Waste,No,Low
+INV003428,2025-06-03,Cafeteria,Fruits,59,59,0,1.0,11.2,131.0,Yes,Hot,0,No Waste,No,Low
+INV003439,2025-06-03,Cafeteria,Meat,89,89,0,3.0,2.2,90.0,No,Hot,0,No Waste,No,Low
+INV003460,2025-06-05,Cafeteria,Dairy,72,72,0,9.0,3.1,80.0,Yes,Hot,0,No Waste,No,Low
+INV003462,2025-06-05,Cafeteria,Dairy,67,54,13,5.0,0.6,54.0,No,Sunny,2,Low Demand,No,Medium
+INV003473,2025-06-05,Cafeteria,Fruits,68,52,16,7.0,9.7,52.0,No,Cloudy,2,Low Demand,No,Medium
+INV003477,2025-06-05,Cafeteria,Bakery,75,65,10,3.0,24.1,65.0,No,Hot,2,Low Demand,No,High
+INV003479,2025-06-05,Cafeteria,Vegetables,38,38,0,7.0,5.6,43.0,No,Sunny,0,No Waste,No,Low
+INV003482,2025-06-06,Cafeteria,Prepared Food,65,45,20,2.0,18.7,45.0,No,Sunny,4,Low Demand,Yes,Medium
+INV003488,2025-06-06,Cafeteria,Vegetables,64,53,11,5.0,6.3,53.0,No,Sunny,2,Low Demand,No,Medium
+INV003493,2025-06-06,Cafeteria,Dairy,83,63,20,7.0,-0.0,63.0,No,Sunny,3,Low Demand,No,Medium
+INV003504,2025-06-07,Cafeteria,Vegetables,66,66,0,5.0,7.8,72.0,Yes,Sunny,0,No Waste,No,Low
+INV003505,2025-06-07,Cafeteria,Fruits,54,54,0,5.0,6.7,,No,Sunny,0,No Waste,No,Low
+INV003506,2025-06-07,Cafeteria,Vegetables,50,50,0,6.0,4.8,74.0,No,Sunny,0,No Waste,No,Low
+INV003522,2025-06-08,Cafeteria,Vegetables,60,60,0,4.0,6.9,70.0,Yes,Rainy,0,No Waste,No,Low
+INV003527,2025-06-08,Cafeteria,Dairy,57,51,6,10.0,4.8,51.0,No,Sunny,1,Low Demand,No,Low
+INV003533,2025-06-08,Cafeteria,Vegetables,84,52,32,3.0,9.0,52.0,No,Rainy,11,Overproduction,No,High
+INV003547,2025-06-09,Cafeteria,Bakery,82,79,3,3.0,20.4,79.0,No,Sunny,1,Expired,No,Low
+INV003551,2025-06-09,Cafeteria,Dairy,77,74,3,3.0,3.4,74.0,Yes,Cloudy,1,Low Demand,No,Low
+INV003552,2025-06-09,Cafeteria,Meat,54,54,0,8.0,-0.1,87.0,No,Hot,0,No Waste,No,Low
+INV003560,2025-06-09,Cafeteria,Dairy,63,53,10,,3.0,53.0,No,Hot,1,Low Demand,No,Low
+INV003562,2025-06-09,Cafeteria,Dairy,59,59,0,12.0,1.9,69.0,No,,0,No Waste,No,Low
+INV003565,2025-06-09,Cafeteria,Vegetables,43,43,0,7.0,2.5,57.0,No,Sunny,0,No Waste,No,Low
+INV003575,2025-06-10,Cafeteria,Vegetables,84,66,18,1.0,3.3,66.0,Yes,Rainy,6,Expired,No,Medium
+INV003580,2025-06-10,Cafeteria,Vegetables,64,64,0,9.0,8.0,64.0,No,Sunny,0,No Waste,No,Low
+INV003588,2025-06-11,Cafeteria,Dairy,90,59,31,,3.1,59.0,No,Sunny,11,Overproduction,No,High
+INV003601,2025-06-11,Cafeteria,Vegetables,94,71,23,7.0,7.8,71.0,Yes,Sunny,4,Low Demand,No,Medium
+INV003608,2025-06-11,Cafeteria,Prepared Food,75,75,0,1.0,20.7,88.0,No,Cloudy,0,No Waste,No,Low
+INV003615,2025-06-12,Cafeteria,Bakery,62,46,16,2.0,17.9,46.0,No,Hot,4,Low Demand,No,Medium
+INV003626,2025-06-13,Cafeteria,Prepared Food,44,44,0,1.0,30.2,71.0,Yes,Hot,0,No Waste,No,Low
+INV003629,2025-06-13,Cafeteria,Prepared Food,68,68,0,1.0,16.9,77.0,Yes,Hot,0,No Waste,No,Low
+INV003642,2025-06-13,Cafeteria,Prepared Food,78,77,1,1.0,22.8,77.0,No,Sunny,0,No Waste,No,Low
+INV003644,2025-06-13,Cafeteria,Vegetables,64,64,0,5.0,4.6,64.0,No,Sunny,0,No Waste,No,Low
+INV003649,2025-06-14,Cafeteria,Bakery,79,40,39,3.0,27.2,40.0,No,Rainy,13,Overproduction,Yes,High
+INV003650,2025-06-14,Cafeteria,Prepared Food,60,58,2,,29.0,58.0,No,Hot,1,Storage Issue,No,Low
+INV003661,2025-06-14,Cafeteria,Bakery,53,53,0,2.0,22.1,79.0,No,Sunny,0,No Waste,No,Low
+INV003662,2025-06-14,Cafeteria,Dairy,63,63,0,8.0,4.2,77.0,No,Sunny,0,No Waste,No,Low
+INV003665,2025-06-14,Cafeteria,Fruits,76,76,0,2.0,,107.0,Yes,Sunny,0,No Waste,No,Low
+INV003672,2025-06-14,Cafeteria,Vegetables,82,45,37,10.0,6.0,45.0,No,Rainy,6,Overproduction,Yes,Medium
+INV003673,2025-06-14,Cafeteria,Fruits,79,47,32,3.0,10.7,47.0,No,Cloudy,11,Overproduction,Yes,High
+INV003676,2025-06-14,Cafeteria,Fruits,85,60,25,9.0,13.7,60.0,No,Sunny,4,Low Demand,Yes,Medium
+INV003678,2025-06-14,Cafeteria,Prepared Food,57,57,0,1.0,10.8,67.0,No,Cloudy,0,No Waste,No,Low
+INV003685,2025-06-15,Cafeteria,Bakery,72,60,12,3.0,16.9,60.0,Yes,Rainy,2,Low Demand,Yes,Medium
+INV003690,2025-06-15,Cafeteria,Prepared Food,58,58,0,1.0,28.9,71.0,No,Hot,0,No Waste,No,Low
+INV003697,2025-06-15,Cafeteria,Meat,56,54,2,2.0,5.9,54.0,No,Cloudy,0,No Waste,No,Low
+INV003698,2025-06-15,Cafeteria,Dairy,60,60,0,7.0,1.9,64.0,No,Sunny,0,No Waste,No,Low
+INV003702,2025-06-15,Cafeteria,Dairy,50,45,5,9.0,3.0,45.0,No,Cloudy,0,No Waste,No,Low
+INV003708,2025-06-16,Cafeteria,Bakery,84,56,28,3.0,10.6,56.0,No,Sunny,7,Low Demand,No,Medium
+INV003710,2025-06-16,Cafeteria,Fruits,74,74,0,7.0,7.4,79.0,No,Sunny,0,No Waste,No,Low
+INV003720,2025-06-17,Cafeteria,Meat,81,81,0,3.0,2.5,93.0,Yes,Hot,0,No Waste,No,Low
+INV003724,2025-06-17,Cafeteria,Fruits,67,67,0,6.0,5.0,80.0,Yes,Cloudy,0,No Waste,No,Low
+INV003728,2025-06-17,Cafeteria,Vegetables,75,68,7,8.0,3.3,68.0,No,Hot,1,Low Demand,No,Low
+INV003734,2025-06-17,Cafeteria,Prepared Food,59,59,0,2.0,18.6,72.0,Yes,Sunny,0,No Waste,No,Low
+INV003737,2025-06-17,Cafeteria,Prepared Food,72,62,10,1.0,17.0,62.0,No,Hot,3,Expired,No,Medium
+INV003739,2025-06-18,Cafeteria,Prepared Food,70,55,15,,23.3,55.0,No,Sunny,5,Expired,No,Medium
+INV003740,2025-06-18,Cafeteria,Bakery,44,44,0,4.0,23.6,44.0,No,Rainy,0,No Waste,No,Low
+INV003741,2025-06-18,Cafeteria,Dairy,60,44,16,9.0,-0.4,44.0,No,Cloudy,2,Low Demand,No,Medium
+INV003747,2025-06-18,Cafeteria,Vegetables,76,76,0,7.0,3.7,91.0,Yes,Sunny,0,No Waste,No,Low
+INV003754,2025-06-18,Cafeteria,Vegetables,77,59,18,8.0,9.0,59.0,No,Sunny,3,Low Demand,No,Medium
+INV003761,2025-06-18,Cafeteria,Bakery,85,56,29,3.0,26.2,56.0,Yes,Rainy,9,Low Demand,No,High
+INV003762,2025-06-19,Cafeteria,Dairy,108,100,8,6.0,1.4,100.0,Yes,Cloudy,1,Low Demand,No,Low
+INV003763,2025-06-19,Cafeteria,Meat,52,52,0,1.0,0.7,56.0,No,Sunny,0,No Waste,No,Low
+INV003769,2025-06-19,Cafeteria,Bakery,91,52,39,4.0,23.2,52.0,No,Hot,12,Overproduction,No,High
+INV003773,2025-06-19,Cafeteria,Bakery,56,39,17,1.0,18.5,39.0,No,Rainy,5,Expired,No,High
+INV003774,2025-06-19,Cafeteria,Vegetables,87,59,28,5.0,10.5,59.0,No,Hot,6,Storage Issue,No,Medium
+INV003778,2025-06-19,Cafeteria,Meat,42,42,0,3.0,3.2,50.0,No,Rainy,0,No Waste,No,Low
+INV003784,2025-06-20,Cafeteria,Bakery,68,46,22,2.0,18.7,46.0,No,Rainy,6,Low Demand,No,High
+INV003785,2025-06-20,Cafeteria,Vegetables,54,54,0,8.0,7.3,72.0,No,Hot,0,No Waste,No,Low
+INV003786,2025-06-20,Cafeteria,Prepared Food,76,73,3,3.0,21.0,73.0,Yes,Cloudy,0,No Waste,No,Low
+INV003789,2025-06-20,Cafeteria,Prepared Food,74,56,18,2.0,16.6,56.0,No,Hot,4,Low Demand,No,Medium
+INV003793,2025-06-20,Cafeteria,Vegetables,77,63,14,2.0,2.7,63.0,Yes,Cloudy,3,Low Demand,,Medium
+INV003799,2025-06-21,Cafeteria,Prepared Food,55,38,17,2.0,11.7,38.0,No,Rainy,5,Low Demand,No,High
+INV003804,2025-06-21,Cafeteria,Prepared Food,69,59,10,1.0,25.7,59.0,No,Sunny,3,Expired,No,Medium
+INV003807,2025-06-21,Cafeteria,Fruits,67,67,0,6.0,10.4,86.0,Yes,Sunny,0,No Waste,No,Low
+INV003808,2025-06-21,Cafeteria,Meat,70,52,18,2.0,1.3,52.0,No,Cloudy,5,Low Demand,No,Medium
+INV003815,2025-06-21,Cafeteria,Dairy,68,66,2,7.0,4.4,,No,Sunny,0,No Waste,No,Low
+INV003818,2025-06-22,Cafeteria,Prepared Food,70,66,4,1.0,22.3,66.0,No,Sunny,1,Expired,No,Low
+INV003819,2025-06-22,Cafeteria,Fruits,68,37,31,6.0,7.5,37.0,No,Rainy,7,Overproduction,No,High
+INV003841,2025-06-23,Cafeteria,Fruits,62,47,15,4.0,8.3,47.0,No,Sunny,3,Low Demand,No,Medium
+INV003843,2025-06-23,Cafeteria,Dairy,71,62,9,5.0,,62.0,Yes,Cloudy,1,Low Demand,No,Low
+INV003847,2025-06-23,Cafeteria,Vegetables,65,60,5,6.0,5.9,60.0,No,Sunny,1,Low Demand,No,Low
+INV003848,2025-06-23,Cafeteria,Dairy,49,49,0,6.0,5.2,65.0,No,Sunny,0,No Waste,No,Medium
+INV003854,2025-06-23,Cafeteria,Dairy,66,66,0,11.0,8.0,104.0,Yes,Hot,0,No Waste,No,Low
+INV003858,2025-06-24,Cafeteria,Vegetables,72,42,30,4.0,4.4,42.0,No,Rainy,8,Low Demand,No,High
+INV003863,2025-06-24,Cafeteria,Fruits,59,59,0,7.0,9.3,59.0,No,Hot,0,No Waste,No,Low
+INV003864,2025-06-24,Cafeteria,Fruits,60,60,0,6.0,12.4,65.0,No,Sunny,0,No Waste,No,Low
+INV003870,2025-06-24,Cafeteria,Vegetables,70,68,2,7.0,6.5,68.0,No,Hot,0,No Waste,No,Low
+INV003878,2025-06-24,Cafeteria,Bakery,84,53,31,3.0,18.1,53.0,No,Hot,5,Low Demand,Yes,Medium
+INV003880,2025-06-24,Cafeteria,Vegetables,84,63,21,1.0,10.0,63.0,No,Cloudy,9,Expired,No,High
+INV003889,2025-06-25,Cafeteria,Bakery,75,66,9,4.0,26.2,66.0,No,Sunny,2,Low Demand,No,Medium
+INV003891,2025-06-25,Cafeteria,Dairy,90,83,7,5.0,3.8,83.0,No,Sunny,1,Low Demand,No,Low
+INV003899,2025-06-25,Cafeteria,Bakery,89,33,56,2.0,27.3,33.0,No,Rainy,21,Overproduction,Yes,High
+INV003900,2025-06-25,Cafeteria,Meat,66,66,0,,-0.6,70.0,No,Sunny,0,No Waste,No,Low
+INV003901,2025-06-25,Cafeteria,Prepared Food,78,78,0,2.0,21.2,81.0,Yes,Cloudy,0,No Waste,No,Low
+INV003903,2025-06-25,Cafeteria,Dairy,97,63,34,14.0,1.5,63.0,No,Sunny,5,Low Demand,No,Medium
+INV003905,2025-06-26,Cafeteria,Vegetables,64,59,5,1.0,7.4,59.0,No,Sunny,1,Expired,No,Low
+INV003909,2025-06-26,Cafeteria,Vegetables,84,84,0,7.0,7.3,87.0,No,Sunny,0,No Waste,No,Medium
+INV003916,2025-06-26,Cafeteria,Meat,72,43,29,5.0,4.5,,No,Cloudy,6,Low Demand,No,Medium
+INV003921,2025-06-26,Cafeteria,Vegetables,71,58,13,7.0,4.5,58.0,No,Hot,2,Low Demand,No,Medium
+INV003922,2025-06-26,Cafeteria,Vegetables,61,61,0,9.0,-0.1,62.0,No,Hot,0,No Waste,No,Low
+INV003926,2025-06-27,Cafeteria,Bakery,74,41,33,3.0,22.9,41.0,No,Rainy,9,Low Demand,No,High
+INV003927,2025-06-27,Cafeteria,Bakery,73,73,0,2.0,20.2,73.0,No,Sunny,0,No Waste,No,Low
+INV003932,2025-06-27,Cafeteria,Fruits,59,57,2,5.0,6.8,57.0,No,Cloudy,0,No Waste,No,Low
+INV003935,2025-06-27,Cafeteria,Fruits,62,62,0,4.0,4.5,74.0,Yes,Cloudy,0,No Waste,No,Low
+INV003936,2025-06-27,Cafeteria,Dairy,65,49,16,7.0,8.3,49.0,No,Rainy,3,Low Demand,No,Medium
+INV003938,2025-06-27,Cafeteria,Bakery,63,48,15,4.0,24.3,48.0,No,Rainy,3,Low Demand,No,Medium
+INV003939,2025-06-27,Cafeteria,Prepared Food,61,61,0,1.0,26.4,71.0,No,Hot,0,No Waste,No,Low
+INV003958,2025-06-28,Cafeteria,Fruits,87,71,16,6.0,11.6,71.0,No,Sunny,3,Low Demand,No,Medium
+INV003963,2025-06-28,Cafeteria,Vegetables,63,47,16,6.0,7.8,47.0,Yes,Rainy,3,Low Demand,No,Medium
+INV003970,2025-06-28,Cafeteria,Dairy,63,63,0,10.0,2.4,64.0,No,Hot,0,No Waste,No,Low
+INV003973,2025-06-29,Cafeteria,Bakery,48,42,6,1.0,22.1,42.0,No,Rainy,2,Low Demand,No,Medium
+INV003975,2025-06-29,Cafeteria,Vegetables,75,43,32,7.0,9.8,43.0,No,,9,Overproduction,No,High
+INV003978,2025-06-29,Cafeteria,Fruits,67,67,0,5.0,6.8,67.0,No,Sunny,0,No Waste,No,Low
+INV003983,2025-06-29,Cafeteria,Meat,50,49,1,1.0,2.8,49.0,No,Hot,0,No Waste,No,Low
+INV003988,2025-06-29,Cafeteria,Vegetables,52,52,0,6.0,3.6,57.0,No,Sunny,0,No Waste,No,Low
+INV003994,2025-06-30,Cafeteria,Prepared Food,55,55,0,1.0,17.3,79.0,No,Sunny,0,No Waste,No,Low
+INV003997,2025-06-30,Cafeteria,Vegetables,57,47,10,2.0,3.4,47.0,No,Rainy,1,Low Demand,No,Low
+INV004010,2025-07-01,Cafeteria,Vegetables,72,62,10,3.0,5.0,62.0,No,Hot,3,Low Demand,No,Medium
+INV004021,2025-07-01,Cafeteria,Meat,57,57,0,10.0,3.0,57.0,No,Rainy,0,No Waste,No,Low
+INV004023,2025-07-01,Cafeteria,Prepared Food,83,75,8,2.0,20.5,75.0,No,Sunny,1,Expired,No,Low
+INV004027,2025-07-01,Cafeteria,Fruits,67,42,25,8.0,4.6,42.0,No,Cloudy,4,Low Demand,No,Medium
+INV004038,2025-07-02,Cafeteria,Meat,82,56,26,6.0,0.9,56.0,No,Sunny,6,Low Demand,No,Medium
+INV004039,2025-07-02,Cafeteria,Fruits,63,61,2,4.0,6.8,61.0,No,Sunny,0,No Waste,No,Low
+INV004041,2025-07-02,Cafeteria,Dairy,56,52,4,6.0,3.6,52.0,No,Sunny,1,Low Demand,No,Low
+INV004044,2025-07-02,Cafeteria,Bakery,49,44,5,5.0,15.5,44.0,No,Rainy,0,No Waste,No,Low
+INV004050,2025-07-03,Cafeteria,Fruits,77,65,12,7.0,12.3,65.0,No,Hot,2,Low Demand,No,Medium
+INV004052,2025-07-03,Cafeteria,Prepared Food,52,52,0,3.0,19.2,64.0,No,Cloudy,0,No Waste,No,Low
+INV004054,2025-07-03,Cafeteria,Dairy,68,56,12,10.0,5.3,56.0,No,Rainy,0,No Waste,No,Low
+INV004077,2025-07-04,Cafeteria,Fruits,41,41,0,6.0,10.6,61.0,No,Sunny,0,No Waste,No,Low
+INV004081,2025-07-04,Cafeteria,Fruits,57,56,1,8.0,7.0,56.0,No,Sunny,0,No Waste,No,Low
+INV004091,2025-07-04,Cafeteria,Vegetables,66,66,0,6.0,3.7,78.0,Yes,Hot,0,No Waste,No,Low
+INV004096,2025-07-04,Cafeteria,Bakery,68,65,3,2.0,23.6,65.0,No,Cloudy,1,Expired,No,Low
+INV004099,2025-07-04,Cafeteria,Prepared Food,72,72,0,1.0,30.4,76.0,Yes,Sunny,0,No Waste,No,Low
+INV004103,2025-07-05,Cafeteria,Prepared Food,66,47,19,1.0,25.0,47.0,No,Cloudy,9,Expired,No,High
+INV004106,2025-07-05,Cafeteria,Dairy,71,71,0,7.0,6.5,71.0,No,Sunny,0,No Waste,No,Low
+INV004112,2025-07-05,Cafeteria,Bakery,79,59,20,2.0,23.3,59.0,No,Cloudy,7,Expired,No,High
+INV004123,2025-07-06,Cafeteria,Dairy,63,63,0,6.0,6.9,65.0,No,Sunny,0,No Waste,No,Low
+INV004129,2025-07-06,Cafeteria,Prepared Food,73,53,20,3.0,17.9,53.0,No,Cloudy,4,Low Demand,No,Medium
+INV004136,2025-07-06,Cafeteria,Dairy,51,51,0,8.0,3.2,62.0,No,Sunny,0,No Waste,No,Low
+INV004137,2025-07-06,Cafeteria,Meat,67,60,7,5.0,-0.5,60.0,No,Sunny,1,Low Demand,No,Low
+INV004145,2025-07-07,Cafeteria,Dairy,75,72,3,8.0,6.1,72.0,No,Cloudy,0,No Waste,No,Low
+INV004147,2025-07-07,Cafeteria,Bakery,89,60,29,4.0,19.8,60.0,No,Cloudy,6,Overproduction,Yes,Medium
+INV004148,2025-07-07,Cafeteria,Bakery,81,69,12,4.0,20.8,69.0,No,Sunny,2,Low Demand,No,Medium
+INV004163,2025-07-07,Cafeteria,Prepared Food,58,58,0,1.0,23.3,64.0,No,Hot,0,No Waste,No,Low
+INV004164,2025-07-07,Cafeteria,Dairy,59,59,0,8.0,0.5,89.0,No,Hot,0,No Waste,No,Low
+INV004166,2025-07-08,Cafeteria,Vegetables,73,60,13,4.0,14.1,60.0,No,Sunny,4,Storage Issue,No,Medium
+INV004168,2025-07-08,Cafeteria,Fruits,88,52,36,1.0,6.5,52.0,Yes,Rainy,12,Expired,No,High
+INV004179,2025-07-08,Cafeteria,Fruits,67,58,9,7.0,4.1,58.0,No,Sunny,1,Low Demand,No,Low
+INV004193,2025-07-09,Cafeteria,Fruits,66,66,0,6.0,2.9,70.0,No,Cloudy,0,No Waste,No,Low
+INV004197,2025-07-09,Cafeteria,Fruits,74,74,0,5.0,4.9,79.0,No,Sunny,0,No Waste,No,Low
+INV004206,2025-07-09,Cafeteria,Meat,63,63,0,4.0,2.4,82.0,No,Cloudy,0,No Waste,,Low
+INV004207,2025-07-09,Cafeteria,Fruits,76,55,21,8.0,6.6,55.0,No,Rainy,4,Low Demand,No,Medium
+INV004214,2025-07-10,Cafeteria,Fruits,87,55,32,1.0,11.6,55.0,No,Hot,13,Expired,No,High
+INV004215,2025-07-10,Cafeteria,Bakery,86,75,11,1.0,16.8,75.0,No,Sunny,3,Expired,,Medium
+INV004221,2025-07-10,Cafeteria,Bakery,87,62,25,4.0,,62.0,Yes,Cloudy,3,Low Demand,No,Medium
+INV004227,2025-07-10,Cafeteria,Meat,42,42,0,4.0,0.3,60.0,No,Cloudy,0,No Waste,No,Low
+INV004231,2025-07-10,Cafeteria,Dairy,403,67,336,3.0,5.2,67.0,Yes,Sunny,142,Overproduction,Yes,High
+INV004233,2025-07-10,Cafeteria,Dairy,58,56,2,9.0,4.8,56.0,No,Sunny,0,No Waste,No,Low
+INV004249,2025-07-11,Cafeteria,Prepared Food,76,66,10,1.0,19.5,66.0,No,Sunny,3,Expired,No,Medium
+INV004251,2025-07-11,Cafeteria,Fruits,62,62,0,4.0,7.8,67.0,No,Sunny,0,No Waste,No,Low
+INV004254,2025-07-11,Cafeteria,Prepared Food,57,49,8,2.0,24.0,49.0,No,Cloudy,2,Expired,No,Medium
+INV004257,2025-07-11,Cafeteria,Fruits,72,70,2,7.0,9.9,70.0,No,Sunny,0,No Waste,No,Low
+INV004275,2025-07-12,Cafeteria,Meat,62,62,0,4.0,2.0,69.0,No,Sunny,0,No Waste,No,Low
+INV004283,2025-07-13,Cafeteria,Prepared Food,80,71,9,2.0,19.2,71.0,Yes,,3,Low Demand,No,Medium
+INV004290,2025-07-13,Cafeteria,Meat,81,81,0,3.0,3.7,89.0,Yes,Hot,0,No Waste,No,Low
+INV004295,2025-07-13,Cafeteria,Prepared Food,71,51,20,1.0,16.4,,No,Rainy,8,Expired,No,High
+INV004297,2025-07-14,Cafeteria,Meat,72,54,18,5.0,-0.6,54.0,No,Sunny,2,Low Demand,No,Medium
+INV004298,2025-07-14,Cafeteria,Prepared Food,72,59,13,,28.9,59.0,No,Cloudy,5,Storage Issue,No,Medium
+INV004307,2025-07-14,Cafeteria,Prepared Food,89,64,25,1.0,23.1,64.0,No,Cloudy,11,Expired,No,High
+INV004311,2025-07-14,Cafeteria,Bakery,79,79,0,4.0,20.6,124.0,Yes,,0,No Waste,No,Low
+INV004313,2025-07-14,Cafeteria,Fruits,56,56,0,4.0,4.8,61.0,No,Cloudy,0,No Waste,,Low
+INV004317,2025-07-14,Cafeteria,Bakery,77,65,12,5.0,27.3,65.0,No,Sunny,3,Storage Issue,,Medium
+INV004326,2025-07-14,Cafeteria,Fruits,64,51,13,4.0,2.6,51.0,No,Cloudy,2,Low Demand,No,Medium
+INV004336,2025-07-15,Cafeteria,Prepared Food,57,57,0,1.0,13.3,87.0,Yes,Hot,0,No Waste,No,Low
+INV004338,2025-07-15,Cafeteria,Fruits,69,51,18,6.0,12.2,51.0,No,Cloudy,4,Low Demand,No,Medium
+INV004340,2025-07-15,Cafeteria,Prepared Food,77,64,13,1.0,26.8,64.0,Yes,Rainy,5,Expired,No,Medium
+INV004342,2025-07-15,Cafeteria,Prepared Food,83,47,36,2.0,21.6,47.0,No,Sunny,14,Overproduction,Yes,High
+INV004345,2025-07-15,Cafeteria,Bakery,41,33,8,2.0,30.1,33.0,No,Rainy,3,Low Demand,No,Low
+INV004346,2025-07-15,Cafeteria,Dairy,99,85,14,11.0,3.2,85.0,Yes,Sunny,2,Low Demand,No,Low
+INV004349,2025-07-15,Cafeteria,Meat,98,67,31,4.0,4.4,67.0,Yes,Cloudy,7,Low Demand,No,Medium
+INV004353,2025-07-15,Cafeteria,Vegetables,63,63,0,6.0,5.4,72.0,No,Sunny,0,No Waste,No,Low
+INV004358,2025-07-16,Cafeteria,Fruits,61,47,14,3.0,10.9,47.0,No,Sunny,4,Low Demand,No,Medium
+INV004362,2025-07-16,Cafeteria,Meat,60,53,7,4.0,1.6,53.0,No,Cloudy,0,No Waste,No,Low
+INV004363,2025-07-16,Cafeteria,Prepared Food,71,71,0,2.0,21.9,82.0,No,Sunny,0,No Waste,,Low
+INV004364,2025-07-16,Cafeteria,Fruits,68,68,0,3.0,9.1,75.0,Yes,Sunny,0,No Waste,No,Low
+INV004371,2025-07-16,Cafeteria,Dairy,63,63,0,,0.7,65.0,No,Cloudy,0,No Waste,No,Low
+INV004372,2025-07-16,Cafeteria,Fruits,70,69,1,6.0,5.0,69.0,Yes,Cloudy,0,No Waste,No,Low
+INV004375,2025-07-16,Cafeteria,Fruits,69,66,3,6.0,7.3,66.0,No,Hot,0,No Waste,No,Low
+INV004381,2025-07-17,Cafeteria,Vegetables,75,71,4,6.0,8.2,71.0,Yes,Sunny,0,No Waste,No,Low
+INV004382,2025-07-17,Cafeteria,Fruits,66,55,11,4.0,9.7,55.0,Yes,Rainy,2,Low Demand,No,Medium
+INV004396,2025-07-17,Cafeteria,Prepared Food,239,54,185,1.0,20.4,54.0,No,Rainy,93,Overproduction,Yes,High
+INV004405,2025-07-18,Cafeteria,Dairy,65,65,0,6.0,8.2,68.0,No,Hot,0,No Waste,No,Low
+INV004407,2025-07-18,Cafeteria,Vegetables,69,69,0,4.0,4.4,71.0,No,Hot,0,No Waste,No,Low
+INV004410,2025-07-18,Cafeteria,Vegetables,73,33,40,8.0,2.2,33.0,No,Rainy,8,Overproduction,Yes,High
+INV004415,2025-07-18,Cafeteria,Meat,79,79,0,5.0,3.7,93.0,No,Hot,0,No Waste,No,Low
+INV004422,2025-07-18,Cafeteria,Meat,65,65,0,2.0,2.4,82.0,No,Sunny,0,No Waste,No,Low
+INV004425,2025-07-18,Cafeteria,Meat,62,56,6,5.0,,56.0,Yes,Rainy,1,Low Demand,No,Low
+INV004429,2025-07-19,Cafeteria,Bakery,61,61,0,5.0,21.4,63.0,No,Cloudy,0,No Waste,No,Low
+INV004437,2025-07-19,Cafeteria,Meat,69,67,2,7.0,3.2,67.0,No,Hot,0,No Waste,No,Low
+INV004444,2025-07-19,Cafeteria,Dairy,85,49,36,9.0,1.3,49.0,No,Cloudy,5,Overproduction,,Medium
+INV004446,2025-07-19,Cafeteria,Meat,77,58,19,5.0,3.7,58.0,No,Sunny,4,Low Demand,No,Medium
+INV004458,2025-07-20,Cafeteria,Prepared Food,79,58,21,1.0,28.3,58.0,Yes,Cloudy,9,Storage Issue,No,High
+INV004463,2025-07-20,Cafeteria,Fruits,76,61,15,4.0,9.3,61.0,No,Cloudy,2,Low Demand,No,Medium
+INV004467,2025-07-21,Cafeteria,Fruits,100,85,15,6.0,4.5,85.0,Yes,Sunny,2,Low Demand,No,Low
+INV004471,2025-07-21,Cafeteria,Fruits,81,74,7,3.0,4.0,74.0,No,Hot,1,Low Demand,No,Low
+INV004476,2025-07-21,Cafeteria,Fruits,63,63,0,2.0,6.8,67.0,No,Hot,0,No Waste,No,Low
+INV004478,2025-07-21,Cafeteria,Meat,61,33,28,3.0,2.7,33.0,No,Rainy,9,Low Demand,No,High
+INV004479,2025-07-21,Cafeteria,Bakery,64,64,0,2.0,19.8,82.0,Yes,Sunny,0,No Waste,No,Low
+INV004481,2025-07-21,Cafeteria,Dairy,82,81,1,4.0,2.6,,No,Hot,0,No Waste,No,Low
+INV004484,2025-07-21,Cafeteria,Vegetables,87,72,15,3.0,4.8,72.0,No,Sunny,3,Low Demand,No,Medium
+INV004487,2025-07-22,Cafeteria,Bakery,70,53,17,3.0,22.2,53.0,No,Sunny,3,Low Demand,No,Medium
+INV004488,2025-07-22,Cafeteria,Bakery,63,63,0,3.0,28.8,65.0,No,Cloudy,0,No Waste,No,Low
+INV004492,2025-07-22,Cafeteria,Vegetables,65,59,6,3.0,3.3,59.0,No,Sunny,1,Low Demand,No,Medium
+INV004494,2025-07-22,Cafeteria,Meat,79,79,0,1.0,2.6,93.0,Yes,Sunny,0,No Waste,No,Low
+INV004500,2025-07-22,Cafeteria,Dairy,57,57,0,7.0,4.2,57.0,No,Cloudy,0,No Waste,No,Low
+INV004503,2025-07-22,Cafeteria,Meat,66,53,13,2.0,3.6,53.0,No,Cloudy,4,Expired,No,Medium
+INV004517,2025-07-23,Cafeteria,Fruits,84,84,0,7.0,10.8,94.0,Yes,Sunny,0,No Waste,No,Low
+INV004522,2025-07-23,Cafeteria,Bakery,91,91,0,3.0,23.6,118.0,Yes,Sunny,0,No Waste,No,Low
+INV004525,2025-07-23,Cafeteria,Vegetables,72,57,15,5.0,8.7,57.0,No,Sunny,3,Low Demand,No,Medium
+INV004530,2025-07-24,Cafeteria,Prepared Food,70,67,3,3.0,15.1,67.0,No,Hot,0,No Waste,No,Low
+INV004535,2025-07-24,Cafeteria,Dairy,71,55,16,7.0,3.8,55.0,No,Sunny,2,Low Demand,No,Medium
+INV004541,2025-07-24,Cafeteria,Vegetables,58,58,0,6.0,0.8,61.0,No,Cloudy,0,No Waste,No,Low
+INV004543,2025-07-24,Cafeteria,Fruits,88,69,19,4.0,,69.0,Yes,Cloudy,3,Low Demand,No,Medium
+INV004544,2025-07-24,Cafeteria,Bakery,67,49,18,4.0,19.7,49.0,No,Rainy,3,Low Demand,No,Medium
+INV004545,2025-07-24,Cafeteria,Prepared Food,80,55,25,1.0,22.0,55.0,No,Sunny,10,Expired,No,High
+INV004546,2025-07-25,Cafeteria,Vegetables,57,57,0,9.0,4.2,82.0,Yes,Sunny,0,No Waste,No,Low
+INV004549,2025-07-25,Cafeteria,Bakery,61,61,0,3.0,19.6,69.0,No,Sunny,0,No Waste,No,Low
+INV004550,2025-07-25,Cafeteria,Fruits,96,96,0,6.0,10.8,99.0,Yes,Sunny,0,No Waste,No,Low
+INV004551,2025-07-25,Cafeteria,Bakery,81,81,0,3.0,19.9,95.0,Yes,Hot,0,No Waste,No,Low
+INV004553,2025-07-25,Cafeteria,Meat,77,38,39,2.0,,38.0,No,Rainy,15,Overproduction,Yes,High
+INV004554,2025-07-25,Cafeteria,Fruits,80,52,28,4.0,7.1,52.0,Yes,Rainy,6,Low Demand,No,Medium
+INV004557,2025-07-25,Cafeteria,Dairy,95,69,26,5.0,3.6,69.0,Yes,Rainy,4,Low Demand,No,Medium
+INV004559,2025-07-25,Cafeteria,Fruits,71,71,0,2.0,4.8,84.0,Yes,Cloudy,0,No Waste,No,High
+INV004562,2025-07-25,Cafeteria,Bakery,66,36,30,3.0,27.5,36.0,No,Rainy,9,Overproduction,No,High
+INV004565,2025-07-26,Cafeteria,Prepared Food,74,74,0,2.0,20.1,78.0,No,Hot,0,No Waste,No,Low
+INV004577,2025-07-26,Cafeteria,Fruits,79,79,0,9.0,11.0,81.0,No,Hot,0,No Waste,No,Low
+INV004591,2025-07-27,Cafeteria,Prepared Food,89,80,9,1.0,21.7,80.0,Yes,Cloudy,3,Expired,No,Medium
+INV004599,2025-07-27,Cafeteria,Meat,60,60,0,1.0,2.6,63.0,No,Cloudy,0,No Waste,No,Low
+INV004600,2025-07-27,Cafeteria,Bakery,54,39,15,2.0,21.9,39.0,No,Rainy,5,Low Demand,No,High
+INV004606,2025-07-28,Cafeteria,Dairy,62,51,11,8.0,4.5,51.0,No,Sunny,1,Low Demand,No,Low
+INV004607,2025-07-28,Cafeteria,Fruits,72,69,3,1.0,6.4,69.0,No,Sunny,1,Expired,No,Low
+INV004612,2025-07-28,Cafeteria,Vegetables,76,76,0,5.0,6.9,77.0,No,Sunny,0,No Waste,No,Low
+INV004613,2025-07-28,Cafeteria,Prepared Food,59,41,18,2.0,17.5,41.0,No,Rainy,5,Low Demand,No,Medium
+INV004616,2025-07-28,Cafeteria,Fruits,71,62,9,6.0,10.1,62.0,No,Hot,2,Low Demand,No,Medium
+INV004620,2025-07-28,Cafeteria,Dairy,66,66,0,10.0,2.6,71.0,No,Hot,0,No Waste,No,Low
+INV004622,2025-07-28,Cafeteria,Dairy,71,71,0,5.0,3.0,76.0,Yes,Sunny,0,No Waste,No,Low
+INV004625,2025-07-28,Cafeteria,Meat,71,47,24,8.0,2.8,,No,Cloudy,4,Low Demand,Yes,Medium
+INV004627,2025-07-28,Cafeteria,Dairy,62,44,18,10.0,2.7,44.0,No,Cloudy,3,Low Demand,No,Medium
+INV004635,2025-07-29,Cafeteria,Bakery,57,57,0,1.0,23.0,59.0,No,Hot,0,No Waste,No,Low
+INV004645,2025-07-29,Cafeteria,Fruits,82,82,0,4.0,8.2,,Yes,Cloudy,0,No Waste,No,Low
+INV004647,2025-07-29,Cafeteria,Bakery,61,61,0,1.0,21.8,67.0,No,Sunny,0,No Waste,No,Low
+INV004649,2025-07-30,Cafeteria,Dairy,81,63,18,10.0,2.8,63.0,No,Hot,2,Low Demand,No,Medium
+INV004655,2025-07-30,Cafeteria,Vegetables,59,59,0,6.0,1.2,68.0,No,Sunny,0,No Waste,No,Low
+INV004661,2025-07-30,Cafeteria,Fruits,80,49,31,6.0,10.3,49.0,No,Cloudy,5,Low Demand,No,Medium
+INV004680,2025-07-31,Cafeteria,Meat,58,58,0,4.0,0.0,65.0,No,Sunny,0,No Waste,No,Low
+INV004681,2025-07-31,Cafeteria,Prepared Food,90,88,2,2.0,16.9,88.0,Yes,Sunny,0,No Waste,No,Low
+INV004683,2025-07-31,Cafeteria,Prepared Food,62,57,5,1.0,17.8,57.0,No,Cloudy,1,Expired,No,Low
+INV004687,2025-07-31,Cafeteria,Bakery,73,67,6,1.0,26.0,67.0,No,Hot,2,Expired,No,Medium
+INV004691,2025-07-31,Cafeteria,Vegetables,75,39,36,7.0,3.9,39.0,No,Rainy,6,Overproduction,No,Medium
+INV004696,2025-08-01,Cafeteria,Vegetables,72,37,35,3.0,4.2,37.0,No,Cloudy,7,Overproduction,No,High
+INV004700,2025-08-01,Cafeteria,Dairy,74,63,11,7.0,2.7,,No,Hot,2,Low Demand,No,Medium
+INV004703,2025-08-01,Cafeteria,Vegetables,50,50,0,4.0,4.2,72.0,No,Cloudy,0,No Waste,No,Low
+INV004711,2025-08-01,Cafeteria,Fruits,72,40,32,7.0,13.5,40.0,No,Rainy,9,Overproduction,Yes,High
+INV004716,2025-08-01,Cafeteria,Dairy,79,54,25,8.0,6.7,54.0,No,Cloudy,6,Low Demand,Yes,Medium
+INV004717,2025-08-01,Cafeteria,Bakery,83,63,20,3.0,22.4,63.0,No,Cloudy,5,Low Demand,No,Medium
+INV004725,2025-08-02,Cafeteria,Bakery,50,49,1,4.0,20.2,49.0,No,Cloudy,0,No Waste,No,Low
+INV004732,2025-08-02,Cafeteria,Dairy,70,62,8,9.0,6.6,62.0,Yes,Rainy,1,Low Demand,No,Low
+INV004733,2025-08-02,Cafeteria,Fruits,72,45,27,7.0,9.3,45.0,No,Rainy,5,Low Demand,Yes,Medium
+INV004735,2025-08-02,Cafeteria,Bakery,72,72,0,2.0,25.8,103.0,Yes,Hot,0,No Waste,No,Low
+INV004736,2025-08-03,Cafeteria,Bakery,75,54,21,2.0,24.5,54.0,No,Cloudy,7,Low Demand,No,High
+INV004737,2025-08-03,Cafeteria,Vegetables,71,54,17,8.0,9.7,54.0,Yes,Rainy,3,Low Demand,,Medium
+INV004738,2025-08-03,Cafeteria,Prepared Food,65,58,7,1.0,17.2,58.0,No,Cloudy,2,Expired,No,Medium
+INV004739,2025-08-03,Cafeteria,Prepared Food,69,60,9,2.0,19.0,60.0,No,Cloudy,2,Low Demand,No,Medium
+INV004741,2025-08-03,Cafeteria,Prepared Food,82,68,14,2.0,19.0,68.0,No,Sunny,3,Expired,No,Medium
+INV004744,2025-08-03,Cafeteria,Meat,59,55,4,5.0,4.6,55.0,No,Cloudy,1,Low Demand,Yes,Low
+INV004748,2025-08-03,Cafeteria,Dairy,58,58,0,6.0,-0.1,67.0,No,Hot,0,No Waste,No,Low
+INV004749,2025-08-03,Cafeteria,Prepared Food,69,55,14,2.0,31.1,55.0,No,Sunny,6,Storage Issue,No,Medium
+INV004750,2025-08-03,Cafeteria,Prepared Food,49,49,0,2.0,16.9,54.0,No,Cloudy,0,No Waste,No,Low
+INV004754,2025-08-03,Cafeteria,Fruits,73,62,11,5.0,9.7,62.0,No,Hot,2,Low Demand,No,Medium
+INV004756,2025-08-03,Cafeteria,Fruits,61,61,0,6.0,12.2,61.0,No,Cloudy,0,No Waste,No,Low
+INV004760,2025-08-04,Cafeteria,Dairy,55,55,0,4.0,5.5,64.0,No,Hot,0,No Waste,No,Low
+INV004768,2025-08-04,Cafeteria,Bakery,60,50,10,3.0,23.7,50.0,No,Cloudy,2,Low Demand,No,Medium
+INV004775,2025-08-04,Cafeteria,Fruits,81,60,21,4.0,7.4,60.0,No,Hot,4,Low Demand,No,Medium
+INV004779,2025-08-04,Cafeteria,Meat,68,65,3,5.0,2.6,65.0,No,Sunny,0,No Waste,No,Low
+INV004789,2025-08-05,Cafeteria,Fruits,85,74,11,5.0,12.4,74.0,Yes,Cloudy,2,Storage Issue,No,Medium
+INV004804,2025-08-05,Cafeteria,Vegetables,58,58,0,10.0,1.7,59.0,No,Sunny,0,No Waste,No,Low
+INV004810,2025-08-06,Cafeteria,Bakery,63,49,14,2.0,20.1,49.0,No,Rainy,2,Low Demand,No,High
+INV004814,2025-08-06,Cafeteria,Meat,78,70,8,,0.7,70.0,No,Hot,2,Expired,No,Medium
+INV004815,2025-08-06,Cafeteria,Fruits,40,40,0,3.0,11.1,50.0,No,Rainy,0,No Waste,No,Low
+INV004821,2025-08-06,Cafeteria,Fruits,75,60,15,2.0,12.9,60.0,No,Sunny,5,Storage Issue,No,Medium
+INV004828,2025-08-07,Cafeteria,Prepared Food,69,69,0,2.0,17.3,80.0,Yes,Cloudy,0,No Waste,No,Low
+INV004831,2025-08-07,Cafeteria,Meat,63,58,5,5.0,0.9,58.0,No,Sunny,1,Low Demand,Yes,Low
+INV004832,2025-08-07,Cafeteria,Vegetables,55,55,0,7.0,10.4,78.0,Yes,Cloudy,0,No Waste,No,Low
+INV004834,2025-08-07,Cafeteria,Prepared Food,58,58,0,2.0,19.9,62.0,No,Sunny,0,No Waste,No,Low
+INV004838,2025-08-07,Cafeteria,Vegetables,74,54,20,6.0,7.0,54.0,No,Hot,4,Low Demand,No,Medium
+INV004845,2025-08-07,Cafeteria,Bakery,216,84,132,4.0,13.5,84.0,Yes,Sunny,36,Overproduction,No,High
+INV004846,2025-08-08,Cafeteria,Bakery,75,45,30,,23.9,45.0,No,Cloudy,8,Overproduction,No,High
+INV004851,2025-08-08,Cafeteria,Prepared Food,73,70,3,1.0,11.5,70.0,No,Hot,1,Expired,No,Low
+INV004863,2025-08-08,Cafeteria,Bakery,68,52,16,3.0,19.0,52.0,No,Cloudy,4,Low Demand,No,Medium
+INV004872,2025-08-09,Cafeteria,Fruits,68,68,0,2.0,6.9,73.0,No,Sunny,0,No Waste,No,Low
+INV004873,2025-08-09,Cafeteria,Dairy,100,58,42,9.0,3.9,58.0,No,Hot,7,Overproduction,No,Medium
+INV004874,2025-08-09,Cafeteria,Vegetables,57,50,7,5.0,6.3,50.0,No,Cloudy,1,Low Demand,No,Low
+INV004879,2025-08-09,Cafeteria,Prepared Food,56,56,0,1.0,22.7,73.0,No,Sunny,0,No Waste,No,Low
+INV004880,2025-08-09,Cafeteria,Vegetables,71,71,0,6.0,7.7,83.0,Yes,Cloudy,0,No Waste,No,Low
+INV004882,2025-08-09,Cafeteria,Bakery,77,54,23,5.0,21.6,54.0,No,Cloudy,4,Low Demand,No,Medium
+INV004905,2025-08-10,Cafeteria,Dairy,71,71,0,10.0,1.0,108.0,Yes,Cloudy,0,No Waste,No,Low
+INV004912,2025-08-10,Cafeteria,Prepared Food,73,54,19,2.0,10.8,54.0,No,Sunny,5,Low Demand,No,Medium
+INV004926,2025-08-11,Cafeteria,Prepared Food,82,42,40,1.0,19.1,,No,Rainy,15,Overproduction,Yes,High
+INV004927,2025-08-11,Cafeteria,Fruits,79,79,0,4.0,4.9,87.0,Yes,Cloudy,0,No Waste,No,Low
+INV004931,2025-08-11,Cafeteria,Vegetables,58,58,0,6.0,6.1,86.0,No,Hot,0,No Waste,No,Low
+INV004937,2025-08-11,Cafeteria,Dairy,62,55,7,8.0,3.5,55.0,No,Cloudy,1,Low Demand,No,Low
+INV004939,2025-08-11,Cafeteria,Dairy,71,67,4,,5.8,67.0,No,Cloudy,1,Low Demand,No,Low
+INV004940,2025-08-11,Cafeteria,Dairy,70,33,37,9.0,7.7,33.0,No,Rainy,9,Overproduction,Yes,High
+INV004952,2025-08-12,Cafeteria,Prepared Food,82,42,40,2.0,19.3,42.0,No,Rainy,16,Overproduction,Yes,High
+INV004956,2025-08-12,Cafeteria,Vegetables,56,56,0,8.0,8.7,87.0,Yes,Sunny,0,No Waste,No,Low
+INV004959,2025-08-12,Cafeteria,Prepared Food,60,60,0,1.0,21.4,71.0,No,Sunny,0,No Waste,No,Low
+INV004963,2025-08-13,Cafeteria,Meat,72,72,0,4.0,0.7,117.0,Yes,Sunny,0,No Waste,No,Low
+INV004966,2025-08-13,Cafeteria,Vegetables,61,61,0,2.0,10.2,63.0,No,Sunny,0,No Waste,No,Medium
+INV004967,2025-08-13,Cafeteria,Bakery,74,35,39,2.0,24.8,35.0,No,Rainy,13,Overproduction,Yes,High
+INV004970,2025-08-13,Cafeteria,Meat,67,58,9,4.0,3.7,58.0,No,Sunny,2,Low Demand,,Medium
+INV004972,2025-08-13,Cafeteria,Prepared Food,53,53,0,3.0,,65.0,No,Sunny,0,No Waste,No,Low
+INV004981,2025-08-13,Cafeteria,Bakery,73,47,26,4.0,28.1,47.0,No,,9,Storage Issue,Yes,High
+INV004988,2025-08-13,Cafeteria,Prepared Food,73,73,0,1.0,30.3,87.0,No,Hot,0,No Waste,No,Low
+INV005013,2025-08-15,Cafeteria,Meat,99,46,53,6.0,5.3,46.0,No,Rainy,16,Overproduction,No,High
+INV005016,2025-08-15,Cafeteria,Prepared Food,108,35,73,1.0,16.7,35.0,No,Rainy,38,Overproduction,No,High
+INV005017,2025-08-15,Cafeteria,Meat,52,52,0,3.0,1.9,55.0,No,Sunny,0,No Waste,No,Low
+INV005027,2025-08-16,Cafeteria,Prepared Food,55,55,0,3.0,22.2,62.0,No,Sunny,0,No Waste,No,Low
+INV005029,2025-08-16,Cafeteria,Meat,71,55,16,3.0,1.4,55.0,No,Sunny,4,Low Demand,No,Medium
+INV005034,2025-08-16,Cafeteria,Prepared Food,76,47,29,1.0,25.7,47.0,No,Rainy,13,Low Demand,Yes,High
+INV005035,2025-08-16,Cafeteria,Vegetables,59,52,7,2.0,3.4,52.0,No,Rainy,1,Low Demand,No,Low
+INV005037,2025-08-16,Cafeteria,Prepared Food,84,47,37,2.0,24.8,47.0,Yes,Rainy,16,Overproduction,No,High
+INV005044,2025-08-17,Cafeteria,Vegetables,47,47,0,7.0,1.4,70.0,No,Cloudy,0,No Waste,,Low
+INV005047,2025-08-17,Cafeteria,Meat,60,56,4,2.0,-0.0,56.0,No,Sunny,1,Low Demand,No,Low
+INV005056,2025-08-17,Cafeteria,Vegetables,71,71,0,7.0,13.1,80.0,No,Sunny,0,No Waste,No,Low
+INV005077,2025-08-18,Cafeteria,Dairy,70,70,0,2.0,2.0,75.0,Yes,Cloudy,0,No Waste,No,Low
+INV005080,2025-08-18,Cafeteria,Vegetables,104,97,7,,8.4,97.0,Yes,Sunny,1,Low Demand,No,Low
+INV005083,2025-08-19,Cafeteria,Prepared Food,68,52,16,,29.3,52.0,No,Hot,7,Storage Issue,No,High
+INV005086,2025-08-19,Cafeteria,Meat,72,66,6,1.0,0.9,66.0,No,Hot,2,Expired,No,Medium
+INV005088,2025-08-19,Cafeteria,Fruits,74,61,13,8.0,8.7,61.0,No,Hot,2,Low Demand,No,Medium
+INV005101,2025-08-20,Cafeteria,Prepared Food,78,69,9,1.0,15.3,69.0,No,Hot,3,Expired,No,Medium
+INV005102,2025-08-20,Cafeteria,Prepared Food,48,48,0,1.0,9.2,72.0,No,Cloudy,0,No Waste,No,Low
+INV005106,2025-08-20,Cafeteria,Dairy,56,56,0,5.0,3.2,97.0,No,Sunny,0,No Waste,No,Low
+INV005108,2025-08-20,Cafeteria,Fruits,87,81,6,6.0,6.1,81.0,Yes,Hot,1,Low Demand,No,Low
+INV005111,2025-08-20,Cafeteria,Bakery,86,57,29,2.0,17.2,57.0,No,Hot,6,Low Demand,Yes,Medium
+INV005113,2025-08-20,Cafeteria,Bakery,60,60,0,4.0,20.5,62.0,No,Sunny,0,No Waste,No,Low
+INV005114,2025-08-20,Cafeteria,Dairy,66,66,0,1.0,4.1,72.0,No,Cloudy,0,No Waste,No,Low
+INV005120,2025-08-20,Cafeteria,Meat,72,52,20,4.0,,52.0,No,Cloudy,5,Low Demand,No,Medium
+INV005122,2025-08-20,Cafeteria,Meat,75,67,8,5.0,1.7,67.0,No,Sunny,1,Low Demand,No,Low
+INV005127,2025-08-21,Cafeteria,Bakery,41,41,0,2.0,21.3,58.0,No,Cloudy,0,No Waste,No,Low
+INV005128,2025-08-21,Cafeteria,Prepared Food,86,76,10,1.0,26.3,76.0,No,Sunny,4,Expired,No,Medium
+INV005137,2025-08-21,Cafeteria,Bakery,68,68,0,3.0,18.9,83.0,Yes,Hot,0,No Waste,No,Low
+INV005152,2025-08-22,Cafeteria,Prepared Food,51,51,0,2.0,25.7,71.0,No,Hot,0,No Waste,No,Low
+INV005153,2025-08-22,Cafeteria,Prepared Food,50,50,0,2.0,16.9,79.0,No,Hot,0,No Waste,No,Low
+INV005157,2025-08-22,Cafeteria,Vegetables,56,56,0,6.0,6.2,,No,Hot,0,No Waste,No,Low
+INV005170,2025-08-23,Cafeteria,Dairy,68,54,14,5.0,3.1,54.0,No,Sunny,3,Low Demand,No,Medium
+INV005172,2025-08-23,Cafeteria,Bakery,91,91,0,3.0,25.2,96.0,Yes,Sunny,0,No Waste,No,Low
+INV005175,2025-08-23,Cafeteria,Fruits,77,56,21,6.0,1.2,56.0,No,Cloudy,2,Low Demand,No,Medium
+INV005176,2025-08-23,Cafeteria,Meat,56,50,6,5.0,1.7,50.0,No,,1,Low Demand,No,Low
+INV005182,2025-08-23,Cafeteria,Fruits,70,47,23,3.0,2.6,47.0,No,Sunny,6,Low Demand,No,Medium
+INV005187,2025-08-24,Cafeteria,Bakery,61,61,0,3.0,24.2,76.0,No,Sunny,0,No Waste,No,Low
+INV005197,2025-08-25,Cafeteria,Dairy,63,59,4,10.0,5.8,59.0,No,Sunny,1,Low Demand,No,Low
+INV005202,2025-08-25,Cafeteria,Dairy,66,52,14,6.0,5.8,52.0,No,Cloudy,2,Low Demand,No,Medium
+INV005205,2025-08-25,Cafeteria,Bakery,77,75,2,2.0,21.6,75.0,No,Sunny,0,No Waste,No,Low
+INV005209,2025-08-25,Cafeteria,Bakery,75,75,0,3.0,23.6,84.0,No,Hot,0,No Waste,No,Low
+INV005211,2025-08-25,Cafeteria,Vegetables,54,50,4,8.0,8.2,50.0,No,Cloudy,0,No Waste,No,Low
+INV005212,2025-08-25,Cafeteria,Prepared Food,51,51,0,2.0,11.1,60.0,No,Cloudy,0,No Waste,No,Low
+INV005214,2025-08-26,Cafeteria,Meat,64,32,32,6.0,1.4,32.0,No,Rainy,5,Overproduction,No,Medium
+INV005216,2025-08-26,Cafeteria,Meat,46,46,0,3.0,0.7,46.0,No,Cloudy,0,No Waste,No,Low
+INV005223,2025-08-26,Cafeteria,Bakery,63,63,0,1.0,21.7,73.0,No,Sunny,0,No Waste,No,Low
+INV005228,2025-08-26,Cafeteria,Meat,68,47,21,3.0,2.0,47.0,No,Sunny,3,Low Demand,No,Medium
+INV005232,2025-08-27,Cafeteria,Prepared Food,57,46,11,2.0,26.4,,No,Rainy,4,Low Demand,No,Medium
+INV005233,2025-08-27,Cafeteria,Fruits,89,42,47,5.0,6.7,42.0,No,Rainy,11,Overproduction,Yes,High
+INV005241,2025-08-27,Cafeteria,Bakery,42,42,0,5.0,22.7,67.0,No,Sunny,0,No Waste,No,Low
+INV005242,2025-08-27,Cafeteria,Vegetables,59,59,0,5.0,5.2,71.0,No,Sunny,0,No Waste,No,Low
+INV005244,2025-08-27,Cafeteria,Meat,59,50,9,4.0,-0.4,50.0,No,Sunny,2,Low Demand,No,Low
+INV005247,2025-08-27,Cafeteria,Fruits,74,74,0,8.0,2.5,94.0,Yes,Hot,0,No Waste,No,Low
+INV005252,2025-08-27,Cafeteria,Bakery,71,71,0,,26.2,85.0,Yes,Sunny,0,No Waste,No,Low
+INV005263,2025-08-28,Cafeteria,Dairy,75,48,27,12.0,2.1,48.0,No,Cloudy,3,Low Demand,No,Medium
+INV005266,2025-08-28,Cafeteria,Prepared Food,63,58,5,2.0,,58.0,No,Hot,1,Low Demand,No,Low
+INV005268,2025-08-28,Cafeteria,Fruits,38,38,0,5.0,6.0,65.0,No,Sunny,0,No Waste,No,Low
+INV005274,2025-08-28,Cafeteria,Fruits,67,67,0,7.0,,84.0,No,Cloudy,0,No Waste,,Low
+INV005280,2025-08-29,Cafeteria,Dairy,70,39,31,6.0,5.4,39.0,No,Rainy,7,Overproduction,No,High
+INV005284,2025-08-29,Cafeteria,Vegetables,78,57,21,6.0,4.0,57.0,No,Sunny,4,Low Demand,No,Medium
+INV005287,2025-08-29,Cafeteria,Meat,62,59,3,5.0,0.9,59.0,No,Hot,0,No Waste,No,Low
+INV005292,2025-08-29,Cafeteria,Vegetables,78,67,11,3.0,2.4,67.0,No,Hot,2,Low Demand,No,Medium
+INV005313,2025-08-30,Cafeteria,Fruits,80,80,0,5.0,8.4,86.0,Yes,Hot,0,No Waste,No,Low
+INV005314,2025-08-30,Cafeteria,Dairy,101,74,27,6.0,3.9,74.0,Yes,Hot,4,Overproduction,No,Medium
+INV005317,2025-08-30,Cafeteria,Prepared Food,58,58,0,1.0,31.5,65.0,No,Sunny,0,No Waste,No,Low
+INV005321,2025-08-31,Cafeteria,Bakery,52,52,0,3.0,23.9,53.0,No,Sunny,0,No Waste,No,Medium
+INV005322,2025-08-31,Cafeteria,Vegetables,49,47,2,3.0,7.3,47.0,No,Hot,0,No Waste,No,Low
+INV005324,2025-08-31,Cafeteria,Fruits,49,49,0,6.0,2.7,72.0,No,Sunny,0,No Waste,No,Low
+INV005328,2025-08-31,Cafeteria,Meat,75,62,13,5.0,4.7,62.0,No,Cloudy,3,Low Demand,No,Medium
+INV005337,2025-08-31,Cafeteria,Meat,65,65,0,,3.6,67.0,No,Sunny,0,No Waste,No,Low
+INV005342,2025-08-31,Cafeteria,Vegetables,66,62,4,8.0,5.3,62.0,No,Sunny,0,No Waste,No,Low
+INV005347,2025-09-01,Cafeteria,Prepared Food,73,53,20,2.0,17.1,53.0,Yes,Rainy,5,Low Demand,No,Medium
+INV005355,2025-09-01,Cafeteria,Prepared Food,69,69,0,2.0,20.8,90.0,Yes,Hot,0,No Waste,No,Low
+INV005363,2025-09-01,Cafeteria,Meat,75,75,0,3.0,4.4,80.0,Yes,Cloudy,0,No Waste,No,Low
+INV005379,2025-09-02,Cafeteria,Vegetables,88,51,37,6.0,7.4,51.0,No,Sunny,10,Overproduction,No,High
+INV005381,2025-09-02,Cafeteria,Vegetables,71,71,0,,5.8,92.0,Yes,Hot,0,No Waste,No,Low
+INV005386,2025-09-02,Cafeteria,Meat,112,89,23,5.0,1.3,89.0,Yes,Sunny,3,Low Demand,Yes,Medium
+INV005388,2025-09-03,Cafeteria,Meat,68,68,0,5.0,3.6,,Yes,Cloudy,0,No Waste,No,Low
+INV005389,2025-09-03,Cafeteria,Prepared Food,80,80,0,2.0,27.1,84.0,Yes,Cloudy,0,No Waste,No,Low
+INV005409,2025-09-04,Cafeteria,Prepared Food,69,64,5,3.0,27.1,64.0,Yes,Sunny,1,Storage Issue,No,Low
+INV005412,2025-09-04,Cafeteria,Vegetables,45,45,0,7.0,10.3,69.0,No,Sunny,0,No Waste,No,Low
+INV005416,2025-09-04,Cafeteria,Prepared Food,86,64,22,2.0,19.3,64.0,No,Sunny,6,Expired,No,Medium
+INV005420,2025-09-04,Cafeteria,Fruits,59,52,7,3.0,7.8,52.0,No,Sunny,1,Low Demand,No,Low
+INV005422,2025-09-04,Cafeteria,Dairy,56,56,0,4.0,0.4,73.0,No,Hot,0,No Waste,No,Low
+INV005426,2025-09-04,Cafeteria,Bakery,74,74,0,4.0,14.8,86.0,No,Hot,0,No Waste,No,Low
+INV005432,2025-09-05,Cafeteria,Prepared Food,225,98,127,2.0,23.8,98.0,Yes,Sunny,54,Overproduction,Yes,High
+INV005437,2025-09-05,Cafeteria,Dairy,58,58,0,10.0,3.1,62.0,No,Hot,0,No Waste,No,Low
+INV005442,2025-09-05,Cafeteria,Prepared Food,81,60,21,1.0,19.8,60.0,Yes,Cloudy,7,Expired,No,Medium
+INV005444,2025-09-05,Cafeteria,Vegetables,55,55,0,5.0,5.7,68.0,No,Cloudy,0,No Waste,No,Low
+INV005451,2025-09-06,Cafeteria,Prepared Food,65,52,13,1.0,22.3,52.0,No,Cloudy,5,Expired,No,Medium
+INV005452,2025-09-06,Cafeteria,Fruits,71,68,3,8.0,5.3,68.0,No,Cloudy,0,No Waste,No,Low
+INV005464,2025-09-06,Cafeteria,Prepared Food,68,54,14,2.0,16.1,54.0,No,,4,Expired,No,Medium
+INV005472,2025-09-06,Cafeteria,Vegetables,77,62,15,,1.3,62.0,No,Sunny,2,Low Demand,No,Medium
+INV005474,2025-09-07,Cafeteria,Dairy,58,58,0,7.0,0.7,81.0,No,Sunny,0,No Waste,No,Low
+INV005476,2025-09-07,Cafeteria,Prepared Food,76,62,14,1.0,29.5,62.0,Yes,Rainy,8,Storage Issue,No,High
+INV005477,2025-09-07,Cafeteria,Vegetables,64,45,19,6.0,-0.1,45.0,No,Cloudy,4,Low Demand,No,Medium
+INV005487,2025-09-07,Cafeteria,Dairy,54,54,0,6.0,6.3,66.0,No,Sunny,0,No Waste,No,Low
+INV005491,2025-09-07,Cafeteria,Dairy,48,48,0,11.0,2.1,72.0,No,Hot,0,No Waste,No,Low
+INV005493,2025-09-07,Cafeteria,Dairy,61,51,10,9.0,5.2,51.0,No,Rainy,0,No Waste,No,Low
+INV005494,2025-09-07,Cafeteria,Vegetables,57,44,13,6.0,8.1,44.0,No,Rainy,3,Low Demand,Yes,Medium
+INV005496,2025-09-08,Cafeteria,Dairy,67,64,3,8.0,2.6,64.0,No,Cloudy,0,No Waste,No,Low
+INV005499,2025-09-08,Cafeteria,Prepared Food,77,74,3,1.0,20.6,74.0,No,Sunny,1,Expired,,Low
+INV005501,2025-09-08,Cafeteria,Prepared Food,48,31,17,1.0,25.5,31.0,No,Rainy,9,Low Demand,No,High
+INV005502,2025-09-08,Cafeteria,Vegetables,64,64,0,7.0,3.6,87.0,No,Sunny,0,No Waste,No,Low
+INV005503,2025-09-08,Cafeteria,Prepared Food,65,65,0,1.0,18.1,86.0,No,Hot,0,No Waste,No,Low
+INV005505,2025-09-08,Cafeteria,Prepared Food,92,66,26,2.0,22.2,66.0,Yes,Rainy,7,Expired,No,Medium
+INV005514,2025-09-08,Cafeteria,Vegetables,59,59,0,7.0,7.7,,No,Sunny,0,No Waste,No,Low
+INV005516,2025-09-08,Cafeteria,Vegetables,76,57,19,5.0,9.7,57.0,No,,3,Low Demand,No,Medium
+INV005518,2025-09-08,Cafeteria,Meat,219,76,143,4.0,3.5,76.0,Yes,Cloudy,52,Overproduction,No,High
+INV005519,2025-09-09,Cafeteria,Prepared Food,54,54,0,2.0,18.2,66.0,No,Hot,0,No Waste,No,Low
+INV005529,2025-09-09,Cafeteria,Bakery,88,70,18,2.0,18.8,70.0,No,Sunny,3,Expired,No,Medium
+INV005540,2025-09-10,Cafeteria,Prepared Food,68,55,13,1.0,18.0,55.0,No,Cloudy,4,Expired,No,High
+INV005550,2025-09-10,Cafeteria,Meat,79,51,28,5.0,0.1,51.0,No,Sunny,5,Overproduction,No,Medium
+INV005557,2025-09-10,Cafeteria,Meat,58,50,8,4.0,1.9,50.0,No,Cloudy,1,Low Demand,No,Low
+INV005558,2025-09-10,Cafeteria,Prepared Food,81,73,8,2.0,19.4,73.0,Yes,Sunny,2,Expired,No,Medium
+INV005568,2025-09-10,Cafeteria,Fruits,82,52,30,6.0,4.1,52.0,No,Sunny,7,Overproduction,Yes,Medium
+INV005571,2025-09-11,Cafeteria,Meat,72,64,8,7.0,4.5,64.0,No,Sunny,2,Low Demand,No,Medium
+INV005590,2025-09-12,Cafeteria,Dairy,63,34,29,3.0,4.1,34.0,No,Rainy,9,Overproduction,No,High
+INV005593,2025-09-12,Cafeteria,Bakery,58,58,0,5.0,10.8,73.0,No,Sunny,0,No Waste,No,Low
+INV005596,2025-09-12,Cafeteria,Fruits,67,46,21,6.0,6.0,46.0,No,Hot,3,Low Demand,No,Medium
+INV005600,2025-09-12,Cafeteria,Prepared Food,79,49,30,1.0,18.7,49.0,No,Cloudy,11,Expired,No,High
+INV005601,2025-09-12,Cafeteria,Dairy,76,71,5,7.0,4.9,71.0,No,Hot,0,No Waste,No,Low
+INV005605,2025-09-12,Cafeteria,Fruits,39,34,5,6.0,9.4,34.0,No,Rainy,1,Low Demand,No,Medium
+INV005610,2025-09-12,Cafeteria,Bakery,66,66,0,3.0,24.9,72.0,Yes,Sunny,0,No Waste,No,Low
+INV005613,2025-09-13,Cafeteria,Bakery,56,55,1,4.0,26.6,55.0,No,Sunny,0,No Waste,,Low
+INV005616,2025-09-13,Cafeteria,Dairy,62,62,0,2.0,3.8,65.0,No,Cloudy,0,No Waste,No,Low
+INV005617,2025-09-13,Cafeteria,Prepared Food,78,69,9,2.0,7.0,69.0,No,Hot,2,Low Demand,No,Medium
+INV005618,2025-09-13,Cafeteria,Meat,65,65,0,7.0,4.6,87.0,Yes,Hot,0,No Waste,No,Low
+INV005621,2025-09-13,Cafeteria,Vegetables,65,65,0,7.0,8.2,79.0,No,Hot,0,No Waste,No,Low
+INV005622,2025-09-13,Cafeteria,Vegetables,64,52,12,8.0,12.8,52.0,No,,3,Storage Issue,Yes,Medium
+INV005624,2025-09-13,Cafeteria,Bakery,82,51,31,2.0,21.8,51.0,No,Cloudy,6,Low Demand,Yes,Medium
+INV005629,2025-09-13,Cafeteria,Vegetables,42,42,0,3.0,4.4,44.0,No,Cloudy,0,No Waste,No,Low
+INV005637,2025-09-13,Cafeteria,Vegetables,88,64,24,5.0,5.9,64.0,Yes,Rainy,5,Low Demand,No,Medium
+INV005641,2025-09-13,Cafeteria,Fruits,58,54,4,7.0,3.8,54.0,No,Hot,1,Low Demand,No,Low
+INV005642,2025-09-13,Cafeteria,Fruits,55,54,1,7.0,8.7,54.0,No,Sunny,0,No Waste,No,Low
+INV005650,2025-09-14,Cafeteria,Fruits,63,63,0,7.0,7.3,71.0,No,Sunny,0,No Waste,No,Low
+INV005654,2025-09-14,Cafeteria,Vegetables,55,54,1,7.0,7.7,54.0,No,Sunny,0,No Waste,No,Low
+INV005657,2025-09-14,Cafeteria,Bakery,87,39,48,2.0,23.4,39.0,No,Rainy,18,Overproduction,Yes,High
+INV005671,2025-09-15,Cafeteria,Dairy,77,63,14,6.0,6.2,63.0,No,Sunny,1,Low Demand,No,Low
+INV005674,2025-09-15,Cafeteria,Meat,75,67,8,4.0,5.9,67.0,No,Hot,1,Storage Issue,No,Low
+INV005677,2025-09-15,Cafeteria,Bakery,60,60,0,4.0,21.2,63.0,No,Sunny,0,No Waste,No,Low
+INV005689,2025-09-16,Cafeteria,Meat,66,56,10,2.0,4.7,56.0,No,Cloudy,3,Low Demand,No,Medium
+INV005693,2025-09-16,Cafeteria,Bakery,67,42,25,3.0,27.6,42.0,No,Rainy,8,Low Demand,Yes,High
+INV005697,2025-09-16,Cafeteria,Prepared Food,73,45,28,1.0,34.6,45.0,No,Rainy,17,Storage Issue,No,High
+INV005700,2025-09-16,Cafeteria,Prepared Food,70,70,0,1.0,17.7,78.0,No,Cloudy,0,No Waste,No,Low
+INV005706,2025-09-17,Cafeteria,Prepared Food,78,64,14,1.0,17.9,64.0,No,Sunny,4,Expired,No,Medium
+INV005707,2025-09-17,Cafeteria,Bakery,67,67,0,2.0,19.8,69.0,No,Hot,0,No Waste,No,Low
+INV005712,2025-09-17,Cafeteria,Bakery,101,49,52,2.0,28.0,49.0,No,Rainy,19,Overproduction,Yes,High
+INV005718,2025-09-17,Cafeteria,Prepared Food,55,55,0,3.0,19.9,81.0,Yes,Cloudy,0,No Waste,No,Low
+INV005720,2025-09-17,Cafeteria,Prepared Food,43,43,0,3.0,22.0,44.0,No,Cloudy,0,No Waste,No,Low
+INV005723,2025-09-17,Cafeteria,Prepared Food,92,36,56,1.0,25.8,36.0,No,Rainy,34,Overproduction,Yes,High
+INV005732,2025-09-18,Cafeteria,Vegetables,101,61,40,8.0,2.2,61.0,No,Cloudy,7,Overproduction,No,Medium
+INV005737,2025-09-18,Cafeteria,Dairy,82,47,35,8.0,8.0,47.0,No,Sunny,10,Overproduction,No,High
+INV005750,2025-09-19,Cafeteria,Prepared Food,52,37,15,1.0,17.3,37.0,No,Rainy,6,Expired,No,High
+INV005755,2025-09-19,Cafeteria,Meat,62,62,0,5.0,-1.3,63.0,No,Hot,0,No Waste,No,Low
+INV005758,2025-09-19,Cafeteria,Dairy,65,60,5,10.0,1.9,60.0,No,Sunny,0,No Waste,No,Low
+INV005766,2025-09-20,Cafeteria,Bakery,86,62,24,4.0,21.1,62.0,No,Sunny,6,Low Demand,Yes,Medium
+INV005771,2025-09-20,Cafeteria,Fruits,56,56,0,5.0,7.6,83.0,No,Hot,0,No Waste,No,Low
+INV005772,2025-09-20,Cafeteria,Meat,55,55,0,3.0,0.6,58.0,No,Cloudy,0,No Waste,No,Low
+INV005779,2025-09-20,Cafeteria,Fruits,75,50,25,5.0,11.9,50.0,No,Cloudy,7,Low Demand,No,High
+INV005784,2025-09-21,Cafeteria,Fruits,79,78,1,5.0,15.4,,No,Sunny,0,No Waste,No,Low
+INV005796,2025-09-21,Cafeteria,Vegetables,49,47,2,5.0,5.9,47.0,No,Cloudy,0,No Waste,No,Low
+INV005798,2025-09-21,Cafeteria,Meat,60,58,2,4.0,2.5,58.0,No,Hot,0,No Waste,No,Low
+INV005805,2025-09-22,Cafeteria,Prepared Food,48,48,0,2.0,26.5,58.0,No,Rainy,0,No Waste,No,Low
+INV005816,2025-09-22,Cafeteria,Bakery,52,52,0,3.0,24.5,72.0,No,Sunny,0,No Waste,No,Low
+INV005817,2025-09-22,Cafeteria,Vegetables,88,84,4,4.0,5.3,84.0,No,Hot,1,Low Demand,No,Low
+INV005819,2025-09-22,Cafeteria,Vegetables,82,82,0,8.0,1.1,104.0,Yes,Sunny,0,No Waste,No,Low
+INV005820,2025-09-22,Cafeteria,Bakery,53,53,0,4.0,20.8,58.0,No,Hot,0,No Waste,No,Low
+INV005822,2025-09-22,Cafeteria,Bakery,57,57,0,4.0,16.3,70.0,Yes,Rainy,0,No Waste,No,Low
+INV005824,2025-09-22,Cafeteria,Prepared Food,67,44,23,,5.6,44.0,No,Rainy,8,Low Demand,No,High
+INV005828,2025-09-23,Cafeteria,Dairy,51,51,0,10.0,5.1,60.0,No,Sunny,0,No Waste,No,Low
+INV005841,2025-09-23,Cafeteria,Prepared Food,65,50,15,2.0,12.2,50.0,No,Cloudy,4,Low Demand,No,Medium
+INV005842,2025-09-23,Cafeteria,Dairy,72,65,7,7.0,3.0,65.0,No,Hot,0,No Waste,No,Low
+INV005852,2025-09-24,Cafeteria,Meat,68,48,20,4.0,2.6,48.0,No,Rainy,3,Low Demand,No,Medium
+INV005857,2025-09-24,Cafeteria,Meat,73,66,7,4.0,0.4,66.0,No,Sunny,1,Low Demand,No,Low
+INV005863,2025-09-24,Cafeteria,Vegetables,59,55,4,7.0,,55.0,No,Cloudy,0,No Waste,No,Low
+INV005867,2025-09-24,Cafeteria,Prepared Food,64,58,6,2.0,18.8,58.0,No,Hot,1,Expired,No,Low
+INV005868,2025-09-24,Cafeteria,Prepared Food,78,78,0,1.0,16.8,90.0,Yes,Sunny,0,No Waste,No,Low
+INV005870,2025-09-24,Cafeteria,Bakery,60,60,0,4.0,22.2,73.0,No,Sunny,0,No Waste,No,Low
+INV005883,2025-09-24,Cafeteria,Bakery,66,66,0,4.0,24.1,72.0,Yes,,0,No Waste,No,Low
+INV005886,2025-09-25,Cafeteria,Meat,69,66,3,3.0,,,No,Hot,1,Low Demand,No,Low
+INV005892,2025-09-25,Cafeteria,Fruits,62,61,1,3.0,5.8,61.0,No,Sunny,0,No Waste,No,Low
+INV005895,2025-09-25,Cafeteria,Prepared Food,261,64,197,2.0,24.0,64.0,No,Cloudy,91,Overproduction,No,High
+INV005898,2025-09-25,Cafeteria,Meat,80,58,22,5.0,1.4,58.0,No,Hot,3,Low Demand,No,Medium
+INV005903,2025-09-26,Cafeteria,Fruits,49,49,0,4.0,5.6,58.0,No,Cloudy,0,No Waste,No,Low
+INV005910,2025-09-26,Cafeteria,Prepared Food,79,69,10,2.0,6.1,69.0,No,Sunny,2,Expired,No,Medium
+INV005918,2025-09-27,Cafeteria,Dairy,90,59,31,6.0,4.4,59.0,No,Hot,8,Low Demand,Yes,High
+INV005924,2025-09-27,Cafeteria,Meat,78,78,0,6.0,0.9,112.0,Yes,Sunny,0,No Waste,No,Low
+INV005939,2025-09-28,Cafeteria,Vegetables,60,43,17,7.0,9.4,43.0,No,Rainy,4,Low Demand,No,Medium
+INV005946,2025-09-28,Cafeteria,Vegetables,61,61,0,5.0,6.6,107.0,Yes,Sunny,0,No Waste,No,Low
+INV005947,2025-09-28,Cafeteria,Bakery,64,49,15,3.0,19.7,49.0,No,Cloudy,3,Low Demand,No,Medium
+INV005948,2025-09-28,Cafeteria,Fruits,72,40,32,6.0,11.5,40.0,No,Rainy,6,Low Demand,No,Medium
+INV005967,2025-09-29,Cafeteria,Bakery,56,45,11,4.0,27.1,45.0,No,Rainy,3,Low Demand,No,Medium
+INV005982,2025-09-29,Cafeteria,Meat,58,58,0,1.0,1.1,91.0,No,Hot,0,No Waste,No,High
+INV005986,2025-09-29,Cafeteria,Fruits,64,47,17,3.0,6.8,47.0,No,Sunny,3,Low Demand,No,Medium
+INV006000,2025-09-30,Cafeteria,Bakery,59,40,19,3.0,17.9,40.0,No,Rainy,5,Low Demand,Yes,Medium
+INV006001,2025-09-30,Cafeteria,Fruits,59,42,17,5.0,10.1,42.0,No,,4,Low Demand,No,Medium
+INV006005,2025-09-30,Cafeteria,Prepared Food,65,65,0,2.0,27.6,80.0,No,Cloudy,0,No Waste,No,Low
+INV006009,2025-10-01,Cafeteria,Dairy,66,63,3,5.0,3.8,63.0,No,,0,No Waste,No,Low
+INV006012,2025-10-01,Cafeteria,Prepared Food,64,40,24,2.0,19.5,40.0,No,Rainy,8,Low Demand,Yes,High
+INV006014,2025-10-01,Cafeteria,Vegetables,48,48,0,5.0,7.6,72.0,No,Sunny,0,No Waste,No,Low
+INV006020,2025-10-01,Cafeteria,Fruits,69,36,33,5.0,6.5,36.0,No,Rainy,8,Overproduction,Yes,High
+INV006034,2025-10-02,Cafeteria,Prepared Food,69,59,10,1.0,28.1,59.0,No,Sunny,4,Storage Issue,No,Medium
+INV006039,2025-10-02,Cafeteria,Vegetables,79,58,21,3.0,-2.7,58.0,No,Sunny,5,Expired,No,Medium
+INV006044,2025-10-02,Cafeteria,Prepared Food,86,63,23,1.0,21.4,63.0,Yes,Cloudy,8,Expired,No,High
+INV006075,2025-10-03,Cafeteria,Dairy,57,57,0,3.0,3.2,80.0,Yes,Hot,0,No Waste,No,Low
+INV006077,2025-10-03,Cafeteria,Vegetables,60,53,7,4.0,9.8,53.0,No,Cloudy,2,Low Demand,No,Medium
+INV006086,2025-10-04,Cafeteria,Bakery,67,38,29,3.0,20.8,38.0,No,Rainy,6,Overproduction,No,High
+INV006087,2025-10-04,Cafeteria,Vegetables,88,38,50,4.0,3.0,38.0,No,Rainy,13,Overproduction,No,High
+INV006091,2025-10-04,Cafeteria,Fruits,54,54,0,8.0,3.2,77.0,No,Hot,0,No Waste,No,Low
+INV006093,2025-10-04,Cafeteria,Fruits,53,53,0,4.0,10.9,54.0,No,Cloudy,0,No Waste,No,Low
+INV006106,2025-10-05,Cafeteria,Bakery,64,53,11,5.0,22.0,53.0,No,Hot,2,Low Demand,No,Medium
+INV006109,2025-10-05,Cafeteria,Vegetables,106,62,44,6.0,2.3,62.0,No,Hot,9,Overproduction,Yes,Medium
+INV006110,2025-10-05,Cafeteria,Vegetables,59,40,19,6.0,4.8,40.0,No,Rainy,3,Low Demand,No,Medium
+INV006132,2025-10-06,Cafeteria,Prepared Food,67,55,12,1.0,19.8,55.0,No,Sunny,5,Expired,No,Medium
+INV006143,2025-10-06,Cafeteria,Vegetables,75,63,12,7.0,3.0,63.0,No,Sunny,2,Low Demand,No,Medium
+INV006144,2025-10-06,Cafeteria,Dairy,66,60,6,10.0,2.5,60.0,No,Sunny,0,No Waste,No,Low
+INV006147,2025-10-06,Cafeteria,Bakery,67,53,14,4.0,26.5,53.0,No,Sunny,3,Low Demand,No,Medium
+INV006160,2025-10-07,Cafeteria,Dairy,62,41,21,4.0,5.8,41.0,No,Rainy,4,Low Demand,Yes,Medium
+INV006168,2025-10-07,Cafeteria,Fruits,51,51,0,2.0,7.3,75.0,No,Hot,0,No Waste,No,Low
+INV006169,2025-10-07,Cafeteria,Fruits,65,65,0,5.0,4.7,70.0,No,Hot,0,No Waste,No,Low
+INV006173,2025-10-08,Cafeteria,Prepared Food,75,75,0,2.0,17.9,85.0,Yes,Cloudy,0,No Waste,No,Low
+INV006179,2025-10-08,Cafeteria,Dairy,60,60,0,4.0,6.5,61.0,No,Hot,0,No Waste,No,Low
+INV006194,2025-10-09,Cafeteria,Prepared Food,65,46,19,,17.8,46.0,No,Rainy,7,Expired,No,High
+INV006201,2025-10-09,Cafeteria,Prepared Food,77,45,32,2.0,19.1,45.0,No,Cloudy,9,Overproduction,Yes,High
+INV006205,2025-10-09,Cafeteria,Vegetables,96,82,14,7.0,6.4,82.0,Yes,Hot,1,Overproduction,No,Low
+INV006212,2025-10-10,Cafeteria,Meat,58,52,6,3.0,6.9,52.0,No,Cloudy,1,Low Demand,No,Low
+INV006218,2025-10-10,Cafeteria,Fruits,58,51,7,1.0,5.6,51.0,No,Sunny,2,Expired,No,Medium
+INV006223,2025-10-10,Cafeteria,Vegetables,59,36,23,5.0,6.1,36.0,No,Rainy,6,Low Demand,No,High
+INV006225,2025-10-10,Cafeteria,Meat,70,62,8,4.0,0.5,62.0,No,Sunny,1,Expired,No,Low
+INV006229,2025-10-10,Cafeteria,Meat,76,76,0,7.0,1.3,87.0,Yes,Cloudy,0,No Waste,No,Low
+INV006237,2025-10-11,Cafeteria,Meat,70,49,21,3.0,0.1,49.0,No,Rainy,5,Low Demand,No,Medium
+INV006240,2025-10-11,Cafeteria,Dairy,62,62,0,11.0,1.8,63.0,No,Sunny,0,No Waste,,Low
+INV006247,2025-10-11,Cafeteria,Prepared Food,68,55,13,2.0,16.5,55.0,No,Sunny,3,Low Demand,No,Low
+INV006248,2025-10-11,Cafeteria,Dairy,60,49,11,8.0,3.7,49.0,No,Cloudy,0,No Waste,No,Low
+INV006259,2025-10-12,Cafeteria,Vegetables,78,60,18,3.0,1.4,60.0,No,Hot,3,Low Demand,No,Medium
+INV006265,2025-10-12,Cafeteria,Dairy,68,68,0,9.0,4.6,70.0,No,Sunny,0,No Waste,No,Low
+INV006269,2025-10-12,Cafeteria,Meat,60,44,16,3.0,5.4,44.0,No,Rainy,5,Low Demand,No,Medium
+INV006278,2025-10-12,Cafeteria,Fruits,83,71,12,5.0,7.7,71.0,Yes,Hot,1,Low Demand,Yes,Low
+INV006287,2025-10-13,Cafeteria,Vegetables,75,41,34,3.0,8.9,41.0,No,Rainy,10,Low Demand,Yes,High
+INV006289,2025-10-13,Cafeteria,Meat,54,54,0,4.0,2.5,56.0,No,Cloudy,0,No Waste,No,Low
+INV006290,2025-10-13,Cafeteria,Prepared Food,58,58,0,3.0,21.5,62.0,No,Cloudy,0,No Waste,No,Low
+INV006297,2025-10-13,Cafeteria,Meat,74,60,14,6.0,1.6,60.0,No,Sunny,2,Low Demand,No,Medium
+INV006302,2025-10-13,Cafeteria,Dairy,66,60,6,8.0,7.0,60.0,No,Sunny,1,Low Demand,No,Low
+INV006308,2025-10-14,Cafeteria,Meat,227,73,154,5.0,1.8,73.0,No,Sunny,35,Overproduction,Yes,High
+INV006310,2025-10-14,Cafeteria,Dairy,84,53,31,6.0,4.3,53.0,No,Sunny,5,Low Demand,No,Medium
+INV006316,2025-10-14,Cafeteria,Dairy,93,60,33,8.0,5.9,60.0,No,Sunny,5,Overproduction,No,Medium
+INV006319,2025-10-14,Cafeteria,Fruits,97,37,60,6.0,2.2,37.0,No,Rainy,14,Overproduction,Yes,High
+INV006336,2025-10-15,Cafeteria,Bakery,66,63,3,2.0,23.3,63.0,No,Sunny,1,Low Demand,No,Low
+INV006337,2025-10-15,Cafeteria,Prepared Food,57,57,0,2.0,21.4,90.0,No,Hot,0,No Waste,No,Medium
+INV006338,2025-10-15,Cafeteria,Meat,60,33,27,6.0,1.3,33.0,No,Rainy,9,Low Demand,No,High
+INV006341,2025-10-15,Cafeteria,Meat,63,63,0,3.0,-0.7,77.0,Yes,Cloudy,0,No Waste,No,Low
+INV006349,2025-10-16,Cafeteria,Prepared Food,78,78,0,1.0,21.9,81.0,Yes,Hot,0,No Waste,No,Low
+INV006352,2025-10-16,Cafeteria,Meat,73,71,2,1.0,2.6,71.0,Yes,Sunny,0,No Waste,No,Low
+INV006361,2025-10-16,Cafeteria,Vegetables,71,71,0,8.0,4.5,87.0,No,Hot,0,No Waste,No,Low
+INV006364,2025-10-16,Cafeteria,Vegetables,64,50,14,4.0,10.9,50.0,No,Hot,4,Storage Issue,Yes,Medium
+INV006366,2025-10-16,Cafeteria,Fruits,93,58,35,4.0,6.1,58.0,Yes,Rainy,8,Overproduction,No,Medium
+INV006367,2025-10-16,Cafeteria,Bakery,53,44,9,3.0,16.5,44.0,No,,2,Low Demand,No,Medium
+INV006368,2025-10-16,Cafeteria,Fruits,66,60,6,9.0,8.9,60.0,No,Sunny,0,No Waste,No,Low
+INV006373,2025-10-17,Cafeteria,Meat,57,57,0,7.0,1.9,70.0,Yes,Rainy,0,No Waste,No,Low
+INV006391,2025-10-18,Cafeteria,Vegetables,93,66,27,5.0,8.9,66.0,Yes,Rainy,6,Low Demand,No,Medium
+INV006392,2025-10-18,Cafeteria,Fruits,69,69,0,6.0,11.8,77.0,No,Sunny,0,No Waste,No,Low
+INV006393,2025-10-18,Cafeteria,Vegetables,69,52,17,5.0,3.3,52.0,No,Sunny,3,Low Demand,No,Medium
+INV006394,2025-10-18,Cafeteria,Fruits,89,66,23,,9.0,66.0,Yes,Cloudy,4,Overproduction,No,Medium
+INV006396,2025-10-18,Cafeteria,Prepared Food,68,61,7,3.0,21.1,61.0,No,Sunny,1,Low Demand,No,Low
+INV006403,2025-10-18,Cafeteria,Meat,70,70,0,4.0,3.2,81.0,Yes,Hot,0,No Waste,No,Low
+INV006404,2025-10-18,Cafeteria,Dairy,68,68,0,9.0,1.9,127.0,Yes,Sunny,0,No Waste,No,Low
+INV006407,2025-10-18,Cafeteria,Fruits,72,71,1,5.0,11.4,71.0,Yes,Rainy,0,No Waste,No,Low
+INV006410,2025-10-18,Cafeteria,Prepared Food,58,58,0,2.0,22.5,64.0,No,Sunny,0,No Waste,No,Low
+INV006415,2025-10-18,Cafeteria,Meat,71,63,8,6.0,1.6,63.0,No,Hot,1,Low Demand,No,Low
+INV006416,2025-10-18,Cafeteria,Vegetables,61,61,0,4.0,8.8,63.0,No,Cloudy,0,No Waste,No,Low
+INV006429,2025-10-19,Cafeteria,Vegetables,76,59,17,5.0,11.5,59.0,No,Hot,4,Storage Issue,No,Medium
+INV006435,2025-10-19,Cafeteria,Prepared Food,69,69,0,2.0,15.6,71.0,No,Hot,0,No Waste,No,Low
+INV006436,2025-10-19,Cafeteria,Fruits,67,55,12,7.0,12.0,55.0,No,Cloudy,2,Low Demand,No,Low
+INV006438,2025-10-19,Cafeteria,Meat,67,67,0,1.0,-1.0,68.0,Yes,Cloudy,0,No Waste,No,Low
+INV006439,2025-10-19,Cafeteria,Prepared Food,98,43,55,2.0,19.3,43.0,No,Rainy,23,Overproduction,Yes,High
+INV006440,2025-10-19,Cafeteria,Bakery,52,52,0,2.0,17.8,93.0,No,Hot,0,No Waste,No,Low
+INV006441,2025-10-19,Cafeteria,Dairy,84,57,27,9.0,4.9,57.0,No,Sunny,4,Low Demand,No,Medium
+INV006446,2025-10-19,Cafeteria,Bakery,86,85,1,2.0,22.2,85.0,No,Sunny,0,No Waste,No,Low
+INV006448,2025-10-20,Cafeteria,Vegetables,88,88,0,7.0,10.3,89.0,Yes,Sunny,0,No Waste,No,Low
+INV006450,2025-10-20,Cafeteria,Prepared Food,63,58,5,1.0,13.3,58.0,No,Cloudy,1,Expired,No,Low
+INV006453,2025-10-20,Cafeteria,Dairy,78,46,32,5.0,4.5,46.0,No,,7,Overproduction,No,High
+INV006454,2025-10-20,Cafeteria,Bakery,71,69,2,3.0,21.0,69.0,Yes,Cloudy,0,No Waste,No,Low
+INV006461,2025-10-20,Cafeteria,Fruits,84,76,8,5.0,6.5,76.0,No,Sunny,1,Low Demand,No,High
+INV006470,2025-10-21,Cafeteria,Meat,88,84,4,1.0,2.9,84.0,No,Hot,1,Expired,No,Low
+INV006474,2025-10-21,Cafeteria,Prepared Food,61,38,23,1.0,18.2,38.0,No,Rainy,8,Expired,No,High
+INV006475,2025-10-21,Cafeteria,Dairy,57,57,0,7.0,4.9,86.0,Yes,Sunny,0,No Waste,No,Low
+INV006481,2025-10-21,Cafeteria,Fruits,84,69,15,7.0,10.7,69.0,No,Hot,3,Low Demand,,Medium
+INV006498,2025-10-22,Cafeteria,Vegetables,57,50,7,7.0,,50.0,No,Rainy,0,No Waste,,Low
+INV006502,2025-10-23,Cafeteria,Bakery,94,66,28,4.0,24.3,66.0,No,Hot,7,Low Demand,,Medium
+INV006519,2025-10-23,Cafeteria,Meat,68,68,0,4.0,4.6,75.0,Yes,Hot,0,No Waste,No,Low
+INV006523,2025-10-23,Cafeteria,Bakery,79,65,14,2.0,20.3,65.0,No,Sunny,3,Expired,No,Medium
+INV006524,2025-10-23,Cafeteria,Fruits,71,62,9,5.0,6.5,62.0,No,Hot,1,Low Demand,No,High
+INV006529,2025-10-24,Cafeteria,Fruits,76,60,16,9.0,9.7,60.0,No,Sunny,1,Low Demand,No,Low
+INV006530,2025-10-24,Cafeteria,Bakery,59,59,0,4.0,28.0,65.0,No,Cloudy,0,No Waste,No,Low
+INV006537,2025-10-24,Cafeteria,Vegetables,63,63,0,4.0,8.9,88.0,No,Sunny,0,No Waste,No,Low
+INV006539,2025-10-24,Cafeteria,Fruits,61,46,15,8.0,9.6,46.0,No,Rainy,3,Low Demand,No,Medium
+INV006557,2025-10-25,Cafeteria,Meat,62,48,14,4.0,1.2,48.0,No,Rainy,2,Low Demand,Yes,Medium
+INV006559,2025-10-25,Cafeteria,Meat,65,56,9,2.0,0.2,56.0,No,Cloudy,2,Low Demand,No,Medium
+INV006574,2025-10-26,Cafeteria,Meat,35,35,0,4.0,2.2,58.0,No,Cloudy,0,No Waste,No,Low
+INV006580,2025-10-26,Cafeteria,Bakery,63,63,0,2.0,17.2,96.0,Yes,Sunny,0,No Waste,No,Low
+INV006582,2025-10-26,Cafeteria,Prepared Food,63,63,0,1.0,10.5,75.0,Yes,,0,No Waste,No,Low
+INV006584,2025-10-27,Cafeteria,Meat,90,58,32,4.0,2.8,58.0,No,Hot,6,Low Demand,Yes,Medium
+INV006597,2025-10-27,Cafeteria,Vegetables,65,54,11,6.0,6.6,54.0,No,Sunny,1,Low Demand,No,Low
+INV006606,2025-10-28,Cafeteria,Bakery,60,60,0,3.0,18.3,62.0,No,Hot,0,No Waste,No,Low
+INV006611,2025-10-28,Cafeteria,Prepared Food,35,35,0,1.0,11.8,68.0,No,Sunny,0,No Waste,No,Low
+INV006612,2025-10-28,Cafeteria,Prepared Food,57,57,0,1.0,19.4,57.0,No,Hot,0,No Waste,No,Low
+INV006619,2025-10-28,Cafeteria,Vegetables,75,52,23,8.0,6.4,52.0,No,Sunny,3,Low Demand,No,Medium
+INV006622,2025-10-28,Cafeteria,Meat,90,87,3,4.0,1.7,,Yes,Cloudy,0,No Waste,,Low
+INV006624,2025-10-28,Cafeteria,Dairy,71,53,18,2.0,3.1,53.0,No,Sunny,5,Low Demand,No,Medium
+INV006629,2025-10-29,Cafeteria,Dairy,65,58,7,6.0,2.3,58.0,No,Cloudy,1,Low Demand,No,Low
+INV006635,2025-10-29,Cafeteria,Vegetables,49,49,0,6.0,2.2,49.0,No,Rainy,0,No Waste,No,Low
+INV006641,2025-10-29,Cafeteria,Dairy,60,60,0,7.0,4.7,68.0,No,Sunny,0,No Waste,No,Low
+INV006648,2025-10-30,Cafeteria,Prepared Food,72,54,18,2.0,22.7,54.0,Yes,Rainy,7,Low Demand,No,High
+INV006652,2025-10-30,Cafeteria,Vegetables,55,55,0,,4.3,64.0,No,Sunny,0,No Waste,No,Low
+INV006653,2025-10-30,Cafeteria,Meat,59,34,25,8.0,1.8,34.0,No,Rainy,5,Low Demand,No,Medium
+INV006657,2025-10-30,Cafeteria,Bakery,58,40,18,5.0,21.7,40.0,No,Rainy,5,Low Demand,No,High
+INV006659,2025-10-30,Cafeteria,Prepared Food,82,77,5,2.0,24.2,77.0,Yes,Hot,1,Expired,No,Low
+INV006664,2025-10-30,Cafeteria,Dairy,74,56,18,11.0,5.4,56.0,No,Cloudy,1,Low Demand,No,Low
+INV006665,2025-10-30,Cafeteria,Fruits,69,52,17,5.0,7.3,52.0,No,Hot,4,Low Demand,No,Medium
+INV006667,2025-10-30,Cafeteria,Fruits,61,61,0,5.0,4.3,63.0,No,Hot,0,No Waste,No,Low
+INV006670,2025-10-30,Cafeteria,Fruits,53,53,0,1.0,8.7,60.0,No,Cloudy,0,No Waste,No,Low
+INV006676,2025-10-31,Cafeteria,Vegetables,77,53,24,9.0,11.4,53.0,No,,8,Low Demand,No,High
+INV006677,2025-10-31,Cafeteria,Bakery,91,80,11,1.0,22.4,80.0,No,Hot,4,Expired,No,Medium
+INV006685,2025-10-31,Cafeteria,Bakery,71,71,0,3.0,18.4,75.0,Yes,Hot,0,No Waste,No,High
+INV006697,2025-11-01,Cafeteria,Vegetables,73,63,10,6.0,5.7,63.0,Yes,Rainy,2,Low Demand,No,Medium
+INV006701,2025-11-01,Cafeteria,Meat,51,51,0,4.0,2.2,58.0,No,Cloudy,0,No Waste,No,Low
+INV006702,2025-11-01,Cafeteria,Prepared Food,72,61,11,2.0,15.7,61.0,No,Cloudy,2,Expired,No,Medium
+INV006708,2025-11-01,Cafeteria,Meat,69,51,18,6.0,4.0,51.0,No,Cloudy,3,Low Demand,No,Medium
+INV006719,2025-11-02,Cafeteria,Vegetables,76,56,20,7.0,2.2,56.0,No,Sunny,2,Low Demand,No,Medium
+INV006725,2025-11-02,Cafeteria,Dairy,90,33,57,7.0,6.3,33.0,No,Rainy,17,Overproduction,Yes,Medium
+INV006742,2025-11-03,Cafeteria,Prepared Food,72,55,17,1.0,26.4,55.0,No,Cloudy,6,Storage Issue,No,Medium
+INV006743,2025-11-03,Cafeteria,Dairy,49,49,0,5.0,5.1,81.0,No,Hot,0,No Waste,No,High
+INV006751,2025-11-03,Cafeteria,Fruits,64,46,18,5.0,10.2,46.0,No,Rainy,4,Low Demand,No,Medium
+INV006756,2025-11-04,Cafeteria,Fruits,69,61,8,7.0,12.4,61.0,No,Hot,1,Low Demand,Yes,Low
+INV006757,2025-11-04,Cafeteria,Fruits,67,62,5,6.0,11.1,62.0,No,Cloudy,0,No Waste,No,Low
+INV006761,2025-11-04,Cafeteria,Meat,53,37,16,3.0,1.8,37.0,No,Rainy,3,Low Demand,No,Medium
+INV006772,2025-11-04,Cafeteria,Prepared Food,65,65,0,1.0,16.3,67.0,No,Sunny,0,No Waste,No,Low
+INV006773,2025-11-04,Cafeteria,Meat,76,71,5,4.0,4.3,71.0,No,Sunny,0,No Waste,No,Low
+INV006774,2025-11-04,Cafeteria,Prepared Food,36,36,0,1.0,,51.0,No,,0,No Waste,No,Low
+INV006776,2025-11-05,Cafeteria,Fruits,75,75,0,7.0,6.4,75.0,Yes,Sunny,0,No Waste,No,Low
+INV006781,2025-11-05,Cafeteria,Fruits,70,58,12,5.0,7.5,58.0,No,Cloudy,2,Low Demand,No,Medium
+INV006788,2025-11-05,Cafeteria,Prepared Food,77,37,40,,21.4,37.0,No,Rainy,15,Overproduction,No,High
+INV006790,2025-11-05,Cafeteria,Meat,56,49,7,5.0,2.6,49.0,No,Sunny,1,Low Demand,No,Low
+INV006795,2025-11-05,Cafeteria,Dairy,83,73,10,12.0,5.2,73.0,No,Hot,0,No Waste,No,Low
+INV006804,2025-11-06,Cafeteria,Vegetables,66,66,0,7.0,0.9,69.0,No,Hot,0,No Waste,No,Low
+INV006806,2025-11-06,Cafeteria,Fruits,69,53,16,7.0,6.6,53.0,No,Rainy,2,Low Demand,No,Medium
+INV006809,2025-11-06,Cafeteria,Vegetables,75,48,27,5.0,3.5,48.0,No,Cloudy,4,Overproduction,No,Medium
+INV006811,2025-11-06,Cafeteria,Vegetables,67,63,4,6.0,10.2,63.0,No,Cloudy,0,No Waste,No,Low
+INV006813,2025-11-06,Cafeteria,Vegetables,73,44,29,6.0,5.6,44.0,No,Cloudy,6,Low Demand,No,Low
+INV006816,2025-11-07,Cafeteria,Dairy,62,62,0,2.0,5.7,83.0,No,Hot,0,No Waste,No,Low
+INV006823,2025-11-07,Cafeteria,Meat,70,55,15,7.0,2.6,55.0,No,Cloudy,1,Low Demand,No,Low
+INV006828,2025-11-07,Cafeteria,Fruits,71,71,0,4.0,10.0,76.0,No,Cloudy,0,No Waste,No,Low
+INV006833,2025-11-07,Cafeteria,Bakery,169,99,70,3.0,24.9,99.0,Yes,Sunny,23,Overproduction,Yes,High
+INV006847,2025-11-08,Cafeteria,Meat,67,67,0,5.0,2.4,69.0,No,Sunny,0,No Waste,No,Low
+INV006852,2025-11-08,Cafeteria,Bakery,71,66,5,4.0,18.6,66.0,No,Cloudy,1,Low Demand,No,Low
+INV006854,2025-11-08,Cafeteria,Prepared Food,42,42,0,2.0,29.2,82.0,No,Sunny,0,No Waste,No,Low
+INV006858,2025-11-09,Cafeteria,Prepared Food,60,54,6,1.0,23.7,54.0,Yes,Rainy,2,Expired,No,Medium
+INV006859,2025-11-09,Cafeteria,Fruits,86,60,26,7.0,12.8,60.0,No,Hot,6,Storage Issue,Yes,Medium
+INV006860,2025-11-09,Cafeteria,Meat,63,63,0,5.0,1.9,68.0,No,Sunny,0,No Waste,No,Low
+INV006861,2025-11-09,Cafeteria,Vegetables,81,63,18,3.0,7.3,63.0,No,Hot,4,Low Demand,No,Medium
+INV006874,2025-11-10,Cafeteria,Dairy,57,57,0,7.0,2.4,97.0,Yes,Sunny,0,No Waste,No,Low
+INV006876,2025-11-10,Cafeteria,Fruits,81,59,22,4.0,7.2,59.0,Yes,Rainy,4,Low Demand,No,Medium
+INV006878,2025-11-10,Cafeteria,Prepared Food,57,57,0,1.0,22.3,61.0,No,Cloudy,0,No Waste,No,Low
+INV006887,2025-11-10,Cafeteria,Meat,61,61,0,2.0,2.2,68.0,No,Sunny,0,No Waste,No,Low
+INV006891,2025-11-10,Cafeteria,Fruits,100,76,24,6.0,6.5,76.0,No,Sunny,3,Low Demand,No,Medium
+INV006894,2025-11-10,Cafeteria,Fruits,56,49,7,5.0,3.2,49.0,No,Sunny,0,No Waste,No,Low
+INV006895,2025-11-10,Cafeteria,Dairy,90,47,43,6.0,5.7,47.0,No,Rainy,11,Overproduction,No,High
+INV006901,2025-11-11,Cafeteria,Fruits,67,54,13,8.0,5.9,54.0,No,Cloudy,2,Low Demand,No,Medium
+INV006904,2025-11-11,Cafeteria,Vegetables,84,67,17,4.0,8.9,67.0,No,Hot,3,Low Demand,No,Medium
+INV006906,2025-11-11,Cafeteria,Prepared Food,52,52,0,,14.4,61.0,Yes,Cloudy,0,No Waste,No,Low
+INV006916,2025-11-11,Cafeteria,Prepared Food,58,58,0,1.0,24.5,65.0,Yes,,0,No Waste,No,Low
+INV006919,2025-11-12,Cafeteria,Prepared Food,61,58,3,2.0,22.9,58.0,No,Sunny,1,Low Demand,No,Low
+INV006928,2025-11-12,Cafeteria,Fruits,81,46,35,4.0,8.9,46.0,No,Hot,7,Low Demand,No,Medium
+INV006933,2025-11-12,Cafeteria,Fruits,78,78,0,4.0,8.3,92.0,Yes,Hot,0,No Waste,No,Low
+INV006936,2025-11-12,Cafeteria,Dairy,55,52,3,4.0,6.6,52.0,No,Sunny,0,No Waste,No,Low
+INV006948,2025-11-13,Cafeteria,Bakery,75,65,10,4.0,26.3,65.0,No,Sunny,2,Low Demand,Yes,Medium
+INV006949,2025-11-13,Cafeteria,Fruits,56,32,24,5.0,4.8,32.0,No,Rainy,6,Low Demand,No,High
+INV006952,2025-11-13,Cafeteria,Meat,63,55,8,4.0,4.0,55.0,No,Sunny,2,Low Demand,No,Medium
+INV006964,2025-11-13,Cafeteria,Bakery,55,34,21,5.0,22.3,,No,Rainy,4,Low Demand,No,Medium
+INV006967,2025-11-13,Cafeteria,Bakery,96,51,45,4.0,18.4,51.0,Yes,Rainy,13,Overproduction,No,High
+INV006970,2025-11-14,Cafeteria,Dairy,59,45,14,8.0,1.8,45.0,No,Cloudy,2,Low Demand,Yes,Medium
+INV006979,2025-11-14,Cafeteria,Dairy,74,62,12,,3.8,,No,Sunny,1,Low Demand,No,Low
+INV007004,2025-11-16,Cafeteria,Bakery,79,79,0,2.0,22.5,79.0,No,Cloudy,0,No Waste,No,Low
+INV007005,2025-11-16,Cafeteria,Dairy,59,59,0,13.0,5.9,67.0,No,Hot,0,No Waste,No,Low
+INV007008,2025-11-16,Cafeteria,Meat,94,84,10,1.0,3.2,84.0,Yes,Cloudy,3,Expired,No,Medium
+INV007011,2025-11-16,Cafeteria,Vegetables,63,37,26,7.0,5.0,37.0,No,Rainy,4,Low Demand,No,Medium
+INV007019,2025-11-16,Cafeteria,Bakery,228,39,189,1.0,22.5,39.0,No,Rainy,96,Overproduction,Yes,High
+INV007020,2025-11-16,Cafeteria,Prepared Food,84,84,0,1.0,13.9,104.0,Yes,Cloudy,0,No Waste,No,Low
+INV007021,2025-11-16,Cafeteria,Meat,63,63,0,6.0,0.2,72.0,No,Cloudy,0,No Waste,No,Low
+INV007031,2025-11-17,Cafeteria,Vegetables,69,58,11,10.0,5.4,58.0,No,Cloudy,1,Low Demand,No,Low
+INV007036,2025-11-17,Cafeteria,Dairy,100,54,46,9.0,2.5,54.0,Yes,Rainy,13,Overproduction,Yes,High
+INV007062,2025-11-18,Cafeteria,Fruits,59,48,11,6.0,8.3,48.0,No,Rainy,1,Low Demand,No,Low
+INV007065,2025-11-18,Cafeteria,Bakery,58,58,0,1.0,15.6,61.0,No,Sunny,0,No Waste,No,Low
+INV007067,2025-11-19,Cafeteria,Bakery,60,41,19,,23.4,41.0,No,Rainy,5,Low Demand,Yes,Medium
+INV007068,2025-11-19,Cafeteria,Fruits,67,67,0,1.0,4.2,79.0,Yes,Rainy,0,No Waste,No,Low
+INV007070,2025-11-19,Cafeteria,Fruits,42,42,0,7.0,10.5,85.0,No,,0,No Waste,No,Low
+INV007075,2025-11-19,Cafeteria,Fruits,64,64,0,6.0,6.5,80.0,Yes,Sunny,0,No Waste,No,Low
+INV007076,2025-11-19,Cafeteria,Vegetables,73,61,12,8.0,5.4,,No,Hot,1,Low Demand,No,Low
+INV007079,2025-11-19,Cafeteria,Prepared Food,73,39,34,1.0,17.4,39.0,No,Rainy,14,Low Demand,Yes,High
+INV007081,2025-11-19,Cafeteria,Meat,59,51,8,6.0,5.8,51.0,No,Cloudy,2,Low Demand,No,Medium
+INV007082,2025-11-19,Cafeteria,Vegetables,55,41,14,5.0,1.7,41.0,No,Rainy,3,Low Demand,No,Medium
+INV007086,2025-11-19,Cafeteria,Meat,74,74,0,4.0,4.3,76.0,No,Sunny,0,No Waste,No,Low
+INV007089,2025-11-19,Cafeteria,Meat,62,62,0,3.0,2.0,63.0,No,Hot,0,No Waste,No,Low
+INV007092,2025-11-20,Cafeteria,Dairy,73,40,33,4.0,2.7,40.0,No,Rainy,9,Overproduction,Yes,High
+INV007094,2025-11-20,Cafeteria,Fruits,65,39,26,7.0,5.9,39.0,No,Rainy,6,Low Demand,Yes,High
+INV007103,2025-11-20,Cafeteria,Vegetables,73,61,12,3.0,4.9,61.0,No,Cloudy,2,Low Demand,No,Medium
+INV007109,2025-11-21,Cafeteria,Prepared Food,55,55,0,1.0,19.7,,No,,0,No Waste,No,Low
+INV007123,2025-11-21,Cafeteria,Meat,76,63,13,3.0,0.5,63.0,No,Sunny,3,Low Demand,No,Medium
+INV007134,2025-11-22,Cafeteria,Bakery,70,49,21,3.0,24.9,49.0,No,Cloudy,7,Low Demand,No,High
+INV007136,2025-11-22,Cafeteria,Vegetables,51,51,0,10.0,9.6,63.0,No,Sunny,0,No Waste,No,Low
+INV007142,2025-11-22,Cafeteria,Bakery,82,39,43,5.0,20.9,39.0,No,Rainy,11,Overproduction,No,High
+INV007144,2025-11-22,Cafeteria,Dairy,60,60,0,2.0,4.3,89.0,No,Sunny,0,No Waste,No,Low
+INV007147,2025-11-22,Cafeteria,Vegetables,86,68,18,,6.3,68.0,No,Cloudy,3,Low Demand,No,Medium
+INV007154,2025-11-23,Cafeteria,Dairy,47,47,0,6.0,0.3,56.0,No,Hot,0,No Waste,No,Low
+INV007157,2025-11-23,Cafeteria,Vegetables,71,68,3,8.0,-0.9,68.0,Yes,Cloudy,0,No Waste,No,Low
+INV007158,2025-11-23,Cafeteria,Dairy,71,71,0,7.0,4.2,71.0,No,Cloudy,0,No Waste,No,Low
+INV007177,2025-11-24,Cafeteria,Fruits,65,58,7,3.0,14.5,58.0,No,Sunny,2,Storage Issue,No,Medium
+INV007179,2025-11-24,Cafeteria,Bakery,265,101,164,1.0,25.0,101.0,Yes,Hot,79,Overproduction,Yes,High
+INV007180,2025-11-24,Cafeteria,Fruits,77,63,14,8.0,9.5,63.0,No,Hot,1,Low Demand,No,Low
+INV007195,2025-11-24,Cafeteria,Fruits,56,56,0,6.0,7.3,59.0,No,Cloudy,0,No Waste,No,Low
+INV007202,2025-11-25,Cafeteria,Vegetables,60,60,0,6.0,3.0,66.0,No,Sunny,0,No Waste,No,Low
+INV007207,2025-11-25,Cafeteria,Bakery,60,60,0,3.0,24.8,100.0,Yes,Hot,0,No Waste,No,Low
+INV007210,2025-11-25,Cafeteria,Vegetables,57,57,0,8.0,2.0,68.0,No,Cloudy,0,No Waste,No,Low
+INV007222,2025-11-26,Cafeteria,Dairy,50,46,4,9.0,3.2,46.0,No,Sunny,1,Low Demand,No,Low
+INV007225,2025-11-26,Cafeteria,Meat,52,52,0,4.0,2.9,69.0,No,Sunny,0,No Waste,No,Low
+INV007234,2025-11-26,Cafeteria,Fruits,69,54,15,3.0,8.2,54.0,No,Sunny,3,Low Demand,No,Medium
+INV007239,2025-11-26,Cafeteria,Meat,60,60,0,3.0,,67.0,No,Sunny,0,No Waste,No,Low
+INV007241,2025-11-26,Cafeteria,Prepared Food,45,45,0,,16.7,66.0,No,Sunny,0,No Waste,No,Low
+INV007246,2025-11-27,Cafeteria,Dairy,67,67,0,10.0,3.9,86.0,Yes,Cloudy,0,No Waste,No,Low
+INV007259,2025-11-27,Cafeteria,Meat,82,77,5,4.0,4.4,77.0,Yes,Hot,1,Storage Issue,No,Low
+INV007260,2025-11-27,Cafeteria,Prepared Food,64,55,9,2.0,18.2,55.0,No,Hot,2,Expired,No,Medium
+INV007272,2025-11-28,Cafeteria,Vegetables,65,61,4,6.0,3.2,61.0,No,Hot,0,No Waste,No,Low
+INV007273,2025-11-28,Cafeteria,Fruits,82,43,39,5.0,8.8,43.0,No,Rainy,9,Overproduction,No,High
+INV007277,2025-11-28,Cafeteria,Vegetables,72,57,15,5.0,6.5,57.0,No,Sunny,3,Low Demand,No,Medium
+INV007281,2025-11-28,Cafeteria,Bakery,76,55,21,2.0,24.4,55.0,No,Hot,8,Low Demand,No,High
+INV007283,2025-11-28,Cafeteria,Meat,84,58,26,5.0,0.7,58.0,No,Sunny,4,Overproduction,No,Medium
+INV007285,2025-11-28,Cafeteria,Dairy,81,68,13,10.0,0.1,68.0,No,Sunny,0,No Waste,No,Low
+INV007289,2025-11-28,Cafeteria,Vegetables,49,49,0,9.0,6.7,55.0,No,Sunny,0,No Waste,No,Low
+INV007294,2025-11-29,Cafeteria,Fruits,49,49,0,7.0,4.5,66.0,No,Sunny,0,No Waste,No,Low
+INV007296,2025-11-29,Cafeteria,Bakery,56,40,16,3.0,27.8,40.0,No,Rainy,5,Low Demand,No,High
+INV007303,2025-11-29,Cafeteria,Fruits,72,37,35,4.0,6.6,37.0,No,Rainy,8,Overproduction,No,High
+INV007315,2025-11-30,Cafeteria,Vegetables,68,62,6,5.0,6.1,62.0,No,,1,Low Demand,No,High
+INV007317,2025-11-30,Cafeteria,Prepared Food,78,78,0,1.0,24.3,83.0,No,Hot,0,No Waste,No,Low
+INV007326,2025-11-30,Cafeteria,Vegetables,57,57,0,2.0,2.0,68.0,No,Hot,0,No Waste,No,Low
+INV007330,2025-11-30,Cafeteria,Vegetables,56,56,0,6.0,5.5,67.0,No,Cloudy,0,No Waste,No,Low
+INV007333,2025-11-30,Cafeteria,Fruits,68,63,5,7.0,8.9,63.0,No,Sunny,0,No Waste,No,Low
+INV007340,2025-12-01,Cafeteria,Bakery,53,53,0,3.0,19.6,71.0,No,Sunny,0,No Waste,No,Low
+INV007349,2025-12-01,Cafeteria,Dairy,55,55,0,4.0,5.1,57.0,No,Sunny,0,No Waste,No,Low
+INV007350,2025-12-01,Cafeteria,Vegetables,58,47,11,6.0,7.4,47.0,No,Rainy,1,Low Demand,No,Low
+INV007357,2025-12-02,Cafeteria,Bakery,70,70,0,2.0,23.9,77.0,No,Sunny,0,No Waste,No,Low
+INV007358,2025-12-02,Cafeteria,Prepared Food,68,68,0,1.0,18.8,82.0,No,Hot,0,No Waste,No,Low
+INV007364,2025-12-02,Cafeteria,Fruits,61,53,8,6.0,6.7,53.0,No,Cloudy,1,Low Demand,No,Low
+INV007370,2025-12-02,Cafeteria,Meat,54,54,0,5.0,1.1,56.0,No,Cloudy,0,No Waste,No,Low
+INV007396,2025-12-03,Cafeteria,Meat,76,57,19,6.0,0.9,57.0,No,Cloudy,3,Low Demand,No,Medium
+INV007397,2025-12-03,Cafeteria,Vegetables,73,73,0,3.0,5.8,92.0,Yes,Hot,0,No Waste,No,Low
+INV007401,2025-12-03,Cafeteria,Fruits,68,38,30,1.0,9.9,38.0,No,Rainy,12,Low Demand,Yes,High
+INV007413,2025-12-04,Cafeteria,Fruits,54,38,16,5.0,6.5,38.0,No,Rainy,3,Low Demand,No,Medium
+INV007417,2025-12-04,Cafeteria,Dairy,99,74,25,7.0,0.0,74.0,No,Hot,4,Low Demand,No,Medium
+INV007420,2025-12-04,Cafeteria,Vegetables,62,47,15,6.0,13.2,47.0,No,Hot,4,Storage Issue,No,Medium
+INV007422,2025-12-04,Cafeteria,Fruits,82,82,0,6.0,7.3,110.0,Yes,Cloudy,0,No Waste,No,Low
+INV007428,2025-12-04,Cafeteria,Bakery,70,39,31,2.0,22.6,39.0,No,Cloudy,10,Low Demand,Yes,High
+INV007437,2025-12-05,Cafeteria,Vegetables,55,55,0,5.0,5.8,66.0,No,Sunny,0,No Waste,No,Low
+INV007439,2025-12-05,Cafeteria,Dairy,52,52,0,1.0,5.6,63.0,No,Sunny,0,No Waste,No,Low
+INV007444,2025-12-05,Cafeteria,Vegetables,61,61,0,4.0,5.9,,No,Sunny,0,No Waste,No,Low
+INV007445,2025-12-05,Cafeteria,Fruits,79,50,29,3.0,10.6,50.0,No,Sunny,9,Overproduction,No,High
+INV007446,2025-12-05,Cafeteria,Fruits,74,58,16,6.0,10.3,58.0,No,Sunny,2,Low Demand,No,Medium
+INV007453,2025-12-06,Cafeteria,Meat,63,63,0,,3.1,70.0,No,Sunny,0,No Waste,No,Low
+INV007457,2025-12-06,Cafeteria,Vegetables,89,52,37,8.0,8.4,52.0,Yes,Rainy,8,Overproduction,No,High
+INV007458,2025-12-06,Cafeteria,Bakery,65,47,18,3.0,25.7,47.0,No,Sunny,6,Low Demand,No,High
+INV007462,2025-12-06,Cafeteria,Dairy,68,68,0,10.0,2.8,85.0,Yes,Sunny,0,No Waste,No,Low
+INV007463,2025-12-06,Cafeteria,Dairy,56,56,0,7.0,3.5,59.0,No,Hot,0,No Waste,No,Low
+INV007466,2025-12-06,Cafeteria,Vegetables,67,54,13,10.0,8.4,54.0,No,Sunny,2,Low Demand,No,Medium
+INV007469,2025-12-06,Cafeteria,Prepared Food,67,64,3,3.0,17.1,64.0,No,Sunny,0,No Waste,No,Low
+INV007471,2025-12-07,Cafeteria,Dairy,49,49,0,9.0,3.6,68.0,No,Cloudy,0,No Waste,No,Low
+INV007474,2025-12-07,Cafeteria,Dairy,71,68,3,9.0,4.8,68.0,No,Hot,0,No Waste,No,Low
+INV007479,2025-12-07,Cafeteria,Prepared Food,57,48,9,1.0,23.1,48.0,No,Rainy,3,Expired,No,Medium
+INV007487,2025-12-07,Cafeteria,Dairy,71,57,14,5.0,5.3,57.0,No,Sunny,2,Low Demand,No,Medium
+INV007489,2025-12-07,Cafeteria,Dairy,73,49,24,6.0,3.4,49.0,No,Rainy,5,Low Demand,Yes,Medium
+INV007496,2025-12-08,Cafeteria,Fruits,55,55,0,2.0,11.0,69.0,No,Hot,0,No Waste,No,Low
+INV007503,2025-12-08,Cafeteria,Fruits,72,49,23,8.0,6.9,49.0,No,Sunny,5,Low Demand,,High
+INV007521,2025-12-09,Cafeteria,Prepared Food,64,54,10,1.0,17.5,54.0,Yes,Rainy,3,Expired,No,Medium
+INV007522,2025-12-09,Cafeteria,Prepared Food,69,69,0,1.0,15.3,80.0,No,Sunny,0,No Waste,No,High
+INV007551,2025-12-10,Cafeteria,Fruits,58,58,0,6.0,1.6,61.0,No,Cloudy,0,No Waste,No,Low
+INV007557,2025-12-11,Cafeteria,Bakery,59,59,0,4.0,24.6,62.0,No,Hot,0,No Waste,No,Low
+INV007559,2025-12-11,Cafeteria,Vegetables,70,51,19,5.0,5.7,51.0,No,Cloudy,4,Low Demand,No,Medium
+INV007561,2025-12-11,Cafeteria,Meat,74,71,3,5.0,2.5,71.0,Yes,Cloudy,0,No Waste,No,Low
+INV007562,2025-12-11,Cafeteria,Bakery,86,86,0,5.0,14.7,99.0,Yes,Sunny,0,No Waste,No,Low
+INV007565,2025-12-11,Cafeteria,Bakery,58,58,0,3.0,25.8,69.0,No,Cloudy,0,No Waste,,Low
+INV007590,2025-12-12,Cafeteria,Fruits,85,61,24,5.0,,61.0,No,Sunny,4,Low Demand,No,Medium
+INV007592,2025-12-12,Cafeteria,Prepared Food,75,75,0,1.0,28.9,78.0,Yes,Cloudy,0,No Waste,No,Low
+INV007597,2025-12-12,Cafeteria,Prepared Food,55,55,0,2.0,18.0,65.0,No,Sunny,0,No Waste,No,Low
+INV007600,2025-12-12,Cafeteria,Meat,67,46,21,3.0,1.3,46.0,No,Cloudy,6,Low Demand,No,High
+INV007602,2025-12-12,Cafeteria,Vegetables,66,66,0,6.0,-0.7,81.0,Yes,Sunny,0,No Waste,No,Low
+INV007603,2025-12-12,Cafeteria,Vegetables,74,37,37,7.0,3.6,37.0,No,Rainy,8,Overproduction,No,High
+INV007604,2025-12-12,Cafeteria,Prepared Food,51,51,0,3.0,18.0,,No,Hot,0,No Waste,No,Low
+INV007607,2025-12-13,Cafeteria,Vegetables,53,48,5,4.0,3.5,48.0,No,Cloudy,1,Low Demand,No,Low
+INV007616,2025-12-13,Cafeteria,Meat,80,75,5,3.0,-2.3,75.0,No,Sunny,1,Expired,No,Low
+INV007622,2025-12-13,Cafeteria,Dairy,66,66,0,13.0,7.9,79.0,No,Sunny,0,No Waste,No,Low
+INV007632,2025-12-13,Cafeteria,Prepared Food,86,78,8,2.0,25.9,78.0,Yes,Sunny,2,Storage Issue,No,Medium
+INV007633,2025-12-13,Cafeteria,Prepared Food,63,53,10,2.0,20.3,53.0,No,Sunny,3,Low Demand,No,Medium
+INV007642,2025-12-14,Cafeteria,Dairy,84,83,1,7.0,4.3,83.0,Yes,Hot,0,No Waste,No,Low
+INV007648,2025-12-14,Cafeteria,Prepared Food,67,67,0,1.0,9.8,71.0,No,Sunny,0,No Waste,No,Low
+INV007654,2025-12-14,Cafeteria,Fruits,73,70,3,8.0,9.4,70.0,No,Sunny,0,No Waste,No,Low
+INV007656,2025-12-14,Cafeteria,Fruits,64,64,0,5.0,10.7,81.0,No,Cloudy,0,No Waste,No,Low
+INV007658,2025-12-14,Cafeteria,Prepared Food,48,37,11,1.0,22.0,37.0,No,Rainy,3,Expired,No,Medium
+INV007662,2025-12-14,Cafeteria,Prepared Food,118,92,26,2.0,28.6,92.0,Yes,Sunny,9,Storage Issue,No,Medium
+INV007664,2025-12-15,Cafeteria,Prepared Food,46,46,0,1.0,22.2,,No,Hot,0,No Waste,No,Low
+INV007665,2025-12-15,Cafeteria,Vegetables,71,51,20,7.0,2.5,51.0,No,Sunny,3,Low Demand,No,Medium
+INV007669,2025-12-15,Cafeteria,Vegetables,62,58,4,6.0,5.8,58.0,No,Hot,0,No Waste,No,Low
+INV007671,2025-12-15,Cafeteria,Prepared Food,65,47,18,1.0,16.6,47.0,No,Cloudy,8,Expired,No,High
+INV007673,2025-12-15,Cafeteria,Fruits,57,43,14,5.0,5.1,43.0,No,Rainy,2,Low Demand,No,Medium
+INV007674,2025-12-15,Cafeteria,Dairy,59,59,0,2.0,4.7,74.0,No,Sunny,0,No Waste,No,Low
+INV007680,2025-12-16,Cafeteria,Meat,54,54,0,2.0,1.2,66.0,No,Cloudy,0,No Waste,No,Low
+INV007682,2025-12-16,Cafeteria,Prepared Food,55,30,25,2.0,19.7,30.0,No,Rainy,7,Low Demand,No,High
+INV007683,2025-12-16,Cafeteria,Prepared Food,77,77,0,2.0,14.5,96.0,Yes,Sunny,0,No Waste,No,Low
+INV007685,2025-12-16,Cafeteria,Dairy,70,58,12,4.0,4.7,58.0,No,Sunny,2,Low Demand,No,Medium
+INV007690,2025-12-16,Cafeteria,Fruits,59,59,0,2.0,10.9,68.0,No,Sunny,0,No Waste,No,Low
+INV007691,2025-12-17,Cafeteria,Fruits,66,57,9,7.0,7.3,57.0,No,Sunny,1,Low Demand,No,Low
+INV007696,2025-12-17,Cafeteria,Vegetables,73,73,0,,4.4,73.0,No,Hot,0,No Waste,No,Low
+INV007699,2025-12-17,Cafeteria,Bakery,62,53,9,3.0,18.6,53.0,No,Rainy,1,Low Demand,,Low
+INV007706,2025-12-17,Cafeteria,Prepared Food,69,69,0,1.0,19.0,72.0,No,Sunny,0,No Waste,No,Low
+INV007711,2025-12-17,Cafeteria,Prepared Food,66,54,12,2.0,31.4,54.0,No,Sunny,5,Storage Issue,No,Medium
+INV007716,2025-12-17,Cafeteria,Prepared Food,62,62,0,3.0,24.8,73.0,No,Hot,0,No Waste,No,Low
+INV007723,2025-12-18,Cafeteria,Vegetables,65,65,0,1.0,7.3,79.0,No,Cloudy,0,No Waste,No,Low
+INV007724,2025-12-18,Cafeteria,Bakery,66,50,16,3.0,14.3,50.0,No,Sunny,3,Low Demand,No,Medium
+INV007730,2025-12-18,Cafeteria,Prepared Food,55,55,0,1.0,28.4,,No,Sunny,0,No Waste,No,Low
+INV007736,2025-12-18,Cafeteria,Meat,71,66,5,3.0,0.7,66.0,No,Sunny,1,Expired,No,Low
+INV007742,2025-12-18,Cafeteria,Vegetables,66,51,15,6.0,7.2,51.0,No,Cloudy,2,Low Demand,No,Medium
+INV007744,2025-12-18,Cafeteria,Meat,58,58,0,1.0,-0.6,74.0,No,Sunny,0,No Waste,No,Low
+INV007747,2025-12-18,Cafeteria,Meat,75,48,27,6.0,1.0,48.0,No,Sunny,4,Overproduction,No,Medium
+INV007749,2025-12-18,Cafeteria,Bakery,54,54,0,3.0,30.8,58.0,No,Hot,0,No Waste,No,Low
+INV007750,2025-12-18,Cafeteria,Fruits,57,57,0,,9.5,62.0,No,Hot,0,No Waste,No,Low
+INV007762,2025-12-19,Cafeteria,Vegetables,74,65,9,6.0,5.0,65.0,Yes,Rainy,2,Low Demand,No,Medium
+INV007766,2025-12-19,Cafeteria,Vegetables,60,60,0,5.0,5.7,71.0,No,Hot,0,No Waste,No,Low
+INV007782,2025-12-20,Cafeteria,Dairy,70,70,0,7.0,4.5,80.0,Yes,Hot,0,No Waste,No,Low
+INV007783,2025-12-20,Cafeteria,Fruits,69,53,16,6.0,5.7,53.0,No,Hot,2,Low Demand,No,Medium
+INV007785,2025-12-20,Cafeteria,Fruits,58,58,0,3.0,4.3,60.0,No,Sunny,0,No Waste,No,Low
+INV007786,2025-12-20,Cafeteria,Bakery,85,85,0,3.0,21.6,91.0,Yes,Sunny,0,No Waste,No,Low
+INV007788,2025-12-20,Cafeteria,Bakery,60,42,18,5.0,20.5,42.0,No,Cloudy,3,Low Demand,No,Medium
+INV007798,2025-12-21,Cafeteria,Fruits,67,67,0,8.0,7.6,71.0,No,Hot,0,No Waste,No,Medium
+INV007799,2025-12-21,Cafeteria,Prepared Food,75,75,0,1.0,17.4,85.0,Yes,Cloudy,0,No Waste,No,Low
+INV007805,2025-12-21,Cafeteria,Meat,51,51,0,4.0,1.9,79.0,No,Sunny,0,No Waste,No,Low
+INV007812,2025-12-22,Cafeteria,Dairy,56,54,2,6.0,5.9,54.0,No,Hot,0,No Waste,No,Low
+INV007822,2025-12-22,Cafeteria,Vegetables,70,70,0,6.0,6.3,70.0,No,Sunny,0,No Waste,No,Low
+INV007826,2025-12-23,Cafeteria,Fruits,65,38,27,2.0,7.8,38.0,No,Rainy,8,Low Demand,No,Low
+INV007827,2025-12-23,Cafeteria,Dairy,96,50,46,,0.7,50.0,No,Cloudy,10,Overproduction,Yes,High
+INV007830,2025-12-23,Cafeteria,Fruits,70,70,0,4.0,3.6,79.0,Yes,Cloudy,0,No Waste,No,Low
+INV007839,2025-12-23,Cafeteria,Fruits,49,49,0,7.0,4.2,61.0,No,Cloudy,0,No Waste,No,Low
+INV007844,2025-12-24,Cafeteria,Dairy,77,49,28,11.0,4.2,49.0,No,Sunny,4,Overproduction,Yes,Medium
+INV007845,2025-12-24,Cafeteria,Vegetables,69,43,26,5.0,2.0,43.0,No,Rainy,5,Low Demand,Yes,Medium
+INV007848,2025-12-24,Cafeteria,Bakery,61,61,0,2.0,19.6,70.0,No,Sunny,0,No Waste,No,Low
+INV007851,2025-12-24,Cafeteria,Fruits,75,75,0,7.0,4.6,82.0,Yes,Sunny,0,No Waste,No,Low
+INV007853,2025-12-24,Cafeteria,Prepared Food,58,34,24,1.0,13.3,,No,Rainy,10,Low Demand,Yes,High
+INV007854,2025-12-24,Cafeteria,Vegetables,60,46,14,6.0,7.4,46.0,No,Rainy,2,Low Demand,No,Medium
+INV007857,2025-12-24,Cafeteria,Prepared Food,51,51,0,2.0,15.2,63.0,No,Cloudy,0,No Waste,No,Low
+INV007864,2025-12-25,Cafeteria,Prepared Food,76,62,14,1.0,13.2,62.0,No,Rainy,4,Expired,No,Medium
+INV007869,2025-12-25,Cafeteria,Vegetables,120,73,47,6.0,-0.1,73.0,No,Sunny,11,Overproduction,Yes,High
+INV007876,2025-12-25,Cafeteria,Fruits,67,67,0,7.0,6.0,67.0,No,Cloudy,0,No Waste,No,Low
+INV007883,2025-12-25,Cafeteria,Fruits,76,37,39,5.0,6.6,,No,Rainy,11,Overproduction,Yes,High
+INV007899,2025-12-26,Cafeteria,Fruits,52,52,0,3.0,1.2,97.0,Yes,Hot,0,No Waste,No,High
+INV007900,2025-12-26,Cafeteria,Bakery,83,63,20,3.0,24.5,63.0,Yes,Rainy,5,Low Demand,No,Medium
+INV007906,2025-12-26,Cafeteria,Meat,83,55,28,4.0,-1.5,55.0,No,Cloudy,5,Overproduction,No,Medium
+INV007908,2025-12-27,Cafeteria,Prepared Food,71,71,0,2.0,16.4,84.0,No,Hot,0,No Waste,No,Low
+INV007920,2025-12-27,Cafeteria,Vegetables,89,85,4,6.0,-4.4,85.0,Yes,Sunny,0,No Waste,No,Low
+INV007921,2025-12-27,Cafeteria,Dairy,283,73,210,11.0,2.1,73.0,Yes,Sunny,60,Overproduction,No,High
+INV007938,2025-12-28,Cafeteria,Dairy,61,61,0,1.0,4.7,83.0,Yes,Cloudy,0,No Waste,No,Low
+INV007959,2025-12-30,Cafeteria,Meat,53,53,0,6.0,1.6,73.0,No,Hot,0,No Waste,No,Low
+INV007964,2025-12-30,Cafeteria,Bakery,64,55,9,3.0,23.1,55.0,No,Sunny,2,Low Demand,,Medium
+INV007970,2025-12-30,Cafeteria,Prepared Food,62,62,0,2.0,14.9,72.0,No,Sunny,0,No Waste,No,Low
+INV007971,2025-12-30,Cafeteria,Prepared Food,65,65,0,1.0,18.5,108.0,Yes,Sunny,0,No Waste,No,Low
+INV007984,2025-12-30,Cafeteria,Vegetables,77,54,23,9.0,6.4,54.0,No,Sunny,3,Low Demand,No,Medium
+INV007988,2025-12-31,Cafeteria,Bakery,61,55,6,4.0,16.1,55.0,No,Hot,1,Low Demand,No,Low
+INV007990,2025-12-31,Cafeteria,Prepared Food,87,58,29,1.0,13.2,58.0,No,Sunny,10,Expired,No,High

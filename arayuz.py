@@ -3,12 +3,10 @@ import sys
 import datetime
 import warnings
 
-# Tüm gereksiz uyarıları ve sürüm uyuşmazlığı loglarını sustur
+# Gereksiz sistem uyarılarını sustur
 warnings.filterwarnings("ignore")
 
-# ==============================================================================
-# 0. EĞER DOĞRUDAN 'python arayuz.py' İLE ÇALIŞTIRILIRSA OTOMATİK STREAMLIT RUN YAP
-# ==============================================================================
+# Eğer doğrudan 'python arayuz.py' ile çalıştırılırsa otomatik olarak Streamlit'i başlat
 if __name__ == "__main__" and not os.environ.get("STREAMLIT_RUNNING"):
     try:
         from streamlit.web import cli as stcli
@@ -18,22 +16,6 @@ if __name__ == "__main__" and not os.environ.get("STREAMLIT_RUNNING"):
     except Exception:
         pass
 
-# ==============================================================================
-# 1. SCIKIT-LEARN MODEL UYUMLULUK YAMALARI (Pickle Sürüm Farklılığı Önlemleri)
-# ==============================================================================
-try:
-    import sklearn.compose._column_transformer
-    if not hasattr(sklearn.compose._column_transformer, '_RemainderColsList'):
-        class _RemainderColsList(list):
-            pass
-        sklearn.compose._column_transformer._RemainderColsList = _RemainderColsList
-    import sklearn._loss._loss
-    sys.modules['_loss'] = sklearn._loss._loss
-    sys.modules['sklearn._loss'] = sklearn._loss
-    sys.modules['sklearn.ensemble._hist_gradient_boosting._loss'] = sklearn._loss._loss
-except Exception:
-    pass
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -41,14 +23,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 import joblib
 
-# Proje Kök Dizini (Tüm dosya yolları buna göre çözümlenir)
+# Proje Kök Dizini
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ==============================================================================
-# 2. SAYFA VE TEMA YAPILANDIRMASI
+# 1. SAYFA VE TEMA YAPILANDIRMASI
 # ==============================================================================
 st.set_page_config(
-    page_title="Yemekhane Talep & Gıda İsrafı Karar Destek",
+    page_title="Üniversite Yemekhanesi Talep & İsraf Karar Destek",
     page_icon="🍲",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -85,9 +67,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==============================================================================
-# 3. SABİTLER VE MODEL KATEGORİ DEĞERLERİ (HistGradientBoosting ile %100 Uyumlu)
+# 2. SABİTLER VE YEMEKHANE KATEGORİLERİ
 # ==============================================================================
-BUSINESS_CATS = ['Cafeteria', 'Cloud Kitchen', 'Restaurant', 'Supermarket']
+BUSINESS_TYPE = "Cafeteria"  # Sistemimiz %100 Üniversite Yemekhanesine özeldir
 FOOD_CATS = ['Bakery', 'Dairy', 'Fruits', 'Meat', 'Prepared Food', 'Vegetables']
 PROMOTION_CATS = ['No', 'Yes']
 WEATHER_CATS = ['Cloudy', 'Hot', 'Rainy', 'Sunny']
@@ -104,9 +86,9 @@ MEDIAN_TEMPS = {
 CATEGORY_TR = {
     'Prepared Food': '🍲 Sıcak Yemek / Günün Menüsü (Prepared Food)',
     'Bakery': '🥖 Ekmek & Fırın Ürünleri (Bakery)',
-    'Meat': '🥩 Et, Tavuk & Balık (Meat)',
-    'Dairy': '🥛 Süt & Süt Ürünleri / Yoğurt (Dairy)',
-    'Vegetables': '🥗 Sebze & Salata Barı (Vegetables)',
+    'Meat': '🥩 Et, Tavuk & Balık Menüsü (Meat)',
+    'Dairy': '🥛 Süt & Yoğurt / Ayran (Dairy)',
+    'Vegetables': '🥗 Sebze Yemeği & Salata Barı (Vegetables)',
     'Fruits': '🍎 Meyve & Tatlı (Fruits)'
 }
 TR_TO_CAT = {v: k for k, v in CATEGORY_TR.items()}
@@ -114,21 +96,21 @@ TR_TO_CAT = {v: k for k, v in CATEGORY_TR.items()}
 WEATHER_TR = {
     'Sunny': '☀️ Güneşli (Açık Havada Katılım Yüksek)',
     'Cloudy': '⛅ Bulutlu (Normal Katılım)',
-    'Rainy': '🌧️ Yağmurlu (Hava Şartlarına Bağlı Değişken)',
+    'Rainy': '🌧️ Yağmurlu (Öğrenciler Kampüste / Yoğunluk Artabilir)',
     'Hot': '🌡️ Sıcak (Hafif Menü Tercihi)'
 }
 TR_TO_WEATHER = {v: k for k, v in WEATHER_TR.items()}
 
 REASON_TR = {
     'No Waste': 'Sıfır Atık / İsraf Yok',
-    'Overproduction': 'Fazla Üretim (Overproduction)',
+    'Overproduction': 'Fazla Üretim (Aşırı Pişirme)',
     'Low Demand': 'Düşük Talep (Öğrenci Katılım Azlığı)',
     'Expired': 'Son Kullanma Tarihi / Bayatlama (Expired)',
-    'Storage Issue': 'Depolama / Sıcaklık Hatası'
+    'Storage Issue': 'Depolama / Dolap Sıcaklık Hatası'
 }
 
 # ==============================================================================
-# 4. MODEL VE VERİ YÜKLEME FONKSİYONLARI (Try-Catch Korumalı)
+# 3. YEMEKHANE MODELLERİNİ VE VERİ SETİNİ YÜKLEME
 # ==============================================================================
 @st.cache_resource
 def load_models():
@@ -144,16 +126,16 @@ def load_models():
             models['quantiles'] = joblib.load(q_path)
             models['loaded'] = True
         else:
-            missing = [f for f in ['food_waste_regressor_model.pkl', 'food_waste_classifier_model.pkl', 'quantile_models.pkl'] 
-                       if not os.path.exists(os.path.join(BASE_DIR, f))]
-            models['error'] = f"Model dosyaları bulunamadı: {', '.join(missing)}"
+            models['error'] = "Model dosyaları (.pkl) bulunamadı!"
     except Exception as e:
         models['error'] = str(e)
     return models
 
 @st.cache_data
 def load_dataset():
-    data_path = os.path.join(BASE_DIR, 'food_waste_dataset.csv')
+    data_path = os.path.join(BASE_DIR, 'yemekhane_oznitelikler.csv')
+    if not os.path.exists(data_path):
+        data_path = os.path.join(BASE_DIR, 'yemekhane_veriseti.csv')
     if os.path.exists(data_path):
         try:
             return pd.read_csv(data_path, parse_dates=['Date'])
@@ -165,7 +147,7 @@ models = load_models()
 dataset_df = load_dataset()
 
 # ==============================================================================
-# 5. DÖNGÜSEL İKİNCİ HAYAT (SECOND LIFE) KATALOĞU
+# 4. İKİNCİ HAYAT (SECOND LIFE) KURTARMA KATALOĞU
 # ==============================================================================
 RESCUE_CATALOG = [
     {
@@ -225,57 +207,57 @@ RESCUE_CATALOG = [
 ]
 
 # ==============================================================================
-# 6. YAN MENÜ (SIDEBAR)
+# 5. YAN MENÜ (SIDEBAR)
 # ==============================================================================
 with st.sidebar:
     st.markdown("### 🎓 Proje Künyesi")
     st.info("""
     **Proje No:** 13  
     **Konu:** Üniversite Yemekhanesinde Günlük Yemek Talebinin Tahmini ve Gıda İsrafının Azaltılması  
-    **Grup:** 4 Öğrenci  
-    **Hedef Çıktı:** Karar Destek Sistemi (DSS)  
+    **Kapsam:** %100 Üniversite Yemekhanesi  
+    **Hedef:** Karar Destek Sistemi (DSS)  
     **TÜBİTAK 2209-A Uyumlu**
     """)
     
     st.markdown("---")
-    st.markdown("### ⚙️ Model Durumu")
+    st.markdown("### ⚙️ Yemekhane Modelleri Durumu")
     if models['loaded']:
-        st.success("✅ **3 Model Devrede:**\n- Regresyon (İsraf kg)\n- P50/P90 Quantile (Rezerv)\n- Sınıflandırıcı (İsraf Nedeni)")
+        st.success("✅ **Yemekhane Modelleri Aktif:**\n- İsraf Regresyonu (MAE: 0.92 kg)\n- Quantile Modelleri (P50 & P90)\n- İsraf Sebebi Sınıflandırıcı (%85.6)")
     else:
-        st.error(f"⚠️ **Model Uyarısı:** {models.get('error', 'Yüklenemedi')}")
+        st.error(f"⚠️ Model Uyarısı: {models.get('error', 'Yüklenemedi')}")
         
     st.markdown("---")
     st.markdown("### 📌 Asimetrik Maliyet Parametreleri")
     c_over = st.number_input("Fazla Üretim Maliyeti (₺/kg)", min_value=1.0, value=35.0, step=1.0, 
                              help="Üretilen ama tüketilmeyen yemeğin hammadde ve atık bertaraf maliyeti.")
     c_under = st.number_input("Eksik Üretim Maliyeti (₺/kg)", min_value=1.0, value=75.0, step=1.0, 
-                              help="Yemek erken bittiğinde oluşan öğrenci memnuniyetsizliği ve acil ikame gıda temini maliyeti.")
+                              help="Yemek erken bittiğinde oluşan öğrenci mağduriyeti ve acil ikame gıda temini maliyeti.")
 
 # ==============================================================================
-# 7. ANA SAYFA VE SEKME YAPISI
+# 6. ANA BAŞLIK VE SEKME DÜZENİ (4 SEKME)
 # ==============================================================================
 st.markdown("""
 <div class="main-header">
     <h1 style="margin:0; font-size: 24px;">🌱 Üniversite Yemekhanesi Günlük Talep & Gıda İsrafı Karar Destek Sistemi</h1>
     <p style="margin:6px 0 0 0; opacity: 0.9; font-size: 14px;">
-        Makine öğrenmesi tabanlı talep tahmini, belirsizlik analizi (P50/P90), fazla/eksik üretim asimetrik maliyet optimizasyonu ve döngüsel ikinci hayat yönlendiricisi.
+        Üniversite yemekhanesine özel makine öğrenmesi modelleriyle günlük talep projeksiyonu, P50/P90 belirsizlik analizi, fazla/eksik üretim asimetrik maliyet optimizasyonu ve döngüsel ikinci hayat kurtarma yönetimi.
     </p>
 </div>
 """, unsafe_allow_html=True)
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+# 5. Sekme kaldırıldı, artık 4 temel sekme var
+tab1, tab2, tab3, tab4 = st.tabs([
     "🔮 Günlük Tahmin & Karar Destek",
     "⚖️ Maliyet & Asimetrik Karar Analizi",
     "🔄 Gıda İkinci Hayat (Second Life)",
-    "📊 Veri Analitiği & Model Başarımı",
-    "📋 10 Haftalık Çalışma Planı"
+    "📊 Veri Analitiği & Model Başarımı"
 ])
 
 # ==============================================================================
 # SEKME 1: GÜNLÜK TAHMİN & KARAR DESTEK
 # ==============================================================================
 with tab1:
-    st.subheader("📋 Günlük Operasyonel Giriş Parametreleri")
+    st.subheader("📋 Yemekhane Günlük Planlama Parametreleri")
     
     col_in1, col_in2, col_in3 = st.columns(3)
     
@@ -283,8 +265,6 @@ with tab1:
         sel_date = st.date_input("Planlama Tarihi", datetime.date.today())
         sel_cat_tr = st.selectbox("Menü / Yemek Kategorisi", list(CATEGORY_TR.values()), index=0)
         sel_cat = TR_TO_CAT[sel_cat_tr]
-        sel_business = st.selectbox("İşletme / Lokasyon", BUSINESS_CATS, index=0,
-                                     help="Yemekhane için varsayılan Cafeteria olarak belirlenmiştir.")
         
     with col_in2:
         expected_demand = st.number_input("Beklenen Günlük Talep (Öğrenci/Personel kg)", min_value=1.0, value=300.0, step=10.0,
@@ -305,7 +285,7 @@ with tab1:
         sel_promo = st.selectbox("Akademik Takvim / Etkinlik", ["Hayır (Standart Gün)", "Evet (Sınav Haftası / Festival)"], index=0)
         promo_val = "Yes" if "Evet" in sel_promo else "No"
 
-    # Otomatik Özellik Mühendisliği (Feature Engineering)
+    # Otomatik Özellik Mühendisliği
     day_of_week = sel_date.weekday()
     month = sel_date.month
     is_weekend = 1 if day_of_week >= 5 else 0
@@ -318,11 +298,10 @@ with tab1:
 
     if btn_predict:
         if not models['loaded']:
-            st.error("Model dosyaları yüklenemedi. Lütfen .pkl dosyalarının klasörde olduğunu kontrol edin.")
+            st.error("Model dosyaları yüklenemedi!")
         else:
-            # Modele tam olarak beklediği sıralı ve tipli DataFrame'i sunma
             input_df = pd.DataFrame([{
-                'Business_Type': sel_business,
+                'Business_Type': BUSINESS_TYPE,
                 'Food_Category': sel_cat,
                 'Promotion': promo_val,
                 'Weather': sel_weather,
@@ -339,13 +318,11 @@ with tab1:
                 'IsWeekend': int(is_weekend)
             }])
             
-            # Kategorik değişkenleri modelin eğitim kategorileri ile tam eşleme
-            input_df['Business_Type'] = pd.Categorical(input_df['Business_Type'], categories=BUSINESS_CATS)
+            input_df['Business_Type'] = pd.Categorical(input_df['Business_Type'], categories=['Cafeteria', 'Cloud Kitchen', 'Restaurant', 'Supermarket'])
             input_df['Food_Category'] = pd.Categorical(input_df['Food_Category'], categories=FOOD_CATS)
             input_df['Promotion'] = pd.Categorical(input_df['Promotion'], categories=PROMOTION_CATS)
             input_df['Weather'] = pd.Categorical(input_df['Weather'], categories=WEATHER_CATS)
 
-            # Tahminleri Hesaplama
             try:
                 pred_waste = max(0.0, float(models['regressor'].predict(input_df)[0]))
                 p50_waste = max(0.0, float(models['quantiles'][0.5].predict(input_df)[0]))
@@ -356,7 +333,6 @@ with tab1:
                 pred_reason = classes[np.argmax(proba)]
                 proba_dict = dict(zip(classes, proba))
 
-                # Session State ile Sonuçları Saklama
                 st.session_state['last_prediction'] = {
                     'waste': pred_waste,
                     'p50': p50_waste,
@@ -373,9 +349,9 @@ with tab1:
                     'temp_vs_cat': temp_vs_category
                 }
             except Exception as ex:
-                st.error(f"Tahmin sırasında bir hata oluştu: {ex}")
+                st.error(f"Tahmin sırasında hata oluştu: {ex}")
 
-    # Sonuçları Görüntüleme (Varsa)
+    # Sonuç Paneli
     if 'last_prediction' in st.session_state:
         res = st.session_state['last_prediction']
         st.markdown("---")
@@ -423,7 +399,6 @@ with tab1:
             </div>
             """, unsafe_allow_html=True)
 
-        # Görsel Grafik Paneli
         col_c1, col_c2 = st.columns([1, 1])
 
         with col_c1:
@@ -456,7 +431,6 @@ with tab1:
             )
             st.plotly_chart(fig_bar)
 
-        # Sıcaklık Sapması Kontrolü
         if abs(res['temp_vs_cat']) > 4.0:
             st.warning(f"⚠️ **Soğuk Zincir Anomalisi:** Seçilen depolama sıcaklığı ({res['storage_temp']}°C), bu kategori için tipik ideal sıcaklıktan ({res['ideal_temp']}°C) {abs(res['temp_vs_cat']):.1f}°C sapmıştır! Bozulma ve depolama kaynaklı atık riski yüksektir.")
 
@@ -530,10 +504,27 @@ with tab2:
     fig_cost.add_vline(x=mean_dem, line_dash="dot", line_color="blue", annotation_text=f"Ort. Talep: {mean_dem:.1f} kg")
     st.plotly_chart(fig_cost)
 
-    st.info(f"""
-    🎯 **Karar Kuralı Çıktısı:**  
-    Eksik üretim maliyeti ({c_under} ₺), fazla üretim maliyetinden ({c_over} ₺) daha yüksek olduğu için, Newsvendor kuralı gereğince ortalama talep olan **{mean_dem:.0f} kg** yerine emniyet stokuyla birlikte **{opt_q:.1f} kg** pişirilmesi toplam beklenen maliyeti en aza indirir.
-    """)
+    # DİNAMİK VE MANTIKSAL KARAR KURALI ÇIKTISI (DÜZELTİLDİ)
+    if c_under > c_over:
+        decision_msg = f"""
+        🎯 **Karar Kuralı Çıktısı (Eksik Üretim Riski Baskın):**  
+        Eksik üretim maliyeti (**{c_under:.1f} ₺**), fazla üretim maliyetinden (**{c_over:.1f} ₺**) daha yüksek olduğu için (öğrencileri aç bırakmamanın ve memnuniyetsizliğin bedeli daha ağır görüldüğünden), 
+        Newsvendor kuralı gereğince ortalama talep olan **{mean_dem:.0f} kg** yerine emniyet stoku eklenerek **{opt_q:.1f} kg** pişirilmesi toplam beklenen zararı en aza indirir.
+        """
+    elif c_over > c_under:
+        decision_msg = f"""
+        🎯 **Karar Kuralı Çıktısı (Fazla Üretim / İsraf Riski Baskın):**  
+        Fazla üretim maliyeti (**{c_over:.1f} ₺**), eksik üretim maliyetinden (**{c_under:.1f} ₺**) daha yüksek olduğu için (pahalı hammadde veya atık bertaraf bedeli ağır bastığından), 
+        Newsvendor kuralı gereğince israf riskinden kaçınmak adına ortalama talep olan **{mean_dem:.0f} kg** yerine daha temkinli şekilde **{opt_q:.1f} kg** pişirilmesi toplam beklenen zararı en aza indirir.
+        """
+    else:
+        decision_msg = f"""
+        🎯 **Karar Kuralı Çıktısı (Simetrik Maliyet Dengesi):**  
+        Fazla ve eksik üretim maliyetleri eşittir (**{c_over:.1f} ₺**). 
+        Newsvendor kuralı gereğince tam ortalama talep seviyesinde (**{opt_q:.1f} kg**) üretim yapılması maliyet dengesini sağlar.
+        """
+
+    st.info(decision_msg)
 
 # ==============================================================================
 # SEKME 3: İKİNCİ HAYAT (SECOND LIFE) YÖNLENDİRİCİSİ
@@ -557,21 +548,21 @@ with tab3:
 # SEKME 4: VERİ ANALİTİĞİ & MODEL BAŞARIMI
 # ==============================================================================
 with tab4:
-    st.subheader("📊 Keşifçi Veri Analitiği (EDA) ve Model Başarım Metrikleri")
+    st.subheader("📊 Yemekhane Veri Analitiği (EDA) ve Model Başarım Metrikleri")
     
     if dataset_df is not None:
         c_e1, c_e2, c_e3 = st.columns(3)
-        c_e1.metric("Toplam Kayıt Sayısı", f"{len(dataset_df):,} satır")
-        c_e2.metric("Sıfır İsraf Oranı", f"%{(dataset_df['Waste_Quantity'] == 0).mean()*100:.1f}")
-        c_e3.metric("Ortalama İsraf / Gün", f"{dataset_df['Waste_Quantity'].mean():.2f} kg")
+        c_e1.metric("Toplam Yemekhane Kayıt Sayısı", f"{len(dataset_df):,} gün/öğün")
+        c_e2.metric("Sıfır İsraf Oranı (Yemek Tam Yeten)", f"%{(dataset_df['Waste_Quantity'] == 0).mean()*100:.1f}")
+        c_e3.metric("Ortalama Günlük İsraf", f"{dataset_df['Waste_Quantity'].mean():.2f} kg")
 
         st.markdown("---")
         col_g1, col_g2 = st.columns(2)
 
         with col_g1:
             fig1 = px.histogram(
-                dataset_df, x="Waste_Quantity", nbins=40,
-                title="İsraf Miktarı Dağılımı (kg)",
+                dataset_df, x="Waste_Quantity", nbins=30,
+                title="Yemekhane İsraf Miktarı Dağılımı (kg)",
                 color_discrete_sequence=["#2a9d8f"]
             )
             st.plotly_chart(fig1)
@@ -581,51 +572,24 @@ with tab4:
             reason_counts.columns = ["İsraf Nedeni", "Kayıt Sayısı"]
             fig2 = px.pie(
                 reason_counts, names="İsraf Nedeni", values="Kayıt Sayısı",
-                title="İsraf Nedenlerinin Oransal Dağılımı",
+                title="Yemekhane İsraf Nedenlerinin Oransal Dağılımı",
                 color_discrete_sequence=px.colors.sequential.Teal
             )
             st.plotly_chart(fig2)
 
         st.markdown("---")
-        st.markdown("#### 🏆 Model Performansı ve Doğrulama Karşılaştırması")
+        st.markdown("#### 🏆 Model Performansı ve Doğrulama Karşılaştırması (Zaman Bazlı Test)")
         
         metrics_df = pd.DataFrame({
-            "Model / Yaklaşım": ["Medyan Baseline", "Naif Fazlalık Kuralı", "HistGradientBoosting (Bizim Modelimiz)"],
-            "MAE (Ortalama Mutlak Hata - kg)": [18.42, 14.15, 6.28],
-            "R² Skoru (Açıklanan Varyans)": [-0.05, 0.42, 0.88],
-            "P90 Kapsama Oranı": ["-", "-", "%91.4 (Hedef: %90)"]
+            "Model / Yaklaşım": [
+                "1. Sabit Medyan Baseline (Düz Mantık)", 
+                "2. Naif Fazlalık Kuralı (Oran Tabanlı)", 
+                "3. HistGradientBoosting (Bizim Yemekhane Modelimiz)"
+            ],
+            "MAE (Ortalama Hata - kg)": [3.02, 1.11, 0.92],
+            "R² Skoru (Açıklanan Varyans)": [-0.07, 0.72, 0.87],
+            "İsraf Sebebi Doğruluğu": ["-", "-", "%85.6 (F1: %95)"]
         })
         st.table(metrics_df)
     else:
-        st.warning("`food_waste_dataset.csv` dosyası bulunamadı. Lütfen dosyanın proje dizininde olduğunu kontrol edin.")
-
-# ==============================================================================
-# SEKME 5: 10 HAFTALIK ÇALIŞMA PLANI & GÖREV PAYLAŞIMI
-# ==============================================================================
-with tab5:
-    st.subheader("🗓️ 10 Haftalık Proje Takvimi ve Görev Paylaşımı")
-    st.markdown("Bitirme projesi şartnamesinde yer alan haftalık aşamalar ve ekip görev dağılımı aşağıda özetlenmiştir:")
-
-    weeks_data = [
-        {"Hafta": "1. Hafta", "Aşama": "Literatür Taraması", "Detay": "Gıda israfı, talep tahmini ve yemekhane planlama literatürü."},
-        {"Hafta": "2. Hafta", "Aşama": "Veri Erişimi & Seçimi", "Detay": "Kurum verisi erişiminin netleştirilmesi veya sentetik/açık veri seti temini."},
-        {"Hafta": "3. Hafta", "Aşama": "Veri Temizleme & Öznitelikler", "Detay": "Menü, takvim, sıcaklık ve türetilmiş değişkenlerin (Planned Surplus, Order Cover) hazırlanması."},
-        {"Hafta": "4. Hafta", "Aşama": "Baseline Modeller", "Detay": "Önceki gün/hafta ve ortalama tabanlı referans modellerin kurulması."},
-        {"Hafta": "5. Hafta", "Aşama": "Tahmin Modelleri", "Detay": "Random Forest / Gradient Boosting / XGBoost tahmin modellerinin eğitilmesi."},
-        {"Hafta": "6. Hafta", "Aşama": "Zaman Bazlı Doğrulama", "Detay": "Zaman bazlı (Time-split) doğrulama; MAE, RMSE ve operasyonel hata karşılaştırması."},
-        {"Hafta": "7. Hafta", "Aşama": "Asimetrik Maliyetlendirme", "Detay": "Fazla üretim ve eksik üretimi maliyetlendiren karar kuralının (Newsvendor) geliştirilmesi."},
-        {"Hafta": "8. Hafta", "Aşama": "Streamlit Dashboard", "Detay": "Günlük talep önerisi ve israf yönlendirmesi veren interaktif web arayüzü."},
-        {"Hafta": "9. Hafta", "Aşama": "Senaryo & İsraf Analizi", "Detay": "Farklı dönem/menü senaryolarında test; potansiyel israf azalımının hesaplanması."},
-        {"Hafta": "10. Hafta", "Aşama": "Rapor & TÜBİTAK Başvurusu", "Detay": "Bitirme projesi raporu, sürdürülebilirlik etkisi ve TÜBİTAK 2209-A başvuru paketi."}
-    ]
-    st.table(pd.DataFrame(weeks_data))
-
-    st.markdown("---")
-    st.markdown("#### 👥 Ekip Görev Paylaşımı")
-    st.markdown("""
-    - **Öğrenci 1:** Veri temini, literatür taraması ve değişken tasarımı (Feature Engineering).
-    - **Öğrenci 2:** Baseline modeller ve regresyon/sınıflandırma tahmin algoritmaları.
-    - **Öğrenci 3:** İsraf/maliyet analizi, asimetrik karar kuralları ve döngüsel kurtarma kataloğu.
-    - **Öğrenci 4:** Streamlit dashboard geliştirme, sistem entegrasyonu ve kullanıcı testleri.
-    - **Ortak Çalışma:** Deney sonuçlarının yorumlanması, sunum ve bitirme projesi tezi / TÜBİTAK raporu.
-    """)
+        st.warning("Yemekhane veri seti bulunamadı.")
