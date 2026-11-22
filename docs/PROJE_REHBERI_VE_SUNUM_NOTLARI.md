@@ -13,7 +13,7 @@
 > * **1. Senaryo (Aşırı Pişirme):** *'Ya yemek yetmezse, öğrenciler aç kalırsa rezil oluruz' korkusuyla aşçı gereğinden 50-60 kg fazla yemek pişirir. Saat 14:00 olduğunda yemekhane kapanır ve tencerelerde kalan onlarca kilo sıcak yemek çöpe gider. Üniversite her ay yüz binlerce lira hammadde zararına uğrar, ciddi bir gıda israfı ve karbon salınımı oluşur.*
 > * **2. Senaryo (Eksik Pişirme):** *Aşçı 'İsraf olmasın' diye temkinli davranıp az yemek pişirir. Bu sefer saat 12:45'te yemek biter. Dersinden çıkıp yemekhaneye gelen yüzlerce öğrenci aç kalır, rektörlüğe şikayet dilekçeleri yağar, öğrenci memnuniyeti sıfıra iner.*
 > 
-> *Biz bu projede; aşçının veya idarenin sübjektif hisleriyle değil; **hava durumu, kampüs etkinlikleri, KYK burs döngüsü, haftanın günü ve menü türünü** analiz eden bir **Yapay Zeka Karar Destek Sistemi** geliştirdik. Sistemimiz aşçıya sadece 'Kaç kg pişirmelisin?' demekle kalmıyor; olası riskleri P50/P90 emniyet sınırlarıyla hesaplıyor, Newsvendor kuralıyla maliyeti optimize ediyor ve Açıklanabilir Yapay Zeka (XAI) ile her kararın arkasındaki gerekçeyi şefe şeffafça açıklıyor."*
+> *Biz bu projede; aşçının veya idarenin sübjektif hisleriyle değil; **hava durumu, kampüs etkinlikleri, haftanın günü ve menü türünü** analiz eden bir **Yapay Zeka Karar Destek Sistemi** geliştirdik. Sistemimiz aşçıya sadece 'Kaç kg pişirmelisin?' demekle kalmıyor; olası riskleri P50/P90 emniyet sınırlarıyla hesaplıyor, Newsvendor kuralıyla maliyeti optimize ediyor ve Açıklanabilir Yapay Zeka (XAI) ile her kararın arkasındaki gerekçeyi şefe şeffafça açıklıyor."*
 
 ---
 
@@ -67,11 +67,11 @@
 #### Eğittiğimiz 3 Modelin Görevleri ve Başarı Karnesi:
 
 1. **İsraf Miktarı Regresyon Modeli (`HistGradientBoostingRegressor`):**
-   * **MAE (Ortalama Hata):** **1.08 kg**
-   * **$R^2$ Skoru:** **%85.1** *(Baseline 3 kg hata yaparken, yapay zekamız hatayı yaklaşık 1 kg'a indirdi).*
+   * **MAE (Ortalama Hata):** **1.12 kg**
+   * **$R^2$ Skoru:** **%85.0** *(Baseline 3 kg hata yaparken, yapay zekamız hatayı yaklaşık 1 kg'a indirdi).*
 2. **Kantil (Quantile P50 / P90) Modeli:**
    * **P50 (Medyan):** Normal şartlarda aşılmayacak taahhüt miktarı.
-   * **P90 (Emniyet Sınırı):** En olumsuz koşulda bile israfın kalacağı tavan sınır (test döneminde **%85.1 kapsama**; hedef %90 — hedefin biraz altında kaldı).
+   * **P90 (Emniyet Sınırı):** En olumsuz koşulda bile israfın kalacağı tavan sınır (test döneminde **%83.5 kapsama**; hedef %90 — hedefin biraz altında kaldı).
 3. **İsraf Nedeni Sınıflandırma Modeli (`HistGradientBoostingClassifier`):**
    * **Doğruluk Oranı (Accuracy):** **%82.7**
    * Yemeğin neden artacağını önceden haber verir:
@@ -102,14 +102,14 @@ Arayüzde yan panel yoktur; tüm girişler ana sayfadadır. 5 sekme vardır.
 
 ### 1. Sekme: "Günlük Tahmin" (Aşçının Sabahı)
 **Girişler:** tarih, menü kategorisi, hava durumu, kampüs etkinliği (Normal gün / Etkinlik), beklenen talep (kg), planlanan üretim (kg).
-Burs dönemi ve Cuma etkisi tarihten **otomatik** hesaplanır ve ekranda etiket olarak gösterilir.
+Cuma etkisi tarihten **otomatik** hesaplanır ve ekranda etiket olarak gösterilir.
 
 **Çıktılar ("Tahmini çalıştır" sonrası):**
 1. **Tahmini israf (kg)** ve planlanan üretime oranı.
 2. **P50 (medyan):** ön taahhüt için ayrılacak miktar.
 3. **P90 (emniyet sınırı):** kurtarma kapasitesi için tavan.
 4. **Ana israf nedeni** ve olasılığı (5 sınıf).
-5. **XAI grafiği:** Her faktör (fazla üretim, burs dönemi, Cuma, etkinlik, hava) nötr değere çekilip model yeniden çalıştırılır; tahmindeki fark (kg) o faktörün **gerçek katkısıdır**. Kırmızı çubuk israfı artırır, yeşil azaltır.
+5. **XAI grafiği:** Her faktör (fazla üretim, Cuma, etkinlik, hava) nötr değere çekilip model yeniden çalıştırılır; tahmindeki fark (kg) o faktörün **gerçek katkısıdır**. Kırmızı çubuk israfı artırır, yeşil azaltır.
 
 > Hocaya not: XAI katkıları sabit kural değil, modelin kendi çıktısından (karşı-olgusal analiz) hesaplanır.
 
@@ -158,23 +158,22 @@ HGB, RandomForest, XGBoost ve CatBoost'un metrik tablosu, grafikleri ve son gird
 
 ## 🆕 4.5 BÖLÜM: Sonradan Eklenen Yenilikler
 
-### A) Kampüse Özgü 3 Yeni Değişken
+### A) Kampüse Özgü 2 Yeni Değişken
 | Değişken | Nasıl Belirlenir? | Mantık |
 | :--- | :--- | :--- |
-| **`Burs_Donemi`** (KYK burs döngüsü) | **Otomatik** (tarihten): ayın 6–15'i `Burs_Sonrasi`, 20'si ve sonrası `Ay_Sonu`, diğerleri `Dengeli_Donem` | Burs yatınca öğrenci dışarıda yer, ay sonu bütçe daralınca yemekhaneye yönelir. |
 | **`Is_Friday`** (Cuma etkisi) | **Otomatik** (tarihten) | Cuma günü öğrenciler erken ayrılır, talep düşer, israf artar. |
 | **`Campus_Event`** (Kampüs etkinliği) | **Aşçı tek seçimle girer** (Normal gün / Etkinlik) | Sınav haftası, şenlik gibi günler takvimden bilinemez; tek manuel girdi budur. |
 
-> **Sınırlılık:** `Campus_Event`, Kaggle'daki `Promotion` sütununun yeniden adlandırılmış halidir; `Burs_Donemi` ve `Is_Friday` tarihten kural ile türetilmiştir. Etkileri küçüktür ve gerçek yemekhane verisiyle doğrulanmadır (ayrıntı: `VERI_SETI_DONUSUMU_VE_HOCA_SUNUM_METNI.md`).
+> **Sınırlılık:** `Campus_Event`, Kaggle'daki `Promotion` sütununun yeniden adlandırılmış halidir; `Is_Friday` tarihten kural ile türetilmiştir. Etkileri küçüktür ve gerçek yemekhane verisiyle doğrulanmalıdır (ayrıntı: `VERI_SETI_DONUSUMU_VE_HOCA_SUNUM_METNI.md`).
 
-Böylece aşçının girdiği alan sayısı artmadı: tarih, menü, hava, talep, üretim ve tek bir etkinlik seçimi.
+> **KYK burs döngüsü (`Burs_Donemi`) kaldırıldı.** Tarihten kural ile türetilen bu değişkenin gerçek öğrenci davranışını yansıttığı kanıtlanamadığı için projeden çıkarıldı; modeller 12 öznitelikle yeniden eğitildi (MAE 1.08 → 1.12 kg; fark gürültü düzeyinde, yani değişken zaten anlamlı bir katkı sağlamıyordu).
 
 ### B) Çıkarılan Değişkenler
 `Storage_Temperature` ve `Shelf_Life_Days` modelden çıkarıldı (önem %0.3; depolama sıcaklığını aşçı kendisi ayarladığı için tahmin değeri yok).
 
 ### C) Güncel Üretim Modeli Başarımı (Test: Ekim–Aralık, 376 gün)
-* Regresyon (HGB): **MAE 1.08 kg**, **R² 0.85** (referans: sabit medyan 3.02 kg)
-* Kantil modeli: **P90 kapsama %85.1** (hedef %90; hedefin altında. P50 kapsaması %71.5 olup veride %46.6 sıfır israf günü olması nedeniyle medyan modeli düşük kalıyor)
+* Regresyon (HGB): **MAE 1.12 kg**, **R² 0.85** (referans: sabit medyan 3.02 kg)
+* Kantil modeli: **P90 kapsama %83.5** (hedef %90; hedefin altında. P50 kapsaması %71.5 olup veride %46.6 sıfır israf günü olması nedeniyle medyan modeli düşük kalıyor)
 * İsraf nedeni sınıflandırıcı: **%82.7 doğruluk**
 
 ### D) Arayüz Yenilemesi
@@ -184,16 +183,16 @@ Böylece aşçının girdiği alan sayısı artmadı: tarih, menü, hava, talep,
 * Yeni **5. sekme: Model Karşılaştırması**.
 
 ### E) Model Karşılaştırması (HGB, RandomForest, XGBoost, CatBoost)
-Aynı veri, aynı zaman bazlı bölme, aynı 13 öznitelik. Script: `scripts/model_egit_karsilastir.py`, çıktı: `models/comparison/model_karsilastirma.csv`. HGB satırı, `models/` içindeki gerçek üretim modelinin test sonucudur.
+Aynı veri, aynı zaman bazlı bölme, aynı 12 öznitelik. Script: `scripts/model_egit_karsilastir.py`, çıktı: `models/comparison/model_karsilastirma.csv`. HGB satırı, `models/` içindeki gerçek üretim modelinin test sonucudur.
 
 | Model | MAE (kg) | RMSE (kg) | R² | Sınıflandırma doğruluğu | Eğitim süresi |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| HistGradientBoosting (üretim) | 1.081 | 3.055 | 0.851 | %82.7 | 0.9 sn |
-| RandomForest | 1.000 | **2.958** | **0.860** | %81.9 | 0.4 sn |
-| XGBoost | 1.016 | 3.275 | 0.829 | %82.4 | 0.6 sn |
-| CatBoost | **0.960** | 3.072 | 0.849 | **%83.0** | 9.9 sn |
+| HistGradientBoosting (üretim) | 1.117 | 3.067 | 0.850 | %82.4 | 0.8 sn |
+| RandomForest | 0.996 | **2.952** | **0.861** | %83.2 | 0.4 sn |
+| XGBoost | 1.084 | 3.818 | 0.768 | %82.2 | 0.4 sn |
+| CatBoost | **0.952** | 3.409 | 0.815 | %83.2 | 9.4 sn |
 
-* **Dürüst yorum:** Dört model birbirine çok yakın; en iyi MAE CatBoost'ta (0.96), en iyi R² RandomForest'ta. Fark ≈ 0.12 kg ve tek bir test dönemine dayanıyor, istatistiksel olarak kesin değil. Hata payı büyük ölçüde verideki doğal gürültüden geliyor.
+* **Dürüst yorum:** Dört model birbirine çok yakın; en iyi MAE CatBoost'ta (0.95), en iyi R² ve RMSE RandomForest'ta. XGBoost ve CatBoost'un RMSE'si yüksek, yani nadir büyük hatalar yapıyorlar. MAE farkı ≈ 0.17 kg ve tek bir test dönemine dayanıyor, istatistiksel olarak kesin değil. Hata payı büyük ölçüde verideki doğal gürültüden geliyor.
 * **HGB neden üretimde?** Kategorikleri doğal işler (ek kodlama gerekmez), ek kütüphane istemez ve P50/P90 kantil modellerini aynı yapıda sunar. Kantil tahmini diğer üç modelle karşılaştırılmadı.
 * **Hocaya söylenecek:** *"Dört modeli denedik, sonuçlar yakın çıktı; bu da modelden çok verinin sınırlı olduğunu gösteriyor. Sonraki adım çapraz doğrulama ve gerçek yemekhane verisidir."*
 * Not: Karşılaştırma modelleri yalnızca israf miktarı (ve sınıflandırma) için eğitildi.

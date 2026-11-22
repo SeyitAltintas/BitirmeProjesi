@@ -54,13 +54,14 @@ Ham verideki sütunlar yapay zekanın derin operasyonel ilişkileri anlamasına 
 ---
 
 ### 4. Değişiklik: Kampüse Özgü Yeni Değişkenler
-* **`Burs_Donemi`:** Tarihten otomatik türetilir (ayın 6–15'i Burs_Sonrasi, 20 ve sonrası Ay_Sonu, diğerleri Dengeli_Donem).
+*(KYK burs döngüsü değişkeni denendi, anlamlı katkı sağlamadığı ve doğrulanamadığı için kaldırıldı.)*
+
 * **`Is_Friday`:** Tarihten otomatik türetilir; Cuma günü erken ayrılış etkisini yakalar.
 * **`Campus_Event`:** Aşçının tek seçimle girdiği Normal gün / Etkinlik bilgisi.
 * **Önemli sınırlılık (jüriye dürüstçe söylenmelidir):**
   * `Campus_Event`, Kaggle verisindeki `Promotion` (kampanya) sütununun yeniden adlandırılmış halidir (1.254 No / 318 Yes, birebir aynı). Gerçek kampüs etkinliği kaydı değildir; yemekhane verisiyle doğrulanması gerekir.
-  * `Burs_Donemi` ve `Is_Friday` yalnızca tarihten kural ile türetilir. Ham veri Kaggle kaynaklı olduğu için bu kuralların gerçek öğrenci davranışını yansıttığı **kanıtlanmış değildir**; modeldeki etkileri de küçüktür (toplam önemin birkaç yüzdesi).
-  * Bu nedenle bu üç değişken, gerçek turnike/kazan verisi geldiğinde test edilecek **hipotezler** olarak sunulmalıdır.
+  * `Is_Friday` yalnızca tarihten kural ile türetilir. Ham veri Kaggle kaynaklı olduğu için bu kuralın gerçek öğrenci davranışını yansıttığı **kanıtlanmış değildir**; modeldeki etkisi de küçüktür.
+  * Bu nedenle bu iki değişken, gerçek turnike/kazan verisi geldiğinde test edilecek **hipotezler** olarak sunulmalıdır.
 
 ---
 
@@ -71,8 +72,8 @@ Ham verideki sütunlar yapay zekanın derin operasyonel ilişkileri anlamasına 
 | **Satır Sayısı** | 8.000 satır (Karma işletmeler) | **1.572 satır (%100 Üniversite Yemekhanesi)** |
 | **Kapsam** | Süpermarket, Restoran, Paket Mutfak, Yemekhane | **Sadece Üniversite Tabldot Yemekhanesi** |
 | **Gereksiz Değişkenler** | Dolap Sıcaklığı, Raf Ömrü (Süpermarket kalıntısı) | **Tamamen elendi (Sade ve pratik)** |
-| **Türetilen Yeni Değişkenler**| Yok (Sadece ham kolonlar) | **Planned_Surplus, Order_Cover, Takvim Döngüsü, Burs_Donemi, Is_Friday, Campus_Event** |
-| **Modelin Başarısı** | Genel ortalama hatası yüksek | **MAE: 1.08 kg, R²: 0.85, P90 kapsama: %85.1** |
+| **Türetilen Yeni Değişkenler**| Yok (Sadece ham kolonlar) | **Planned_Surplus, Order_Cover, Takvim Döngüsü, Is_Friday, Campus_Event** |
+| **Modelin Başarısı** | Genel ortalama hatası yüksek | **MAE: 1.12 kg, R²: 0.85, P90 kapsama: %83.5** |
 
 ---
 
@@ -96,7 +97,7 @@ Hocana sunum yaparken slaytın veya ekranın başına geçtiğinde şu cümleler
 > * *Birincisi; üniversite yemekhanesinde sıcak yemeğin raf ömrü doğası gereği 1 gündür ve endüstriyel soğuk odalar otomatiktir; aşçı her sabah derece ölçmez.*
 > * *İkincisi ve en önemlisi; Açıklanabilir Yapay Zeka (XAI) analizlerimizde sıcaklığın israfa etkisinin **sadece %0.3** olduğunu matematiksel olarak kanıtladık.*
 > 
-> *Böylece aşçının karşısına çıkan arayüzü gereksiz parametrelerden arındırıp, tamamen operasyonel gerçekliğe dayanan, **ortalama yanılma payı yaklaşık 1.08 kg olan** son derece başarılı bir model altyapısı elde ettik."*
+> *Böylece aşçının karşısına çıkan arayüzü gereksiz parametrelerden arındırıp, tamamen operasyonel gerçekliğe dayanan, **ortalama yanılma payı yaklaşık 1.12 kg olan** son derece başarılı bir model altyapısı elde ettik."*
 
 ---
 

@@ -88,13 +88,12 @@ BUSINESS_CATS = ['Cafeteria', 'Cloud Kitchen', 'Restaurant', 'Supermarket']
 FOOD_CATS = ['Bakery', 'Dairy', 'Fruits', 'Meat', 'Prepared Food', 'Vegetables']
 CAMPUS_EVENT_CATS = ['No', 'Yes']
 WEATHER_CATS = ['Cloudy', 'Hot', 'Rainy', 'Sunny']
-BURS_CATS = ['Ay_Sonu', 'Burs_Sonrasi', 'Dengeli_Donem']
 FEATURE_COLS = [
-    'Business_Type', 'Food_Category', 'Campus_Event', 'Weather', 'Burs_Donemi',
+    'Business_Type', 'Food_Category', 'Campus_Event', 'Weather',
     'Purchase_Quantity', 'Daily_Demand', 'Planned_Surplus', 'Order_Cover',
     'DayOfWeek', 'Month', 'IsWeekend', 'Is_Friday'
 ]
-CAT_COLS = ['Business_Type', 'Food_Category', 'Campus_Event', 'Weather', 'Burs_Donemi']
+CAT_COLS = ['Business_Type', 'Food_Category', 'Campus_Event', 'Weather']
 
 CATEGORY_TR = {
     'Prepared Food': 'Sıcak Yemek / Günün Menüsü',
@@ -191,8 +190,7 @@ def predict_extra(name, raw_df):
 def to_model_df(raw_df):
     out = raw_df.copy()
     for col, cats in [('Business_Type', BUSINESS_CATS), ('Food_Category', FOOD_CATS),
-                      ('Campus_Event', CAMPUS_EVENT_CATS), ('Weather', WEATHER_CATS),
-                      ('Burs_Donemi', BURS_CATS)]:
+                      ('Campus_Event', CAMPUS_EVENT_CATS), ('Weather', WEATHER_CATS)]:
         out[col] = pd.Categorical(out[col], categories=cats)
     return out
 
@@ -201,7 +199,6 @@ FEATURE_GROUPS = {
     "Pişirilen miktar": ['Purchase_Quantity'],
     "Öğrenci talebi": ['Daily_Demand'],
     "Sipariş karşılama oranı": ['Order_Cover'],
-    "KYK burs dönemi": ['Burs_Donemi'],
     "Cuma & takvim": ['Is_Friday', 'DayOfWeek', 'IsWeekend', 'Month'],
     "Kampüs etkinliği": ['Campus_Event'],
     "Hava durumu": ['Weather'],
@@ -311,7 +308,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # ==============================================================================
 with tab1:
     st.markdown("#### Günlük giriş")
-    st.caption("Aşçı yalnızca temel mutfak verilerini girer; burs dönemi ve Cuma etkisi tarihten otomatik hesaplanır.")
+    st.caption("Aşçı yalnızca temel mutfak verilerini girer; Cuma etkisi tarihten otomatik hesaplanır.")
 
     col_in1, col_in2, col_in3 = st.columns(3)
 
@@ -338,16 +335,9 @@ with tab1:
     is_weekend = 1 if day_of_week >= 5 else 0
     is_friday = 1 if day_of_week == 4 else 0
 
-    if 6 <= day_of_month <= 15:
-        burs_status, burs_txt = "Burs_Sonrasi", "Burs sonrası (dışarıda yeme eğilimi, talep azalabilir)"
-    elif day_of_month >= 20:
-        burs_status, burs_txt = "Ay_Sonu", "Ay sonu (bütçe kısıtlı, yemekhane talebi yüksek)"
-    else:
-        burs_status, burs_txt = "Dengeli_Donem", "Dengeli dönem (normal katılım)"
     friday_txt = "Cuma (erken ayrılış eğilimi)" if is_friday else "Standart hafta içi"
 
     st.markdown(
-        f'<span class="chip">Öğrenci bütçesi: {burs_txt}</span>'
         f'<span class="chip">Akademik yük: {friday_txt}</span>'
         f'<span class="chip">Otomatik hesaplandı</span>',
         unsafe_allow_html=True)
@@ -363,7 +353,7 @@ with tab1:
         else:
             raw_df = pd.DataFrame([{
                 'Business_Type': BUSINESS_TYPE, 'Food_Category': sel_cat,
-                'Campus_Event': event_val, 'Weather': sel_weather, 'Burs_Donemi': burs_status,
+                'Campus_Event': event_val, 'Weather': sel_weather,
                 'Purchase_Quantity': float(purchase_qty), 'Daily_Demand': float(expected_demand),
                 'Planned_Surplus': float(planned_surplus), 'Order_Cover': float(order_cover),
                 'DayOfWeek': int(day_of_week), 'Month': int(month),
@@ -400,15 +390,12 @@ with tab1:
                 cf = {
                     'Planlanan üretimin talebi aşan kısmı': dict(Purchase_Quantity=float(expected_demand),
                                                                  Planned_Surplus=0.0, Order_Cover=1.0),
-                    'Burs dönemi': dict(Burs_Donemi='Dengeli_Donem'),
                     'Cuma günü': dict(Is_Friday=0),
                     'Kampüs etkinliği': dict(Campus_Event='No'),
                     'Hava durumu': dict(Weather='Cloudy'),
                 }
                 if planned_surplus <= 0:
                     cf.pop('Planlanan üretimin talebi aşan kısmı')
-                if burs_status == 'Dengeli_Donem':
-                    cf.pop('Burs dönemi')
                 if not is_friday:
                     cf.pop('Cuma günü')
                 if event_val == 'No':
@@ -597,9 +584,9 @@ with tab4:
         st.markdown("##### Baseline ile karşılaştırma (zaman bazlı test)")
         st.dataframe(pd.DataFrame({
             "Model / yaklaşım": ["Sabit medyan", "Naif fazlalık kuralı", "HistGradientBoosting (üretim)"],
-            "MAE (kg)": [3.02, 1.11, 1.08],
+            "MAE (kg)": [3.02, 1.11, 1.12],
             "R²": [-0.07, 0.72, 0.85],
-            "P90 kapsama": ["-", "-", "%85.1"]
+            "P90 kapsama": ["-", "-", "%83.5"]
         }), hide_index=True, width='stretch')
 
         st.markdown("##### Genel öznitelik önemi (permütasyon, test dönemi)")
@@ -668,7 +655,7 @@ with tab5:
             st.plotly_chart(ft, width='stretch')
 
         st.info(
-            "**Yorum:** Dört model birbirine çok yakın sonuç verdi (MAE farkı ≈ 0.12 kg). Bu, hata payının "
+            "**Yorum:** Dört model birbirine çok yakın sonuç verdi (MAE farkı ≈ 0.17 kg). Bu, hata payının "
             "model seçiminden çok veri setindeki doğal gürültüden kaynaklandığını gösterir. "
             "Üretim modeli olarak HistGradientBoosting; kategorik değişkenleri doğal işlemesi, ek bağımlılık "
             "gerektirmemesi ve P50/P90 kantil tahminlerini aynı çatı altında vermesi nedeniyle korunmuştur. "

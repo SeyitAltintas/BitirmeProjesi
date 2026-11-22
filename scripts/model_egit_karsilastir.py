@@ -29,14 +29,14 @@ df = pd.read_csv(data_path, parse_dates=['Date'])
 print(f"[OK] Veri yüklendi: {len(df)} satır, {df.shape[1]} sütun")
 
 FEATURE_COLS = [
-    'Business_Type', 'Food_Category', 'Campus_Event', 'Weather', 'Burs_Donemi',
+    'Business_Type', 'Food_Category', 'Campus_Event', 'Weather',
     'Purchase_Quantity', 'Daily_Demand', 'Planned_Surplus', 'Order_Cover',
     'DayOfWeek', 'Month', 'IsWeekend', 'Is_Friday'
 ]
 TARGET_REG = 'Waste_Quantity'
 TARGET_CLF = 'Waste_Reason'
 
-CAT_COLS = ['Business_Type', 'Food_Category', 'Campus_Event', 'Weather', 'Burs_Donemi']
+CAT_COLS = ['Business_Type', 'Food_Category', 'Campus_Event', 'Weather']
 NUM_COLS  = [c for c in FEATURE_COLS if c not in CAT_COLS]
 
 # ============================================================
@@ -63,7 +63,6 @@ CAT_CATEGORIES = {
     'Food_Category': ['Bakery', 'Dairy', 'Fruits', 'Meat', 'Prepared Food', 'Vegetables'],
     'Campus_Event' : ['No', 'Yes'],
     'Weather'      : ['Cloudy', 'Hot', 'Rainy', 'Sunny'],
-    'Burs_Donemi'  : ['Ay_Sonu', 'Burs_Sonrasi', 'Dengeli_Donem'],
 }
 
 enc = OrdinalEncoder(
