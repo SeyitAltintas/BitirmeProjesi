@@ -1,4 +1,4 @@
-﻿"""
+"""
 Üretim Modellerini Eğitme Scripti (HistGradientBoosting)
 =========================================================
 1. Talep Tahmin Modeli (Daily_Demand kg)

@@ -26,3 +26,7 @@ docs_*.txt
 catboost_info/
 run.log
 cmp.log
+
+# Hariç tutulan belgeler
+docs/TUBİTAK 2209-A PROJE.docx
+*.docx
