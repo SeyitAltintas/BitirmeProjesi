@@ -36,49 +36,12 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-ACCENT = "#2f6f5e"      # tek vurgu rengi
-MUTED = "#6b7280"
-LINE = "#e5e7eb"
-NEG = "#b4443c"         # yalnızca uyarı / olumsuz
-
-st.markdown(f"""
-<style>
-    [data-testid="stSidebar"], [data-testid="collapsedControl"] {{ display: none; }}
-    .block-container {{ max-width: 1150px; padding-top: 2rem; padding-bottom: 3rem; }}
-    h1, h2, h3, h4 {{ font-weight: 600; letter-spacing: -0.01em; }}
-    .app-title {{ font-size: 1.6rem; font-weight: 650; margin: 0; }}
-    .app-sub {{ color: {MUTED}; font-size: 0.92rem; margin: 4px 0 18px 0; }}
-    .card {{
-        border: 1px solid {LINE}; border-radius: 10px; padding: 14px 16px;
-        background: transparent; height: 100%;
-    }}
-    .card .lbl {{ color: {MUTED}; font-size: 0.8rem; }}
-    .card .val {{ font-size: 1.7rem; font-weight: 600; margin: 2px 0; }}
-    .card .note {{ color: {MUTED}; font-size: 0.78rem; }}
-    .chip {{
-        display: inline-block; border: 1px solid {LINE}; border-radius: 999px;
-        padding: 3px 12px; margin: 0 6px 6px 0; font-size: 0.82rem; color: {MUTED};
-    }}
-    .stTabs [data-baseweb="tab-list"] {{ gap: 4px; border-bottom: 1px solid {LINE}; }}
-    .stTabs [data-baseweb="tab"] {{ padding: 8px 14px; font-weight: 500; }}
-    .stButton > button[kind="primary"] {{
-        background: {ACCENT}; border: none; border-radius: 8px; padding: 0.55rem 1.4rem;
-    }}
-    .stButton > button {{ border-radius: 8px; }}
-    hr {{ margin: 1.4rem 0; border-color: {LINE}; }}
-</style>
-""", unsafe_allow_html=True)
-
-PLOT_LAYOUT = dict(
-    template="simple_white", margin=dict(l=10, r=10, t=40, b=10),
-    font=dict(size=13), height=300
+from ui_theme import (
+    ACCENT, MUTED, LINE, NEG,
+    PLOT_LAYOUT, apply_custom_css, render_header, card, chip
 )
 
-def card(label, value, note="", color=None):
-    style = f"color:{color};" if color else ""
-    return (f'<div class="card"><div class="lbl">{label}</div>'
-            f'<div class="val" style="{style}">{value}</div>'
-            f'<div class="note">{note}</div></div>')
+apply_custom_css()
 
 # ==============================================================================
 # 2. SABİTLER
@@ -293,11 +256,7 @@ RESCUE_CATALOG = [
 # ==============================================================================
 # 5. BAŞLIK
 # ==============================================================================
-st.markdown("""
-<p class="app-title">Üniversite Yemekhanesi Talep & Gıda İsrafı Karar Destek Sistemi</p>
-<p class="app-sub">Günlük israf tahmini · P50/P90 belirsizlik analizi · Açıklanabilir yapay zeka · Model karşılaştırması
-&nbsp;|&nbsp; Proje No: 13 · TÜBİTAK 2209-A</p>
-""", unsafe_allow_html=True)
+render_header()
 
 if not models['loaded']:
     st.error(f"Model uyarısı: {models.get('error', 'Yüklenemedi')}")
@@ -339,8 +298,8 @@ with tab1:
 
     friday_txt = "Cuma (öğleden sonra erken ayrılış eğilimi)" if is_friday else "Standart hafta içi"
     st.markdown(
-        f'<span class="chip">Akademik takvim: {friday_txt}</span>'
-        f'<span class="chip">Otomatik analiz edildi</span>',
+        f'{chip(f"Akademik takvim: {friday_txt}")}'
+        f'{chip("Otomatik analiz edildi")}',
         unsafe_allow_html=True)
 
     # -------------------------------------------------------------
