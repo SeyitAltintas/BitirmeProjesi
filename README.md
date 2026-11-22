@@ -27,11 +27,16 @@ streamlit run arayuz.py
 *(Windows kullanıcıları doğrudan `baslat.bat` dosyasını çalıştırabilir.)*
 
 ## 📁 Proje Yapısı
-- `arayuz.py`: Streamlit karar destek sistemi web arayüzü
-- `food_waste_dataset.csv`: Eğitim ve analiz veri seti
-- `*.pkl`: Eğitilmiş makine öğrenmesi modelleri (sınıflandırıcı, regresör, kantil modelleri)
-- `requirements.txt`: Bağımlılıklar listesi
-- `baslat.bat`: Windows için hızlı başlatma betiği
+```
+arayuz.py            Streamlit karar destek uygulaması (5 sekme)
+baslat.bat           Windows için hızlı başlatma
+requirements.txt     Bağımlılıklar
+data/                Ham (Kaggle) ve işlenmiş yemekhane veri setleri
+models/              Üretim modelleri (.pkl); models/comparison/ içinde RF, XGBoost, CatBoost
+scripts/             Model karşılaştırma eğitim scripti
+docs/                Proje rehberi ve sunum notları
+```
+Model karşılaştırmasını yeniden üretmek için: `python scripts/model_egit_karsilastir.py`
 
 ---
 

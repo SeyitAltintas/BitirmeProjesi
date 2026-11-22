@@ -15,12 +15,16 @@ import joblib
 
 warnings.filterwarnings("ignore")
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+MODEL_DIR = os.path.join(BASE_DIR, 'models')
+COMP_DIR = os.path.join(MODEL_DIR, 'comparison')
+os.makedirs(COMP_DIR, exist_ok=True)
 
 # ============================================================
 # 1. VERİ YÜKLEME
 # ============================================================
-data_path = os.path.join(BASE_DIR, 'yemekhane_oznitelikler.csv')
+data_path = os.path.join(DATA_DIR, 'yemekhane_oznitelikler.csv')
 df = pd.read_csv(data_path, parse_dates=['Date'])
 print(f"[OK] Veri yüklendi: {len(df)} satır, {df.shape[1]} sütun")
 
@@ -155,6 +159,16 @@ hgb_clf = HistGradientBoostingClassifier(
 )
 hgb_clf.fit(X_train_hgb, y_train_clf)
 
+# Karşılaştırmada GERÇEK üretim modelleri (models/*.pkl) değerlendirilir; bulunamazsa yeni eğitilenler kullanılır.
+try:
+    hgb_reg = joblib.load(os.path.join(MODEL_DIR, 'food_waste_regressor_model.pkl'))
+    hgb_clf = joblib.load(os.path.join(MODEL_DIR, 'food_waste_classifier_model.pkl'))
+    _q = joblib.load(os.path.join(MODEL_DIR, 'quantile_models.pkl'))
+    hgb_q90 = _q[0.9]
+    print('  [INFO] Üretim modelleri models/ klasöründen yüklendi ve değerlendirildi')
+except Exception as _e:
+    print('  [WARN] Üretim modeli yüklenemedi, yeni eğitilen kullanılıyor:', _e)
+
 pred_hgb = np.maximum(0, hgb_reg.predict(X_test_hgb))
 mae, rmse, r2 = regression_metrics(y_test_reg, pred_hgb)
 clf_acc = accuracy_score(y_test_clf, hgb_clf.predict(X_test_hgb))
@@ -197,7 +211,7 @@ results['RandomForest'] = dict(mae=mae, rmse=rmse, r2=r2, train_time=train_time_
                                 clf_acc=clf_acc, coverage_90=None)
 print(f"  MAE={mae:.3f}  RMSE={rmse:.3f}  R²={r2:.3f}  Clf=%{clf_acc*100:.1f}  t={train_time_rf:.1f}s")
 
-joblib.dump({'reg': rf_reg, 'clf': rf_clf, 'encoder': enc}, os.path.join(BASE_DIR, 'rf_model.pkl'))
+joblib.dump({'reg': rf_reg, 'clf': rf_clf, 'encoder': enc}, os.path.join(COMP_DIR, 'rf_model.pkl'))
 print("  [SAVED] rf_model.pkl")
 
 # ============================================================
@@ -230,7 +244,7 @@ if HAS_XGB:
                                clf_acc=clf_acc, coverage_90=None)
     print(f"  MAE={mae:.3f}  RMSE={rmse:.3f}  R²={r2:.3f}  Clf=%{clf_acc*100:.1f}  t={train_time_xgb:.1f}s")
 
-    joblib.dump({'reg': xgb_reg, 'clf': xgb_clf, 'encoder': enc, 'label_encoder': le}, os.path.join(BASE_DIR, 'xgb_model.pkl'))
+    joblib.dump({'reg': xgb_reg, 'clf': xgb_clf, 'encoder': enc, 'label_encoder': le}, os.path.join(COMP_DIR, 'xgb_model.pkl'))
     print("  [SAVED] xgb_model.pkl")
 
 # ============================================================
@@ -270,7 +284,7 @@ if HAS_CAT:
                                 clf_acc=clf_acc, coverage_90=None)
     print(f"  MAE={mae:.3f}  RMSE={rmse:.3f}  R²={r2:.3f}  Clf=%{clf_acc*100:.1f}  t={train_time_cb:.1f}s")
 
-    joblib.dump({'reg': cb_reg, 'clf': cb_clf}, os.path.join(BASE_DIR, 'catboost_model.pkl'))
+    joblib.dump({'reg': cb_reg, 'clf': cb_clf}, os.path.join(COMP_DIR, 'catboost_model.pkl'))
     print("  [SAVED] catboost_model.pkl")
 
 # ============================================================
@@ -289,7 +303,7 @@ for name, r in results.items():
     })
 
 comp_df = pd.DataFrame(rows)
-comp_path = os.path.join(BASE_DIR, 'model_karsilastirma.csv')
+comp_path = os.path.join(COMP_DIR, 'model_karsilastirma.csv')
 comp_df.to_csv(comp_path, index=False)
 print(f"\n[DONE] Karşılaştırma tablosu: {comp_path}")
 print(comp_df.to_string(index=False))

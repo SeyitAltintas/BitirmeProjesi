@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import datetime
 import warnings
@@ -22,6 +22,9 @@ import plotly.graph_objects as go
 import joblib
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+MODEL_DIR = os.path.join(BASE_DIR, 'models')
+COMP_DIR = os.path.join(MODEL_DIR, 'comparison')
 
 # ==============================================================================
 # 1. SAYFA VE TEMA (SADE / MİNİMAL)
@@ -123,16 +126,16 @@ MODEL_FILES = ['food_waste_regressor_model.pkl', 'food_waste_classifier_model.pk
                'quantile_models.pkl', 'rf_model.pkl', 'xgb_model.pkl', 'catboost_model.pkl']
 
 def get_models_mtime():
-    return tuple(os.path.getmtime(os.path.join(BASE_DIR, f))
-                 for f in MODEL_FILES if os.path.exists(os.path.join(BASE_DIR, f)))
+    return tuple(os.path.getmtime(os.path.join(MODEL_DIR, f))
+                 for f in MODEL_FILES if os.path.exists(os.path.join(MODEL_DIR, f)))
 
 @st.cache_resource
 def load_models(_mtime_hash):
     models = {'loaded': False, 'extra': {}}
     try:
-        reg_path = os.path.join(BASE_DIR, 'food_waste_regressor_model.pkl')
-        clf_path = os.path.join(BASE_DIR, 'food_waste_classifier_model.pkl')
-        q_path = os.path.join(BASE_DIR, 'quantile_models.pkl')
+        reg_path = os.path.join(MODEL_DIR, 'food_waste_regressor_model.pkl')
+        clf_path = os.path.join(MODEL_DIR, 'food_waste_classifier_model.pkl')
+        q_path = os.path.join(MODEL_DIR, 'quantile_models.pkl')
         if os.path.exists(reg_path) and os.path.exists(clf_path) and os.path.exists(q_path):
             models['regressor'] = joblib.load(reg_path)
             models['classifier'] = joblib.load(clf_path)
@@ -145,7 +148,7 @@ def load_models(_mtime_hash):
     for key, fname in [('RandomForest', 'rf_model.pkl'), ('XGBoost', 'xgb_model.pkl'),
                        ('CatBoost', 'catboost_model.pkl')]:
         try:
-            p = os.path.join(BASE_DIR, fname)
+            p = os.path.join(COMP_DIR, fname)
             if os.path.exists(p):
                 models['extra'][key] = joblib.load(p)
         except Exception:
@@ -154,9 +157,9 @@ def load_models(_mtime_hash):
 
 @st.cache_data
 def load_dataset():
-    data_path = os.path.join(BASE_DIR, 'yemekhane_oznitelikler.csv')
+    data_path = os.path.join(DATA_DIR, 'yemekhane_oznitelikler.csv')
     if not os.path.exists(data_path):
-        data_path = os.path.join(BASE_DIR, 'yemekhane_veriseti.csv')
+        data_path = os.path.join(DATA_DIR, 'yemekhane_veriseti.csv')
     if os.path.exists(data_path):
         try:
             return pd.read_csv(data_path, parse_dates=['Date'])
@@ -166,7 +169,7 @@ def load_dataset():
 
 @st.cache_data
 def load_comparison():
-    p = os.path.join(BASE_DIR, 'model_karsilastirma.csv')
+    p = os.path.join(COMP_DIR, 'model_karsilastirma.csv')
     return pd.read_csv(p) if os.path.exists(p) else None
 
 models = load_models(get_models_mtime())
@@ -183,6 +186,44 @@ def predict_extra(name, raw_df):
     x = raw_df[FEATURE_COLS].copy()
     x[CAT_COLS] = m['encoder'].transform(x[CAT_COLS])
     return max(0.0, float(m['reg'].predict(x.astype(float))[0]))
+
+
+def to_model_df(raw_df):
+    out = raw_df.copy()
+    for col, cats in [('Business_Type', BUSINESS_CATS), ('Food_Category', FOOD_CATS),
+                      ('Campus_Event', CAMPUS_EVENT_CATS), ('Weather', WEATHER_CATS),
+                      ('Burs_Donemi', BURS_CATS)]:
+        out[col] = pd.Categorical(out[col], categories=cats)
+    return out
+
+FEATURE_GROUPS = {
+    "Planlanan fazlalık": ['Planned_Surplus'],
+    "Pişirilen miktar": ['Purchase_Quantity'],
+    "Öğrenci talebi": ['Daily_Demand'],
+    "Sipariş karşılama oranı": ['Order_Cover'],
+    "KYK burs dönemi": ['Burs_Donemi'],
+    "Cuma & takvim": ['Is_Friday', 'DayOfWeek', 'IsWeekend', 'Month'],
+    "Kampüs etkinliği": ['Campus_Event'],
+    "Hava durumu": ['Weather'],
+    "Menü kategorisi": ['Food_Category', 'Business_Type'],
+}
+
+@st.cache_data
+def compute_global_importance(_mtime_hash):
+    """Üretim modelinin test dönemi (Ekim-Aralık) üzerinde gerçek permütasyon önemi."""
+    from sklearn.inspection import permutation_importance
+    df = load_dataset()
+    if df is None or not models['loaded']:
+        return None
+    test = df[df['Date'].dt.month >= 10]
+    X = to_model_df(test[FEATURE_COLS])
+    y = test['Waste_Quantity'].values
+    r = permutation_importance(models['regressor'], X, y, n_repeats=8, random_state=42,
+                               scoring='neg_mean_absolute_error')
+    imp = dict(zip(FEATURE_COLS, r.importances_mean))
+    grouped = {g: max(0.0, sum(imp[c] for c in cols)) for g, cols in FEATURE_GROUPS.items()}
+    total = sum(grouped.values()) or 1.0
+    return {g: v / total * 100 for g, v in grouped.items()}
 
 # ==============================================================================
 # 4. İKİNCİ HAYAT KATALOĞU
@@ -328,11 +369,7 @@ with tab1:
                 'DayOfWeek': int(day_of_week), 'Month': int(month),
                 'IsWeekend': int(is_weekend), 'Is_Friday': int(is_friday)
             }])
-            input_df = raw_df.copy()
-            for col, cats in [('Business_Type', BUSINESS_CATS), ('Food_Category', FOOD_CATS),
-                              ('Campus_Event', CAMPUS_EVENT_CATS), ('Weather', WEATHER_CATS),
-                              ('Burs_Donemi', BURS_CATS)]:
-                input_df[col] = pd.Categorical(input_df[col], categories=cats)
+            input_df = to_model_df(raw_df)
 
             try:
                 pred_waste = max(0.0, float(models['regressor'].predict(input_df)[0]))
@@ -351,23 +388,35 @@ with tab1:
                         except Exception:
                             pass
 
+                # Yerel XAI: her faktör "nötr" değere çekilip modelin tahmini yeniden alınır;
+                # fark (kg) o faktörün tahmine gerçek katkısıdır.
+                def _pred(**chg):
+                    d = raw_df.copy()
+                    for k, v in chg.items():
+                        d[k] = v
+                    return float(models['regressor'].predict(to_model_df(d))[0])
+
                 xai = {}
-                if planned_surplus > 0:
-                    xai['Planlanan fazlalık'] = min(60.0, 35.0 + (planned_surplus / max(purchase_qty, 1)) * 45.0)
-                else:
-                    xai['Talep fazlası (israf önleyici)'] = -40.0
-                if burs_status == 'Burs_Sonrasi':
-                    xai['Burs sonrası dönem'] = 15.0
-                elif burs_status == 'Ay_Sonu':
-                    xai['Ay sonu öğrenci bütçesi'] = -15.0
-                if is_friday:
-                    xai['Cuma günü'] = 14.0
-                if event_val == 'Yes':
-                    xai['Kampüs etkinliği'] = -18.0
-                if sel_weather == 'Rainy':
-                    xai['Yağmurlu hava'] = 10.0
-                elif sel_weather == 'Sunny':
-                    xai['Güneşli hava'] = -8.0
+                cf = {
+                    'Planlanan üretimin talebi aşan kısmı': dict(Purchase_Quantity=float(expected_demand),
+                                                                 Planned_Surplus=0.0, Order_Cover=1.0),
+                    'Burs dönemi': dict(Burs_Donemi='Dengeli_Donem'),
+                    'Cuma günü': dict(Is_Friday=0),
+                    'Kampüs etkinliği': dict(Campus_Event='No'),
+                    'Hava durumu': dict(Weather='Cloudy'),
+                }
+                if planned_surplus <= 0:
+                    cf.pop('Planlanan üretimin talebi aşan kısmı')
+                if burs_status == 'Dengeli_Donem':
+                    cf.pop('Burs dönemi')
+                if not is_friday:
+                    cf.pop('Cuma günü')
+                if event_val == 'No':
+                    cf.pop('Kampüs etkinliği')
+                if sel_weather == 'Cloudy':
+                    cf.pop('Hava durumu')
+                for name, chg in cf.items():
+                    xai[name] = pred_waste - _pred(**chg)
 
                 st.session_state['last_prediction'] = {
                     'waste': pred_waste, 'p50': p50_waste, 'p90': p90_waste,
@@ -418,6 +467,7 @@ with tab1:
 
         if 'xai' in res:
             st.markdown("#### Tahminin nedenleri (XAI)")
+            st.caption("Her faktör nötr değere çekilip model yeniden çalıştırılır; tahmindeki değişim (kg) o faktörün katkısıdır.")
             xai_df = pd.DataFrame({"Faktör": list(res['xai'].keys()),
                                    "Etki": list(res['xai'].values())}).sort_values("Etki")
             fig_x = go.Figure(go.Bar(
@@ -425,9 +475,11 @@ with tab1:
                 marker_color=[ACCENT if v < 0 else NEG for v in xai_df['Etki']]
             ))
             fig_x.update_layout(
-                title="Faktörlerin göreceli etkisi (kırmızı: israfı artırır · yeşil: azaltır)",
+                title="Faktörün tahmine katkısı, kg (kırmızı: israfı artırır · yeşil: azaltır)",
                 **PLOT_LAYOUT)
             st.plotly_chart(fig_x, width='stretch')
+            if xai_df.empty:
+                st.caption("Girdi referans (nötr) koşullarda: bulut/dengeli dönem/Cuma değil/etkinlik yok ve üretim ≤ talep.")
             pos = xai_df[xai_df['Etki'] > 0]
             if not pos.empty:
                 st.info(f"İsraf riskini en çok yükselten faktör: **{pos.iloc[-1]['Faktör']}**. "
@@ -546,20 +598,19 @@ with tab4:
         st.dataframe(pd.DataFrame({
             "Model / yaklaşım": ["Sabit medyan", "Naif fazlalık kuralı", "HistGradientBoosting (üretim)"],
             "MAE (kg)": [3.02, 1.11, 1.08],
-            "R²": [-0.07, 0.72, 0.84],
-            "P90 kapsama": ["-", "-", "%89.9"]
+            "R²": [-0.07, 0.72, 0.85],
+            "P90 kapsama": ["-", "-", "%85.1"]
         }), hide_index=True, width='stretch')
 
-        st.markdown("##### Genel öznitelik önemi")
-        fi = pd.DataFrame({
-            "Faktör": ["Planlanan fazlalık", "Pişirilen miktar", "Öğrenci talebi", "KYK burs dönemi",
-                       "Cuma & akademik yük", "Sipariş karşılama oranı", "Kampüs etkinliği & hava"],
-            "Önem (%)": [52.4, 25.8, 14.2, 3.8, 2.1, 1.2, 0.5]
-        }).sort_values("Önem (%)")
-        f3 = px.bar(fi, x="Önem (%)", y="Faktör", orientation="h", text="Önem (%)",
-                    color_discrete_sequence=[ACCENT])
-        f3.update_layout(**PLOT_LAYOUT)
-        st.plotly_chart(f3, width='stretch')
+        st.markdown("##### Genel öznitelik önemi (permütasyon, test dönemi)")
+        gi = compute_global_importance(get_models_mtime())
+        if gi:
+            fi = pd.DataFrame({"Faktör": list(gi.keys()), "Önem (%)": [round(v, 1) for v in gi.values()]}).sort_values("Önem (%)")
+            f3 = px.bar(fi, x="Önem (%)", y="Faktör", orientation="h", text="Önem (%)",
+                        color_discrete_sequence=[ACCENT])
+            f3.update_layout(**PLOT_LAYOUT)
+            st.plotly_chart(f3, width='stretch')
+            st.caption("Bir faktörün değerleri karıştırıldığında MAE'nin ne kadar bozulduğuna göre hesaplanır; toplam %100'e normalize edilmiştir.")
     else:
         st.warning("Veri seti bulunamadı.")
 
@@ -572,7 +623,7 @@ with tab5:
 
     comp = load_comparison()
     if comp is None:
-        st.warning("model_karsilastirma.csv bulunamadı. `python model_egit_karsilastir.py` komutunu çalıştırın.")
+        st.warning("model_karsilastirma.csv bulunamadı. `python scripts/model_egit_karsilastir.py` komutunu çalıştırın.")
     else:
         comp_show = comp.drop(columns=['P90 Kapsama (%)'], errors='ignore')
         best_mae = comp_show.loc[comp_show['MAE (kg)'].idxmin(), 'Model']

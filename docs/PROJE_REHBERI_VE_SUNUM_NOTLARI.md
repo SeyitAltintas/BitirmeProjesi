@@ -13,7 +13,7 @@
 > * **1. Senaryo (Aşırı Pişirme):** *'Ya yemek yetmezse, öğrenciler aç kalırsa rezil oluruz' korkusuyla aşçı gereğinden 50-60 kg fazla yemek pişirir. Saat 14:00 olduğunda yemekhane kapanır ve tencerelerde kalan onlarca kilo sıcak yemek çöpe gider. Üniversite her ay yüz binlerce lira hammadde zararına uğrar, ciddi bir gıda israfı ve karbon salınımı oluşur.*
 > * **2. Senaryo (Eksik Pişirme):** *Aşçı 'İsraf olmasın' diye temkinli davranıp az yemek pişirir. Bu sefer saat 12:45'te yemek biter. Dersinden çıkıp yemekhaneye gelen yüzlerce öğrenci aç kalır, rektörlüğe şikayet dilekçeleri yağar, öğrenci memnuniyeti sıfıra iner.*
 > 
-> *Biz bu projede; aşçının veya idarenin sübjektif hisleriyle değil; **hava durumu, sınav takvimi, haftanın günü, dolap sıcaklığı ve menü türünü** analiz eden bir **Yapay Zeka Karar Destek Sistemi** geliştirdik. Sistemimiz aşçıya sadece 'Kaç kg pişirmelisin?' demekle kalmıyor; olası riskleri P50/P90 emniyet sınırlarıyla hesaplıyor, Newsvendor kuralıyla maliyeti optimize ediyor ve Açıklanabilir Yapay Zeka (XAI) ile her kararın arkasındaki gerekçeyi şefe şeffafça açıklıyor."*
+> *Biz bu projede; aşçının veya idarenin sübjektif hisleriyle değil; **hava durumu, kampüs etkinlikleri, KYK burs döngüsü, haftanın günü ve menü türünü** analiz eden bir **Yapay Zeka Karar Destek Sistemi** geliştirdik. Sistemimiz aşçıya sadece 'Kaç kg pişirmelisin?' demekle kalmıyor; olası riskleri P50/P90 emniyet sınırlarıyla hesaplıyor, Newsvendor kuralıyla maliyeti optimize ediyor ve Açıklanabilir Yapay Zeka (XAI) ile her kararın arkasındaki gerekçeyi şefe şeffafça açıklıyor."*
 
 ---
 
@@ -41,10 +41,7 @@
    * *Örnek:* Aşçı o gün 340 kg kuru fasulye pişirmeyi planlamış, ama beklenen öğrenci talebi 300 kg. $340 - 300 = +40\text{ kg}$ planlanan fazlalık var. Model daha sabahın başında tencereye 40 kg fazla yemek konduğunu anlar.
 2. **`Order_Cover` (Sipariş Karşılama Oranı = Pişirilen / Talep):**
    * $340 / 300 = 1.13$ (Yani talepten **%13 daha fazla** üretilmiş). Bu oran 1.0'ın altındaysa (örneğin 0.80) model anlar ki: *"İsraf sıfır olacak ama öğrenciler aç kalacak!"*
-3. **`Temp_Deviation` (Soğuk Zincir Sapması):**
-   * Her yemeğin bir ideal saklama derecesi vardır (Tavuk/Et: **1.9°C**, Süt/Yoğurt: **3.9°C**, Sıcak Yemek: **19.9°C**).
-   * *Örnek:* Et dolabı arızalandı ve 2°C yerine **9°C** oldu. Aradaki fark: $+7.1^\circ\text{C}$. Model hemen alarma geçer: *"Burada bakteri ürer, bu et bozulabilir ve çöpe gidebilir!"*
-4. **Takvim & Zaman:** Günü (`DayOfWeek`), ayı (`Month`) ve hafta sonu mu (`IsWeekend`) olduğunu sayısallaştırdık. Cuma günleri öğrencilerin erken memlekete gitme eğilimini model bu sayede yakalar.
+3. **Takvim & Zaman:** Günü (`DayOfWeek`), ayı (`Month`) ve hafta sonu mu (`IsWeekend`) olduğunu sayısallaştırdık. Cuma günleri öğrencilerin erken memlekete gitme eğilimini model bu sayede yakalar.
 
 ---
 
@@ -70,13 +67,13 @@
 #### Eğittiğimiz 3 Modelin Görevleri ve Başarı Karnesi:
 
 1. **İsraf Miktarı Regresyon Modeli (`HistGradientBoostingRegressor`):**
-   * **MAE (Ortalama Hata):** Sadece **0.92 kg (920 gram)!**
-   * **$R^2$ Skoru:** **%87.2** *(Baseline 3 kg hata yaparken, yapay zekamız hatayı 1 kilonun altına indirdi).*
+   * **MAE (Ortalama Hata):** **1.08 kg**
+   * **$R^2$ Skoru:** **%85.1** *(Baseline 3 kg hata yaparken, yapay zekamız hatayı yaklaşık 1 kg'a indirdi).*
 2. **Kantil (Quantile P50 / P90) Modeli:**
    * **P50 (Medyan):** Normal şartlarda aşılmayacak taahhüt miktarı.
-   * **P90 (Emniyet Sınırı):** En olumsuz koşulda bile israfın kalacağı tavan sınır (%86.7 kapsama doğruluğu).
+   * **P90 (Emniyet Sınırı):** En olumsuz koşulda bile israfın kalacağı tavan sınır (test döneminde **%85.1 kapsama**; hedef %90 — hedefin biraz altında kaldı).
 3. **İsraf Nedeni Sınıflandırma Modeli (`HistGradientBoostingClassifier`):**
-   * **Doğruluk Oranı (Accuracy):** **%85.6**
+   * **Doğruluk Oranı (Accuracy):** **%82.7**
    * Yemeğin neden artacağını önceden haber verir:
      * *Düşük Talep (Low Demand)* mi? ➔ F1-Skor: %83
      * *Aşırı Pişirme (Overproduction)* mi? ➔ F1-Skor: %74
@@ -101,72 +98,34 @@ $$CR = \frac{C_u}{C_u + C_o} = \frac{75}{75 + 35} = \frac{75}{110} \approx \%68.
 
 ## 🖥️ 3. BÖLÜM: Arayüzün (Dashboard) Canlı Kullanım Senaryosu
 
-Arayüzü açtığında hocana ekranı şu sırayla anlatacaksın:
+Arayüzde yan panel yoktur; tüm girişler ana sayfadadır. 5 sekme vardır.
 
-### 🌟 1. Sekme: "Günlük Tahmin & Karar Destek" (Aşçının Sabahı)
-**Canlı Senaryo:**  
-* Tarih: **21 Kasım Cuma**
-* Menü: **Sıcak Yemek / Et Menüsü**
-* Beklenen Talep: **300 kg**
-* Aşçının Pişirmeyi Düşündüğü: **340 kg**
-* Hava: **Yağmurlu**
-* Dolap Sıcaklığı: **8.5°C** (İdeal olan 2°C'den yüksek!)
-* Akademik Durum: **Normal Gün**
+### 1. Sekme: "Günlük Tahmin" (Aşçının Sabahı)
+**Girişler:** tarih, menü kategorisi, hava durumu, kampüs etkinliği (Normal gün / Etkinlik), beklenen talep (kg), planlanan üretim (kg).
+Burs dönemi ve Cuma etkisi tarihten **otomatik** hesaplanır ve ekranda etiket olarak gösterilir.
 
-Aşçı **"🚀 Karar Destek & İsraf Tahmini Çalıştır"** butonuna basar:
+**Çıktılar ("Tahmini çalıştır" sonrası):**
+1. **Tahmini israf (kg)** ve planlanan üretime oranı.
+2. **P50 (medyan):** ön taahhüt için ayrılacak miktar.
+3. **P90 (emniyet sınırı):** kurtarma kapasitesi için tavan.
+4. **Ana israf nedeni** ve olasılığı (5 sınıf).
+5. **XAI grafiği:** Her faktör (fazla üretim, burs dönemi, Cuma, etkinlik, hava) nötr değere çekilip model yeniden çalıştırılır; tahmindeki fark (kg) o faktörün **gerçek katkısıdır**. Kırmızı çubuk israfı artırır, yeşil azaltır.
 
-1. **Noktasal İsraf Kartı:** *"Bugün yaklaşık **12.4 kg** yemek artacak."*
-2. **P50 Medyan İsraf:** *"Normal şartlarda en az **8.0 kg** artar; bunu şimdiden askıda yemeğe ayırın."*
-3. **P90 Emniyet Tavanı:** *"En kötü yağmurlu gün senaryosunda bile israf **16.5 kg**'ı geçmeyecek; yurtlara ve barınağa en fazla 16.5 kg'lık kap ayırın."*
-4. **Ana Risk Nedeni Kartı:** *"Düşük Talep & Depolama Uyarısı"*
-5. **Soğuk Zincir Alarmı:** Ekranda sarı uyarı kutusu çıkar:  
-   *`⚠️ Soğuk Zincir Uyarısı: Et dolabı 8.5°C! İdeal olan 1.9°C'den 6.6°C sapmıştır, acil soğutucu kontrolü yapın!`*
+> Hocaya not: XAI katkıları sabit kural değil, modelin kendi çıktısından (karşı-olgusal analiz) hesaplanır.
 
----
+### 2. Sekme: "Maliyet Analizi"
+Fazla üretim maliyeti (Cₒ) ve eksik üretim maliyeti (Cᵤ) bu sekmenin üstünde girilir. 1.000 senaryolu Monte Carlo simülasyonuyla toplam maliyet eğrisi çizilir; optimum üretim noktası (Newsvendor) gösterilir. Cᵤ > Cₒ ise sistem emniyet payı ekler.
 
-### 🔍 2. Sekme 1'deki Yıldız Özellik: Açıklanabilir Yapay Zeka (XAI)
-Hocan sorarsa: *"Yapay zeka 12.4 kg dedi ama neden dedi?"*  
-Hemen sonuç kartlarının altındaki **XAI Tornado Grafiğini** gösterirsin:
+### 3. Sekme: "İkinci Hayat" (EPA Hiyerarşisi)
+Artan yemek için 4 kademeli plan: insan tüketimi, ileri dönüşüm, hayvan besleme, kompost.
 
-* 🔴 **Kırmızı Çubuklar (İsrafı Tetikleyenler):**
-  * *Planlanan Fazlalık (+40 kg):* İsraf riskini **+%45 artırdı**.
-  * *Dolap Sıcaklık Sapması (+6.6°C):* İsraf riskini **+%18 artırdı**.
-  * *Yağmurlu Hava:* İsraf riskini **+%12 artırdı** (Öğrenciler yağmurda kampüse gelmeyebilir).
-* 🟢 **Yeşil Çubuklar (İsrafı Frenleyenler):**
-  * *Hafta Sonu Olmaması:* İsrafı **-%8 azalttı**.
-* **Modelin Aşçıya Notu:**  
-  > *"💡 **XAI Yorumu:** Sayın Aşçı, bu yemeğin artmasındaki en büyük sebep %45 oranında talepten fazla pişirmenizdir. Pişirme miktarını 340 kg yerine 315 kg'a çekerseniz tahmini israf 12.4 kg'dan 2.1 kg'a düşecektir."*
+### 4. Sekme: "Veri & Model Başarımı"
+* 1.572 günlük yemekhane istatistikleri, israf dağılımı ve nedenleri.
+* Baseline modeller ile üretim modelinin karşılaştırması.
+* **Genel öznitelik önemi:** Üretim modelinin test dönemi (Ekim–Aralık) üzerinde **canlı hesaplanan** permütasyon önemi (sabit rakam değildir).
 
----
-
-### ⚖️ 3. Sekme: "Maliyet & Asimetrik Karar Analizi"
-Sol menüden fazla üretim maliyeti ($C_o$) ve eksik üretim maliyeti ($C_u$) girilir. Ekranda **1.000 senaryolu Monte Carlo simülasyon eğrisi** çizilir:
-* Mavi çizgi: Ortalama talep noktası (300 kg).
-* Yeşil kesikli çizgi: Maliyeti en aza indiren optimum pişirme noktası (318 kg).
-* **Dinamik Mantık:** Eğer aşçı sebze çorbası gibi ucuz bir menü yapıyorsa ve eksik kalması daha büyük dertse sistem emniyet stoku ekler. Eğer çok pahalı ithal antrikot pişiriyorsa ($C_o > C_u$) sistem *"Fazla pişirme, temkinli ol"* der.
-
----
-
-### 🔄 4. Sekme: "Gıda İkinci Hayat (EPA Hiyerarşisi)"
-Yemek arttı diyelim, çöpe mi dökülecek? **Hayır!**  
-Sistem 4 kademeli kurtarma planı sunar:
-1. **İnsan Tüketimi (Feed People):** Kalan temiz et ve pilav hijyenik vakumlanıp sınavdaki kütüphane öğrencilerine ve gece yurtlarına gönderilir.
-2. **İleri Dönüşüm (Upcycling):** Kalan sebzeler ertesi günün çorbasına katılır; bayatlayan ekmekler fırınlanıp çorba krutonu yapılır.
-3. **Hayvan Besleme (Feed Animals):** Uygun artıklar kampüs sokak hayvanları odaklarına ve belediye barınağına teslim edilir.
-4. **Kompost & Toprak (Compost):** Yenmeyecek organik atıklar reaktöre atılıp kampüs peyzajı için organik gübreye dönüştürülür (Sıfır Çöp Sahası Atığı).
-
----
-
-### 📊 5. Sekme: "Veri Analitiği & Model Başarımı"
-Hocaya akademik ispatların sunulduğu ekrandır:
-* 1.572 günlük yemekhane istatistikleri (Günlerin %46.6'sında sıfır israf başarılmış).
-* Baseline modeller ile bizim Gradient Boosting modelimizin karşılaştırma tablosu (Hata: 3.02 kg ➔ 0.92 kg).
-* **Global XAI (Permütasyon Öznitelik Önemi):** Modelin genel zeka haritası:
-  * Planlanan Fazlalık: **%51.0**
-  * Pişirilen Miktar: **%26.9**
-  * Öğrenci Talebi: **%16.2**
-  * Karşılama Oranı: **%3.6**
-  * Dolap Sıcaklığı & Hava: **%2.3**
+### 5. Sekme: "Model Karşılaştırması"
+HGB, RandomForest, XGBoost ve CatBoost'un metrik tablosu, grafikleri ve son girdi için dört modelin tahmini.
 
 ---
 
@@ -180,7 +139,7 @@ Hocaya akademik ispatların sunulduğu ekrandır:
 > **Cevabınız:**  
 > *"Çünkü yemekhane operasyonu tek boyutlu değildir. Aşçıya sadece 'Bugün 10 kg israf olur' demek eksik bilgi verir. Aşçı şunu da bilmelidir:*
 > * *1) En kötü günde bile kurtarmam gereken maksimum tavan nedir? (Bunu P90 Quantile modeli söyler).*
-> * *2) Bu yemek neden artacak? Aşırı pişirdiğim için mi, yoksa dolap bozulduğu için mi? (Bunu Sınıflandırma modeli söyler).*  
+> * *2) Bu yemek neden artacak? Aşırı pişirdiğim için mi, yoksa talep düşük kaldığı için mi? (Bunu Sınıflandırma modeli söyler).*  
 > *Bu 3 model birleştiğinde gerçek bir Karar Destek Sistemi (DSS) oluşmaktadır."*
 
 ### ❓ Soru 3: "Açıklanabilir Yapay Zeka (XAI) eklemenizin kurumsal faydası nedir?"
@@ -206,23 +165,26 @@ Hocaya akademik ispatların sunulduğu ekrandır:
 | **`Is_Friday`** (Cuma etkisi) | **Otomatik** (tarihten) | Cuma günü öğrenciler erken ayrılır, talep düşer, israf artar. |
 | **`Campus_Event`** (Kampüs etkinliği) | **Aşçı tek seçimle girer** (Normal gün / Etkinlik) | Sınav haftası, şenlik gibi günler takvimden bilinemez; tek manuel girdi budur. |
 
+> **Sınırlılık:** `Campus_Event`, Kaggle'daki `Promotion` sütununun yeniden adlandırılmış halidir; `Burs_Donemi` ve `Is_Friday` tarihten kural ile türetilmiştir. Etkileri küçüktür ve gerçek yemekhane verisiyle doğrulanmadır (ayrıntı: `VERI_SETI_DONUSUMU_VE_HOCA_SUNUM_METNI.md`).
+
 Böylece aşçının girdiği alan sayısı artmadı: tarih, menü, hava, talep, üretim ve tek bir etkinlik seçimi.
 
 ### B) Çıkarılan Değişkenler
 `Storage_Temperature` ve `Shelf_Life_Days` modelden çıkarıldı (önem %0.3; depolama sıcaklığını aşçı kendisi ayarladığı için tahmin değeri yok).
 
 ### C) Güncel Üretim Modeli Başarımı (Test: Ekim–Aralık, 376 gün)
-* Regresyon (HGB): **MAE 1.08 kg**, **R² 0.84** (referans: sabit medyan 3.02 kg)
-* Kantil modeli: **P90 kapsama %89.9** (hedef %90)
+* Regresyon (HGB): **MAE 1.08 kg**, **R² 0.85** (referans: sabit medyan 3.02 kg)
+* Kantil modeli: **P90 kapsama %85.1** (hedef %90; hedefin altında. P50 kapsaması %71.5 olup veride %46.6 sıfır israf günü olması nedeniyle medyan modeli düşük kalıyor)
 * İsraf nedeni sınıflandırıcı: **%82.7 doğruluk**
 
 ### D) Arayüz Yenilemesi
 * Yan panel kaldırıldı; maliyet parametreleri (Cₒ, Cᵤ) "Maliyet Analizi" sekmesine, günlük girişler ana sayfaya taşındı.
+* XAI ve genel öznitelik önemi artık sabit değil, modelden hesaplanıyor.
 * Tasarım sadeleştirildi: tek vurgu rengi, animasyonsuz, kart tabanlı düzen.
 * Yeni **5. sekme: Model Karşılaştırması**.
 
 ### E) Model Karşılaştırması (HGB, RandomForest, XGBoost, CatBoost)
-Aynı veri, aynı zaman bazlı bölme, aynı 13 öznitelik. Script: `model_egit_karsilastir.py`, çıktı: `model_karsilastirma.csv`.
+Aynı veri, aynı zaman bazlı bölme, aynı 13 öznitelik. Script: `scripts/model_egit_karsilastir.py`, çıktı: `models/comparison/model_karsilastirma.csv`. HGB satırı, `models/` içindeki gerçek üretim modelinin test sonucudur.
 
 | Model | MAE (kg) | RMSE (kg) | R² | Sınıflandırma doğruluğu | Eğitim süresi |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -240,15 +202,28 @@ Aynı veri, aynı zaman bazlı bölme, aynı 13 öznitelik. Script: `model_egit_
 
 ## 📁 5. BÖLÜM: Dosya Sözlüğü (Ne Nerede?)
 
-* [arayuz.py](file:///c:/Users/seyit/Desktop/BitirmeProjesi/arayuz.py): Streamlit ile yazılmış 4 sekmeli ana karar destek web uygulaması.
-* [food_waste_regressor_model.pkl](file:///c:/Users/seyit/Desktop/BitirmeProjesi/food_waste_regressor_model.pkl): İsraf miktarını (kg) tahmin eden regresyon modeli (MAE: 0.92 kg).
-* [quantile_models.pkl](file:///c:/Users/seyit/Desktop/BitirmeProjesi/quantile_models.pkl): P50 ve P90 risk emniyet tavanı modelleri.
-* [food_waste_classifier_model.pkl](file:///c:/Users/seyit/Desktop/BitirmeProjesi/food_waste_classifier_model.pkl): İsraf sebebini %85.6 doğrulukla bulan sınıflandırıcı.
-* [yemekhane_veriseti.csv](file:///c:/Users/seyit/Desktop/BitirmeProjesi/yemekhane_veriseti.csv): Süpermarketlerden temizlenmiş 1.572 günlük saf yemekhane veri seti.
-* [yemekhane_oznitelikler.csv](file:///c:/Users/seyit/Desktop/BitirmeProjesi/yemekhane_oznitelikler.csv): Türetilmiş değişkenlerin (Planned Surplus, Temp Deviation vb.) bulunduğu nihai veri seti.
-* [baslat.bat](file:///c:/Users/seyit/Desktop/BitirmeProjesi/baslat.bat): Windows'ta tek tıkla arayüzü başlatan betik.
-* [requirements.txt](file:///c:/Users/seyit/Desktop/BitirmeProjesi/requirements.txt): Gerekli kütüphaneler (`streamlit`, `scikit-learn`, `plotly`, `shap` vb.).
+```
+BitirmeProjesi/
+├── arayuz.py                  Streamlit karar destek uygulaması (5 sekme)
+├── baslat.bat                 Windows'ta tek tıkla başlatma
+├── requirements.txt           Gerekli kütüphaneler
+├── README.md                  Kurulum ve ekip çalışma rehberi
+├── data/
+│   ├── food_waste_dataset.csv        Kaggle ham veri (8.000 satır)
+│   ├── yemekhane_veriseti.csv        Yalnızca Cafeteria (1.572 satır)
+│   └── yemekhane_oznitelikler.csv    Türetilmiş değişkenlerle nihai veri
+├── models/
+│   ├── food_waste_regressor_model.pkl   İsraf miktarı (HGB)
+│   ├── quantile_models.pkl              P50 / P90 modelleri
+│   ├── food_waste_classifier_model.pkl  İsraf nedeni sınıflandırıcı
+│   └── comparison/
+│       ├── rf_model.pkl, xgb_model.pkl, catboost_model.pkl
+│       └── model_karsilastirma.csv      Karşılaştırma sonuç tablosu
+├── scripts/
+│   └── model_egit_karsilastir.py        RF / XGBoost / CatBoost eğitimi ve karşılaştırma
+└── docs/
+    ├── PROJE_REHBERI_VE_SUNUM_NOTLARI.md
+    └── VERI_SETI_DONUSUMU_VE_HOCA_SUNUM_METNI.md
+```
 
-* [model_egit_karsilastir.py](file:///c:/Users/seyit/Desktop/BitirmeProjesi/model_egit_karsilastir.py): HGB, RandomForest, XGBoost, CatBoost karşılaştırma eğitimi.
-* [model_karsilastirma.csv](file:///c:/Users/seyit/Desktop/BitirmeProjesi/model_karsilastirma.csv): Karşılaştırma sonuç tablosu.
-* rf_model.pkl, xgb_model.pkl, catboost_model.pkl: Karşılaştırma modelleri.
+> Not: Üretim modellerini (`models/*.pkl`) eğiten script depoda yoktur; sadece karşılaştırma scripti vardır. Tam tekrarlanabilirlik için ayrı bir eğitim scripti eklenmesi önerilir.

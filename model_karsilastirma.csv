@@ -1,5 +1,0 @@
-Model,MAE (kg),RMSE (kg),R² Skoru,Eğitim Süresi (s),Sınıflandırıcı Doğruluğu (%),P90 Kapsama (%)
-HGB,1.081,3.055,0.851,0.9,82.7,85.1
-RandomForest,1.0,2.958,0.86,0.4,81.9,-
-XGBoost,1.016,3.275,0.829,0.6,82.4,-
-CatBoost,0.96,3.072,0.849,9.9,83.0,-
