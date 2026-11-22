@@ -38,3 +38,5 @@ wheels/
 .DS_Store
 Thumbs.db
 
+
+catboost_info/
