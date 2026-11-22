@@ -197,6 +197,47 @@ Hocaya akademik ispatların sunulduğu ekrandır:
 
 ---
 
+## 🆕 4.5 BÖLÜM: Sonradan Eklenen Yenilikler
+
+### A) Kampüse Özgü 3 Yeni Değişken
+| Değişken | Nasıl Belirlenir? | Mantık |
+| :--- | :--- | :--- |
+| **`Burs_Donemi`** (KYK burs döngüsü) | **Otomatik** (tarihten): ayın 6–15'i `Burs_Sonrasi`, 20'si ve sonrası `Ay_Sonu`, diğerleri `Dengeli_Donem` | Burs yatınca öğrenci dışarıda yer, ay sonu bütçe daralınca yemekhaneye yönelir. |
+| **`Is_Friday`** (Cuma etkisi) | **Otomatik** (tarihten) | Cuma günü öğrenciler erken ayrılır, talep düşer, israf artar. |
+| **`Campus_Event`** (Kampüs etkinliği) | **Aşçı tek seçimle girer** (Normal gün / Etkinlik) | Sınav haftası, şenlik gibi günler takvimden bilinemez; tek manuel girdi budur. |
+
+Böylece aşçının girdiği alan sayısı artmadı: tarih, menü, hava, talep, üretim ve tek bir etkinlik seçimi.
+
+### B) Çıkarılan Değişkenler
+`Storage_Temperature` ve `Shelf_Life_Days` modelden çıkarıldı (önem %0.3; depolama sıcaklığını aşçı kendisi ayarladığı için tahmin değeri yok).
+
+### C) Güncel Üretim Modeli Başarımı (Test: Ekim–Aralık, 376 gün)
+* Regresyon (HGB): **MAE 1.08 kg**, **R² 0.84** (referans: sabit medyan 3.02 kg)
+* Kantil modeli: **P90 kapsama %89.9** (hedef %90)
+* İsraf nedeni sınıflandırıcı: **%82.7 doğruluk**
+
+### D) Arayüz Yenilemesi
+* Yan panel kaldırıldı; maliyet parametreleri (Cₒ, Cᵤ) "Maliyet Analizi" sekmesine, günlük girişler ana sayfaya taşındı.
+* Tasarım sadeleştirildi: tek vurgu rengi, animasyonsuz, kart tabanlı düzen.
+* Yeni **5. sekme: Model Karşılaştırması**.
+
+### E) Model Karşılaştırması (HGB, RandomForest, XGBoost, CatBoost)
+Aynı veri, aynı zaman bazlı bölme, aynı 13 öznitelik. Script: `model_egit_karsilastir.py`, çıktı: `model_karsilastirma.csv`.
+
+| Model | MAE (kg) | RMSE (kg) | R² | Sınıflandırma doğruluğu | Eğitim süresi |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| HistGradientBoosting (üretim) | 1.081 | 3.055 | 0.851 | %82.7 | 0.9 sn |
+| RandomForest | 1.000 | **2.958** | **0.860** | %81.9 | 0.4 sn |
+| XGBoost | 1.016 | 3.275 | 0.829 | %82.4 | 0.6 sn |
+| CatBoost | **0.960** | 3.072 | 0.849 | **%83.0** | 9.9 sn |
+
+* **Dürüst yorum:** Dört model birbirine çok yakın; en iyi MAE CatBoost'ta (0.96), en iyi R² RandomForest'ta. Fark ≈ 0.12 kg ve tek bir test dönemine dayanıyor, istatistiksel olarak kesin değil. Hata payı büyük ölçüde verideki doğal gürültüden geliyor.
+* **HGB neden üretimde?** Kategorikleri doğal işler (ek kodlama gerekmez), ek kütüphane istemez ve P50/P90 kantil modellerini aynı yapıda sunar. Kantil tahmini diğer üç modelle karşılaştırılmadı.
+* **Hocaya söylenecek:** *"Dört modeli denedik, sonuçlar yakın çıktı; bu da modelden çok verinin sınırlı olduğunu gösteriyor. Sonraki adım çapraz doğrulama ve gerçek yemekhane verisidir."*
+* Not: Karşılaştırma modelleri yalnızca israf miktarı (ve sınıflandırma) için eğitildi.
+
+---
+
 ## 📁 5. BÖLÜM: Dosya Sözlüğü (Ne Nerede?)
 
 * [arayuz.py](file:///c:/Users/seyit/Desktop/BitirmeProjesi/arayuz.py): Streamlit ile yazılmış 4 sekmeli ana karar destek web uygulaması.
@@ -207,3 +248,7 @@ Hocaya akademik ispatların sunulduğu ekrandır:
 * [yemekhane_oznitelikler.csv](file:///c:/Users/seyit/Desktop/BitirmeProjesi/yemekhane_oznitelikler.csv): Türetilmiş değişkenlerin (Planned Surplus, Temp Deviation vb.) bulunduğu nihai veri seti.
 * [baslat.bat](file:///c:/Users/seyit/Desktop/BitirmeProjesi/baslat.bat): Windows'ta tek tıkla arayüzü başlatan betik.
 * [requirements.txt](file:///c:/Users/seyit/Desktop/BitirmeProjesi/requirements.txt): Gerekli kütüphaneler (`streamlit`, `scikit-learn`, `plotly`, `shap` vb.).
+
+* [model_egit_karsilastir.py](file:///c:/Users/seyit/Desktop/BitirmeProjesi/model_egit_karsilastir.py): HGB, RandomForest, XGBoost, CatBoost karşılaştırma eğitimi.
+* [model_karsilastirma.csv](file:///c:/Users/seyit/Desktop/BitirmeProjesi/model_karsilastirma.csv): Karşılaştırma sonuç tablosu.
+* rf_model.pkl, xgb_model.pkl, catboost_model.pkl: Karşılaştırma modelleri.
