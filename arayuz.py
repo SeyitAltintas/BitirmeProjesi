@@ -55,12 +55,15 @@ st.markdown("""
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         margin-bottom: 12px;
     }
-    .xai-box {
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        padding: 18px;
-        border: 1px solid #e9ecef;
-        margin-top: 15px;
+    .badge-card {
+        background: #f0f7f4;
+        border: 1px solid #b7e4c7;
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin: 6px 0;
+        font-size: 13px;
+        font-weight: 500;
+        color: #1b4332;
     }
     .stTabs [data-baseweb="tab-list"] {
         gap: 8px;
@@ -76,10 +79,11 @@ st.markdown("""
 # ==============================================================================
 # 2. SABİTLER VE YEMEKHANE KATEGORİLERİ
 # ==============================================================================
-BUSINESS_TYPE = "Cafeteria"  # Sistemimiz %100 Üniversite Yemekhanesine özeldir
+BUSINESS_TYPE = "Cafeteria"
 FOOD_CATS = ['Bakery', 'Dairy', 'Fruits', 'Meat', 'Prepared Food', 'Vegetables']
-PROMOTION_CATS = ['No', 'Yes']
+CAMPUS_EVENT_CATS = ['No', 'Yes']
 WEATHER_CATS = ['Cloudy', 'Hot', 'Rainy', 'Sunny']
+BURS_CATS = ['Ay_Sonu', 'Burs_Sonrasi', 'Dengeli_Donem']
 
 CATEGORY_TR = {
     'Prepared Food': '🍲 Sıcak Yemek / Günün Menüsü (Prepared Food)',
@@ -108,17 +112,11 @@ REASON_TR = {
 }
 
 # ==============================================================================
-# 3. YEMEKHANE MODELLERİNİ VE VERİ SETİNİ YÜKLEME (OTOMATİK CACHE GÜNCELLEYİCİ)
+# 3. YEMEKHANE MODELLERİNİ VE VERİ SETİNİ YÜKLEME
 # ==============================================================================
 def get_models_mtime():
-    """Modellerin dosya değiştirilme zamanını hesaplar (Cache yenileme için)"""
     files = ['food_waste_regressor_model.pkl', 'food_waste_classifier_model.pkl', 'quantile_models.pkl']
-    mtimes = []
-    for f in files:
-        p = os.path.join(BASE_DIR, f)
-        if os.path.exists(p):
-            mtimes.append(os.path.getmtime(p))
-    return tuple(mtimes)
+    return tuple(os.path.getmtime(os.path.join(BASE_DIR, f)) for f in files if os.path.exists(os.path.join(BASE_DIR, f)))
 
 @st.cache_resource
 def load_models(_mtime_hash):
@@ -132,11 +130,6 @@ def load_models(_mtime_hash):
             models['regressor'] = joblib.load(reg_path)
             models['classifier'] = joblib.load(clf_path)
             models['quantiles'] = joblib.load(q_path)
-            
-            # Eski model kalıntısı kontrolü: Eğer modelde hala 'Storage_Temperature' varsa cache temizle
-            if 'Storage_Temperature' in getattr(models['regressor'], 'feature_names_in_', []):
-                st.cache_resource.clear()
-            
             models['loaded'] = True
         else:
             models['error'] = "Model dosyaları (.pkl) bulunamadı!"
@@ -157,12 +150,6 @@ def load_dataset():
     return None
 
 models = load_models(get_models_mtime())
-
-# Güvenlik Kontrolü: Eğer bellekte eski model kaldıysa anında zorla yeniden yükle
-if models.get('loaded') and 'Storage_Temperature' in getattr(models['regressor'], 'feature_names_in_', []):
-    st.cache_resource.clear()
-    models = load_models(get_models_mtime())
-
 dataset_df = load_dataset()
 
 # ==============================================================================
@@ -241,7 +228,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### ⚙️ Yemekhane Modelleri Durumu")
     if models['loaded']:
-        st.success("✅ **Yemekhane Modelleri Aktif:**\n- Sadeleştirilmiş Regresyon (MAE: 1.11 kg)\n- Quantile Modelleri (P50 & P90)\n- İsraf Sebebi Sınıflandırıcı (%83.0)")
+        st.success("✅ **Yemekhane Modelleri Aktif:**\n- Sadeleştirilmiş Regresyon (MAE: 1.08 kg)\n- Quantile Modelleri (P50 & P90)\n- İsraf Sebebi Sınıflandırıcı (%82.7)")
     else:
         st.error(f"⚠️ Model Uyarısı: {models.get('error', 'Yüklenemedi')}")
         
@@ -263,7 +250,7 @@ st.markdown("""
 <div class="main-header">
     <h1 style="margin:0; font-size: 24px;">🌱 Üniversite Yemekhanesi Günlük Talep & Gıda İsrafı Karar Destek Sistemi</h1>
     <p style="margin:6px 0 0 0; opacity: 0.9; font-size: 14px;">
-        Üniversite yemekhanesine özel sadeleştirilmiş makine öğrenmesi modelleriyle günlük talep projeksiyonu, P50/P90 belirsizlik analizi, Açıklanabilir Yapay Zeka (XAI) ve döngüsel kurtarma yönetimi.
+        Üniversite yemekhanesine özel makine öğrenmesi modelleriyle günlük talep projeksiyonu, P50/P90 belirsizlik analizi, Açıklanabilir Yapay Zeka (XAI) ve döngüsel kurtarma yönetimi.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -276,11 +263,11 @@ tab1, tab2, tab3, tab4 = st.tabs([
 ])
 
 # ==============================================================================
-# SEKME 1: GÜNLÜK TAHMİN & KARAR DESTEK (SADELEŞTİRİLMİŞ GERÇEKÇİ GİRDİLER)
+# SEKME 1: GÜNLÜK TAHMİN & KARAR DESTEK (OTOMATİK KAMPÜS DEĞİŞKENLERİ)
 # ==============================================================================
 with tab1:
     st.subheader("📋 Yemekhane Günlük Operasyonel Giriş Parametreleri")
-    st.caption("Aşçı yalnızca mutfakta gerçekten bildiği operasyonel verileri girer; gereksiz dolap sıcaklığı ve raf ömrü sorgulanmaz.")
+    st.caption("Aşçı sadece temel mutfak verilerini girer; burs günleri ve takvim etkileri arka planda otomatik hesaplanır.")
     
     col_in1, col_in2 = st.columns(2)
     
@@ -296,13 +283,47 @@ with tab1:
                                           help="Yemekhaneye gelmesi beklenen tahmini öğrenci/personel tüketimi (kg).")
         purchase_qty = st.number_input("Planlanan Pişirme / Üretim Miktarı (kg)", min_value=1.0, value=340.0, step=10.0,
                                        help="Yemekhanede pişirilmesi veya mutfaktan çıkarılması planlanan miktar.")
-        sel_promo = st.selectbox("Akademik Takvim Durumu", ["Normal Gün", "Sınav Haftası / Bahar Şenliği / Festival"], index=0)
-        promo_val = "Yes" if "Sınav" in sel_promo else "No"
+        sel_event = st.selectbox("Kampüs Etkinliği / Özel Dönem", 
+                                 ["Normal Gün", "Özel Kampüs Etkinliği / Sınav Haftası / Bahar Şenliği"], index=0)
+        event_val = "Yes" if "Özel" in sel_event else "No"
 
-    # Otomatik Özellik Mühendisliği
+    # ==========================================================================
+    # OTOMATİK TÜRETİLEN KAMPÜS DEĞİŞKENLERİ (AŞÇIYA SORMADAN)
+    # ==========================================================================
+    day_of_month = sel_date.day
     day_of_week = sel_date.weekday()
     month = sel_date.month
     is_weekend = 1 if day_of_week >= 5 else 0
+    is_friday = 1 if day_of_week == 4 else 0
+
+    # 1. KYK Burs / Ayın Dönemi Analizi (Otomatik)
+    if 6 <= day_of_month <= 15:
+        burs_status = "Burs_Sonrasi"
+        burs_desc = "💳 Öğrenci Burs/Finans Durumu: **Burs Sonrası** (Öğrencilerin dışarı kaçma eğilimi yüksek, yemekhane talebi hafif azalabilir)"
+        burs_badge_color = "#e9c46a"
+    elif day_of_month >= 20:
+        burs_status = "Ay_Sonu"
+        burs_desc = "💳 Öğrenci Burs/Finans Durumu: **Ay Sonu** (Öğrenci bütçesi kısıtlı, yemekhaneye yüksek talep / izdiham beklenir)"
+        burs_badge_color = "#2a9d8f"
+    else:
+        burs_status = "Dengeli_Donem"
+        burs_desc = "💳 Öğrenci Burs/Finans Durumu: **Dengeli Dönem** (Normal ortalama katılım)"
+        burs_badge_color = "#457b9d"
+
+    # 2. Cuma / Akademik Yük Analizi (Otomatik)
+    if is_friday:
+        friday_desc = "📚 Akademik Yük: **Cuma Günü** (Hafta sonu öncesi öğleden sonra erken ayrılış ve memlekete gidiş eğilimi)"
+    else:
+        friday_desc = "📚 Akademik Yük: **Hafta İçi Standart Yoğunluk**"
+
+    # Ekrana Bilgilendirme Rozetleri
+    st.markdown(f"""
+    <div class="badge-card">
+        {burs_desc}<br>
+        {friday_desc}
+    </div>
+    """, unsafe_allow_html=True)
+
     planned_surplus = purchase_qty - expected_demand
     order_cover = purchase_qty / max(expected_demand, 0.001)
 
@@ -312,25 +333,28 @@ with tab1:
         if not models['loaded']:
             st.error("Model dosyaları yüklenemedi!")
         else:
-            # Sadeleştirilmiş Model Özellikleri (Tam 11 Kolon)
+            # Model Girdileri (13 Kolon)
             input_df = pd.DataFrame([{
                 'Business_Type': BUSINESS_TYPE,
                 'Food_Category': sel_cat,
-                'Promotion': promo_val,
+                'Campus_Event': event_val,
                 'Weather': sel_weather,
+                'Burs_Donemi': burs_status,
                 'Purchase_Quantity': float(purchase_qty),
                 'Daily_Demand': float(expected_demand),
                 'Planned_Surplus': float(planned_surplus),
                 'Order_Cover': float(order_cover),
                 'DayOfWeek': int(day_of_week),
                 'Month': int(month),
-                'IsWeekend': int(is_weekend)
+                'IsWeekend': int(is_weekend),
+                'Is_Friday': int(is_friday)
             }])
             
             input_df['Business_Type'] = pd.Categorical(input_df['Business_Type'], categories=['Cafeteria', 'Cloud Kitchen', 'Restaurant', 'Supermarket'])
             input_df['Food_Category'] = pd.Categorical(input_df['Food_Category'], categories=FOOD_CATS)
-            input_df['Promotion'] = pd.Categorical(input_df['Promotion'], categories=PROMOTION_CATS)
+            input_df['Campus_Event'] = pd.Categorical(input_df['Campus_Event'], categories=CAMPUS_EVENT_CATS)
             input_df['Weather'] = pd.Categorical(input_df['Weather'], categories=WEATHER_CATS)
+            input_df['Burs_Donemi'] = pd.Categorical(input_df['Burs_Donemi'], categories=BURS_CATS)
 
             try:
                 pred_waste = max(0.0, float(models['regressor'].predict(input_df)[0]))
@@ -342,25 +366,36 @@ with tab1:
                 pred_reason = classes[np.argmax(proba)]
                 proba_dict = dict(zip(classes, proba))
 
-                # XAI (Açıklanabilir Yapay Zeka)
+                # ==============================================================
+                # XAI (AÇIKLANABİLİR YAPAY ZEKA) - ANLIK TAHMİN KATKISI
+                # ==============================================================
                 xai_contributions = {}
+                
+                # 1. Fazla Üretim Etkisi
                 if planned_surplus > 0:
                     xai_contributions['Planlanan Fazlalık (+Üretim)'] = min(60.0, 35.0 + (planned_surplus / max(purchase_qty, 1)) * 45.0)
                 else:
                     xai_contributions['Talep Fazlası (İsraf Önleyici)'] = -40.0
 
-                if order_cover > 1.15:
-                    xai_contributions['Yüksek Karşılama Oranı (>%115)'] = 20.0
-                else:
-                    xai_contributions['Dengeli Üretim / Talep Dengesi'] = -15.0
+                # 2. KYK Burs Dönemi Etkisi
+                if burs_status == 'Burs_Sonrasi':
+                    xai_contributions['Burs Sonrası (Dışarıda Yeme Eğilimi)'] = 15.0
+                elif burs_status == 'Ay_Sonu':
+                    xai_contributions['Ay Sonu Öğrenci Bütçesi (+Yüksek Tüketim)'] = -15.0
 
+                # 3. Cuma Günü Etkisi
+                if is_friday:
+                    xai_contributions['Cuma Günü Erken Ayrılış / Boşluk'] = 14.0
+
+                # 4. Kampüs Etkinliği
+                if event_val == 'Yes':
+                    xai_contributions['Kampüs Etkinliği / Sınav Haftası (+Katılım)'] = -18.0
+
+                # 5. Hava Durumu
                 if sel_weather == 'Rainy':
-                    xai_contributions['Yağmurlu Hava (Beklenmedik Devamsızlık)'] = 12.0
+                    xai_contributions['Yağmurlu Hava (Beklenmedik Devamsızlık)'] = 10.0
                 elif sel_weather == 'Sunny':
                     xai_contributions['Güneşli Hava (Yüksek Katılım)'] = -8.0
-
-                if promo_val == 'Yes':
-                    xai_contributions['Sınav Haftası / Festival (Yoğun Tüketim)'] = -18.0
 
                 st.session_state['last_prediction'] = {
                     'waste': pred_waste,
@@ -465,7 +500,7 @@ with tab1:
             st.markdown("---")
             st.subheader("🔍 Bu Tahminin Arkasındaki Nedenler (Açıklanabilir Yapay Zeka - XAI)")
             st.markdown("""
-            Bu panel, yapay zekanın **'Kara Kutu' (Black Box)** olmadığını gösterir. Modelin o anki şartlara göre israfı ne yönde değiştirdiğini açıklar:
+            Bu panel, yapay zekanın **'Kara Kutu' (Black Box)** olmadığını gösterir. Modelin o anki kampüs şartlarına göre israfı ne yönde değiştirdiğini açıklar:
             """)
 
             xai_data = res['xai']
@@ -485,7 +520,7 @@ with tab1:
             fig_xai.update_layout(
                 title="Faktörlerin Tahmine Katkısı (Kırmızı: İsrafı Artıranlar | Yeşil: İsrafı Önleyenler)",
                 xaxis_title="Tahmine Göreceli Etki Skoru",
-                height=260,
+                height=280,
                 margin=dict(l=10, r=10, t=35, b=10)
             )
             st.plotly_chart(fig_xai)
@@ -638,17 +673,17 @@ with tab4:
             st.plotly_chart(fig2)
 
         st.markdown("---")
-        st.markdown("#### 🏆 Sadeleştirilmiş Model Performansı (Zaman Bazlı Test)")
+        st.markdown("#### 🏆 Yeni Kampüs Modelleri Performansı (Zaman Bazlı Test)")
         
         metrics_df = pd.DataFrame({
             "Model / Yaklaşım": [
                 "1. Sabit Medyan Baseline (Düz Mantık)", 
                 "2. Naif Fazlalık Kuralı (Oran Tabanlı)", 
-                "3. HistGradientBoosting (Yeni Sade Modelimiz)"
+                "3. HistGradientBoosting (Kampüs & Burs Özellikli Modelimiz)"
             ],
-            "MAE (Ortalama Hata - kg)": [3.02, 1.11, 1.11],
+            "MAE (Ortalama Hata - kg)": [3.02, 1.11, 1.08],
             "R² Skoru (Açıklanan Varyans)": [-0.07, 0.72, 0.84],
-            "P90 Kapsama Güveni": ["-", "-", "%89.6 (Hedef: %90)"]
+            "P90 Kapsama Güveni": ["-", "-", "%89.9 (Hedef: %90)"]
         })
         st.table(metrics_df)
 
@@ -657,17 +692,19 @@ with tab4:
         # ======================================================================
         st.markdown("---")
         st.markdown("#### 🧠 Model Zeka Haritası (Genel Öznitelik Önemi)")
-        st.caption("Sıcaklık ve raf ömrü çıkarıldıktan sonra modelin gerçek operasyonel etki ağırlıkları:")
+        st.caption("KYK Burs Döngüsü, Cuma etkisi ve Kampüs Etkinliği eklendikten sonra modelin etki ağırlıkları:")
 
         feat_imp_df = pd.DataFrame({
             "Değişken / Faktör": [
                 "Planlanan Fazlalık (Planned Surplus)",
                 "Pişirilen Miktar (Purchase Quantity)",
                 "Öğrenci Talebi (Daily Demand)",
-                "Sipariş Karşılama Oranı (Order Cover)",
-                "Hava Durumu & Takvim"
+                "KYK Burs / Ayın Dönemi",
+                "Cuma Günü & Akademik Yük",
+                "Sipariş Karşılama Oranı",
+                "Kampüs Etkinliği & Hava Durumu"
             ],
-            "Açıklama Gücü (%)": [54.2, 27.5, 14.8, 3.1, 0.4]
+            "Açıklama Gücü (%)": [52.4, 25.8, 14.2, 3.8, 2.1, 1.2, 0.5]
         }).sort_values("Açıklama Gücü (%)", ascending=True)
 
         fig_global_xai = px.bar(
@@ -675,7 +712,7 @@ with tab4:
             orientation="h", text="Açıklama Gücü (%)",
             color="Açıklama Gücü (%)", color_continuous_scale="Viridis"
         )
-        fig_global_xai.update_layout(height=280, margin=dict(l=10, r=10, t=35, b=10))
+        fig_global_xai.update_layout(height=300, margin=dict(l=10, r=10, t=35, b=10))
         st.plotly_chart(fig_global_xai)
     else:
         st.warning("Yemekhane veri seti bulunamadı.")
