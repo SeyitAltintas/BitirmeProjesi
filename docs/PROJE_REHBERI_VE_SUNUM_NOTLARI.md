@@ -100,16 +100,22 @@ $$CR = \frac{C_u}{C_u + C_o} = \frac{75}{75 + 35} = \frac{75}{110} \approx \%68.
 
 Arayüzde yan panel yoktur; tüm girişler ana sayfadadır. 5 sekme vardır.
 
-### 1. Sekme: "Günlük Tahmin" (Aşçının Sabahı)
-**Girişler:** tarih, menü kategorisi, hava durumu, kampüs etkinliği (Normal gün / Etkinlik), beklenen talep (kg), planlanan üretim (kg).
-Cuma etkisi tarihten **otomatik** hesaplanır ve ekranda etiket olarak gösterilir.
+### 1. Sekme: "Günlük Tahmin & Karar Destek" (2-Aşamalı Uçtan Uca Mimari)
+Aşçının sabah mutfağa girdiğindeki asıl bilinmeyeni **'Bugün kaç kişi gelecek (talep)?'** sorusudur. Sistemimiz bu soruyu çözen 2 aşamalı bir karar destek akışı sunar:
 
-**Çıktılar ("Tahmini çalıştır" sonrası):**
-1. **Tahmini israf (kg)** ve planlanan üretime oranı.
-2. **P50 (medyan):** ön taahhüt için ayrılacak miktar.
-3. **P90 (emniyet sınırı):** kurtarma kapasitesi için tavan.
-4. **Ana israf nedeni** ve olasılığı (5 sınıf).
-5. **XAI grafiği:** Her faktör (fazla üretim, Cuma, etkinlik, hava) nötr değere çekilip model yeniden çalıştırılır; tahmindeki fark (kg) o faktörün **gerçek katkısıdır**. Kırmızı çubuk israfı artırır, yeşil azaltır.
+**1. Aşama (Yapay Zeka Talep Tahmini):**
+* Aşçı yalnızca **Tarih**, **Menü Kategorisi**, **Hava Durumu** ve **Kampüs Durumunu** (Normal/Etkinlik) seçer.
+* Sistem anında `food_demand_model.pkl` ile o günkü tahmini öğrenci/personel talebini hesaplar (Örn: **63.5 kg**).
+* Newsvendor asimetrik kuralına göre aşçıya pişirmesi önerilen güvenli miktarı tavsiye eder (Örn: **69.0 kg**).
+
+**2. Aşama (İsraf Projeksiyonu & Karar Destek):**
+* Aşçı isterse yapay zekanın önerdiği miktarı doğrudan onaylar, isterse mutfak şartlarına göre kutulardan günceller.
+* "🚀 Karar Destek & İsraf Analizini Çalıştır" butonuna basıldığında:
+  1. **Noktasal İsraf Tahmini (kg)** ve pişirilen miktara oranı.
+  2. **P50 Medyan İsraf:** Kesin kurtarılacak / askıda yemek taahhüt miktarı.
+  3. **P90 Emniyet Sınırı:** En olumsuz koşulda israfın aşmayacağı rezerv tavanı.
+  4. **Ana İsraf Nedeni:** %82.4 doğruluklu sınıflandırıcı (Aşırı Pişirme, Düşük Talep vb.).
+  5. **XAI Grafiği:** Hangi faktörün (Cuma, yağmur, etkinlik, fazla pişirme) israfı kaç kg değiştirdiğini gösteren karşı-olgusal analiz.
 
 > Hocaya not: XAI katkıları sabit kural değil, modelin kendi çıktısından (karşı-olgusal analiz) hesaplanır.
 
@@ -182,15 +188,26 @@ HGB, RandomForest, XGBoost ve CatBoost'un metrik tablosu, grafikleri ve son gird
 * Tasarım sadeleştirildi: tek vurgu rengi, animasyonsuz, kart tabanlı düzen.
 * Yeni **5. sekme: Model Karşılaştırması**.
 
-### E) Model Karşılaştırması (HGB, RandomForest, XGBoost, CatBoost)
-Aynı veri, aynı zaman bazlı bölme, aynı 12 öznitelik. Script: `scripts/model_egit_karsilastir.py`, çıktı: `models/comparison/model_karsilastirma.csv`. HGB satırı, `models/` içindeki gerçek üretim modelinin test sonucudur.
+### E) 2-Aşamalı Model Karşılaştırması (Talep & İsraf)
+Sistemde hem 1. Aşama (Talep Tahmini) hem de 2. Aşama (İsraf Tahmini) için 4 farklı topluluk algoritması (HistGradientBoosting, Random Forest, XGBoost, CatBoost) aynı veri ve zaman bazlı test kümesi (Ekim–Aralık) üzerinde karşılaştırılmıştır (`scripts/model_egit_karsilastir.py`):
 
-| Model | MAE (kg) | RMSE (kg) | R² | Sınıflandırma doğruluğu | Eğitim süresi |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| HistGradientBoosting (üretim) | 1.117 | 3.067 | 0.850 | %82.4 | 0.8 sn |
-| RandomForest | 0.996 | **2.952** | **0.861** | %83.2 | 0.4 sn |
-| XGBoost | 1.084 | 3.818 | 0.768 | %82.2 | 0.4 sn |
-| CatBoost | **0.952** | 3.409 | 0.815 | %83.2 | 9.4 sn |
+#### 1. Aşama: Günlük Talep Tahmini Modelleri (Daily_Demand kg)
+| Model | MAE (kg) | RMSE (kg) | R² Skoru | İyileşme (%) |
+| :--- | :---: | :---: | :---: | :---: |
+| Sabit Medyan (Baseline) | 12.036 | 15.482 | -0.011 | %0.0 |
+| **HistGradientBoosting (Üretim)** | **8.900** | **11.263** | **0.465** | **%26.1** |
+| Random Forest | 7.855 | 9.961 | 0.582 | %34.7 |
+| CatBoost | 7.826 | 9.941 | 0.583 | %35.0 |
+| XGBoost | 9.601 | 12.042 | 0.389 | %20.2 |
+
+#### 2. Aşama: Gıda İsrafı Tahmini Modelleri (Waste_Quantity kg)
+| Model | MAE (kg) | RMSE (kg) | R² Skoru | Sınıflandırma Doğruluğu |
+| :--- | :---: | :---: | :---: | :---: |
+| Sabit Medyan (Baseline) | 3.024 | 8.190 | -0.069 | - |
+| **HistGradientBoosting (Üretim)** | **1.104** | **3.080** | **0.849** | **%82.4** |
+| Random Forest | 0.995 | 2.954 | 0.861 | %83.5 |
+| XGBoost | 0.971 | 3.026 | 0.854 | %83.2 |
+| CatBoost | 0.965 | 3.419 | 0.814 | %81.6 |
 
 * **Dürüst yorum:** Dört model birbirine çok yakın; en iyi MAE CatBoost'ta (0.95), en iyi R² ve RMSE RandomForest'ta. XGBoost ve CatBoost'un RMSE'si yüksek, yani nadir büyük hatalar yapıyorlar. MAE farkı ≈ 0.17 kg ve tek bir test dönemine dayanıyor, istatistiksel olarak kesin değil. Hata payı büyük ölçüde verideki doğal gürültüden geliyor.
 * **HGB neden üretimde?** Kategorikleri doğal işler (ek kodlama gerekmez), ek kütüphane istemez ve P50/P90 kantil modellerini aynı yapıda sunar. Kantil tahmini diğer üç modelle karşılaştırılmadı.
@@ -212,17 +229,19 @@ BitirmeProjesi/
 │   ├── yemekhane_veriseti.csv        Yalnızca Cafeteria (1.572 satır)
 │   └── yemekhane_oznitelikler.csv    Türetilmiş değişkenlerle nihai veri
 ├── models/
-│   ├── food_waste_regressor_model.pkl   İsraf miktarı (HGB)
-│   ├── quantile_models.pkl              P50 / P90 modelleri
-│   ├── food_waste_classifier_model.pkl  İsraf nedeni sınıflandırıcı
+│   ├── food_demand_model.pkl            Günlük talep tahmini modeli (HGB)
+│   ├── food_waste_regressor_model.pkl   İsraf miktarı regresyonu (HGB)
+│   ├── quantile_models.pkl              P50 / P90 israf risk tavanı modelleri
+│   ├── food_waste_classifier_model.pkl  İsraf nedeni sınıflandırıcı (%82.4)
 │   └── comparison/
-│       ├── rf_model.pkl, xgb_model.pkl, catboost_model.pkl
-│       └── model_karsilastirma.csv      Karşılaştırma sonuç tablosu
+│       ├── demand_models_comparison.pkl Talep kıyaslama modelleri
+│       ├── talep_model_karsilastirma.csv Talep modelleri karşılaştırma tablosu
+│       ├── rf_model.pkl, xgb_model.pkl, catboost_model.pkl İsraf kıyaslama modelleri
+│       └── model_karsilastirma.csv      İsraf modelleri karşılaştırma tablosu
 ├── scripts/
-│   └── model_egit_karsilastir.py        RF / XGBoost / CatBoost eğitimi ve karşılaştırma
+│   ├── model_egit_uretim.py             4 ana üretim modelini eğiten script
+│   └── model_egit_karsilastir.py        Talep ve israf karşılaştırma eğitim scripti
 └── docs/
     ├── PROJE_REHBERI_VE_SUNUM_NOTLARI.md
     └── VERI_SETI_DONUSUMU_VE_HOCA_SUNUM_METNI.md
 ```
-
-> Not: Üretim modellerini (`models/*.pkl`) eğiten script depoda yoktur; sadece karşılaştırma scripti vardır. Tam tekrarlanabilirlik için ayrı bir eğitim scripti eklenmesi önerilir.

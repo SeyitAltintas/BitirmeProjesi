@@ -14,12 +14,15 @@ dist/
 .env
 .env.*
 
-# IDE
+# IDE ve Ofis Geçici Dosyaları
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+~$*
+docs_*.txt
 
 # Eğitim logları
 catboost_info/
 run.log
+cmp.log

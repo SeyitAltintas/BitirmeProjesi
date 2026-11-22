@@ -1,11 +1,14 @@
 """
 Model Eğitim ve Karşılaştırma Scripti
 ======================================
-HistGradientBoosting (HGB), RandomForest, XGBoost, CatBoost
-4 modeli eğitir, karşılaştırır ve .pkl olarak kaydeder.
+1. Talep Tahmini Modelleri (Daily_Demand): HGB, RF, XGBoost, CatBoost
+2. İsraf Tahmini Modelleri (Waste_Quantity): HGB, RF, XGBoost, CatBoost
+
+Her iki görev için modelleri eğitir, test döneminde (Ekim-Aralık) karşılaştırır ve
+models/comparison/ klasörüne kaydeder.
 
 Çalıştırma:
-  python model_egit_karsilastir.py
+  python scripts/model_egit_karsilastir.py
 """
 
 import os, time, warnings
@@ -26,283 +29,301 @@ os.makedirs(COMP_DIR, exist_ok=True)
 # ============================================================
 data_path = os.path.join(DATA_DIR, 'yemekhane_oznitelikler.csv')
 df = pd.read_csv(data_path, parse_dates=['Date'])
+df['Weather'] = df['Weather'].fillna('Cloudy')
 print(f"[OK] Veri yüklendi: {len(df)} satır, {df.shape[1]} sütun")
 
-FEATURE_COLS = [
-    'Business_Type', 'Food_Category', 'Campus_Event', 'Weather',
-    'Purchase_Quantity', 'Daily_Demand', 'Planned_Surplus', 'Order_Cover',
-    'DayOfWeek', 'Month', 'IsWeekend', 'Is_Friday'
-]
-TARGET_REG = 'Waste_Quantity'
-TARGET_CLF = 'Waste_Reason'
-
-CAT_COLS = ['Business_Type', 'Food_Category', 'Campus_Event', 'Weather']
-NUM_COLS  = [c for c in FEATURE_COLS if c not in CAT_COLS]
-
-# ============================================================
-# 2. ZAMAN BAZLI TRAIN/TEST BÖLME  (Ocak-Eylül / Ekim-Aralık)
-# ============================================================
-train = df[df['Date'].dt.month <= 9]
-test  = df[df['Date'].dt.month >= 10]
-print(f"[OK] Train: {len(train)}, Test: {len(test)}")
-
-X_train_raw = train[FEATURE_COLS].copy()
-X_test_raw  = test[FEATURE_COLS].copy()
-y_train_reg = train[TARGET_REG].values
-y_test_reg  = test[TARGET_REG].values
-y_train_clf = train[TARGET_CLF].astype(str).to_numpy(dtype=object)
-y_test_clf  = test[TARGET_CLF].astype(str).to_numpy(dtype=object)
-
-# ============================================================
-# 3. KATEGORİK ENCODER (XGBoost / RandomForest / CatBoost için)
-# ============================================================
-from sklearn.preprocessing import OrdinalEncoder
-
+# Kategori listeleri
 CAT_CATEGORIES = {
     'Business_Type': ['Cafeteria', 'Cloud Kitchen', 'Restaurant', 'Supermarket'],
     'Food_Category': ['Bakery', 'Dairy', 'Fruits', 'Meat', 'Prepared Food', 'Vegetables'],
     'Campus_Event' : ['No', 'Yes'],
     'Weather'      : ['Cloudy', 'Hot', 'Rainy', 'Sunny'],
 }
+CAT_COLS = list(CAT_CATEGORIES.keys())
 
-enc = OrdinalEncoder(
-    categories=[CAT_CATEGORIES[c] for c in CAT_COLS],
-    handle_unknown='use_encoded_value', unknown_value=-1
-)
+DEMAND_FEATURES = [
+    'Business_Type', 'Food_Category', 'Campus_Event', 'Weather',
+    'DayOfWeek', 'Month', 'IsWeekend', 'Is_Friday'
+]
 
-def encode(df_in):
-    out = df_in.copy()
-    out[CAT_COLS] = enc.transform(df_in[CAT_COLS])
-    return out.astype(float)
+WASTE_FEATURES = [
+    'Business_Type', 'Food_Category', 'Campus_Event', 'Weather',
+    'Purchase_Quantity', 'Daily_Demand', 'Planned_Surplus', 'Order_Cover',
+    'DayOfWeek', 'Month', 'IsWeekend', 'Is_Friday'
+]
 
-enc.fit(X_train_raw[CAT_COLS])
-X_train_enc = encode(X_train_raw)
-X_test_enc  = encode(X_test_raw)
-
-# HGB için pandas Categorical
-def make_hgb_df(df_raw):
-    out = df_raw.copy()
-    for col, cats in CAT_CATEGORIES.items():
-        out[col] = pd.Categorical(out[col], categories=cats)
-    return out
-
-X_train_hgb = make_hgb_df(X_train_raw)
-X_test_hgb  = make_hgb_df(X_test_raw)
-
-# ============================================================
-# 4. METRIK FONKSİYONU
-# ============================================================
+# Modeller
+from sklearn.ensemble import HistGradientBoostingRegressor, HistGradientBoostingClassifier
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+from sklearn.preprocessing import OrdinalEncoder, LabelEncoder
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, accuracy_score
+
+try:
+    from xgboost import XGBRegressor, XGBClassifier
+    HAS_XGB = True
+except ImportError:
+    HAS_XGB = False
+
+try:
+    from catboost import CatBoostRegressor, CatBoostClassifier
+    HAS_CAT = True
+except ImportError:
+    HAS_CAT = False
 
 def regression_metrics(y_true, y_pred):
     mae  = mean_absolute_error(y_true, y_pred)
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     r2   = r2_score(y_true, y_pred)
-    return mae, rmse, r2
+    return round(mae, 3), round(rmse, 3), round(r2, 3)
+
+def make_hgb_df(df_raw, features):
+    out = df_raw[features].copy()
+    for col, cats in CAT_CATEGORIES.items():
+        if col in out.columns:
+            out[col] = pd.Categorical(out[col], categories=cats)
+    return out
 
 # ============================================================
-# 5. MODEL TANIMLAMALARI
+# GÖREV 1: TALEP TAHMİNİ KARŞILAŞTIRMASI (Daily_Demand kg)
 # ============================================================
-from sklearn.ensemble import HistGradientBoostingRegressor, HistGradientBoostingClassifier
-from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+print("\n" + "=" * 60)
+print("1. GÖREV: TALEP TAHMİNİ KARŞILAŞTIRMASI (Daily_Demand kg)")
+print("=" * 60)
 
-# XGBoost
-try:
-    from xgboost import XGBRegressor, XGBClassifier
-    HAS_XGB = True
-    print("[OK] XGBoost import edildi")
-except ImportError:
-    HAS_XGB = False
-    print("[SKIP] XGBoost yok")
+demand_df = df.dropna(subset=['Daily_Demand']).copy()
+train_dem = demand_df[demand_df['Date'].dt.month <= 9].copy()
+test_dem  = demand_df[demand_df['Date'].dt.month >= 10].copy()
 
-# CatBoost
-try:
-    from catboost import CatBoostRegressor, CatBoostClassifier
-    HAS_CAT = True
-    print("[OK] CatBoost import edildi")
-except ImportError:
-    HAS_CAT = False
-    print("[SKIP] CatBoost yok")
+X_tr_dem_raw = train_dem[DEMAND_FEATURES].copy()
+X_te_dem_raw = test_dem[DEMAND_FEATURES].copy()
+y_tr_dem = train_dem['Daily_Demand'].values
+y_te_dem = test_dem['Daily_Demand'].values
 
-results = {}  # {model_name: {mae, rmse, r2, train_time, clf_acc}}
+# Encoders
+enc_dem = OrdinalEncoder(categories=[CAT_CATEGORIES[c] for c in CAT_COLS], handle_unknown='use_encoded_value', unknown_value=-1)
+enc_dem.fit(X_tr_dem_raw[CAT_COLS])
 
-# ============================================================
-# 6a. HistGradientBoosting (HGB) — PRODUCTION MODEL
-# ============================================================
-print("\n--- HistGradientBoosting (Üretim Modeli) ---")
+X_tr_dem_enc = X_tr_dem_raw.copy()
+X_te_dem_enc = X_te_dem_raw.copy()
+X_tr_dem_enc[CAT_COLS] = enc_dem.transform(X_tr_dem_raw[CAT_COLS])
+X_te_dem_enc[CAT_COLS] = enc_dem.transform(X_te_dem_raw[CAT_COLS])
 
+X_tr_dem_hgb = make_hgb_df(X_tr_dem_raw, DEMAND_FEATURES)
+X_te_dem_hgb = make_hgb_df(X_te_dem_raw, DEMAND_FEATURES)
+
+X_tr_dem_cb = X_tr_dem_raw.copy()
+X_te_dem_cb = X_te_dem_raw.copy()
+for c in CAT_COLS:
+    X_tr_dem_cb[c] = X_tr_dem_cb[c].astype(str)
+    X_te_dem_cb[c] = X_te_dem_cb[c].astype(str)
+
+demand_results = []
+
+# Baseline
+base_med = np.median(y_tr_dem)
+b_mae, b_rmse, b_r2 = regression_metrics(y_te_dem, np.full_like(y_te_dem, base_med))
+demand_results.append({
+    'Model': 'Sabit Medyan (Baseline)', 'MAE (kg)': b_mae, 'RMSE (kg)': b_rmse,
+    'R² Skoru': b_r2, 'Eğitim Süresi (s)': 0.0, 'İyileşme (%)': '0.0%'
+})
+print(f"Sabit Medyan Baseline: MAE={b_mae} kg")
+
+# 1. HGB (Demand)
 t0 = time.time()
-hgb_reg = HistGradientBoostingRegressor(
-    max_iter=400, learning_rate=0.08, max_leaf_nodes=31,
-    min_samples_leaf=20, l2_regularization=0.1,
-    categorical_features='from_dtype', random_state=42
-)
-hgb_reg.fit(X_train_hgb, y_train_reg)
-train_time_hgb = time.time() - t0
+try:
+    hgb_dem = joblib.load(os.path.join(MODEL_DIR, 'food_demand_model.pkl'))
+except Exception:
+    hgb_dem = HistGradientBoostingRegressor(max_iter=300, learning_rate=0.08, categorical_features='from_dtype', random_state=42).fit(X_tr_dem_hgb, y_tr_dem)
+t_hgb_dem = time.time() - t0
+p_hgb_dem = hgb_dem.predict(X_te_dem_hgb)
+mae, rmse, r2 = regression_metrics(y_te_dem, p_hgb_dem)
+imp = round((b_mae - mae) / b_mae * 100, 1)
+demand_results.append({
+    'Model': 'HistGradientBoosting (Üretim)', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+    'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_hgb_dem, 2), 'İyileşme (%)': f"%{imp}"
+})
+print(f"HGB Demand: MAE={mae} kg, R²={r2}, İyileşme=%{imp}")
 
-# Quantile modelleri
-hgb_q50 = HistGradientBoostingRegressor(
-    loss='quantile', quantile=0.5, max_iter=300, learning_rate=0.08, random_state=42,
-    categorical_features='from_dtype'
-)
-hgb_q90 = HistGradientBoostingRegressor(
-    loss='quantile', quantile=0.9, max_iter=300, learning_rate=0.08, random_state=42,
-    categorical_features='from_dtype'
-)
-hgb_q50.fit(X_train_hgb, y_train_reg)
-hgb_q90.fit(X_train_hgb, y_train_reg)
+# 2. RF (Demand)
+t0 = time.time()
+rf_dem = RandomForestRegressor(n_estimators=300, max_depth=15, min_samples_leaf=5, random_state=42, n_jobs=-1).fit(X_tr_dem_enc, y_tr_dem)
+t_rf_dem = time.time() - t0
+p_rf_dem = rf_dem.predict(X_te_dem_enc)
+mae, rmse, r2 = regression_metrics(y_te_dem, p_rf_dem)
+imp = round((b_mae - mae) / b_mae * 100, 1)
+demand_results.append({
+    'Model': 'Random Forest', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+    'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_rf_dem, 2), 'İyileşme (%)': f"%{imp}"
+})
+print(f"RF Demand: MAE={mae} kg, R²={r2}, İyileşme=%{imp}")
 
-hgb_clf = HistGradientBoostingClassifier(
-    max_iter=300, learning_rate=0.1, random_state=42,
-    categorical_features='from_dtype'
-)
-hgb_clf.fit(X_train_hgb, y_train_clf)
+# 3. XGB (Demand)
+if HAS_XGB:
+    t0 = time.time()
+    xgb_dem = XGBRegressor(n_estimators=300, learning_rate=0.08, max_depth=5, subsample=0.8, random_state=42, verbosity=0).fit(X_tr_dem_enc, y_tr_dem)
+    t_xgb_dem = time.time() - t0
+    p_xgb_dem = xgb_dem.predict(X_te_dem_enc)
+    mae, rmse, r2 = regression_metrics(y_te_dem, p_xgb_dem)
+    imp = round((b_mae - mae) / b_mae * 100, 1)
+    demand_results.append({
+        'Model': 'XGBoost', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+        'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_xgb_dem, 2), 'İyileşme (%)': f"%{imp}"
+    })
+    print(f"XGB Demand: MAE={mae} kg, R²={r2}, İyileşme=%{imp}")
 
-# Karşılaştırmada GERÇEK üretim modelleri (models/*.pkl) değerlendirilir; bulunamazsa yeni eğitilenler kullanılır.
+# 4. CatBoost (Demand)
+if HAS_CAT:
+    t0 = time.time()
+    cb_dem = CatBoostRegressor(iterations=300, learning_rate=0.08, depth=5, cat_features=CAT_COLS, random_seed=42, verbose=0).fit(X_tr_dem_cb, y_tr_dem)
+    t_cb_dem = time.time() - t0
+    p_cb_dem = cb_dem.predict(X_te_dem_cb)
+    mae, rmse, r2 = regression_metrics(y_te_dem, p_cb_dem)
+    imp = round((b_mae - mae) / b_mae * 100, 1)
+    demand_results.append({
+        'Model': 'CatBoost', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+        'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_cb_dem, 2), 'İyileşme (%)': f"%{imp}"
+    })
+    print(f"CatBoost Demand: MAE={mae} kg, R²={r2}, İyileşme=%{imp}")
+
+# Save demand models
+joblib.dump({
+    'hgb': hgb_dem, 'rf': rf_dem,
+    'xgb': xgb_dem if HAS_XGB else None,
+    'catboost': cb_dem if HAS_CAT else None,
+    'encoder': enc_dem
+}, os.path.join(COMP_DIR, 'demand_models_comparison.pkl'))
+
+dem_comp_df = pd.DataFrame(demand_results)
+dem_comp_df.to_csv(os.path.join(COMP_DIR, 'talep_model_karsilastirma.csv'), index=False)
+print(f"[KAYDEDİLDİ] talep_model_karsilastirma.csv")
+
+# ============================================================
+# GÖREV 2: İSRAF TAHMİNİ KARŞILAŞTIRMASI (Waste_Quantity kg)
+# ============================================================
+print("\n" + "=" * 60)
+print("2. GÖREV: İSRAF TAHMİNİ KARŞILAŞTIRMASI (Waste_Quantity kg)")
+print("=" * 60)
+
+train_wst = df[df['Date'].dt.month <= 9].copy()
+test_wst  = df[df['Date'].dt.month >= 10].copy()
+
+X_tr_wst_raw = train_wst[WASTE_FEATURES].copy()
+X_te_wst_raw = test_wst[WASTE_FEATURES].copy()
+y_tr_wst = train_wst['Waste_Quantity'].values
+y_te_wst = test_wst['Waste_Quantity'].values
+c_tr_wst = train_wst['Waste_Reason'].astype(str).to_numpy(dtype=object)
+c_te_wst = test_wst['Waste_Reason'].astype(str).to_numpy(dtype=object)
+
+enc_wst = OrdinalEncoder(categories=[CAT_CATEGORIES[c] for c in CAT_COLS], handle_unknown='use_encoded_value', unknown_value=-1)
+enc_wst.fit(X_tr_wst_raw[CAT_COLS])
+
+X_tr_wst_enc = X_tr_wst_raw.copy()
+X_te_wst_enc = X_te_wst_raw.copy()
+X_tr_wst_enc[CAT_COLS] = enc_wst.transform(X_tr_wst_raw[CAT_COLS])
+X_te_wst_enc[CAT_COLS] = enc_wst.transform(X_te_wst_raw[CAT_COLS])
+
+X_tr_wst_hgb = make_hgb_df(X_tr_wst_raw, WASTE_FEATURES)
+X_te_wst_hgb = make_hgb_df(X_te_wst_raw, WASTE_FEATURES)
+
+X_tr_wst_cb = X_tr_wst_raw.copy()
+X_te_wst_cb = X_te_wst_raw.copy()
+for c in CAT_COLS:
+    X_tr_wst_cb[c] = X_tr_wst_cb[c].astype(str)
+    X_te_wst_cb[c] = X_te_wst_cb[c].astype(str)
+
+waste_results = []
+
+# Baseline
+base_med_wst = np.median(y_tr_wst)
+bw_mae, bw_rmse, bw_r2 = regression_metrics(y_te_wst, np.full_like(y_te_wst, base_med_wst))
+waste_results.append({
+    'Model': 'Sabit Medyan (Baseline)', 'MAE (kg)': bw_mae, 'RMSE (kg)': bw_rmse,
+    'R² Skoru': bw_r2, 'Eğitim Süresi (s)': 0.0, 'Sınıflandırıcı Doğruluğu (%)': '-', 'P90 Kapsama (%)': '-'
+})
+
+# 1. HGB (Production Waste Model)
+t0 = time.time()
 try:
     hgb_reg = joblib.load(os.path.join(MODEL_DIR, 'food_waste_regressor_model.pkl'))
     hgb_clf = joblib.load(os.path.join(MODEL_DIR, 'food_waste_classifier_model.pkl'))
-    _q = joblib.load(os.path.join(MODEL_DIR, 'quantile_models.pkl'))
-    hgb_q90 = _q[0.9]
-    print('  [INFO] Üretim modelleri models/ klasöründen yüklendi ve değerlendirildi')
-except Exception as _e:
-    print('  [WARN] Üretim modeli yüklenemedi, yeni eğitilen kullanılıyor:', _e)
+    q_mod = joblib.load(os.path.join(MODEL_DIR, 'quantile_models.pkl'))
+    hgb_q90 = q_mod[0.9]
+except Exception:
+    hgb_reg = HistGradientBoostingRegressor(max_iter=400, learning_rate=0.08, categorical_features='from_dtype', random_state=42).fit(X_tr_wst_hgb, y_tr_wst)
+    hgb_clf = HistGradientBoostingClassifier(max_iter=300, random_state=42, categorical_features='from_dtype').fit(X_tr_wst_hgb, c_tr_wst)
+    hgb_q90 = HistGradientBoostingRegressor(loss='quantile', quantile=0.9, max_iter=300, random_state=42, categorical_features='from_dtype').fit(X_tr_wst_hgb, y_tr_wst)
+t_hgb = time.time() - t0
 
-pred_hgb = np.maximum(0, hgb_reg.predict(X_test_hgb))
-mae, rmse, r2 = regression_metrics(y_test_reg, pred_hgb)
-clf_acc = accuracy_score(y_test_clf, hgb_clf.predict(X_test_hgb))
+p_hgb = np.maximum(0, hgb_reg.predict(X_te_wst_hgb))
+mae, rmse, r2 = regression_metrics(y_te_wst, p_hgb)
+clf_acc = accuracy_score(c_te_wst, hgb_clf.predict(X_te_wst_hgb)) * 100
+cov90 = (y_te_wst <= hgb_q90.predict(X_te_wst_hgb)).mean() * 100
+waste_results.append({
+    'Model': 'HistGradientBoosting (Üretim)', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+    'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_hgb, 2),
+    'Sınıflandırıcı Doğruluğu (%)': round(clf_acc, 1), 'P90 Kapsama (%)': f"%{cov90:.1f}"
+})
+print(f"HGB Waste: MAE={mae} kg, RMSE={rmse}, R²={r2}, Clf=%{clf_acc:.1f}, P90=%{cov90:.1f}")
 
-# P90 coverage
-p90_pred = hgb_q90.predict(X_test_hgb)
-coverage_90 = (y_test_reg <= p90_pred).mean()
-
-results['HGB'] = dict(mae=mae, rmse=rmse, r2=r2, train_time=train_time_hgb,
-                       clf_acc=clf_acc, coverage_90=coverage_90)
-print(f"  MAE={mae:.3f}  RMSE={rmse:.3f}  R²={r2:.3f}  Clf=%{clf_acc*100:.1f}  P90-cov=%{coverage_90*100:.1f}")
-
-# KAYDET (mevcut üretim modelleri güncelle)
-# Üretim modellerinin (food_waste_*.pkl) üzerine YAZILMAZ; sadece karşılaştırma yapılır.
-print("  [INFO] Üretim modelleri korunuyor (üzerine yazılmadı)")
-
-# ============================================================
-# 6b. RandomForest
-# ============================================================
-print("\n--- RandomForest ---")
-
+# 2. RF
 t0 = time.time()
-rf_reg = RandomForestRegressor(
-    n_estimators=300, max_depth=20, min_samples_leaf=5,
-    n_jobs=-1, random_state=42
-)
-rf_reg.fit(X_train_enc, y_train_reg)
-train_time_rf = time.time() - t0
+rf_reg = RandomForestRegressor(n_estimators=300, max_depth=20, min_samples_leaf=5, n_jobs=-1, random_state=42).fit(X_tr_wst_enc, y_tr_wst)
+rf_clf = RandomForestClassifier(n_estimators=200, max_depth=15, min_samples_leaf=5, n_jobs=-1, random_state=42).fit(X_tr_wst_enc, c_tr_wst)
+t_rf = time.time() - t0
+p_rf = np.maximum(0, rf_reg.predict(X_te_wst_enc))
+mae, rmse, r2 = regression_metrics(y_te_wst, p_rf)
+clf_acc = accuracy_score(c_te_wst, rf_clf.predict(X_te_wst_enc)) * 100
+waste_results.append({
+    'Model': 'Random Forest', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+    'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_rf, 2),
+    'Sınıflandırıcı Doğruluğu (%)': round(clf_acc, 1), 'P90 Kapsama (%)': '-'
+})
+joblib.dump({'reg': rf_reg, 'clf': rf_clf, 'encoder': enc_wst}, os.path.join(COMP_DIR, 'rf_model.pkl'))
+print(f"RF Waste: MAE={mae} kg, RMSE={rmse}, R²={r2}, Clf=%{clf_acc:.1f}")
 
-rf_clf = RandomForestClassifier(
-    n_estimators=200, max_depth=15, min_samples_leaf=5,
-    n_jobs=-1, random_state=42
-)
-rf_clf.fit(X_train_enc, y_train_clf)
-
-pred_rf = np.maximum(0, rf_reg.predict(X_test_enc))
-mae, rmse, r2 = regression_metrics(y_test_reg, pred_rf)
-clf_acc = accuracy_score(y_test_clf, rf_clf.predict(X_test_enc))
-results['RandomForest'] = dict(mae=mae, rmse=rmse, r2=r2, train_time=train_time_rf,
-                                clf_acc=clf_acc, coverage_90=None)
-print(f"  MAE={mae:.3f}  RMSE={rmse:.3f}  R²={r2:.3f}  Clf=%{clf_acc*100:.1f}  t={train_time_rf:.1f}s")
-
-joblib.dump({'reg': rf_reg, 'clf': rf_clf, 'encoder': enc}, os.path.join(COMP_DIR, 'rf_model.pkl'))
-print("  [SAVED] rf_model.pkl")
-
-# ============================================================
-# 6c. XGBoost
-# ============================================================
+# 3. XGBoost
 if HAS_XGB:
-    print("\n--- XGBoost ---")
     t0 = time.time()
-    xgb_reg = XGBRegressor(
-        n_estimators=400, learning_rate=0.08, max_depth=6,
-        subsample=0.8, colsample_bytree=0.8,
-        reg_lambda=1.0, random_state=42, verbosity=0
-    )
-    xgb_reg.fit(X_train_enc, y_train_reg)
-    train_time_xgb = time.time() - t0
-
-    xgb_clf = XGBClassifier(
-        n_estimators=300, learning_rate=0.1, max_depth=5,
-        subsample=0.8, random_state=42, verbosity=0,
-        use_label_encoder=False, eval_metric='mlogloss'
-    )
-    from sklearn.preprocessing import LabelEncoder
-    le = LabelEncoder().fit(y_train_clf)
-    xgb_clf.fit(X_train_enc, le.transform(y_train_clf))
-
-    pred_xgb = np.maximum(0, xgb_reg.predict(X_test_enc))
-    mae, rmse, r2 = regression_metrics(y_test_reg, pred_xgb)
-    clf_acc = accuracy_score(le.transform(y_test_clf), xgb_clf.predict(X_test_enc))
-    results['XGBoost'] = dict(mae=mae, rmse=rmse, r2=r2, train_time=train_time_xgb,
-                               clf_acc=clf_acc, coverage_90=None)
-    print(f"  MAE={mae:.3f}  RMSE={rmse:.3f}  R²={r2:.3f}  Clf=%{clf_acc*100:.1f}  t={train_time_xgb:.1f}s")
-
-    joblib.dump({'reg': xgb_reg, 'clf': xgb_clf, 'encoder': enc, 'label_encoder': le}, os.path.join(COMP_DIR, 'xgb_model.pkl'))
-    print("  [SAVED] xgb_model.pkl")
-
-# ============================================================
-# 6d. CatBoost
-# ============================================================
-if HAS_CAT:
-    print("\n--- CatBoost ---")
-    # CatBoost kategorikleri doğal destekler, fakat string olmali
-    cat_feature_indices = [FEATURE_COLS.index(c) for c in CAT_COLS]
-
-    X_train_cat = X_train_raw.copy()
-    X_test_cat  = X_test_raw.copy()
-    # CatBoost requires string categoricals
-    for c in CAT_COLS:
-        X_train_cat[c] = X_train_cat[c].fillna('Bilinmiyor').astype(str)
-        X_test_cat[c]  = X_test_cat[c].fillna('Bilinmiyor').astype(str)
-
-    t0 = time.time()
-    cb_reg = CatBoostRegressor(
-        iterations=400, learning_rate=0.08, depth=6,
-        loss_function='RMSE', cat_features=CAT_COLS,
-        random_seed=42, verbose=0
-    )
-    cb_reg.fit(X_train_cat, y_train_reg)
-    train_time_cb = time.time() - t0
-
-    cb_clf = CatBoostClassifier(
-        iterations=300, learning_rate=0.1, depth=5,
-        cat_features=CAT_COLS, random_seed=42, verbose=0
-    )
-    cb_clf.fit(X_train_cat, y_train_clf)
-
-    pred_cb = np.maximum(0, cb_reg.predict(X_test_cat))
-    mae, rmse, r2 = regression_metrics(y_test_reg, pred_cb)
-    clf_acc = accuracy_score(y_test_clf, cb_clf.predict(X_test_cat))
-    results['CatBoost'] = dict(mae=mae, rmse=rmse, r2=r2, train_time=train_time_cb,
-                                clf_acc=clf_acc, coverage_90=None)
-    print(f"  MAE={mae:.3f}  RMSE={rmse:.3f}  R²={r2:.3f}  Clf=%{clf_acc*100:.1f}  t={train_time_cb:.1f}s")
-
-    joblib.dump({'reg': cb_reg, 'clf': cb_clf}, os.path.join(COMP_DIR, 'catboost_model.pkl'))
-    print("  [SAVED] catboost_model.pkl")
-
-# ============================================================
-# 7. KARŞILAŞTIRMA TABLOSU (CSV)
-# ============================================================
-rows = []
-for name, r in results.items():
-    rows.append({
-        'Model': name,
-        'MAE (kg)': round(r['mae'], 3),
-        'RMSE (kg)': round(r['rmse'], 3),
-        'R² Skoru': round(r['r2'], 3),
-        'Eğitim Süresi (s)': round(r['train_time'], 1),
-        'Sınıflandırıcı Doğruluğu (%)': round(r['clf_acc'] * 100, 1),
-        'P90 Kapsama (%)': round(r.get('coverage_90', 0) * 100, 1) if r.get('coverage_90') else '-'
+    xgb_reg = XGBRegressor(n_estimators=400, learning_rate=0.08, max_depth=6, subsample=0.8, random_state=42, verbosity=0).fit(X_tr_wst_enc, y_tr_wst)
+    xgb_clf = XGBClassifier(n_estimators=300, learning_rate=0.1, max_depth=5, subsample=0.8, random_state=42, verbosity=0, use_label_encoder=False, eval_metric='mlogloss')
+    le_wst = LabelEncoder().fit(c_tr_wst)
+    xgb_clf.fit(X_tr_wst_enc, le_wst.transform(c_tr_wst))
+    t_xgb = time.time() - t0
+    p_xgb = np.maximum(0, xgb_reg.predict(X_te_wst_enc))
+    mae, rmse, r2 = regression_metrics(y_te_wst, p_xgb)
+    clf_acc = accuracy_score(le_wst.transform(c_te_wst), xgb_clf.predict(X_te_wst_enc)) * 100
+    waste_results.append({
+        'Model': 'XGBoost', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+        'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_xgb, 2),
+        'Sınıflandırıcı Doğruluğu (%)': round(clf_acc, 1), 'P90 Kapsama (%)': '-'
     })
+    joblib.dump({'reg': xgb_reg, 'clf': xgb_clf, 'encoder': enc_wst, 'label_encoder': le_wst}, os.path.join(COMP_DIR, 'xgb_model.pkl'))
+    print(f"XGB Waste: MAE={mae} kg, RMSE={rmse}, R²={r2}, Clf=%{clf_acc:.1f}")
 
-comp_df = pd.DataFrame(rows)
-comp_path = os.path.join(COMP_DIR, 'model_karsilastirma.csv')
-comp_df.to_csv(comp_path, index=False)
-print(f"\n[DONE] Karşılaştırma tablosu: {comp_path}")
-print(comp_df.to_string(index=False))
+# 4. CatBoost
+if HAS_CAT:
+    t0 = time.time()
+    cb_reg = CatBoostRegressor(iterations=400, learning_rate=0.08, depth=6, loss_function='RMSE', cat_features=CAT_COLS, random_seed=42, verbose=0).fit(X_tr_wst_cb, y_tr_wst)
+    cb_clf = CatBoostClassifier(iterations=300, learning_rate=0.1, depth=5, cat_features=CAT_COLS, random_seed=42, verbose=0).fit(X_tr_wst_cb, c_tr_wst)
+    t_cb = time.time() - t0
+    p_cb = np.maximum(0, cb_reg.predict(X_te_wst_cb))
+    mae, rmse, r2 = regression_metrics(y_te_wst, p_cb)
+    clf_acc = accuracy_score(c_te_wst, cb_clf.predict(X_te_wst_cb)) * 100
+    waste_results.append({
+        'Model': 'CatBoost', 'MAE (kg)': mae, 'RMSE (kg)': rmse,
+        'R² Skoru': r2, 'Eğitim Süresi (s)': round(t_cb, 2),
+        'Sınıflandırıcı Doğruluğu (%)': round(clf_acc, 1), 'P90 Kapsama (%)': '-'
+    })
+    joblib.dump({'reg': cb_reg, 'clf': cb_clf}, os.path.join(COMP_DIR, 'catboost_model.pkl'))
+    print(f"CatBoost Waste: MAE={mae} kg, RMSE={rmse}, R²={r2}, Clf=%{clf_acc:.1f}")
+
+wst_comp_df = pd.DataFrame(waste_results)
+wst_comp_df.to_csv(os.path.join(COMP_DIR, 'model_karsilastirma.csv'), index=False)
+print(f"[KAYDEDİLDİ] model_karsilastirma.csv")
+
+print("\n" + "=" * 60)
+print("TALEP MODELLERİ KARŞILAŞTIRMASI:")
+print(dem_comp_df.to_string(index=False))
+print("\nİSRAF MODELLERİ KARŞILAŞTIRMASI:")
+print(wst_comp_df.to_string(index=False))
+print("=" * 60)
